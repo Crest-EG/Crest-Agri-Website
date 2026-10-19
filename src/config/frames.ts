@@ -1,4 +1,4 @@
-// TODO(confirm): verify the supplied visual sequence depicts approved agricultural/export content.
+// TODO(replace): Landing journey frame sequence | Crest creative team | Replace images in public/frames/scene-1 through scene-7 with approved journey photography.
 export const frameConfig = {
   extension: "jpg",
   scenes: 7,

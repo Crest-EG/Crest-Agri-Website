@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
+// TODO(replace): Standards reference copy and Crest certification scope | Crest quality lead | Confirm which standards apply to the relevant supply partners and replace the reference-only descriptions.
 const certificationKeys = ["globalgap", "smeta", "iso"] as const;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {

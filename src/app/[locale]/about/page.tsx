@@ -9,6 +9,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function AboutPage() {
+  // TODO(replace): Bilingual company story, vision and mission | Crest management | Replace the about.story, about.vision and about.mission translations in both message files with approved company wording.
+  // TODO(replace): About page orchard image | Crest creative team | Replace public/images/stitch-about/orchard.jpg with an approved orchard photograph at the same path.
   const t = await getTranslations("about");
   return (
     <main className="page-shell about-page">

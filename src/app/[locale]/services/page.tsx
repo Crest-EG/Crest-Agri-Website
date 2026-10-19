@@ -5,6 +5,8 @@ import { Link } from "@/i18n/navigation";
 import { ButtonLink } from "@/components/Button";
 
 const processSteps = ["sourcing", "artwork", "packing", "dispatch"] as const;
+// TODO(replace): Bilingual export service and private-label descriptions | Crest export team | Confirm service scope and approval flow, then update the services namespace in both message files.
+// TODO(replace): Services page photography | Crest creative team | Replace the Stitch reference images under public/images/stitch-services/ with approved service photography at the same paths.
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;

@@ -179,7 +179,12 @@ img { max-width: 100%; }
 .journey-loader { position: absolute; z-index: 5; inset: auto 24px 24px; display: flex; align-items: center; justify-content: center; gap: 12px; width: fit-content; margin-inline: auto; padding: 12px 18px; border: 1px solid var(--line); border-radius: var(--radius-pill); background: var(--surface); color: var(--text); font-size: var(--font-size-xs); font-weight: 700; }
 .loader-mark { width: 12px; height: 12px; border: 2px solid var(--green); border-inline-end-color: var(--orange); border-radius: 50%; animation: crest-spin 900ms linear infinite; }
 @keyframes crest-spin { to { transform: rotate(360deg); } }
-.quote-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding: clamp(20px, 3vw, 32px); border: 1px solid color-mix(in srgb, var(--bg) 18%, transparent); border-radius: var(--radius-card); background: color-mix(in srgb, var(--bg) 5%, var(--text)); }
+.quote-form { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding: clamp(20px, 3vw, 32px); border: 1px solid color-mix(in srgb, var(--bg) 18%, transparent); border-radius: var(--radius-card); background: color-mix(in srgb, var(--bg) 5%, var(--text)); }
+.quote-honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.quote-consent { grid-column: 1 / -1; margin: 0; color: var(--text-muted); font-size: var(--font-size-xs); line-height: 1.5; }
+.quote-consent a { color: var(--green); text-decoration: underline; text-underline-offset: 2px; }
+.quote-form-footer .quote-consent { color: color-mix(in srgb, var(--bg) 78%, transparent); }
+.quote-form-footer .quote-consent a { color: var(--surface); }
 .quote-field { display: grid; gap: 7px; }
 .quote-field-wide { grid-column: 1 / -1; }
 .quote-field label { color: color-mix(in srgb, var(--bg) 86%, transparent); font-size: var(--font-size-xs); font-weight: 700; }

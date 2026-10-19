@@ -24,6 +24,7 @@ export function Footer() {
   const s = useTranslations("services");
   const footer = t.raw("footer") as Record<string, string>;
   const catalog = products.slice(0, 5);
+  // TODO(replace): Bilingual footer company summary | Crest marketing team | Update the common.footer.description translation in both message files with the approved brand description.
 
   return (
     <footer className="site-footer" id="site-footer">
@@ -53,7 +54,6 @@ export function Footer() {
             <h3>{footer.catalog}</h3>
             <ul>{catalog.map((product) => <li key={product.slug}><Link href={`/products/${product.slug}`}>{product.name[locale]}</Link></li>)}</ul>
           </section>
-          {/* TODO(confirm): verify the export ports and current certification register before naming specific ports or certificates here. */}
           <section className="footer-column">
             <h3>{footer.capabilities}</h3>
             <ul>{capabilities.map((key) => <li key={key}><Link href="/services">{s(key)}</Link></li>)}</ul>
@@ -67,7 +67,7 @@ export function Footer() {
           </section>
           <section className="footer-column">
             <h3>{footer.accreditations}</h3>
-            <ul><li><Link href="/certifications">{footer.certificationInquiry}</Link></li></ul>
+            <ul><li><Link href="/certifications">{footer.certificationInquiry}</Link></li><li><Link href="/privacy">{footer.privacy}</Link></li></ul>
           </section>
         </div>
 

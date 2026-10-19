@@ -6,7 +6,32 @@ import { products } from "@/content/products";
 import { site } from "@/content/site";
 
 type QuoteFormProps = { initialProduct?: string; variant?: "full" | "footer" };
-type PreparedMessage = { whatsapp: string; email: string };
+type PreparedMessage = { whatsapp: string; email: string; leadId: string };
+
+type LeadPayload = {
+  event: "lead";
+  leadId: string;
+  locale: "ar" | "en";
+  type: "quote" | "inquiry" | "contact";
+  name: string;
+  company: string;
+  country: string;
+  contact: string;
+  product: string;
+  quantity: string;
+  message: string;
+  page: string;
+  website: string;
+};
+
+function track(payload: LeadPayload | { event: "channel"; leadId: string; channel: "whatsapp" | "email" }) {
+  void fetch("/api/lead", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+    keepalive: true,
+  }).catch(() => undefined);
+}
 
 export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormProps) {
   const locale = useLocale() as "ar" | "en";
@@ -16,29 +41,41 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
-    const footerContact = String(form.get("email") ?? "");
+    const leadId = crypto.randomUUID();
+    const nameAndCompany = String(form.get("name") ?? "").trim();
+    const [footerName, footerCompany] = nameAndCompany.split(/\s+[—–-]\s+/, 2);
+    const name = variant === "footer" ? (footerName || nameAndCompany) : nameAndCompany;
+    const company = String(form.get("company") ?? (variant === "footer" ? footerCompany : "") ?? "").trim();
+    const contact = String(form.get("email") ?? "").trim() + (String(form.get("phone") ?? "").trim() ? ` / ${String(form.get("phone")).trim()}` : "");
+    const country = String(form.get("country") ?? "").trim();
+    const productName = products.find((product) => product.slug === form.get("product"))?.name[locale] ?? "";
+    const quantity = String(form.get("quantity") ?? "").trim();
+    const message = String(form.get("message") ?? "").trim();
+    const type = String(form.get("requestType") ?? "quote") as "quote" | "inquiry" | "contact";
+    track({
+      event: "lead", leadId, locale, type, name, company, country, contact,
+      product: String(form.get("product") ?? ""), quantity, message,
+      page: window.location.pathname, website: String(form.get("website") ?? ""),
+    });
     const conciseValues = [
-      [t("name"), form.get("name")],
-      [t("footerEmailPhone"), footerContact],
-      [t("country"), form.get("country")],
-      [t("product"), products.find((product) => product.slug === form.get("product"))?.name[locale] ?? ""],
+      [t("name"), name],
+      [t("company"), company],
+      [t("footerEmailPhone"), contact],
+      [t("country"), country],
+      [t("product"), productName],
     ];
     const fullValues = [
-      [t("requestType"), form.get("requestType")],
-      [t("name"), form.get("name")],
-      [t("company"), form.get("company")],
-      [t("country"), form.get("country")],
-      [t("email"), form.get("email")],
-      [t("phone"), form.get("phone")],
-      [t("product"), products.find((product) => product.slug === form.get("product"))?.name[locale] ?? ""],
-      [t("quantity"), form.get("quantity")],
-      [t("message"), form.get("message")],
+      [t("requestType"), t(`requestTypes.${type}`)],
+      [t("name"), name], [t("company"), company], [t("country"), country],
+      [t("email"), form.get("email")], [t("phone"), form.get("phone")],
+      [t("product"), productName], [t("quantity"), quantity], [t("message"), message],
     ];
     const values = (variant === "footer" ? conciseValues : fullValues)
       .map(([label, value]) => String(label) + ": " + String(value ?? ""));
     const body = values.join("\n");
-    const subject = t("subject", { name: String(form.get("name") ?? "") });
+    const subject = t("subject", { name });
     setPrepared({
+      leadId,
       whatsapp: "https://wa.me/" + site.whatsapp + "?text=" + encodeURIComponent(subject + "\n" + body),
       email: "mailto:" + site.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body),
     });
@@ -56,6 +93,10 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
           <option value="contact">{t("requestTypes.contact")}</option>
         </select>
       </div>}
+      <div className="quote-honeypot" aria-hidden="true">
+        <label htmlFor={`${variant}-quote-website`}>{t("honeypotLabel")}</label>
+        <input id={`${variant}-quote-website`} name="website" tabIndex={-1} autoComplete="off" />
+      </div>
       <div className="quote-field">
         <label htmlFor={fieldId("name")}>{variant === "footer" ? t("footerNameCompany") : t("name")}</label>
         <input id={fieldId("name")} name="name" autoComplete="name" placeholder={variant === "footer" ? t("placeholder.nameCompany") : t("placeholder.name")} required />
@@ -96,10 +137,11 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
         <div className="quote-result" aria-live="polite">
           <strong>{t("sentTitle")}</strong>
           <p>{t("sentBody")}</p>
-          <a href={prepared.whatsapp} target="_blank" rel="noreferrer">{t("whatsappAction")}</a>
-          <a href={prepared.email}>{t("emailAction")}</a>
+          <a href={prepared.whatsapp} target="_blank" rel="noreferrer" onClick={() => track({ event: "channel", leadId: prepared.leadId, channel: "whatsapp" })}>{t("whatsappAction")}</a>
+          <a href={prepared.email} onClick={() => track({ event: "channel", leadId: prepared.leadId, channel: "email" })}>{t("emailAction")}</a>
         </div>
       )}
+      <p className="quote-consent">{t.rich("consent", { privacy: (chunks) => <a href={`/${locale}/privacy`}>{chunks}</a> })}</p>
     </form>
   );
 }

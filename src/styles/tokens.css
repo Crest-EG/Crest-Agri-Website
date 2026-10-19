@@ -1,6 +1,7 @@
 :root {
   --green: #50b94e;
-  --green-ink: #2f7d2e; /* TODO(confirm): darker accessible green for text on light surfaces. */
+  /* TODO(replace): Accessible dark green text token | Crest brand team | Approve a brand-compliant accessible dark green and replace this value if needed. */
+  --green-ink: #2f7d2e;
   --orange: #f7941d;
   --bg: #faf9f5;
   --surface: #ffffff;

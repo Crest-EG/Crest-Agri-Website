@@ -13,6 +13,7 @@ type ContactProps = {
 export async function generateMetadata({ params }: Pick<ContactProps, "params">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "contact" });
+  // TODO(replace): Bilingual contact page copy | Crest office administrator | Review the contact namespace in both message files and replace any office or response wording that needs adjustment.
   return { title: t("title"), description: t("intro") };
 }
 
@@ -24,6 +25,9 @@ export default async function ContactPage({ params, searchParams }: ContactProps
   const language = locale === "ar" ? "ar" : "en";
   const t = await getTranslations({ locale, namespace: "contact" });
   const q = await getTranslations({ locale, namespace: "quote" });
+  const faq = await getTranslations({ locale, namespace: "faq" });
+  // TODO(replace): Bilingual FAQ answers | Crest export team | Confirm product, season, private-label and quotation practices, then update the faq namespace in both message files.
+  const faqItems = faq.raw("items") as { question: string; answer: string }[];
 
   return (
     <main className="page-shell contact-page">
@@ -43,7 +47,7 @@ export default async function ContactPage({ params, searchParams }: ContactProps
             <a href={`mailto:${site.email}`}>{site.email}</a>
             <a href={site.website}>{t("website")}</a>
           </div>
-          <p className="contact-prompt">{q("sentBody")}</p>
+          <p className="contact-prompt">{t("followUp")}</p>
           <Link className="text-link" href="/products">{t("browseProducts")} <span aria-hidden="true">↗</span></Link>
         </section>
         <section id="quote" className="contact-quote">
@@ -51,6 +55,12 @@ export default async function ContactPage({ params, searchParams }: ContactProps
           <QuoteForm initialProduct={initialProduct} />
         </section>
       </div>
+      <section className="page-section" aria-labelledby="contact-faq-title">
+        <header className="page-intro"><h2 id="contact-faq-title">{faq("title")}</h2></header>
+        <div className="product-grid">
+          {faqItems.map((item) => <article className="content-card" key={item.question}><h3>{item.question}</h3><p>{item.answer}</p></article>)}
+        </div>
+      </section>
     </main>
   );
 }

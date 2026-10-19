@@ -35,22 +35,11 @@ All image placeholders are usable today. Replace them with files at the same pat
 
 ## Missing brand fonts
 
-The three brand font files have not been supplied. The site uses system font fallbacks until the owner adds them. `src/styles/fonts.ts` centralizes the mapping; `TODO(confirm)` before wiring local font files because the final file names/weights may differ.
+The three brand font files have not been supplied. The site uses system font fallbacks until the owner adds them. `src/styles/fonts.ts` centralizes the mapping.
 
-## Content confirmations
+## Content replacement
 
-- `TODO(confirm)`: `--green-ink` is an accessible dark green derived for text and links.
-- `TODO(confirm)`: the 420-frame sequence now uses Stitch scene photos with a subtle crop pan across each 60-frame sequence; replace with approved final footage if available.
-- `TODO(confirm)`: WhatsApp number is the first listed company phone.
-- `TODO(confirm)`: GCC and North Africa map group labels/coordinates and market statuses.
-- `TODO(confirm)`: replace the 33 legacy product photo placeholders and six provisional Stitch product photos with approved product photography. The six currently used image paths are listed above.
-- `TODO(confirm)`: product-specific fresh/frozen/dried forms and seasons in `src/content/products.ts`.
-- `TODO(confirm)`: each listed market status and grouped-region pin in `src/content/countries.ts`.
-- `TODO(confirm)`: approved Arabic address and WhatsApp number in `src/content/site.ts`.
-- `TODO(content)`: product descriptions, seasons, farming, harvest, packing, and shipping copy in `src/content/products.ts`.
-- `TODO(content)`: company story, vision, and mission copy in the localized message files.
-- `TODO(confirm)`: certification status/details before presenting GlobalGAP, SMETA, or ISO as held certifications.
-- `TODO(confirm)`: verify export port coverage and the current certification register before listing specific ports or certificates in the footer.
+The bilingual mock content and the exact owner, item and replacement action for each pending review are tracked in [CONTENT_TODO.md](CONTENT_TODO.md). The map's named destinations are presented as indicative areas for discussion and need the export team's confirmation. Certification descriptions are reference-only until scope and supporting documents are confirmed.
 
 ## Stitch source references
 

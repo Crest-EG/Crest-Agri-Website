@@ -11,6 +11,8 @@ import { Placeholder } from "@/components/Placeholder";
 import { featuredProducts, type Product } from "@/content/products";
 import { frameConfig, framePath } from "@/config/frames";
 
+// TODO(replace): Bilingual landing journey marketing copy | Crest marketing team | Review the landing namespace in both message files and replace the scene text with approved company copy.
+
 type ScrollJourneyProps = { marketMap: ReactNode };
 type ConnectionInfo = { saveData?: boolean; effectiveType?: string };
 type NavigatorWithHints = Navigator & { deviceMemory?: number; connection?: ConnectionInfo };

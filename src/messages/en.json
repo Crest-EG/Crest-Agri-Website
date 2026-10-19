@@ -27,12 +27,13 @@
       "copyright": "© {year} Crest for Agricultural Development. All rights reserved.",
       "catalog": "Fresh catalog",
       "capabilities": "Capabilities",
-      "keyPorts": "Key ports",
+      "keyPorts": "Origin and destination",
       "accreditations": "Accreditations",
-      "origin": "Alexandria, Egypt (origin)",
-      "destinationPorts": "Discuss destination ports with our team",
-      "certificationInquiry": "Request current certification details",
-      "backToTop": "Back to top"
+      "origin": "Alexandria, Egypt (office)",
+      "destinationPorts": "Discuss destination options with our team",
+      "certificationInquiry": "Standards and documentation",
+      "backToTop": "Back to top",
+      "privacy": "Privacy"
     },
     "errors": {
       "notFoundTitle": "Page not found",
@@ -63,7 +64,7 @@
         "title": "Rooted in Egypt. Ready for the world.",
         "body": "Crest for Agricultural Development connects agricultural products from Egypt with international buyers. Explore our products and export services.",
         "link": "Our story",
-        "certifications": "Certification names shown as placeholders"
+        "certifications": "Standards discussed by programme: GlobalGAP, SMETA and ISO"
       },
       "harvest": {
         "eyebrow": "Our products",
@@ -75,7 +76,7 @@
         "eyebrow": "Prepared for your market",
         "title": "Packing that fits your needs",
         "body": "Discuss product presentation and packing requirements with our team.",
-        "privateLabel": "Private label options are available on request."
+        "privateLabel": "Private-label options can be discussed for your brand and destination."
       },
       "shipping": {
         "eyebrow": "Export and logistics",
@@ -84,11 +85,11 @@
       },
       "markets": {
         "eyebrow": "Markets",
-        "title": "Connecting with markets around the world",
-        "body": "Explore current and target markets. Market details are subject to confirmation.",
-        "current": "Current markets",
-        "target": "Target markets",
-        "mapLabel": "Markets map",
+        "title": "Destinations to discuss",
+        "body": "The regions shown are indicative conversation areas, not a confirmed list of active customers or shipping routes. Ask us about your destination.",
+        "current": "Destinations to confirm",
+        "target": "Destinations to explore",
+        "mapLabel": "Illustrative destination map",
         "worldMap": "World map",
         "gccPin": "GCC",
         "northAfricaPin": "NA"
@@ -113,7 +114,7 @@
   "products": {
     "eyebrow": "Fresh, frozen and dried",
     "title": "Agricultural products",
-    "intro": "Explore the fresh, frozen and dried products offered by Crest. Product forms and seasons are being confirmed.",
+    "intro": "Explore fresh, frozen and dried Egyptian produce. Seasonal windows are indicative and can shift with variety, growing area and conditions; our team confirms availability for each enquiry.",
     "filters": {
       "label": "Filter products",
       "all": "All products",
@@ -141,7 +142,7 @@
     "related": "Related products",
     "request": "Request a quote for this product",
     "back": "All products",
-    "imageAlt": "{product} product placeholder"
+    "imageAlt": "Illustrative {product} image"
   },
   "forms": {
     "fresh": "Fresh",
@@ -153,50 +154,51 @@
     "intro": "Crest for Agricultural Development is based in Alexandria, Egypt, and exports fresh, frozen and dried agricultural products.",
     "imageAlt": "Citrus orchards in the Nile Delta",
     "storyTitle": "Our story",
-    "story": "TODO(content): Add the approved company story.",
+    "story": "Crest for Agricultural Development is an Alexandria-based export desk focused on connecting Egyptian agricultural products with international buyers. We coordinate product selection, specifications, packing discussions and shipment planning around each enquiry.",
     "visionTitle": "Our vision",
-    "vision": "TODO(content): Add the approved company vision.",
+    "vision": "To build lasting trade relationships by making Egyptian produce easier to source, specify and receive across international markets.",
     "missionTitle": "Our mission",
-    "mission": "TODO(content): Add the approved company mission."
+    "mission": "We work with buyers to clarify product requirements, communicate openly about availability and coordinate export preparation from origin to destination."
   },
   "certifications": {
     "title": "Certifications",
-    "intro": "Certification information is being confirmed.",
+    "intro": "We can discuss the standards and documentation relevant to a proposed supply programme. Please contact our team to verify current site scope and document availability.",
     "globalgap": "GlobalGAP",
     "smeta": "SMETA",
     "iso": "ISO",
-    "placeholder": "TODO(confirm): Confirm certification status and add approved details."
+    "placeholder": "Certification names are shown as reference standards only. Availability, scope and supporting documents must be confirmed for the selected product and supply partner."
   },
   "contact": {
     "eyebrow": "Alexandria export desk",
     "title": "Contact Crest",
-    "intro": "Tell us about your product and destination requirements.",
-    "detailsTitle": "Alexandria HQ & logistics",
+    "intro": "Tell us what you are looking for, where it needs to go and how we can reach you. Our team will review your inquiry and follow up.",
+    "detailsTitle": "Alexandria export desk",
     "browseProducts": "Browse products",
     "phone": "Phone",
     "email": "Email",
     "whatsapp": "WhatsApp",
     "address": "Address",
     "maps": "Open in maps",
-    "website": "Website"
+    "website": "Website",
+    "followUp": "Your inquiry details are used only to prepare a reply."
   },
   "services": {
-    "eyebrow": "Precision export infrastructure",
+    "eyebrow": "Export coordination",
     "title": "Agricultural Export & Partnerships",
-    "intro": "Facilitating dependable produce sourcing, custom private labeling, and seamless international transit from Egypt to global ports.",
-    "provenance": "End-to-end provenance",
-    "oversight": "A direct partnership from origin to destination.",
-    "oversightBody": "Crest connects agricultural production with international buyers through clear communication, coordinated packing, and export support.",
+    "intro": "We help buyers discuss product sourcing, private-label packaging and shipment planning for agricultural products from Egypt.",
+    "provenance": "Sourcing and export coordination",
+    "oversight": "Clear coordination from product selection to dispatch.",
+    "oversightBody": "We align product specifications, packing discussions and shipping requirements with the buyer’s destination and intended use.",
     "quality": "Quality assurance",
-    "qualityBody": "Discuss grading, packing, handling, and document requirements with our export team.",
-    "sourcing": "Product and specification selection",
-    "artwork": "Artwork and custom box design",
-    "packing": "Careful packing and pre-cooling",
-    "dispatch": "Refrigerated dispatch",
+    "qualityBody": "Discuss grading, handling, packing and document requirements with our export team before confirming a programme.",
+    "sourcing": "Confirm product and specification",
+    "artwork": "Review and approve artwork and pack specification",
+    "packing": "Confirm packing format and handling requirements",
+    "dispatch": "Coordinate dispatch and export documents",
     "privateLabel": "Your brand, cultivated with care",
-    "privateLabelBody": "Ask our team about packaging options for your brand and destination market.",
+    "privateLabelBody": "Share your brand guidelines and destination requirements. Our team can discuss artwork, packaging formats and approval steps before production is arranged.",
     "shipping": "Shipping to your destination",
-    "shippingBody": "Share your product, destination, and timing requirements so we can discuss available shipping options.",
+    "shippingBody": "Share the product, destination and preferred schedule. Options and availability depend on the product and destination; our sales team will confirm.",
     "contactAction": "Start a trade inquiry",
     "productsAction": "Explore products"
   },
@@ -224,7 +226,7 @@
     "whatsappAction": "Send via WhatsApp",
     "emailAction": "Send via Email",
     "sentTitle": "Your message is ready",
-    "sentBody": "Choose how you would like to send your message. Nothing is stored on this site.",
+    "sentBody": "Your inquiry is ready. Choose a channel to send the details to our export team.",
     "placeholder": {
       "name": "Your name",
       "company": "Company name",
@@ -242,6 +244,38 @@
     "footerDestination": "Destination country & port",
     "footerSubmit": "Request quote",
     "placeholderNameCompany": "e.g. buyer name — company",
-    "placeholderDestination": "Country and destination port"
+    "placeholderDestination": "Country and destination port",
+    "consent": "By submitting this form, you agree that we may use your details only to reply to your inquiry. Read our {privacy}.",
+    "honeypotLabel": "Leave this field empty"
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "question": "Which products and forms can I request?",
+        "answer": "Our range includes fresh, frozen and dried products. Available forms vary by crop and season; share your requirement and we will confirm what can be discussed."
+      },
+      {
+        "question": "When is a product available?",
+        "answer": "Fresh crop windows are seasonal and may shift with variety and growing conditions. Frozen and dried availability depends on the product programme. Contact us for current availability."
+      },
+      {
+        "question": "Can packaging carry my brand?",
+        "answer": "Private-label options can be discussed. Share your artwork, pack format and destination needs so our team can review the requirements."
+      },
+      {
+        "question": "How do I receive pricing and shipping details?",
+        "answer": "Send your product, specification, destination and estimated quantity. Pricing, shipping options and timing depend on the product and destination; our sales team will confirm."
+      }
+    ]
+  },
+  "privacy": {
+    "title": "Privacy notice",
+    "intro": "We collect the details you submit through the inquiry form: name, company, country, contact details, product, requested quantity and message. The page and language are attached to the inquiry for context. If you choose WhatsApp or email, we record that channel choice.",
+    "useTitle": "How we use your information",
+    "use": "We use these details only to review and reply to your inquiry.",
+    "contactTitle": "Contact",
+    "contact": "For questions about your inquiry details, contact info@crestagricultural.com.",
+    "back": "Back to contact"
   }
 }
