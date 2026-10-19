@@ -1,0 +1,12 @@
+:root {
+  --green: #50b94e;
+  --green-ink: #2f7d2e; /* TODO(confirm): darker accessible green for text on light surfaces. */
+  --orange: #f7941d;
+  --bg: #faf9f5;
+  --surface: #ffffff;
+  --text: #1c2a1c;
+  --text-muted: #5b6b5b;
+  --radius-card: 16px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 16px 40px rgb(28 42 28 / 10%);
+}
