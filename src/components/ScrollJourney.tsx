@@ -1,15 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "@/i18n/navigation";
-import { ButtonLink } from "@/components/Button";
+import { QuoteForm } from "@/components/QuoteForm";
 import { Placeholder } from "@/components/Placeholder";
 import { featuredProducts, type Product } from "@/content/products";
-import { site } from "@/content/site";
 import { frameConfig, framePath } from "@/config/frames";
 
 type ScrollJourneyProps = { marketMap: ReactNode };
@@ -27,7 +27,9 @@ function FeaturedCard({ product, locale, formLabel }: { product: Product; locale
   return (
     <Link className="journey-product-card" href={`/products/${product.slug}`}>
       <Placeholder label={name} className="journey-product-image">
-        <span className="product-glyph" aria-hidden="true">{name.slice(0, 1)}</span>
+        {product.images[0]
+          ? <Image src={product.images[0]} alt="" aria-hidden="true" fill sizes="(max-width: 600px) 45vw, 20vw" className="product-card-photo" />
+          : <span className="product-glyph" aria-hidden="true">{name.slice(0, 1)}</span>}
       </Placeholder>
       <span className="journey-product-name">{name}</span>
       <span className="journey-product-forms">{product.forms.slice(0, 2).map(formLabel).join(" · ")}</span>
@@ -38,7 +40,6 @@ function FeaturedCard({ product, locale, formLabel }: { product: Product; locale
 export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
   const locale = useLocale() as "ar" | "en";
   const t = useTranslations("landing");
-  const common = useTranslations("common");
   const formsT = useTranslations("forms");
   const certificationsT = useTranslations("certifications");
   const stageRef = useRef<HTMLDivElement>(null);
@@ -177,7 +178,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       const existing = frameLoads.get(key);
       if (existing) return existing;
       const promise = new Promise<void>((resolve) => {
-        const image = new Image();
+        const image = new window.Image();
         image.decoding = "async";
         image.onload = () => {
           frameLoads.delete(key);
@@ -299,12 +300,6 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
     };
   }, [liteMode, reducedMotion]);
 
-  const quoteSubject = common("companyName");
-  const quoteBody = t("hero.description");
-  const quoteMessage = `${quoteSubject}: ${quoteBody}`;
-  const mailto = `mailto:${site.email}?subject=${encodeURIComponent(quoteSubject)}&body=${encodeURIComponent(quoteBody)}`;
-  const whatsapp = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(quoteMessage)}`;
-
   const sceneContents = [
     <div className="scene-content hero-content" key="hero">
       <p className="scene-eyebrow">{t("hero.eyebrow")}</p>
@@ -361,7 +356,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
   ];
 
   const staticScenes = sceneContents.map((content, index) => (
-    <section key={`static-${index}`} className={`journey-static-scene journey-static-scene-${index + 1}`} style={{ "--static-frame": `url("${framePath(index + 1, 1)}")` } as CSSProperties}>
+    <section id={index === 2 ? "products" : undefined} key={`static-${index}`} className={`journey-static-scene journey-static-scene-${index + 1}`} style={{ "--static-frame": `url("${framePath(index + 1, 1)}")` } as CSSProperties}>
       <div className="static-scene-shade" />
       <div className={`journey-overlay journey-overlay-${index + 1}`}>{content}</div>
     </section>
@@ -392,11 +387,12 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
         </div>
       )}
       <section className="quote-compact" id="quote">
-        <div className="quote-compact-copy"><p className="scene-eyebrow">{t("quoteSection.eyebrow")}</p><h2>{t("quoteSection.title")}</h2><p>{t("quoteSection.body")}</p></div>
-        <div className="quote-compact-actions">
-          <ButtonLink href={whatsapp} target="_blank" rel="noreferrer" variant="primary">{t("quoteSection.whatsapp")}</ButtonLink>
-          <ButtonLink href={mailto} variant="secondary">{t("quoteSection.email")}</ButtonLink>
+        <div className="quote-compact-copy">
+          <p className="scene-eyebrow">{t("quoteSection.eyebrow")}</p>
+          <h2>{t("quoteSection.title")}</h2>
+          <p>{t("quoteSection.body")}</p>
         </div>
+        <QuoteForm />
       </section>
     </>
   );

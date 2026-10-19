@@ -6,6 +6,7 @@
       "home": "Home",
       "products": "Products",
       "about": "About",
+      "services": "Services",
       "certifications": "Certifications",
       "contact": "Contact",
       "quote": "Request a quote",
@@ -17,7 +18,9 @@
     "language": {
       "label": "Language",
       "english": "English",
-      "arabic": "العربية"
+      "arabic": "العربية",
+      "englishShort": "EN",
+      "arabicShort": "العربية"
     },
     "footer": {
       "description": "Egyptian agricultural products, prepared with care for buyers around the world.",
@@ -100,9 +103,11 @@
     "loading": "Preparing the journey…"
   },
   "products": {
+    "eyebrow": "Fresh, frozen and dried",
     "title": "Agricultural products",
     "intro": "Explore the fresh, frozen and dried products offered by Crest. Product forms and seasons are being confirmed.",
     "filters": {
+      "label": "Filter products",
       "all": "All products",
       "fresh": "Fresh",
       "frozen": "Frozen",
@@ -112,6 +117,12 @@
     "vegetable": "Vegetable",
     "view": "View product",
     "empty": "No products match this filter.",
+    "dossier": "Export dossier",
+    "worldwide": "Worldwide shipping",
+    "originPacking": "Origin and packing assurance",
+    "commercialInquiry": "Commercial inquiry",
+    "allProducts": "View all agricultural products",
+    "breadcrumbLabel": "Breadcrumb",
     "forms": "Available forms",
     "season": "Season",
     "details": "Product details",
@@ -132,6 +143,7 @@
   "about": {
     "title": "About Crest",
     "intro": "Crest for Agricultural Development is based in Alexandria, Egypt, and exports fresh, frozen and dried agricultural products.",
+    "imageAlt": "Citrus orchards in the Nile Delta",
     "storyTitle": "Our story",
     "story": "TODO(content): Add the approved company story.",
     "visionTitle": "Our vision",
@@ -148,14 +160,37 @@
     "placeholder": "TODO(confirm): Confirm certification status and add approved details."
   },
   "contact": {
+    "eyebrow": "Alexandria export desk",
     "title": "Contact Crest",
     "intro": "Tell us about your product and destination requirements.",
+    "detailsTitle": "Alexandria HQ & logistics",
+    "browseProducts": "Browse products",
     "phone": "Phone",
     "email": "Email",
     "whatsapp": "WhatsApp",
     "address": "Address",
     "maps": "Open in maps",
     "website": "Website"
+  },
+  "services": {
+    "eyebrow": "Precision export infrastructure",
+    "title": "Agricultural Export & Partnerships",
+    "intro": "Facilitating dependable produce sourcing, custom private labeling, and seamless international transit from Egypt to global ports.",
+    "provenance": "End-to-end provenance",
+    "oversight": "A direct partnership from origin to destination.",
+    "oversightBody": "Crest connects agricultural production with international buyers through clear communication, coordinated packing, and export support.",
+    "quality": "Quality assurance",
+    "qualityBody": "Discuss grading, packing, handling, and document requirements with our export team.",
+    "sourcing": "Product and specification selection",
+    "artwork": "Artwork and custom box design",
+    "packing": "Careful packing and pre-cooling",
+    "dispatch": "Refrigerated dispatch",
+    "privateLabel": "Your brand, cultivated with care",
+    "privateLabelBody": "Ask our team about packaging options for your brand and destination market.",
+    "shipping": "Shipping to your destination",
+    "shippingBody": "Share your product, destination, and timing requirements so we can discuss available shipping options.",
+    "contactAction": "Start a trade inquiry",
+    "productsAction": "Explore products"
   },
   "quote": {
     "title": "Request a quote",

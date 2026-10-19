@@ -8,6 +8,8 @@ export function LanguageSwitcher() {
   const pathname = usePathname();
   const t = useTranslations("common.language");
   const nextLocale = locale === "ar" ? "en" : "ar";
+  const currentLabel = locale === "ar" ? t("arabicShort") : t("englishShort");
+  const nextLabel = nextLocale === "ar" ? t("arabicShort") : t("englishShort");
 
   function rememberLanguage() {
     document.cookie = `NEXT_LOCALE=${nextLocale}; Path=/; Max-Age=31536000; SameSite=Lax`;
@@ -22,7 +24,8 @@ export function LanguageSwitcher() {
       className="language-switcher"
       aria-label={`${t("label")}: ${nextLocale === "ar" ? t("arabic") : t("english")}`}
     >
-      {nextLocale === "ar" ? t("arabic") : t("english")}
+      <span className="language-active">{currentLabel}</span>
+      <span>{nextLabel}</span>
     </Link>
   );
 }

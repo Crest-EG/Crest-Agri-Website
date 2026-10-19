@@ -23,6 +23,14 @@ const farmingTodo = contentTodo("TODO(content): Add approved farming information
 const harvestTodo = contentTodo("TODO(content): Add approved harvest information.", "TODO(content): أضف معلومات الحصاد المعتمدة.");
 const packingTodo = contentTodo("TODO(content): Add approved packing information.", "TODO(content): أضف معلومات التعبئة المعتمدة.");
 const shippingTodo = contentTodo("TODO(content): Add approved shipping information.", "TODO(content): أضف معلومات الشحن المعتمدة.");
+const stitchProductImages: Record<string, string> = {
+  citrus: "/images/stitch-products/citrus.jpg",
+  grapes: "/images/stitch-products/grapes.jpg",
+  "green-beans": "/images/stitch-products/green-beans.jpg",
+  "green-onion": "/images/stitch-products/green-onion.jpg",
+  pomegranate: "/images/stitch-products/pomegranate.jpg",
+  strawberry: "/images/stitch-products/strawberry.jpg",
+};
 
 function product(
   slug: string,
@@ -45,8 +53,8 @@ function product(
     harvest: harvestTodo,
     packing: packingTodo,
     shipping: shippingTodo,
-    // TODO(confirm): supplied product images are placeholder visuals and are not approved for display.
-    images: [],
+    // TODO(confirm): Stitch supplied these provisional reference photos; replace them with approved photography.
+    images: stitchProductImages[slug] ? [stitchProductImages[slug]] : [],
     featured,
   };
 }
