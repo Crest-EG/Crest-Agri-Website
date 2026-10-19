@@ -29,3 +29,9 @@ The three brand font files have not been supplied. The site uses system font fal
 - `TODO(confirm)`: WhatsApp number is the first listed company phone.
 - `TODO(confirm)`: GCC and North Africa map group labels/coordinates and market statuses.
 - `TODO(confirm)`: product photo dimensions/formats; no actual product images supplied.
+- `TODO(confirm)`: product-specific fresh/frozen/dried forms and seasons in `src/content/products.ts`.
+- `TODO(confirm)`: each listed market status and grouped-region pin in `src/content/countries.ts`.
+- `TODO(confirm)`: approved Arabic address and WhatsApp number in `src/content/site.ts`.
+- `TODO(content)`: product descriptions, seasons, farming, harvest, packing, and shipping copy in `src/content/products.ts`.
+- `TODO(content)`: company story, vision, and mission copy in the localized message files.
+- `TODO(confirm)`: certification status/details before presenting GlobalGAP, SMETA, or ISO as held certifications.

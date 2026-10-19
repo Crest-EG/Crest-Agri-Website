@@ -33,8 +33,157 @@
     },
     "metadata": {
       "title": "Crest for Agricultural Development",
-      "description": "Fresh, frozen and dried agricultural products from Egypt.",
-      "shortName": "Crest"
+      "shortName": "Crest",
+      "description": "Fresh, frozen and dried agricultural products from Egypt."
     }
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "Crest for Agricultural Development · Alexandria, Egypt",
+      "title": "From Egyptian fields to buyers around the world.",
+      "description": "Fresh, frozen and dried agricultural products from Egypt.",
+      "quote": "Request a quote",
+      "browse": "Browse products"
+    },
+    "skip": "Skip to products",
+    "scenes": {
+      "care": {
+        "eyebrow": "Grown with care",
+        "title": "Rooted in Egypt. Ready for the world.",
+        "body": "Crest for Agricultural Development connects agricultural products from Egypt with international buyers. Explore our products and export services.",
+        "link": "Our story",
+        "certifications": "Certification names shown as placeholders"
+      },
+      "harvest": {
+        "eyebrow": "Our products",
+        "title": "Harvest possibilities",
+        "body": "Explore a range of fresh, frozen and dried agricultural products.",
+        "all": "View all products"
+      },
+      "packing": {
+        "eyebrow": "Prepared for your market",
+        "title": "Packing that fits your needs",
+        "body": "Discuss product presentation and packing requirements with our team.",
+        "privateLabel": "Private label options are available on request."
+      },
+      "shipping": {
+        "eyebrow": "Export and logistics",
+        "title": "From origin to destination",
+        "body": "Fresh, frozen and dried product options for international buyers. Share your destination and requirements with us."
+      },
+      "markets": {
+        "eyebrow": "Markets",
+        "title": "Connecting with markets around the world",
+        "body": "Explore current and target markets. Market details are subject to confirmation.",
+        "current": "Current markets",
+        "target": "Target markets"
+      },
+      "delivery": {
+        "eyebrow": "Start a conversation",
+        "title": "Let’s plan your next shipment.",
+        "body": "Tell us what you are looking for and our team will follow up.",
+        "quote": "Request a quote"
+      }
+    },
+    "quoteSection": {
+      "eyebrow": "Let’s talk business",
+      "title": "Tell us what you need.",
+      "body": "Share your product and destination requirements with our team.",
+      "submit": "Prepare your message"
+    }
+  },
+  "products": {
+    "title": "Agricultural products",
+    "intro": "Explore the fresh, frozen and dried products offered by Crest. Product forms and seasons are being confirmed.",
+    "filters": {
+      "all": "All products",
+      "fresh": "Fresh",
+      "frozen": "Frozen",
+      "dried": "Dried"
+    },
+    "fruit": "Fruit",
+    "vegetable": "Vegetable",
+    "view": "View product",
+    "empty": "No products match this filter.",
+    "forms": "Available forms",
+    "season": "Season",
+    "details": "Product details",
+    "farming": "Farming",
+    "harvest": "Harvest",
+    "packing": "Packing",
+    "shipping": "Shipping",
+    "related": "Related products",
+    "request": "Request a quote for this product",
+    "back": "All products",
+    "imageAlt": "{product} product placeholder"
+  },
+  "forms": {
+    "fresh": "Fresh",
+    "frozen": "Frozen",
+    "dried": "Dried"
+  },
+  "about": {
+    "title": "About Crest",
+    "intro": "Crest for Agricultural Development is based in Alexandria, Egypt, and exports fresh, frozen and dried agricultural products.",
+    "storyTitle": "Our story",
+    "story": "TODO(content): Add the approved company story.",
+    "visionTitle": "Our vision",
+    "vision": "TODO(content): Add the approved company vision.",
+    "missionTitle": "Our mission",
+    "mission": "TODO(content): Add the approved company mission."
+  },
+  "certifications": {
+    "title": "Certifications",
+    "intro": "Certification information is being confirmed.",
+    "globalgap": "GlobalGAP",
+    "smeta": "SMETA",
+    "iso": "ISO",
+    "placeholder": "TODO(confirm): Confirm certification status and add approved details."
+  },
+  "contact": {
+    "title": "Contact Crest",
+    "intro": "Tell us about your product and destination requirements.",
+    "phone": "Phone",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "address": "Address",
+    "maps": "Open in maps",
+    "website": "Website"
+  },
+  "quote": {
+    "title": "Request a quote",
+    "intro": "Share a few details so our team can respond to your inquiry.",
+    "requestType": "Request type",
+    "requestTypes": {
+      "quote": "Quote",
+      "inquiry": "Inquiry",
+      "contact": "Contact"
+    },
+    "name": "Name",
+    "company": "Company",
+    "country": "Country",
+    "email": "Email",
+    "phone": "Phone / WhatsApp",
+    "product": "Product",
+    "chooseProduct": "Choose a product",
+    "quantity": "Quantity",
+    "message": "Message",
+    "required": "This field is required.",
+    "invalidEmail": "Enter a valid email address.",
+    "submit": "Prepare message",
+    "whatsappAction": "Send via WhatsApp",
+    "emailAction": "Send via Email",
+    "sentTitle": "Your message is ready",
+    "sentBody": "Choose how you would like to send your message. Nothing is stored on this site.",
+    "placeholder": {
+      "name": "Your name",
+      "company": "Company name",
+      "country": "Country",
+      "email": "you@example.com",
+      "phone": "Phone number",
+      "quantity": "Quantity and unit",
+      "message": "Tell us what you need"
+    },
+    "subject": "Agricultural product inquiry from {name}"
   }
 }
