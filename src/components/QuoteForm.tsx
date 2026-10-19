@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { products } from "@/content/products";
 import { site } from "@/content/site";
+import { Link } from "@/i18n/navigation";
 
 type QuoteFormProps = { initialProduct?: string; variant?: "full" | "footer" };
 type PreparedMessage = { whatsapp: string; email: string; leadId: string };
@@ -141,7 +142,7 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
           <a href={prepared.email} onClick={() => track({ event: "channel", leadId: prepared.leadId, channel: "email" })}>{t("emailAction")}</a>
         </div>
       )}
-      <p className="quote-consent">{t.rich("consent", { privacy: (chunks) => <a href={`/${locale}/privacy`}>{chunks}</a> })}</p>
+      <p className="quote-consent">{t.rich("consent", { privacy: (chunks) => <Link href="/privacy">{chunks}</Link> })}</p>
     </form>
   );
 }

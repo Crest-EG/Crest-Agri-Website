@@ -7,6 +7,8 @@ import ar from "@/messages/ar.json";
 import "./globals.css";
 
 function getLocale() {
+  const pathLocale = window.location.pathname.split("/")[1];
+  if (pathLocale === "ar" || pathLocale === "en") return pathLocale;
   const saved = document.cookie.match(/(?:^|; )NEXT_LOCALE=(ar|en)(?:;|$)/)?.[1];
   if (saved) return saved as "ar" | "en";
   return navigator.language.toLowerCase().startsWith("ar") ? "ar" : "en";

@@ -245,7 +245,7 @@
     "footerSubmit": "Request quote",
     "placeholderNameCompany": "e.g. buyer name — company",
     "placeholderDestination": "Country and destination port",
-    "consent": "By submitting this form, you agree that we may use your details only to reply to your inquiry. Read our {privacy}.",
+    "consent": "By submitting this form, you agree that we may use your details only to reply to your inquiry. Read our <privacy>privacy notice</privacy>.",
     "honeypotLabel": "Leave this field empty"
   },
   "faq": {
