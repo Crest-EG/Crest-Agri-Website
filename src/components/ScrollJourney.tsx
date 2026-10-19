@@ -381,7 +381,6 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
                 {content}
               </div>
             ))}
-            <div className="journey-scene-index" aria-hidden="true">{String(activeScene + 1).padStart(2, "0")} <span /> {String(frameConfig.scenes).padStart(2, "0")}</div>
           </div>
         </div>
       )}
