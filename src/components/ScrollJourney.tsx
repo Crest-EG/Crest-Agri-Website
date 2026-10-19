@@ -7,7 +7,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "@/i18n/navigation";
-import { QuoteForm } from "@/components/QuoteForm";
 import { Placeholder } from "@/components/Placeholder";
 import { featuredProducts, type Product } from "@/content/products";
 import { frameConfig, framePath } from "@/config/frames";
@@ -386,14 +385,6 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
           </div>
         </div>
       )}
-      <section className="quote-compact" id="quote">
-        <div className="quote-compact-copy">
-          <p className="scene-eyebrow">{t("quoteSection.eyebrow")}</p>
-          <h2>{t("quoteSection.title")}</h2>
-          <p>{t("quoteSection.body")}</p>
-        </div>
-        <QuoteForm />
-      </section>
     </>
   );
 }

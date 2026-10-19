@@ -19,7 +19,7 @@ export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   return (
-    <header className="site-header">
+    <header className="site-header" id="top">
       <div className="header-inner">
         <Link href="/" className="brand-link" aria-label={t("navigation.home")} onClick={() => setOpen(false)}>
           <Logo alt={t("logoAlt")} className="header-logo" />

@@ -24,7 +24,15 @@
     },
     "footer": {
       "description": "منتجات زراعية مصرية تُجهز بعناية للمشترين حول العالم.",
-      "copyright": "© {year} كريست للتنمية الزراعية. جميع الحقوق محفوظة."
+      "copyright": "© {year} كريست للتنمية الزراعية. جميع الحقوق محفوظة.",
+      "catalog": "كتالوج المنتجات الطازجة",
+      "capabilities": "خدماتنا",
+      "keyPorts": "الموانئ الرئيسية",
+      "accreditations": "الاعتمادات",
+      "origin": "الإسكندرية، مصر (مقرنا)",
+      "destinationPorts": "اسأل فريقنا عن موانئ الوجهة",
+      "certificationInquiry": "اطلب تفاصيل الاعتمادات الحالية",
+      "backToTop": "العودة للأعلى"
     },
     "errors": {
       "notFoundTitle": "الصفحة غير موجودة",
@@ -224,8 +232,16 @@
       "email": "you@example.com",
       "phone": "رقم الهاتف",
       "quantity": "الكمية ووحدتها",
-      "message": "أخبرنا بما تحتاج إليه"
+      "message": "أخبرنا بما تحتاج إليه",
+      "nameCompany": "مثال: اسم المشتري — الشركة",
+      "destination": "الدولة وميناء الوصول"
     },
-    "subject": "استفسار عن منتجات زراعية من {name}"
+    "subject": "استفسار عن منتجات زراعية من {name}",
+    "footerNameCompany": "الاسم والشركة",
+    "footerEmailPhone": "البريد الإلكتروني / واتساب",
+    "footerDestination": "دولة وميناء الوجهة",
+    "footerSubmit": "اطلب عرض سعر",
+    "placeholderNameCompany": "مثال: اسم المشتري — الشركة",
+    "placeholderDestination": "الدولة وميناء الوصول"
   }
 }

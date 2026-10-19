@@ -24,7 +24,15 @@
     },
     "footer": {
       "description": "Egyptian agricultural products, prepared with care for buyers around the world.",
-      "copyright": "© {year} Crest for Agricultural Development. All rights reserved."
+      "copyright": "© {year} Crest for Agricultural Development. All rights reserved.",
+      "catalog": "Fresh catalog",
+      "capabilities": "Capabilities",
+      "keyPorts": "Key ports",
+      "accreditations": "Accreditations",
+      "origin": "Alexandria, Egypt (origin)",
+      "destinationPorts": "Discuss destination ports with our team",
+      "certificationInquiry": "Request current certification details",
+      "backToTop": "Back to top"
     },
     "errors": {
       "notFoundTitle": "Page not found",
@@ -224,8 +232,16 @@
       "email": "you@example.com",
       "phone": "Phone number",
       "quantity": "Quantity and unit",
-      "message": "Tell us what you need"
+      "message": "Tell us what you need",
+      "nameCompany": "e.g. buyer name — company",
+      "destination": "Country and destination port"
     },
-    "subject": "Agricultural product inquiry from {name}"
+    "subject": "Agricultural product inquiry from {name}",
+    "footerNameCompany": "Your name & company",
+    "footerEmailPhone": "Corporate email / WhatsApp",
+    "footerDestination": "Destination country & port",
+    "footerSubmit": "Request quote",
+    "placeholderNameCompany": "e.g. buyer name — company",
+    "placeholderDestination": "Country and destination port"
   }
 }

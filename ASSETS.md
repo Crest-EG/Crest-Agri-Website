@@ -50,6 +50,7 @@ The three brand font files have not been supplied. The site uses system font fal
 - `TODO(content)`: product descriptions, seasons, farming, harvest, packing, and shipping copy in `src/content/products.ts`.
 - `TODO(content)`: company story, vision, and mission copy in the localized message files.
 - `TODO(confirm)`: certification status/details before presenting GlobalGAP, SMETA, or ISO as held certifications.
+- `TODO(confirm)`: verify export port coverage and the current certification register before listing specific ports or certificates in the footer.
 
 ## Stitch source references
 
