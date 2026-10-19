@@ -1,0 +1,40 @@
+{
+  "common": {
+    "companyName": "Crest for Agricultural Development",
+    "logoAlt": "Crest for Agricultural Development",
+    "navigation": {
+      "home": "Home",
+      "products": "Products",
+      "about": "About",
+      "certifications": "Certifications",
+      "contact": "Contact",
+      "quote": "Request a quote",
+      "skipToProducts": "Skip to products",
+      "openMenu": "Open navigation menu",
+      "closeMenu": "Close navigation menu",
+      "menu": "Navigation"
+    },
+    "language": {
+      "label": "Language",
+      "english": "English",
+      "arabic": "العربية"
+    },
+    "footer": {
+      "description": "Egyptian agricultural products, prepared with care for buyers around the world.",
+      "copyright": "© {year} Crest for Agricultural Development. All rights reserved."
+    },
+    "errors": {
+      "notFoundTitle": "Page not found",
+      "notFoundBody": "The page you are looking for may have moved or is no longer available.",
+      "backHome": "Back to home",
+      "errorTitle": "Something went wrong",
+      "errorBody": "Please try again. If the issue continues, contact our team.",
+      "tryAgain": "Try again"
+    },
+    "metadata": {
+      "title": "Crest for Agricultural Development",
+      "description": "Fresh, frozen and dried agricultural products from Egypt.",
+      "shortName": "Crest"
+    }
+  }
+}
