@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import "./globals.css";
 import { Logo } from "@/components/Logo";
 import Link from "next/link";
 import en from "@/messages/en.json";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://crestagricultural.com"),
+  title: en.common.metadata.title,
+  description: en.common.metadata.description,
+};
 
 export default function NotFound() {
   const t = en.common;

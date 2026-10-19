@@ -1,2 +1,2 @@
-/** Brand font files have not been supplied. See ASSETS.md for the exact files to add. */
+/** TODO(confirm): brand font role mapping and files are pending owner review; see ASSETS.md. */
 export const fontVariables = 'font-display font-body font-arabic';

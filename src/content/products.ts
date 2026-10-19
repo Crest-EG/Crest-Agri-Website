@@ -45,6 +45,7 @@ function product(
     harvest: harvestTodo,
     packing: packingTodo,
     shipping: shippingTodo,
+    // TODO(confirm): supplied product images are placeholder visuals and are not approved for display.
     images: [],
     featured,
   };

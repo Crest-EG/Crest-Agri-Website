@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Logo } from "@/components/Logo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { site } from "@/content/site";
 
 const links = [
   ["products", "/products"],
@@ -24,6 +25,10 @@ export function Footer() {
         <nav aria-label={t("navigation.menu")} className="footer-nav">
           {links.map(([key, href]) => <Link key={key} href={href}>{t(`navigation.${key}`)}</Link>)}
         </nav>
+        <address className="footer-contact">
+          <a href={`tel:${site.phones[0].replaceAll(" ", "")}`}>{site.phones[0]}</a>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </address>
         <LanguageSwitcher />
       </div>
       <p className="copyright">{t("footer.copyright", { year: new Date().getFullYear() })}</p>

@@ -76,7 +76,11 @@
         "title": "Connecting with markets around the world",
         "body": "Explore current and target markets. Market details are subject to confirmation.",
         "current": "Current markets",
-        "target": "Target markets"
+        "target": "Target markets",
+        "mapLabel": "Markets map",
+        "worldMap": "World map",
+        "gccPin": "GCC",
+        "northAfricaPin": "NA"
       },
       "delivery": {
         "eyebrow": "Start a conversation",
@@ -89,8 +93,11 @@
       "eyebrow": "Let’s talk business",
       "title": "Tell us what you need.",
       "body": "Share your product and destination requirements with our team.",
-      "submit": "Prepare your message"
-    }
+      "submit": "Prepare your message",
+      "email": "Send via Email",
+      "whatsapp": "Send via WhatsApp"
+    },
+    "loading": "Preparing the journey…"
   },
   "products": {
     "title": "Agricultural products",

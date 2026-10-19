@@ -16,8 +16,18 @@ All image placeholders are usable today. Replace them with files at the same pat
 | `brand/fonts/MilanDisplay.woff2` | WOFF2, variable or regular weight | Display headings, Latin and Arabic |
 | `brand/fonts/DubaiLight.woff2` | WOFF2, regular/light | Subheadings and Arabic body |
 | `brand/fonts/AcuminVariable.woff2` | WOFF2, variable | Latin body |
-| `public/frames/scene-{1..7}/{001..060}.jpg` | 1280×720 JPEG; 60 frames per scene, 420 total | Scroll journey canvas backgrounds |
-| `public/images/products/<slug>/` | TODO(confirm): product image dimensions and formats | Product photography, added during P2/P4 |
+| `public/frames/scene-{1..7}/{001..060}.jpg` | 1280×720 JPEG; 60 frames per scene, 420 total | Scroll journey canvas backgrounds; current visual sequence needs approval |
+| `public/images/products/broccoli/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
+| `public/images/products/cabbage/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
+| `public/images/products/citrus/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
+| `public/images/products/grapes/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
+| `public/images/products/green-beans/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
+| `public/images/products/green-onion/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
+| `public/images/products/lettuce/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
+| `public/images/products/peach/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
+| `public/images/products/pomegranate/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
+| `public/images/products/strawberry/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
+| `public/images/products/sweet-potato/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
 
 ## Missing brand fonts
 
@@ -26,9 +36,10 @@ The three brand font files have not been supplied. The site uses system font fal
 ## Content confirmations
 
 - `TODO(confirm)`: `--green-ink` is an accessible dark green derived for text and links.
+- `TODO(confirm)`: the supplied 420-frame sequence has correct dimensions but depicts unrelated generic scenes; replace with the approved agricultural journey before manager approval.
 - `TODO(confirm)`: WhatsApp number is the first listed company phone.
 - `TODO(confirm)`: GCC and North Africa map group labels/coordinates and market statuses.
-- `TODO(confirm)`: product photo dimensions/formats; no actual product images supplied.
+- `TODO(confirm)`: replace the 33 product photo placeholders with approved product photography; all current files are 1280×853 JPEGs, include unrelated imagery, and `src/content/products.ts` intentionally leaves `images` empty.
 - `TODO(confirm)`: product-specific fresh/frozen/dried forms and seasons in `src/content/products.ts`.
 - `TODO(confirm)`: each listed market status and grouped-region pin in `src/content/countries.ts`.
 - `TODO(confirm)`: approved Arabic address and WhatsApp number in `src/content/site.ts`.
