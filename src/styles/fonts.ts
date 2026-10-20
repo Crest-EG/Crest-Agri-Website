@@ -1,2 +1,8 @@
-// TODO(replace): Brand font file mapping | Crest brand team | Add the approved local brand font files and update the centralized font mapping.
-export const fontVariables = 'font-display font-body font-arabic';
+import localFont from "next/font/local";
+
+export const brandFont = localFont({
+  src: "../../brand/fonts/Montserrat-Arabic-Regular.woff2",
+  display: "swap",
+  variable: "--font-brand",
+  fallback: ["Arial", "sans-serif"],
+});

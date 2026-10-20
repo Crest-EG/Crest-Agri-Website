@@ -17,6 +17,16 @@ npx tsc --noEmit
 npm run build
 ```
 
+## Journey frames
+
+The seven-scene scroll journey uses 120 WebP frames per scene. Regenerate the complete sequence in one command with local `ffmpeg` and Python Pillow installed:
+
+```bash
+npm run frames:generate
+```
+
+The generator reads the scene count, frame count, dimensions and output extension from `src/config/frames.ts`. It reuses the four supplied landing source photos under `stitch/crest-export-website/7b360f04e7c449b082622925db2e1a86/`, applies a subtle eased camera move per scene, and replaces the existing frame files.
+
 ## Lead capture to Google Sheets
 
 Quote submissions and the visitor's selected follow-up channel are sent from the server to a Google Apps Script web app. The browser only calls `/api/lead`; the webhook URL and shared secret are server-side environment variables.

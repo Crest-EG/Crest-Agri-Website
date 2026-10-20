@@ -5,6 +5,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { brandFont } from "@/styles/fonts";
 import "../globals.css";
 
 type Locale = (typeof routing.locales)[number];
@@ -48,7 +49,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   setRequestLocale(locale as Locale);
   const messages = await getMessages();
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className={brandFont.variable}>
       <body>
         <NextIntlClientProvider messages={messages}>
           <Header />

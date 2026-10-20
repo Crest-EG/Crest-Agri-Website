@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "frames:generate": "python3 scripts/generate-frames",
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint"

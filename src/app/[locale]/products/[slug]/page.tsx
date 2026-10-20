@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { Placeholder } from "@/components/Placeholder";
 import { ProductCard } from "@/components/ProductCard";
 import { ButtonLink } from "@/components/Button";
+import { SeasonTimeline } from "@/components/SeasonTimeline";
 import { products, getProductBySlug } from "@/content/products";
 
 type DetailProps = { params: Promise<{ locale: string; slug: string }> };
@@ -29,6 +30,7 @@ export default async function ProductDetailPage({ params }: DetailProps) {
   const language = locale === "ar" ? "ar" : "en";
   const t = await getTranslations({ locale, namespace: "products" });
   const forms = await getTranslations({ locale, namespace: "forms" });
+  const monthNames = t.raw("monthNames") as string[];
   const related = products.filter((item) => item.slug !== product.slug).slice(0, 3);
   const quoteHref = `/contact?product=${encodeURIComponent(product.slug)}#quote`;
 
@@ -70,7 +72,7 @@ export default async function ProductDetailPage({ params }: DetailProps) {
       </section>
       <section className="detail-facts page-section">
         <div><p className="eyebrow">{t("forms")}</p><p>{product.forms.map((form) => forms(form)).join(" · ")}</p></div>
-        <div><p className="eyebrow">{t("season")}</p><p>{product.season[language]}</p></div>
+        <div className="season-fact"><p className="eyebrow">{t("season")}</p><SeasonTimeline windows={product.seasonMonths} months={monthNames} title={t("seasonWindowTitle")} /><p>{product.season[language]}</p></div>
         <div><p className="eyebrow">{t("packing")}</p><p>{product.packing[language]}</p></div>
       </section>
       <section className="page-section">

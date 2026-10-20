@@ -13,10 +13,8 @@ All image placeholders are usable today. Replace them with files at the same pat
 | `src/app/icon.png` | 512×512 PNG | Browser tab icon |
 | `src/app/apple-icon.png` | 180×180 PNG | Apple touch icon |
 | `src/app/opengraph-image.png` | 1200×630 PNG | Social preview; keep logo within the image safe area |
-| `brand/fonts/MilanDisplay.woff2` | WOFF2, variable or regular weight | Display headings, Latin and Arabic |
-| `brand/fonts/DubaiLight.woff2` | WOFF2, regular/light | Subheadings and Arabic body |
-| `brand/fonts/AcuminVariable.woff2` | WOFF2, variable | Latin body |
-| `public/frames/scene-{1..7}/{001..060}.jpg` | 1280×720 JPEG; 60 frames per scene, 420 total | Scroll journey canvas backgrounds; current visual sequence needs approval |
+| `brand/fonts/Montserrat-Arabic-Regular.woff2` | Supplied WOFF2 font | Shared English and Arabic site font via `next/font/local` |
+| `public/frames/scene-{1..7}/{001..120}.webp` | 1280×720 WebP, quality 75; 120 frames per scene, 840 total | Scroll journey canvas backgrounds |
 | `public/images/products/broccoli/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
 | `public/images/products/cabbage/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
 | `public/images/products/citrus/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
@@ -33,9 +31,9 @@ All image placeholders are usable today. Replace them with files at the same pat
 | `public/images/stitch-services/assurance.jpg` | 1280×698 JPEG | Provisional Services quality photo |
 | `public/images/stitch-services/shipping.jpg` | 1280×698 JPEG | Provisional Services shipping photo |
 
-## Missing brand fonts
+## Font
 
-The three brand font files have not been supplied. The site uses system font fallbacks until the owner adds them. `src/styles/fonts.ts` centralizes the mapping.
+The supplied `Montserrat-Arabic-Regular.woff2` file is used for both locales with an Arial system fallback. `src/styles/fonts.ts` centralizes the local font mapping.
 
 ## Content replacement
 

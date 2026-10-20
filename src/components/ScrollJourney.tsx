@@ -9,7 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "@/i18n/navigation";
 import { Placeholder } from "@/components/Placeholder";
 import { featuredProducts, type Product } from "@/content/products";
-import { frameConfig, framePath } from "@/config/frames";
+import { CROSSFADE_FRAMES, frameConfig, framePath, LITE_MODE_STEP } from "@/config/frames";
 
 // TODO(replace): Bilingual landing journey marketing copy | Crest marketing team | Review the landing namespace in both message files and replace the scene text with approved company copy.
 
@@ -78,7 +78,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
     if (!canvas || !stage || !track || !context) return;
 
     gsap.registerPlugin(ScrollTrigger);
-    const frameStep = liteMode ? 2 : 1;
+    const frameStep = liteMode ? LITE_MODE_STEP : 1;
     const frames = Array.from({ length: Math.ceil(frameConfig.framesPerScene / frameStep) }, (_, i) => i * frameStep + 1);
     const frameCache = new Map<string, HTMLImageElement>();
     const frameLoads = new Map<string, Promise<void>>();
@@ -113,7 +113,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       context.globalAlpha = 1;
     };
 
-    const drawImageCover = (image: HTMLImageElement) => {
+    const drawImageCover = (image: HTMLImageElement, alpha = 1) => {
       const rect = canvas.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       if (canvas.width !== Math.round(rect.width * dpr) || canvas.height !== Math.round(rect.height * dpr)) {
@@ -124,7 +124,9 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       const scale = Math.max(rect.width / image.naturalWidth, rect.height / image.naturalHeight);
       const width = image.naturalWidth * scale;
       const height = image.naturalHeight * scale;
+      context.globalAlpha = alpha;
       context.drawImage(image, (rect.width - width) / 2, (rect.height - height) / 2, width, height);
+      context.globalAlpha = 1;
       context.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--text").trim();
       context.globalAlpha = 0.35;
       context.fillRect(0, 0, rect.width, rect.height);
@@ -156,9 +158,20 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       if (disposed) return;
       const desiredFrame = frames[Math.min(frames.length - 1, currentFrame)] ?? 1;
       const nearest = findNearestFrame(activeScene, desiredFrame);
-      if (!nearest || nearest[0] === lastDrawnKey) return;
+      if (!nearest) return;
+      const dissolveStartIndex = frames.length - Math.ceil(CROSSFADE_FRAMES / frameStep);
+      const dissolve = activeScene < frameConfig.scenes - 1
+        ? Math.max(0, Math.min(1, (currentFrame - dissolveStartIndex) / (frames.length - 1 - dissolveStartIndex)))
+        : 0;
       drawImageCover(nearest[1]);
-      lastDrawnKey = nearest[0];
+      if (dissolve > 0) {
+        const nextFrames = frames;
+        const dissolveFrames = Math.min(Math.ceil(CROSSFADE_FRAMES / frameStep), nextFrames.length);
+        const incomingIndex = Math.min(dissolveFrames - 1, Math.round(dissolve * (dissolveFrames - 1)));
+        const incoming = frameCache.get(framePath(activeScene + 2, nextFrames[incomingIndex]));
+        if (incoming) drawImageCover(incoming, dissolve);
+      }
+      if (nearest[0] !== lastDrawnKey) lastDrawnKey = nearest[0];
     };
 
     const scheduleDraw = () => {
@@ -166,14 +179,26 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
     };
 
     const trimCache = () => {
+      const activeActualFrame = currentFrame * frameStep + 1;
       for (const key of frameCache.keys()) {
         const match = key.match(/scene-(\d+)\//);
         const sceneNumber = match ? Number(match[1]) : 0;
-        if (Math.abs(sceneNumber - (activeScene + 1)) > 1) frameCache.delete(key);
+        const frameMatch = key.match(/\/(\d+)\./);
+        const frameNumber = frameMatch ? Number(frameMatch[1]) : 0;
+        const offset = sceneNumber - (activeScene + 1);
+        const keepCurrentWindow = offset === 0 && Math.abs(frameNumber - activeActualFrame) <= frameStep * 4;
+        const keepNextDissolve = offset === 1 && activeActualFrame >= frameConfig.framesPerScene - CROSSFADE_FRAMES - 1 && frameNumber <= CROSSFADE_FRAMES + 1;
+        const keepPreviousEdge = offset === -1 && activeActualFrame <= CROSSFADE_FRAMES + 1 && frameNumber >= frameConfig.framesPerScene - CROSSFADE_FRAMES - 1;
+        if (!keepCurrentWindow && !keepNextDissolve && !keepPreviousEdge) {
+          const image = frameCache.get(key);
+          if (image) image.src = "";
+          frameCache.delete(key);
+        }
       }
     };
 
     const loadFrame = (scene: number, frame: number) => {
+      if (Math.abs(scene - activeScene) > 1) return Promise.resolve();
       const key = framePath(scene + 1, frame);
       if (frameCache.has(key)) return Promise.resolve();
       const existing = frameLoads.get(key);
@@ -183,7 +208,14 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
         image.decoding = "async";
         image.onload = () => {
           frameLoads.delete(key);
-          if (!disposed && Math.abs(scene - activeScene) <= 1) {
+          const offset = scene - activeScene;
+          const activeActualFrame = currentFrame * frameStep + 1;
+          const isRelevant = offset === 0
+            ? Math.abs(frame - activeActualFrame) <= frameStep * 4
+            : offset === 1
+              ? activeActualFrame >= frameConfig.framesPerScene - 16 && frame <= 16
+              : activeActualFrame <= 16 && frame >= frameConfig.framesPerScene - 16;
+          if (!disposed && Math.abs(offset) <= 1 && isRelevant) {
             frameCache.set(key, image);
             trimCache();
             if (scene === activeScene) scheduleDraw();
@@ -200,13 +232,24 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       return promise;
     };
 
-    const preloadWindow = (scene: number) => {
+    const preloadWindow = (scene: number, frameIndex = currentFrame) => {
       const jobs: Promise<void>[] = [];
-      for (let nearby = Math.max(0, scene - 1); nearby <= Math.min(frameConfig.scenes - 1, scene + 1); nearby += 1) {
-        const requestedFrames = nearby === scene ? frames : frames.slice(0, Math.min(12, frames.length));
-        for (const frame of requestedFrames) jobs.push(loadFrame(nearby, frame));
+      const range = frames.slice(Math.max(0, frameIndex - 4), Math.min(frames.length, frameIndex + 5));
+      for (const frame of range) {
+        if (!frameCache.has(framePath(scene + 1, frame))) jobs.push(loadFrame(scene, frame));
       }
-      void Promise.all(jobs);
+      const activeActualFrame = frameIndex * frameStep + 1;
+      if (scene < frameConfig.scenes - 1 && activeActualFrame >= frameConfig.framesPerScene - CROSSFADE_FRAMES - 1) {
+        for (const frame of frames.filter((item) => item <= CROSSFADE_FRAMES + 1)) {
+          if (!frameCache.has(framePath(scene + 2, frame))) jobs.push(loadFrame(scene + 1, frame));
+        }
+      }
+      if (scene > 0 && activeActualFrame <= CROSSFADE_FRAMES + 1) {
+        for (const frame of frames.filter((item) => item >= frameConfig.framesPerScene - CROSSFADE_FRAMES - 1)) {
+          if (!frameCache.has(framePath(scene, frame))) jobs.push(loadFrame(scene - 1, frame));
+        }
+      }
+      void Promise.all(jobs).then(trimCache);
     };
 
     const resizeCanvas = () => {
@@ -229,6 +272,8 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
         preloadWindow(nextScene);
       }
       currentFrame = Math.round(progress * (frames.length - 1));
+      preloadWindow(activeScene, currentFrame);
+      trimCache();
       stage.style.setProperty("--scene-progress", String(progress));
       overlays.forEach((overlay, index) => {
         if (!overlay) return;
@@ -366,7 +411,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
   return (
     <>
       {reducedMotion ? <div className="journey-static">{staticScenes}</div> : (
-        <div className={`journey-track${liteMode ? " is-lite" : ""}`} ref={trackRef}>
+        <div className={`journey-track${liteMode ? " is-lite" : ""}`} ref={trackRef} style={{ "--scene-count": frameConfig.scenes } as CSSProperties}>
           <div className="journey-stage" ref={stageRef}>
             <canvas ref={canvasRef} className="journey-canvas" aria-hidden="true" />
             <div className="journey-shade" aria-hidden="true" />

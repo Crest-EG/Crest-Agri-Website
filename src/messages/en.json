@@ -142,7 +142,22 @@
     "related": "Related products",
     "request": "Request a quote for this product",
     "back": "All products",
-    "imageAlt": "Illustrative {product} image"
+    "imageAlt": "Illustrative {product} image",
+    "seasonWindowTitle": "Harvest window",
+    "monthNames": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ]
   },
   "forms": {
     "fresh": "Fresh",

@@ -50,7 +50,7 @@ export function Header() {
             <LanguageSwitcher />
           </div>
         </nav>
-        <a className="skip-link" href="#products">{t("navigation.skipToProducts")}</a>
+        {isHome && <a className="skip-link" href="#products">{t("navigation.skipToProducts")}</a>}
       </div>
     </header>
   );
