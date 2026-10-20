@@ -31,6 +31,7 @@ export default async function ProductDetailPage({ params }: DetailProps) {
   const t = await getTranslations({ locale, namespace: "products" });
   const forms = await getTranslations({ locale, namespace: "forms" });
   const monthNames = t.raw("monthNames") as string[];
+  const monthLabels = t.raw("monthLabels") as string[];
   const related = products.filter((item) => item.slug !== product.slug).slice(0, 3);
   const quoteHref = `/contact?product=${encodeURIComponent(product.slug)}#quote`;
 
@@ -71,9 +72,8 @@ export default async function ProductDetailPage({ params }: DetailProps) {
         </div>
       </section>
       <section className="detail-facts page-section">
-        <div><p className="eyebrow">{t("forms")}</p><p>{product.forms.map((form) => forms(form)).join(" · ")}</p></div>
-        <div className="season-fact"><p className="eyebrow">{t("season")}</p><SeasonTimeline windows={product.seasonMonths} months={monthNames} title={t("seasonWindowTitle")} /><p>{product.season[language]}</p></div>
-        <div><p className="eyebrow">{t("packing")}</p><p>{product.packing[language]}</p></div>
+        <div className="season-fact"><SeasonTimeline locale={language} windows={product.seasonWindows} months={monthNames} shortMonths={monthLabels} title={t("seasonWindowTitle")} /><p>{product.season[language]}</p></div>
+        <div className="packing-fact"><p className="eyebrow">{t("packing")}</p><p>{product.packing[language]}</p></div>
       </section>
       <section className="page-section">
         <div className="section-heading"><h2>{t("related")}</h2><Link className="text-link" href="/products">{t("allProducts")} <span aria-hidden="true">↗</span></Link></div>
