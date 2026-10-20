@@ -67,7 +67,7 @@ export function Footer() {
           </section>
           <section className="footer-column">
             <h3>{footer.accreditations}</h3>
-            <ul><li><Link href="/certifications">{footer.certificationInquiry}</Link></li><li><Link href="/privacy">{footer.privacy}</Link></li></ul>
+            <ul><li><Link href="/certifications">{footer.certificationInquiry}</Link></li><li><Link href="/privacy">{footer.privacy}</Link></li><li><Link href="/terms">{footer.terms}</Link></li></ul>
           </section>
         </div>
 

@@ -55,3 +55,14 @@ The smaller `screenshot.png` or `screenshot-preview.jpg` files preserve original
 
 - Stitch introduces extra greens (`#006e15`, `#43a141`, `#8ffb86`) and dark olive surfaces. The implemented site keeps PLAN.md's Crest palette and uses the existing text token for dark contrast surfaces.
 - Stitch uses Plus Jakarta Sans and Material Symbols. Those are not brand assets; no external fonts or icon packages were added. System font fallbacks and text glyphs are used until the brand fonts are supplied.
+
+## Certification page marks
+
+| Path | Format and use | Source / note |
+|---|---|---|
+| `public/images/certifications/globalgap.webp` | 625×625 WebP, quality 88; certification page | Optimized from [LSQA Middle East’s GLOBALG.A.P. asset](https://lsqame.com/wp-content/uploads/2022/12/GG.png). Confirm current mark and permitted use before publication; GLOBALG.A.P. says logo use may require prior approval. |
+| `public/images/certifications/grasp.webp` | 625×625 WebP, quality 88; certification page | Optimized from [LSQA Middle East’s GRASP asset](https://lsqame.com/wp-content/uploads/2022/12/GRASP.png). Confirm current mark and permitted use before publication. |
+| `public/images/certifications/smeta.webp` | 420×160 WebP, quality 90; certification page | Optimized from the owner-provided reference screenshot. SMETA is an audit methodology, not a certification. |
+| `public/images/certifications/iso.webp` | 365×335 WebP, quality 90; certification page | Optimized from the owner-provided reference screenshot. Confirm current certification mark and validity before publication. |
+
+`src/app/[locale]/privacy/page.tsx` and `src/app/[locale]/terms/page.tsx` include `TODO(confirm)` legal review notes. The inquiry workflow description reflects the existing optional Google Apps Script / Google Sheets forwarding route.

@@ -33,7 +33,8 @@
       "destinationPorts": "Discuss destination options with our team",
       "certificationInquiry": "Standards and documentation",
       "backToTop": "Back to top",
-      "privacy": "Privacy"
+      "privacy": "Privacy policy",
+      "terms": "Terms & conditions"
     },
     "errors": {
       "notFoundTitle": "Page not found",
@@ -179,23 +180,36 @@
     "dried": "Dried"
   },
   "about": {
-    "title": "About Crest",
-    "intro": "Crest for Agricultural Development is based in Alexandria, Egypt, and exports fresh, frozen and dried agricultural products.",
+    "title": "About us",
+    "intro": "Our journey began here",
     "imageAlt": "Citrus orchards in the Nile Delta",
-    "storyTitle": "Our story",
-    "story": "Crest for Agricultural Development is an Alexandria-based export desk focused on connecting Egyptian agricultural products with international buyers. We coordinate product selection, specifications, packing discussions and shipment planning around each enquiry.",
-    "visionTitle": "Our vision",
-    "vision": "To build lasting trade relationships by making Egyptian produce easier to source, specify and receive across international markets.",
+    "storyTitle": "Our foundation",
+    "story": "Crest for Agricultural Development was established in 2020, supported by advances in agricultural technology that strengthen sustainable farming practices. Its purpose was to support the growth of agriculture and food production in the Arab Republic of Egypt.",
+    "visionTitle": "Looking ahead",
+    "vision": "As an exporter of a range of agricultural crops, we strive to be our customers’ first choice. We are committed to providing high-quality products and services that meet their needs while supporting sustainable development. We continually look for ways to improve our operations and aim to become a trusted partner for everyone who relies on us for agricultural exports.",
     "missionTitle": "Our mission",
-    "mission": "We work with buyers to clarify product requirements, communicate openly about availability and coordinate export preparation from origin to destination."
+    "mission": "We hold certifications related to quality and sustainable production methods. We strive to be among the leading agricultural crop exporters, providing high-quality products and services that exceed expectations and keeping our products fresh and safe according to quality standards. Our team works to deliver our best with a commitment to excellence and customer satisfaction.",
+    "qualityTitle": "Our approach to quality",
+    "qualityItems": [
+      "Apply agricultural quality standards to produce high-quality crops with strong nutritional value.",
+      "Offer customers products from a range of agricultural crops.",
+      "Continuously update production methods and train workers to use them.",
+      "Test suitable grading machinery and have our engineers monitor and care for crops during cultivation.",
+      "Grow agricultural crops free from pests and diseases.",
+      "Continuously evaluate our products, production cycle and quality function until products reach our customers."
+    ]
   },
   "certifications": {
-    "title": "Certifications",
-    "intro": "We can discuss the standards and documentation relevant to a proposed supply programme. Please contact our team to verify current site scope and document availability.",
-    "globalgap": "GlobalGAP",
-    "smeta": "SMETA",
-    "iso": "ISO",
-    "placeholder": "Certification names are shown as reference standards only. Availability, scope and supporting documents must be confirmed for the selected product and supply partner."
+    "title": "Certifications & accreditations",
+    "intro": "A commitment to exceptional quality",
+    "qualityTitle": "Quality",
+    "quality": "Quality certifications play an important role in agriculture. They help demonstrate that products meet defined standards and support product safety. They can show commitment to recognized practices, strengthen trust, and support traceability and accountability across the supply chain. Certifications can also help address international market requirements, encourage continuous improvement in farming practices, and give consumers clearer information about product quality and production methods. Crest for Agricultural Development has therefore obtained certifications and accreditations that support product quality and meet international standards, in line with the global direction toward healthy and safe food. SMETA is described on this page as a social audit methodology, not as a certification.",
+    "globalgap": "GLOBALG.A.P.",
+    "smeta": "GRASP",
+    "iso": "ISO 9001:2015",
+    "certAlt": "{certification} certification mark",
+    "smetaType": "Social audit methodology",
+    "smetaNote": "SMETA is included here as a social audit methodology, not as a certification."
   },
   "contact": {
     "eyebrow": "Alexandria export desk",
@@ -299,12 +313,73 @@
     ]
   },
   "privacy": {
-    "title": "Privacy notice",
-    "intro": "We collect the details you submit through the inquiry form: name, company, country, contact details, product, requested quantity and message. The page and language are attached to the inquiry for context. If you choose WhatsApp or email, we record that channel choice.",
-    "useTitle": "How we use your information",
-    "use": "We use these details only to review and reply to your inquiry.",
-    "contactTitle": "Contact",
-    "contact": "For questions about your inquiry details, contact info@crestagricultural.com.",
+    "title": "Privacy policy",
+    "intro": "This policy explains what information we may receive when you use this website or send an inquiry, and how we handle it.",
+    "sections": [
+      {
+        "title": "Who we are",
+        "body": "Crest for Agricultural Development is an Egyptian company working in agricultural product exports. This website introduces the company and its products and receives trade inquiries."
+      },
+      {
+        "title": "Information we collect",
+        "body": "When you submit an inquiry form, we may process your name, company, country, contact details, product, quantity and message, as well as the language and page path for context. The server temporarily receives your IP address to limit automated requests and misuse. The website does not have comments or user accounts."
+      },
+      {
+        "title": "How we use information",
+        "body": "We use form information to review and respond to your inquiry. If inquiry intake is enabled, the server sends form details to the Google Apps Script and Google Sheet configured by the company for this purpose; Google processes that information under its own terms and policies. Please do not submit sensitive information through the form."
+      },
+      {
+        "title": "WhatsApp or email communications",
+        "body": "If you choose to continue through WhatsApp or email, the app or site you choose will open. Any information you send there is then subject to that provider’s policies."
+      },
+      {
+        "title": "Cookies",
+        "body": "The website may use a NEXT_LOCALE cookie to remember your language choice for up to one year. It does not use advertising or analytics cookies."
+      },
+      {
+        "title": "Retention and sharing",
+        "body": "We retain inquiry information for as long as needed to follow up, manage the business relationship and meet legal requirements. It may be processed by hosting providers or the inquiry intake system configured by the company, subject to its settings. We do not sell personal information."
+      },
+      {
+        "title": "Your rights and contact",
+        "body": "You may contact us to ask about, correct or request deletion of information connected to your inquiry, subject to applicable legal obligations. Email info@crestagricultural.com."
+      }
+    ],
     "back": "Back to contact"
+  },
+  "terms": {
+    "title": "Terms & conditions",
+    "intro": "These terms govern your use of the Crest for Agricultural Development website. By using the site, you agree to them.",
+    "sections": [
+      {
+        "title": "Using this website",
+        "body": "Use the website lawfully and in a way that does not disrupt its operation or harm the site or its users. Do not attempt unauthorized access to the website or its systems."
+      },
+      {
+        "title": "Information and products",
+        "body": "Published information introduces the company, its products and export services. Product descriptions and seasonal availability are indicative and may change by variety, crop source and destination. Confirm specifications, availability and documents with our team."
+      },
+      {
+        "title": "Inquiries and orders",
+        "body": "Submitting an inquiry does not create a supply contract or oblige us to accept an order. Prices, quantities, specifications, packing, shipping and delivery schedules are agreed separately after the request is reviewed and confirmed by both parties."
+      },
+      {
+        "title": "Intellectual property",
+        "body": "Rights in the website and its content belong to the company or relevant rights holders. You may view and use the content for your own commercial evaluation. Prior permission is required to republish it or use trademarks and logos."
+      },
+      {
+        "title": "External links and services",
+        "body": "The website may contain links or contact options that open services operated by others. We do not control their content or policies; your use of those services is governed by their providers’ terms."
+      },
+      {
+        "title": "Availability and changes",
+        "body": "We aim to keep the website and information available and up to date, but interruptions or changes may occur. We may update these terms by publishing a revised version on this page."
+      },
+      {
+        "title": "Law and contact",
+        "body": "These terms are interpreted under applicable law and do not limit rights that cannot legally be waived. For questions, contact info@crestagricultural.com."
+      }
+    ],
+    "contactLink": "Contact us"
   }
 }
