@@ -2,11 +2,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Logo } from "@/components/Logo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { QuoteForm } from "@/components/QuoteForm";
-import { products } from "@/content/products";
 import { site } from "@/content/site";
-
-const capabilities = ["sourcing", "artwork", "packing", "dispatch"] as const;
 
 function ContactIcon({ kind }: { kind: "pin" | "phone" | "mail" }) {
   const paths = {
@@ -20,11 +16,19 @@ function ContactIcon({ kind }: { kind: "pin" | "phone" | "mail" }) {
 export function Footer() {
   const locale = useLocale() as "ar" | "en";
   const t = useTranslations("common");
-  const q = useTranslations("quote");
-  const s = useTranslations("services");
   const footer = t.raw("footer") as Record<string, string>;
-  const catalog = products.slice(0, 5);
-  // TODO(replace): Bilingual footer company summary | Crest marketing team | Update the common.footer.description translation in both message files with the approved brand description.
+  const pageLinks = [
+    { label: t("navigation.products"), href: "/products" },
+    { label: t("navigation.services"), href: "/services" },
+    { label: t("navigation.about"), href: "/about" },
+    { label: t("navigation.contact"), href: "/contact" },
+    { label: t("navigation.quote"), href: "/contact#quote" },
+  ];
+  const informationLinks = [
+    { label: t("navigation.certifications"), href: "/certifications" },
+    { label: footer.privacy, href: "/privacy" },
+    { label: footer.terms, href: "/terms" },
+  ];
 
   return (
     <footer className="site-footer" id="site-footer">
@@ -37,38 +41,21 @@ export function Footer() {
             <p>{t("footer.description")}</p>
             <address className="footer-contact">
               <a href={site.mapsUrl} target="_blank" rel="noreferrer"><ContactIcon kind="pin" /><span>{site.address[locale]}</span></a>
-              <span className="footer-phone-row"><ContactIcon kind="phone" /><span><a href={`tel:${site.phones[0].replaceAll(" ", "")}`}>{site.phones[0]}</a><i aria-hidden="true">/</i><a href={`tel:${site.phones[1].replaceAll(" ", "")}`}>{site.phones[1]}</a></span></span>
+              <span className="footer-phone-row"><ContactIcon kind="phone" /><span>{site.phones.map((phone, index) => <span key={phone}><a href={`tel:${phone.replaceAll(" ", "")}`}>{phone}</a>{index === 0 ? <i aria-hidden="true"> / </i> : null}</span>)}</span></span>
               <a href={`mailto:${site.email}`}><ContactIcon kind="mail" /><span>{site.email}</span></a>
             </address>
           </section>
 
-          <section className="footer-quote" aria-labelledby="footer-quote-title">
-            <h2 id="footer-quote-title">{q("title")}</h2>
-            <p>{q("intro")}</p>
-            <QuoteForm variant="footer" />
-          </section>
-        </div>
-
-        <div className="footer-directory">
-          <section className="footer-column">
-            <h3>{footer.catalog}</h3>
-            <ul>{catalog.map((product) => <li key={product.slug}><Link href={`/products/${product.slug}`}>{product.name[locale]}</Link></li>)}</ul>
-          </section>
-          <section className="footer-column">
-            <h3>{footer.capabilities}</h3>
-            <ul>{capabilities.map((key) => <li key={key}><Link href="/services">{s(key)}</Link></li>)}</ul>
-          </section>
-          <section className="footer-column">
-            <h3>{footer.keyPorts}</h3>
-            <ul>
-              <li><a href={site.mapsUrl} target="_blank" rel="noreferrer">{footer.origin}</a></li>
-              <li><Link href="/contact">{footer.destinationPorts}</Link></li>
-            </ul>
-          </section>
-          <section className="footer-column">
-            <h3>{footer.accreditations}</h3>
-            <ul><li><Link href="/certifications">{footer.certificationInquiry}</Link></li><li><Link href="/privacy">{footer.privacy}</Link></li><li><Link href="/terms">{footer.terms}</Link></li></ul>
-          </section>
+          <nav className="footer-directory" aria-label={t("navigation.menu")}>
+            <section className="footer-column">
+              <h2>{footer.pagesTitle}</h2>
+              <ul>{pageLinks.map(({ label, href }) => <li key={href}><Link href={href}>{label}</Link></li>)}</ul>
+            </section>
+            <section className="footer-column">
+              <h2>{footer.informationTitle}</h2>
+              <ul>{informationLinks.map(({ label, href }) => <li key={href}><Link href={href}>{label}</Link></li>)}</ul>
+            </section>
+          </nav>
         </div>
 
         <div className="footer-bottom">

@@ -34,7 +34,9 @@
       "certificationInquiry": "Standards and documentation",
       "backToTop": "Back to top",
       "privacy": "Privacy policy",
-      "terms": "Terms & conditions"
+      "terms": "Terms & conditions",
+      "pagesTitle": "Pages",
+      "informationTitle": "Information"
     },
     "errors": {
       "notFoundTitle": "Page not found",
@@ -205,11 +207,55 @@
     "qualityTitle": "Quality",
     "quality": "Quality certifications play an important role in agriculture. They help demonstrate that products meet defined standards and support product safety. They can show commitment to recognized practices, strengthen trust, and support traceability and accountability across the supply chain. Certifications can also help address international market requirements, encourage continuous improvement in farming practices, and give consumers clearer information about product quality and production methods. Crest for Agricultural Development has therefore obtained certifications and accreditations that support product quality and meet international standards, in line with the global direction toward healthy and safe food. SMETA is described on this page as a social audit methodology, not as a certification.",
     "globalgap": "GLOBALG.A.P.",
-    "smeta": "GRASP",
+    "smeta": "SMETA",
     "iso": "ISO 9001:2015",
     "certAlt": "{certification} certification mark",
     "smetaType": "Social audit methodology",
-    "smetaNote": "SMETA is included here as a social audit methodology, not as a certification."
+    "smetaNote": "SMETA is included here as a social audit methodology, not as a certification.",
+    "grasp": "GRASP",
+    "benefitsTitle": "Why quality certification matters",
+    "benefits": [
+      {
+        "title": "Trust and food safety",
+        "body": "They show that production follows defined standards and procedures, helping buyers assess quality and product-safety requirements."
+      },
+      {
+        "title": "Traceability and accountability",
+        "body": "They support oversight of products and production practices across supply-chain stages and help manage risk."
+      },
+      {
+        "title": "Sustainable farming",
+        "body": "They encourage improved farming practices, reduced environmental impact and responsible working conditions."
+      },
+      {
+        "title": "International trade",
+        "body": "They help businesses address importing-market requirements and broaden supply and trade opportunities."
+      },
+      {
+        "title": "Informed choices",
+        "body": "They give buyers clearer information about product origin and production methods to support informed purchasing."
+      },
+      {
+        "title": "Improvement and innovation",
+        "body": "They encourage operations reviews and the development of methods and technologies that improve product quality and safety."
+      }
+    ],
+    "faqTitle": "Certification FAQs",
+    "faq": [
+      {
+        "question": "How do quality certifications help when choosing a supplier?",
+        "answer": "They provide a documented framework for reviewing practices and standards. Always verify the certificate, its scope, the production site and the products it covers."
+      },
+      {
+        "question": "Does SMETA mean a certificate has been awarded?",
+        "answer": "No. SMETA is a social audit methodology for improving labour, environmental and business-ethics practices, not a pass certificate or accreditation seal."
+      },
+      {
+        "question": "How can I request quality documents?",
+        "answer": "Send an inquiry with the product, destination and requirements. The team will review the documents and scope available for the proposed supply programme."
+      }
+    ],
+    "documentAction": "Request quality documents"
   },
   "contact": {
     "eyebrow": "Alexandria export desk",
@@ -239,7 +285,7 @@
     "packing": "Confirm packing format and handling requirements",
     "dispatch": "Coordinate dispatch and export documents",
     "privateLabel": "Your brand, cultivated with care",
-    "privateLabelBody": "Share your brand guidelines and destination requirements. Our team can discuss artwork, packaging formats and approval steps before production is arranged.",
+    "privateLabelBody": "We can discuss applying your brand identity to the pack, including your logo, colours and artwork on labels or packaging suited to the product and market. Share your logo files, brand guidelines and destination requirements so our team can review packing, design and approval options before production is arranged.",
     "shipping": "Shipping to your destination",
     "shippingBody": "Share the product, destination and preferred schedule. Options and availability depend on the product and destination; our sales team will confirm.",
     "contactAction": "Start a trade inquiry",
