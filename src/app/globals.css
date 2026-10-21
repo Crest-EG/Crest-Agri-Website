@@ -375,7 +375,7 @@ img { max-width: 100%; }
 .page-shell > .page-intro:first-child { padding-block-start: clamp(100px, 11vw, 140px); }
 .footer-top { grid-template-columns: minmax(250px, .9fr) minmax(0, 1.1fr); gap: clamp(24px, 5vw, 64px); }
 .footer-brand { max-width: 440px; }
-.footer-brand-link { width: min(100%, 270px); height: auto; aspect-ratio: 25 / 6; padding: 5px 9px; overflow: hidden; border-radius: var(--radius-sm); background: var(--surface); }
+.footer-brand-link { width: min(100%, 270px); height: auto; aspect-ratio: 25 / 6; padding: 5px 9px; overflow: hidden; border-radius: var(--radius-sm); background: transparent; }
 .footer-logo { width: 100%; max-width: 252px; height: auto; flex: 0 1 252px; }
 .footer-brand > p { max-width: 42ch; margin: 12px 0 16px; font-size: var(--font-size-sm); line-height: 1.5; }
 .footer-contact { gap: 9px; font-size: var(--font-size-xs); }

@@ -22,7 +22,7 @@ type LeadPayload = {
   quantity: string;
   message: string;
   page: string;
-  website: string;
+  registrationCode: string;
 };
 
 function track(payload: LeadPayload | { event: "channel"; leadId: string; channel: "whatsapp" | "email" }) {
@@ -56,7 +56,7 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
     track({
       event: "lead", leadId, locale, type, name, company, country, contact,
       product: String(form.get("product") ?? ""), quantity, message,
-      page: window.location.pathname, website: String(form.get("website") ?? ""),
+      page: window.location.pathname, registrationCode: String(form.get("registrationCode") ?? ""),
     });
     const conciseValues = [
       [t("name"), name],
@@ -95,8 +95,8 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
         </select>
       </div>}
       <div className="quote-honeypot" aria-hidden="true">
-        <label htmlFor={`${variant}-quote-website`}>{t("honeypotLabel")}</label>
-        <input id={`${variant}-quote-website`} name="website" tabIndex={-1} autoComplete="off" />
+        <label htmlFor={`${variant}-quote-registration-code`}>{t("honeypotLabel")}</label>
+        <input id={`${variant}-quote-registration-code`} name="registrationCode" tabIndex={-1} autoComplete="off" />
       </div>
       <div className="quote-field">
         <label htmlFor={fieldId("name")}>{variant === "footer" ? t("footerNameCompany") : t("name")}</label>
