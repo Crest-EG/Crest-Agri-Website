@@ -15,7 +15,7 @@ export function LocalizedNotFound() {
   const t = locale === "ar" ? ar.common : en.common;
   useEffect(() => { document.title = t.errors.notFoundTitle; }, [t.errors.notFoundTitle]);
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} data-scroll-behavior="smooth">
       <body>
         <main className="status-page">
           <Logo variant="mark" alt={t.logoAlt} className="status-logo" />

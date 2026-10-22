@@ -49,7 +49,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   setRequestLocale(locale as Locale);
   const messages = await getMessages();
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className={brandFont.variable}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className={brandFont.variable} data-scroll-behavior="smooth">
       <body>
         <NextIntlClientProvider messages={messages}>
           <Header />

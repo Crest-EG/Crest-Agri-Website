@@ -22,7 +22,7 @@ export default function GlobalError({ reset }: { error: Error & { digest?: strin
   }, [locale]);
   const messages = locale === "ar" ? ar.common : en.common;
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} data-scroll-behavior="smooth">
       <body>
         <main className="status-page">
           <Logo variant="mark" alt={messages.logoAlt} className="status-logo" />
