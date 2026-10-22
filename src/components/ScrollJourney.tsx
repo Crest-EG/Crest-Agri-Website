@@ -7,6 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "@/i18n/navigation";
+import { ContactOutro } from "@/components/ContactOutro";
 import { Placeholder } from "@/components/Placeholder";
 import { featuredProducts, type Product } from "@/content/products";
 import { CROSSFADE_FRAMES, frameConfig, framePath, LITE_MODE_STEP } from "@/config/frames";
@@ -431,6 +432,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
           </div>
         </div>
       )}
+      <ContactOutro />
     </>
   );
 }

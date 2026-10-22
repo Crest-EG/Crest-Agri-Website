@@ -1,18 +1,4 @@
-@import "tailwindcss";
 @import "../styles/tokens.css";
-
-@theme inline {
-  --color-green: var(--green);
-  --color-green-ink: var(--green-ink);
-  --color-orange: var(--orange);
-  --color-background: var(--bg);
-  --color-surface: var(--surface);
-  --color-foreground: var(--text);
-  --color-muted: var(--text-muted);
-  --font-display: var(--font-brand), Arial, sans-serif;
-  --font-body: var(--font-brand), Arial, sans-serif;
-  --font-arabic: var(--font-brand), Arial, sans-serif;
-}
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -181,6 +167,18 @@ img { max-width: 100%; }
 .journey-loader { position: absolute; z-index: 5; inset: auto 24px 24px; display: flex; align-items: center; justify-content: center; gap: 12px; width: fit-content; margin-inline: auto; padding: 12px 18px; border: 1px solid var(--line); border-radius: var(--radius-pill); background: var(--surface); color: var(--text); font-size: var(--font-size-xs); font-weight: 700; }
 .loader-mark { width: 12px; height: 12px; border: 2px solid var(--green); border-inline-end-color: var(--orange); border-radius: 50%; animation: crest-spin 900ms linear infinite; }
 @keyframes crest-spin { to { transform: rotate(360deg); } }
+.contact-outro { position: relative; height: 200svh; background: var(--bg); }
+.contact-outro-stage { position: relative; display: grid; width: 100%; height: 100svh; min-height: 540px; overflow: hidden; place-items: center; background: var(--bg); }
+.contact-outro-content { display: grid; width: min(100%, 1440px); justify-items: center; gap: clamp(28px, 6svh, 64px); padding-inline: var(--page-gutter); text-align: center; }
+.contact-outro-word { display: flex; max-width: 100%; align-items: center; justify-content: center; gap: .025em; margin: 0; color: var(--text); font-family: var(--font-display); font-size: clamp(64px, 15vw, 240px); font-weight: 800; line-height: .9; letter-spacing: -.065em; white-space: nowrap; }
+.contact-outro-orb { display: inline-block; width: .34em; aspect-ratio: 1; flex: 0 0 auto; border-radius: 50%; background: radial-gradient(circle at 30% 27%, var(--surface) 0 4%, color-mix(in srgb, var(--orange) 72%, var(--surface)) 12%, var(--orange) 45%, color-mix(in srgb, var(--orange) 54%, var(--text)) 100%); box-shadow: 0 0 32px color-mix(in srgb, var(--orange) 38%, transparent); }
+.contact-outro-cta { opacity: 0; visibility: hidden; }
+.contact-outro-cta .button { gap: 12px; font-size: var(--font-size-md); }
+.contact-outro.is-reduced-motion { height: auto; min-height: 72svh; }
+.contact-outro.is-reduced-motion .contact-outro-stage { min-height: 72svh; }
+.contact-outro.is-reduced-motion .contact-outro-word { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+.contact-outro.is-reduced-motion .contact-outro-orb { transform: none !important; }
+.contact-outro.is-reduced-motion .contact-outro-cta { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 .quote-form { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding: clamp(20px, 3vw, 32px); border: 1px solid color-mix(in srgb, var(--bg) 18%, transparent); border-radius: var(--radius-card); background: color-mix(in srgb, var(--bg) 5%, var(--text)); }
 .quote-honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .quote-consent { grid-column: 1 / -1; margin: 0; color: var(--text-muted); font-size: var(--font-size-xs); line-height: 1.5; }
@@ -330,6 +328,11 @@ img { max-width: 100%; }
   .map-legend { justify-content: center; gap: 8px 14px; font-size: 10px; }
   .map-pin { width: 13px; height: 13px; }
   .map-pin-grouped { min-width: 23px; height: 17px; font-size: .42rem; }
+  .contact-outro { height: 180svh; }
+  .contact-outro-stage { min-height: 560px; }
+  .contact-outro-word { font-size: clamp(48px, 16vw, 128px); }
+  .contact-outro-orb { width: .3em; }
+  .contact-outro.is-reduced-motion, .contact-outro.is-reduced-motion .contact-outro-stage { min-height: 60svh; }
   .quote-form { grid-template-columns: 1fr; }
   .quote-field-wide, .quote-form .button { grid-column: auto; }
   .quote-form-footer .quote-field:first-of-type, .quote-form-footer .quote-field:nth-of-type(4) { grid-column: auto; }

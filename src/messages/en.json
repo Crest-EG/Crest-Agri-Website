@@ -112,6 +112,11 @@
       "email": "Send via Email",
       "whatsapp": "Send via WhatsApp"
     },
+    "outro": {
+      "label": "Contact Crest",
+      "word": "Let’s Talk",
+      "cta": "Contact us"
+    },
     "loading": "Preparing the journey…"
   },
   "products": {
