@@ -13,9 +13,19 @@ export const site = {
     ar: "مدخل B، جراند تاورز، سموحة 21523، الإسكندرية، مصر",
   },
   phones: ["+20 100 209 0007", "+20 108 002 1191"],
-  // TODO(replace): WhatsApp sales contact | Crest export team | Confirm the active WhatsApp number and replace this value in international format without punctuation.
-  whatsapp: "201002090007",
+  whatsapp: "201080021190",
+  whatsappFormatted: "+20 108 002 1190",
   email: "info@crestagricultural.com",
   website: "https://crestagricultural.com",
   mapsUrl: "https://maps.google.com/?q=Grand+Towers+Smouha+Alexandria+Egypt",
+  brochureUrl: "https://drive.google.com/file/d/185S4zPKsUY9e9igSEFOU7XkK35Kjqmza/view",
+  sisterCompanyUrl: "https://crest-chemicals.com/",
+  socials: {
+    facebook: "https://www.facebook.com/crest.agricultural",
+    instagram: "https://www.instagram.com/crest.agridev",
+    youtube: "https://www.youtube.com/@crest.agridev",
+    tiktok: "https://www.tiktok.com/@crestagricultural",
+    x: "https://x.com/crest_agridev",
+    whatsapp: "https://api.whatsapp.com/send/?phone=201080021190",
+  },
 } as const;

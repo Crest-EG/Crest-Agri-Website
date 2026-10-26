@@ -36,7 +36,18 @@
       "privacy": "Privacy policy",
       "terms": "Terms & conditions",
       "pagesTitle": "Pages",
-      "informationTitle": "Information"
+      "informationTitle": "Information",
+      "brochure": "Company Brochure",
+      "brochureBadge": "PDF",
+      "sisterCompaniesTitle": "Sister Companies",
+      "crestChemicals": "Crest Chemicals",
+      "socialMediaTitle": "Follow us",
+      "socialFacebook": "Facebook",
+      "socialInstagram": "Instagram",
+      "socialX": "X (Twitter)",
+      "socialYoutube": "YouTube",
+      "socialTiktok": "TikTok",
+      "socialWhatsapp": "WhatsApp"
     },
     "errors": {
       "notFoundTitle": "Page not found",
@@ -243,21 +254,6 @@
       {
         "title": "Improvement and innovation",
         "body": "They encourage operations reviews and the development of methods and technologies that improve product quality and safety."
-      }
-    ],
-    "faqTitle": "Certification FAQs",
-    "faq": [
-      {
-        "question": "How do quality certifications help when choosing a supplier?",
-        "answer": "They provide a documented framework for reviewing practices and standards. Always verify the certificate, its scope, the production site and the products it covers."
-      },
-      {
-        "question": "Does SMETA mean a certificate has been awarded?",
-        "answer": "No. SMETA is a social audit methodology for improving labour, environmental and business-ethics practices, not a pass certificate or accreditation seal."
-      },
-      {
-        "question": "How can I request quality documents?",
-        "answer": "Send an inquiry with the product, destination and requirements. The team will review the documents and scope available for the proposed supply programme."
       }
     ],
     "documentAction": "Request quality documents"

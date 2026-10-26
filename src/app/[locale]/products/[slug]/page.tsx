@@ -4,7 +4,7 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Placeholder } from "@/components/Placeholder";
-import { ProductCard } from "@/components/ProductCard";
+import { RelatedProducts } from "@/components/RelatedProducts";
 import { ButtonLink } from "@/components/Button";
 import { SeasonTimeline } from "@/components/SeasonTimeline";
 import { products, getProductBySlug } from "@/content/products";
@@ -32,7 +32,7 @@ export default async function ProductDetailPage({ params }: DetailProps) {
   const forms = await getTranslations({ locale, namespace: "forms" });
   const monthNames = t.raw("monthNames") as string[];
   const monthLabels = t.raw("monthLabels") as string[];
-  const related = products.filter((item) => item.slug !== product.slug).slice(0, 3);
+  const related = products.filter((item) => item.slug !== product.slug).slice(0, 4);
   const quoteHref = `/contact?product=${encodeURIComponent(product.slug)}#quote`;
 
   return (
@@ -77,7 +77,7 @@ export default async function ProductDetailPage({ params }: DetailProps) {
       </section>
       <section className="page-section">
         <div className="section-heading"><h2>{t("related")}</h2><Link className="text-link" href="/products">{t("allProducts")} <span aria-hidden="true">↗</span></Link></div>
-        <div className="product-grid related-grid">{related.map((item) => <ProductCard key={item.slug} product={item} />)}</div>
+        <RelatedProducts products={related} />
       </section>
     </main>
   );

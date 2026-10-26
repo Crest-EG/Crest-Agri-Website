@@ -57,7 +57,7 @@ export default async function ContactPage({ params, searchParams }: ContactProps
       </div>
       <section className="page-section" aria-labelledby="contact-faq-title">
         <header className="page-intro"><h2 id="contact-faq-title">{faq("title")}</h2></header>
-        <div className="product-grid">
+        <div className="product-grid faq-grid">
           {faqItems.map((item) => <article className="content-card" key={item.question}><h3>{item.question}</h3><p>{item.answer}</p></article>)}
         </div>
       </section>

@@ -41,6 +41,12 @@ const stitchProductImages: Record<string, string> = {
   pomegranate: "/images/stitch-products/pomegranate.jpg",
   // TODO(replace): Strawberry product photograph | Crest creative team | Replace public/images/stitch-products/strawberry.jpg with approved product photography at the same path.
   strawberry: "/images/stitch-products/strawberry.jpg",
+
+  broccoli: "/images/stitch-products/strawberry.jpg",
+  cabbage: "/images/stitch-products/strawberry.jpg",
+  peach: "/images/stitch-products/strawberry.jpg",
+  "sweet-potato": "/images/stitch-products/strawberry.jpg",
+  lettuce: "/images/stitch-products/strawberry.jpg",
 };
 // TODO(replace): Broccoli, cabbage, peach, sweet potato and lettuce product photography | Crest creative team | Add approved images to public/images/stitch-products/ and add each path to the image map above.
 

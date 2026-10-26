@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 
 type CopyItem = { title: string; body: string };
-type FaqItem = { question: string; answer: string };
 
 const certifications = [
   { key: "globalgap", image: "/images/certifications/globalgap.webp", width: 625, height: 625 },
@@ -22,7 +20,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function CertificationsPage() {
   const t = await getTranslations("certifications");
   const benefits = t.raw("benefits") as CopyItem[];
-  const faq = t.raw("faq") as FaqItem[];
   return (
     <main className="page-shell certification-page">
       <header className="page-intro">
@@ -46,11 +43,6 @@ export default async function CertificationsPage() {
             <div><h2>{t(key)}</h2>{key === "smeta" ? <p>{t("smetaType")}</p> : null}</div>
           </article>
         ))}
-      </section>
-      <section className="page-section certification-faq" aria-labelledby="certification-faq-title">
-        <h2 className="page-heading" id="certification-faq-title">{t("faqTitle")}</h2>
-        <div>{faq.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div>
-        <Link className="text-link" href="/contact#quote">{t("documentAction")} <span aria-hidden="true">↗</span></Link>
       </section>
     </main>
   );

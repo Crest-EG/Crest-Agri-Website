@@ -46,8 +46,8 @@ Every entry below follows the same three fields used beside its code: **what thi
 
 ## `src/content/site.ts`
 
-- Arabic office address | Crest office administrator | Confirm the preferred Arabic spelling, then replace the transliteration.
-- WhatsApp sales contact | Crest export team | Confirm the active WhatsApp number and replace the value in international format without punctuation.
+- Arabic office address | Crest office administrator | Confirm the preferred Arabic spelling, then replace the transliteration. // كرست للتنمية الزراعية
+- WhatsApp sales contact | Confirmed (+20 108 002 1190) and updated in site configuration.
 
 ## `src/messages/en.json`, `src/messages/ar.json`
 
