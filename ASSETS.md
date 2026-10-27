@@ -31,6 +31,39 @@ All image placeholders are usable today. Replace them with files at the same pat
 | `public/images/stitch-services/assurance.jpg` | 1280×698 JPEG | Provisional Services quality photo |
 | `public/images/stitch-services/shipping.jpg` | 1280×698 JPEG | Provisional Services shipping photo |
 
+## Landing hero scene
+
+The first screen is the registered ThreeUI `inner-green-3d` scene. Its authored
+source and runtime are exact copies and are not placeholders to redesign:
+
+| Path | Format and use | Source / note |
+|---|---|---|
+| `src/components/sylva-hero/source/inner-green-3d.html` | 197,914-byte HTML; exact registered source | Build input only. It stays outside `public/` so the unmodified Sylva-branded page is not served. Do not edit; the Crest edition is generated in memory by `src/components/sylva-hero/sylvaDocument.ts`. |
+| `public/landing-pages/inner-green-assets/three.min.js` | Exact bundled Three.js runtime | Required by the authored scene; do not replace with a different build. |
+| `public/landing-pages/inner-green-assets/lexend-latin.woff2` | Variable WOFF2, Latin subset | Authored scene font. Inlined into the sandboxed `srcDoc` at build time because the frame has an opaque origin. Keep the file at this path. |
+| `src/shaders/fonts/fragment-mono.woff2` | WOFF2 | Required by the shared ThreeUI stylesheet (`threeui.css`), not by the hero copy. |
+| `public/landing-pages/inner-green-assets/card-ethos.jpg` | 1200×800 JPEG | Original Sylva card art. Still referenced by the exact source, but replaced by Crest product photos in the generated edition. |
+| `public/landing-pages/inner-green-assets/card-ecostove.jpg` | 1200×600 JPEG | Original Sylva card art. Still referenced by the exact source, but replaced by Crest product photos in the generated edition. |
+
+The “tree” in the hero is **not an image**. It is a procedural Three.js
+composition: authored branch/fern/flower geometry, custom moss and haze shaders,
+GPU pollen, a butterfly, scan-reveal timing, and pointer parallax. There is no
+single replaceable bitmap, so a fruit photograph cannot be substituted without
+rebuilding the scene and losing its depth, lighting and motion. Fruit appears
+instead in the two floating product cards:
+
+- `public/images/stitch-products/grapes.jpg` (1280×698 JPEG)
+- `public/images/stitch-products/pomegranate.jpg` (1280×698 JPEG)
+
+Both are already tracked in the replaceable product-photography rows above.
+
+The hero's visible copy lives in `landing.sylva` in both message files. The
+scene fonts are kept for visual fidelity inside the sandboxed frame; the rest of
+the site continues to use the brand font from `brand/fonts/`. TODO(confirm):
+owner approval to keep the authored Lexend type in the hero frame, or to switch
+the hero copy to the Crest brand font.
+
+
 ## Font
 
 The supplied `Montserrat-Arabic-Regular.woff2` file is used for both locales with an Arial system fallback. `src/styles/fonts.ts` centralizes the local font mapping.

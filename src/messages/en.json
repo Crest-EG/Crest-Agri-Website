@@ -64,6 +64,22 @@
     }
   },
   "landing": {
+    "sylva": {
+      "documentTitle": "Crest — Rooted in Egypt, grown for the world",
+      "metaDescription": "Fresh, frozen and dried agricultural products from Crest for Agricultural Development, Alexandria, Egypt.",
+      "headlineLine1": "Rooted in Egypt",
+      "headlineLine2": "grown for the world",
+      "lede": "Fresh, frozen and dried agricultural products, prepared with care for buyers around the world.",
+      "quoteCta": "Request a quote",
+      "productLabel": "Featured product",
+      "productCta": "View product",
+      "statFormsLabel": "What we export",
+      "statFormsValue": "Fresh · Frozen · Dried",
+      "statOriginLabel": "Our origin",
+      "statOriginValue": "Alexandria, Egypt",
+      "scroll": "Explore Crest",
+      "ghost": "CREST"
+    },
     "hero": {
       "eyebrow": "Crest for Agricultural Development · Alexandria, Egypt",
       "title": "From Egyptian fields to buyers around the world.",

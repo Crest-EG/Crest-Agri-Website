@@ -53,7 +53,8 @@ Every entry below follows the same three fields used beside its code: **what thi
 
 - Footer company summary | Crest marketing team | Update the `common.footer.description` translation in both files with the approved brand description.
 - Company story, vision and mission | Crest management | Replace the `about.story`, `about.vision` and `about.mission` translations in both files with approved company wording.
-- Landing scene marketing copy | Crest marketing team | Review and replace the `landing` namespace in both files with approved company copy.
+- Landing journey copy | Crest marketing team | Review and replace the `landing` namespace in both files with approved company copy.
+- Hero copy and product cards (`landing.sylva`) | Crest marketing team | Review the headline, lede, quote CTA, card labels, stats and scroll cue in both files. The cards show the first two `featured` products in `src/content/products.ts`; change that data to change the cards, not the scene. The ThreeUI scene itself is a fixed registered composition and is not edited as copy.
 - Product summaries and seasonal guidance | Crest export team | Keep names aligned with `src/content/products.ts` and update matching `products` copy in both files when specifications are approved.
 - Certification reference descriptions | Crest quality lead | Confirm standards scope and supporting documents before changing the `certifications` descriptions or presenting a standard as held.
 - Contact page wording | Crest office administrator | Review the `contact` namespace in both files and replace any office or response wording that needs adjustment.

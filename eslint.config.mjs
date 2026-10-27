@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored ThreeUI landing-page source and runtime assets are kept
+    // byte-exact for visual parity, so they are not ours to lint.
+    "src/shaders/landing-pages/**",
+    "public/landing-pages/**",
   ]),
 ]);
 

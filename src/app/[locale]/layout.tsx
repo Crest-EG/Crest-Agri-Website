@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { brandFont } from "@/styles/fonts";
+import "@/shaders/threeui.css";
 import "../globals.css";
 
 type Locale = (typeof routing.locales)[number];
