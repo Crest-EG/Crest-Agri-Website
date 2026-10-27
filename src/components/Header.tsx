@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { Logo } from "@/components/Logo";
@@ -14,16 +14,46 @@ const navItems = [
   ["contact", "/contact"],
 ] as const;
 
+const HEADER_BAND = 96;
+
 export function Header() {
   const t = useTranslations("common");
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
+  // On the landing journey the header sits on dark scenes: show the white wordmark,
+  // and switch back to the dark wordmark while the light outro section passes under it.
+  const [tone, setTone] = useState<"default" | "white">(isHome ? "white" : "default");
+
+  useEffect(() => {
+    if (!isHome) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const outro = document.querySelector<HTMLElement>(".contact-outro");
+      const footer = document.querySelector<HTMLElement>(".site-footer");
+      const outroTop = outro?.getBoundingClientRect().top ?? Number.POSITIVE_INFINITY;
+      const footerTop = footer?.getBoundingClientRect().top ?? Number.POSITIVE_INFINITY;
+      setTone(outroTop < HEADER_BAND && footerTop > HEADER_BAND ? "default" : "white");
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, [isHome]);
+
   return (
     <header className={`site-header${isHome ? " site-header-home" : ""}`} id="top">
       <div className="header-inner">
         <Link href="/" className="brand-link" aria-label={t("navigation.home")} onClick={() => setOpen(false)}>
-          <Logo alt={t("logoAlt")} className="header-logo" />
+          <Logo alt={t("logoAlt")} tone={tone} className="header-logo" />
         </Link>
         <div className="header-quick-actions">
           <Link href="/contact#quote" className="button button-primary header-quote" onClick={() => setOpen(false)}>{t("navigation.quote")}</Link>

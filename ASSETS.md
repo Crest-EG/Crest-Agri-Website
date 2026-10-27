@@ -5,6 +5,7 @@ All image placeholders are usable today. Replace them with files at the same pat
 | Path / pattern | Required size and format | Used for |
 |---|---|---|
 | `brand/logo/logo.svg` | Horizontal vector, 300×72 viewBox | Header and footer via `<Logo variant="full" />` |
+| `brand/logo/logo-white.svg` | Horizontal vector, 300×72 viewBox; wordmark lettering in white, mark colors unchanged | `<Logo variant="full" tone="white" />` — footer and the landing header over dark scenes. Regenerate from `logo.svg` whenever the main logo changes (recolor its `#231F20` wordmark to `#FFFFFF`) |
 | `brand/logo/mark.svg` | Square vector, 128×128 viewBox | Compact logo and derived app icons |
 | `brand/logo/logo-512.png` | 512×512 PNG | High-resolution brand mark |
 | `public/icons/icon-192.png` | 192×192 PNG | PWA icon |
