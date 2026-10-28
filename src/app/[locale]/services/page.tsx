@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ButtonLink } from "@/components/Button";
+import { DirectionalArrow } from "@/components/DirectionalArrow";
 
 const processSteps = ["sourcing", "artwork", "packing", "dispatch"] as const;
 // TODO(replace): Bilingual export service and private-label descriptions | Crest export team | Confirm service scope and approval flow, then update the services namespace in both message files.
@@ -47,9 +48,9 @@ export default async function ServicesPage() {
       <section className="shipping-card content-card">
         <div><p className="eyebrow">{t("dispatch")}</p><h2>{t("shipping")}</h2><p>{t("shippingBody")}</p></div>
         <div className="shipping-card-visual"><Image src="/images/stitch-services/shipping.jpg" alt="" aria-hidden="true" fill sizes="(max-width: 900px) 100vw, 40vw" /></div>
-        <ButtonLink href="/contact#quote">{t("contactAction")} <span aria-hidden="true">↗</span></ButtonLink>
+        <ButtonLink href="/contact#quote">{t("contactAction")} <DirectionalArrow kind="forward" /></ButtonLink>
       </section>
-      <section className="services-link"><Link className="text-link" href="/products">{t("productsAction")} <span aria-hidden="true">↗</span></Link></section>
+      <section className="services-link"><Link className="text-link" href="/products">{t("productsAction")} <DirectionalArrow kind="forward" /></Link></section>
     </main>
   );
 }

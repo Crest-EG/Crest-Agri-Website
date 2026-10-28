@@ -53,6 +53,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className={brandFont.variable} data-scroll-behavior="smooth">
       <body>
         <NextIntlClientProvider messages={messages}>
+          <div id="top" />
           <Header />
           {children}
           <Footer />

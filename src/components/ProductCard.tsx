@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Placeholder } from "@/components/Placeholder";
+import { DirectionalArrow } from "@/components/DirectionalArrow";
 import type { Product } from "@/content/products";
 
 type ProductCardProps = {
@@ -48,7 +49,7 @@ export const ProductCard = React.memo(function ProductCard({
       <div className="product-card-body">
         <div className="product-card-meta">
           <small>{product.forms.map((form) => forms(form)).join(" · ")}</small>
-          <span className="product-card-arrow" aria-hidden="true">↗</span>
+          <DirectionalArrow kind="forward" />
         </div>
         <h2>{label}</h2>
         <p>{product.summary[locale]}</p>

@@ -4,8 +4,8 @@ export const site = {
     ar: "كريست للتنمية الزراعية",
   },
   description: {
-    en: "Fresh, frozen and dried agricultural products from Egypt.",
-    ar: "منتجات زراعية مصرية طازجة ومجمدة ومجففة.",
+    en: "Fresh and frozen agricultural products from Egypt.",
+    ar: "منتجات زراعية مصرية طازجة ومجمدة.",
   },
   address: {
     en: "B Entrance, Grand Towers, Smouha 21523, Alexandria, Egypt",

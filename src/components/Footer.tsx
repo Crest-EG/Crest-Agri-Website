@@ -2,6 +2,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Logo } from "@/components/Logo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { DirectionalArrow } from "@/components/DirectionalArrow";
+import { BackToTop } from "@/components/BackToTop";
 import { ContactIcon, SocialIcon, type SocialKind } from "@/components/icons";
 import { site } from "@/content/site";
 
@@ -41,8 +43,8 @@ export function Footer() {
             <p>{t("footer.description")}</p>
             <address className="footer-contact">
               <a href={site.mapsUrl} target="_blank" rel="noreferrer"><ContactIcon kind="pin" className="footer-contact-icon" /><span>{site.address[locale]}</span></a>
-              <span className="footer-phone-row"><ContactIcon kind="phone" className="footer-contact-icon" /><span>{site.phones.map((phone, index) => <span key={phone}><a href={`tel:${phone.replaceAll(" ", "")}`}>{phone}</a>{index === 0 ? <i aria-hidden="true"> / </i> : null}</span>)}</span></span>
-              <a href={site.socials.whatsapp} target="_blank" rel="noreferrer"><ContactIcon kind="whatsapp" className="footer-contact-icon" /><span>{site.whatsappFormatted}</span></a>
+              <span className="footer-phone-row"><ContactIcon kind="phone" className="footer-contact-icon" /><span className="footer-phone-numbers">{site.phones.map((phone) => <a key={phone} href={`tel:${phone.replaceAll(" ", "")}`} dir="ltr">{phone}</a>)}</span></span>
+              <a href={site.socials.whatsapp} target="_blank" rel="noreferrer" className="footer-whatsapp-link"><ContactIcon kind="whatsapp" className="footer-contact-icon" /><span className="footer-contact-number" dir="ltr">{site.whatsappFormatted}</span></a>
               <a href={`mailto:${site.email}`}><ContactIcon kind="mail" className="footer-contact-icon" /><span>{site.email}</span></a>
             </address>
 
@@ -75,7 +77,7 @@ export function Footer() {
                 <li>
                   <a href={site.brochureUrl} target="_blank" rel="noreferrer" className="footer-brochure-link">
                     <span>{footer.brochure}</span>
-                    <span className="footer-tag" aria-hidden="true">{footer.brochureBadge}</span>
+                    <DirectionalArrow kind="external" />
                   </a>
                 </li>
               </ul>
@@ -86,7 +88,7 @@ export function Footer() {
                 <li>
                   <a href={site.sisterCompanyUrl} target="_blank" rel="noreferrer" className="footer-external-link">
                     <span>{footer.crestChemicals}</span>
-                    <span className="footer-external-arrow" aria-hidden="true">↗</span>
+                    <DirectionalArrow kind="external" />
                   </a>
                 </li>
               </ul>
@@ -96,7 +98,7 @@ export function Footer() {
 
         <div className="footer-bottom">
           <p className="copyright">{t("footer.copyright", { year: new Date().getFullYear() })}</p>
-          <div className="footer-bottom-actions"><LanguageSwitcher /><a className="back-to-top" href="#top">{footer.backToTop}<span aria-hidden="true">↑</span></a></div>
+          <div className="footer-bottom-actions"><LanguageSwitcher /><BackToTop label={footer.backToTop} /></div>
         </div>
       </div>
     </footer>

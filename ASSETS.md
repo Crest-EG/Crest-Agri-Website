@@ -73,6 +73,8 @@ The supplied `Montserrat-Arabic-Regular.woff2` file is used for both locales wit
 
 The bilingual mock content and the exact owner, item and replacement action for each pending review are tracked in [CONTENT_TODO.md](CONTENT_TODO.md). The map's named destinations are presented as indicative areas for discussion and need the export team's confirmation. Certification descriptions are reference-only until scope and supporting documents are confirmed.
 
+Product technical sheets open as external Google Drive links configured by product slug in `src/content/products.ts`. For initial review, every product temporarily points to the company brochure Drive URL. `TODO(confirm)`: replace each temporary URL with the approved technical-sheet link for that product.
+
 ## Stitch source references
 
 The source HTML, referenced images, and full-height preview images are stored under `stitch/crest-export-website/` by screen ID. The available references are:
@@ -96,7 +98,11 @@ The smaller `screenshot.png` or `screenshot-preview.jpg` files preserve original
 |---|---|---|
 | `public/images/certifications/globalgap.webp` | 625×625 WebP, quality 88; certification page | Optimized from [LSQA Middle East’s GLOBALG.A.P. asset](https://lsqame.com/wp-content/uploads/2022/12/GG.png). Confirm current mark and permitted use before publication; GLOBALG.A.P. says logo use may require prior approval. |
 | `public/images/certifications/grasp.webp` | 625×625 WebP, quality 88; certification page | Optimized from [LSQA Middle East’s GRASP asset](https://lsqame.com/wp-content/uploads/2022/12/GRASP.png). Confirm current mark and permitted use before publication. |
-| `public/images/certifications/smeta.webp` | 420×160 WebP, quality 90; certification page | Optimized from the owner-provided reference screenshot. SMETA is an audit methodology, not a certification. |
+| `public/images/certifications/iso-22000.webp` | 177×179 WebP; certification page | Cropped from the owner-provided reference screenshot. Confirm current mark and validity before publication. |
+| `public/images/certifications/brcgs.webp` | 158×126 WebP; certification page | Cropped from the owner-provided reference screenshot. Confirm current mark and validity before publication. |
+| `public/images/certifications/fda.webp` | 190×93 WebP; certification page | Cropped from the owner-provided reference screenshot. Confirm current mark and validity before publication. |
+| `public/images/certifications/gacc.webp` | 222×103 WebP; certification page | Cropped from the owner-provided reference screenshot. Confirm current mark and validity before publication. |
+| `public/images/certifications/haccp.webp` | 189×164 WebP; certification page | Cropped from the owner-provided reference screenshot. Confirm current mark and validity before publication. |
 | `public/images/certifications/iso.webp` | 365×335 WebP, quality 90; certification page | Optimized from the owner-provided reference screenshot. Confirm current certification mark and validity before publication. |
 
 `src/app/[locale]/privacy/page.tsx` and `src/app/[locale]/terms/page.tsx` include `TODO(confirm)` legal review notes. The inquiry workflow description reflects the existing optional Google Apps Script / Google Sheets forwarding route.

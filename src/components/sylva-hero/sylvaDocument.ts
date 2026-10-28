@@ -154,9 +154,9 @@ export function buildCrestSylvaDocument({ locale, copy }: SylvaDocumentOptions) 
     `<span class="portal-media"><img src="${secondImage}" alt="${escapeHtml(second.name[locale])}" loading="eager" decoding="async"></span>`,
   );
 
-  html = replaceOnce(html, '<p class="label">Our Ethos</p>', `<p class="label">${escapeHtml(copy.productLabel)}</p>`);
+  html = replaceOnce(html, '<p class="label">Our Ethos</p>', "");
   html = replaceOnce(html, "<h2>Let the wild lead.</h2>", `<h2>${escapeHtml(first.name[locale])}</h2>`);
-  html = replaceOnce(html, '<p class="label">Field Note 07</p>', `<p class="label">${escapeHtml(copy.productLabel)}</p>`);
+  html = replaceOnce(html, '<p class="label">Field Note 07</p>', "");
   html = replaceOnce(html, "<h2>After the Rain</h2>", `<h2>${escapeHtml(second.name[locale])}</h2>`);
 
   html = replaceOnce(
@@ -271,6 +271,99 @@ export function buildCrestSylvaDocument({ locale, copy }: SylvaDocumentOptions) 
     .lede { top: calc(338 * var(--u)); }
     .pill-clip { top: calc(480 * var(--u)); }
     .stat--a, .stat--b { top: calc(600 * var(--u)); }
+  }
+  /* The embedded document must stay a single viewport tall; scale the authored
+     composition against both dimensions instead of creating an iframe scroller. */
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .hero {
+    height: 100svh;
+    min-height: 0;
+  }
+  @media (min-width: 901px) {
+    :root { --u: min(calc(100vw / 1600), calc(100svh / 880)); }
+  }
+  @media (max-width: 900px) {
+    :root { --u: min(calc(100vw / 760), calc(100svh / 1625)); }
+    .stage {
+      width: calc(760 * var(--u));
+      margin-inline: auto;
+    }
+  }
+  @media (max-width: 900px) and (max-height: 600px) {
+    :root { --u: min(calc(100vw / 1600), calc(100svh / 880)); }
+    .stage {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: calc(1600 * var(--u));
+      height: calc(880 * var(--u));
+      margin: calc(-440 * var(--u)) 0 0 calc(-800 * var(--u));
+    }
+    .headline {
+      left: calc(46 * var(--u));
+      top: calc(202 * var(--u));
+      font-size: calc(63 * var(--u));
+      line-height: calc(65 * var(--u));
+    }
+    .lede {
+      left: calc(46 * var(--u));
+      top: calc(350 * var(--u));
+      width: max(210px, calc(360 * var(--u)));
+      font-size: max(12px, calc(16.5 * var(--u)));
+      line-height: max(15px, calc(22 * var(--u)));
+    }
+    .pill-clip {
+      left: calc(146 * var(--u));
+      top: calc(470 * var(--u));
+    }
+    .stat,
+    .card,
+    .scroll,
+    .ghost {
+      display: none;
+    }
+  }
+  .card--about,
+  .card--stove {
+    height: calc(240 * var(--u));
+  }
+  @media (min-width: 901px) {
+      .card--stove { width: calc(310 * var(--u)); }
+  }
+  .card--about figure,
+  .card--stove figure {
+    inset: calc(14 * var(--u)) calc(14 * var(--u)) auto;
+    width: auto;
+    height: calc(158 * var(--u));
+  }
+  .card--about h2,
+  .card--stove h2 {
+    inset-inline: calc(22 * var(--u));
+    inset-block: auto calc(18 * var(--u));
+    width: auto;
+    text-align: start;
+  }
+  @media (max-width: 900px) {
+    .card--about,
+    .card--stove {
+      height: calc(240 * var(--u));
+    }
+    .card--about figure,
+    .card--stove figure {
+      inset: calc(14 * var(--u)) calc(14 * var(--u)) auto;
+      width: auto;
+      height: calc(158 * var(--u));
+    }
+    .card--about h2,
+    .card--stove h2 {
+      inset-inline: calc(18 * var(--u));
+      inset-block-end: calc(16 * var(--u));
+    }
   }
 </style>`;
 

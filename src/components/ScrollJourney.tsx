@@ -7,9 +7,9 @@ import { useLocale, useTranslations } from "next-intl";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "@/i18n/navigation";
-import { ContactOutro } from "@/components/ContactOutro";
+import { DirectionalArrow } from "@/components/DirectionalArrow";
 import { Placeholder } from "@/components/Placeholder";
-import { featuredProducts, type Product } from "@/content/products";
+import { featuredProducts, type Product, type ProductForm } from "@/content/products";
 import { CROSSFADE_FRAMES, frameConfig, framePath, LITE_MODE_STEP } from "@/config/frames";
 
 // TODO(replace): Bilingual landing journey marketing copy | Crest marketing team | Review the landing namespace in both message files and replace the scene text with approved company copy.
@@ -24,7 +24,7 @@ function isLiteDevice() {
     device.connection?.saveData === true || ["slow-2g", "2g", "3g"].includes(device.connection?.effectiveType ?? "");
 }
 
-function FeaturedCard({ product, locale, formLabel }: { product: Product; locale: "ar" | "en"; formLabel: (form: string) => string }) {
+function FeaturedCard({ product, locale, formLabel }: { product: Product; locale: "ar" | "en"; formLabel: (form: ProductForm) => string }) {
   const name = product.name[locale];
   return (
     <Link className="journey-product-card" href={`/products/${product.slug}`}>
@@ -53,7 +53,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
   const [liteMode, setLiteMode] = useState(false);
   const [ready, setReady] = useState(false);
 
-  const formLabel = useCallback((form: string) => formsT(form as "fresh" | "frozen" | "dried"), [formsT]);
+  const formLabel = useCallback((form: ProductForm) => formsT(form), [formsT]);
 
   useEffect(() => {
     const reduceQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -361,9 +361,9 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       <p className="scene-eyebrow">{t("scenes.care.eyebrow")}</p>
       <h2>{t("scenes.care.title")}</h2>
       <p className="scene-description">{t("scenes.care.body")}</p>
-      <Link className="text-link" href="/about">{t("scenes.care.link")} <span aria-hidden="true">↗</span></Link>
+      <Link className="text-link" href="/about">{t("scenes.care.link")} <DirectionalArrow kind="forward" /></Link>
       <div className="certification-row" aria-label={t("scenes.care.certifications")}>
-        <span>{certificationsT("globalgap")}</span><span>{certificationsT("smeta")}</span><span>{certificationsT("iso")}</span>
+        <span>{certificationsT("globalgap")}</span><span>{certificationsT("iso")}</span>
       </div>
     </div>,
     <div className="scene-content product-content" key="harvest">
@@ -374,20 +374,23 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       <div className="featured-grid">
         {featuredProducts.map((product) => <FeaturedCard key={product.slug} product={product} locale={locale} formLabel={formLabel} />)}
       </div>
-      <Link className="text-link" href="/products">{t("scenes.harvest.all")} <span aria-hidden="true">↗</span></Link>
+      <Link className="text-link" href="/products">{t("scenes.harvest.all")} <DirectionalArrow kind="forward" /></Link>
     </div>,
     <div className="scene-content split-content" key="packing">
       <p className="scene-eyebrow">{t("scenes.packing.eyebrow")}</p>
       <h2>{t("scenes.packing.title")}</h2>
       <p className="scene-description">{t("scenes.packing.body")}</p>
-      <div className="private-label"><span className="accent-dot" aria-hidden="true" />{t("scenes.packing.privateLabel")}</div>
+      <div className="private-label">
+        <span className="private-label-title">{t("scenes.packing.privateLabel")}</span>
+        <span className="private-label-description">{t("scenes.packing.privateLabelBody")}</span>
+      </div>
     </div>,
     <div className="scene-content split-content" key="shipping">
       <p className="scene-eyebrow">{t("scenes.shipping.eyebrow")}</p>
       <h2>{t("scenes.shipping.title")}</h2>
       <p className="scene-description">{t("scenes.shipping.body")}</p>
       <div className="shipping-forms">
-        {(["fresh", "frozen", "dried"] as const).map((form) => <span key={form}>{formsT(form)}</span>)}
+        {(["fresh", "frozen"] as const).map((form) => <span key={form}>{formsT(form)}</span>)}
       </div>
     </div>,
     <div className="scene-content map-content" key="markets">
@@ -432,7 +435,6 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
           </div>
         </div>
       )}
-      <ContactOutro />
     </>
   );
 }

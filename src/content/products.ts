@@ -1,4 +1,6 @@
-export type ProductForm = "fresh" | "frozen" | "dried";
+import { site } from "@/content/site";
+
+export type ProductForm = "fresh" | "frozen";
 export type ProductType = "fruit" | "vegetable";
 export type BilingualText = { en: string; ar: string };
 
@@ -15,6 +17,7 @@ export type Product = {
   packing: BilingualText;
   shipping: BilingualText;
   images: string[];
+  technicalSheetUrl: string;
   featured: boolean;
 };
 
@@ -26,8 +29,28 @@ const common = {
   shipping: { en: "Handling, temperature requirements and shipping options are discussed against the product, destination and requested schedule.", ar: "تُناقش متطلبات التداول ودرجات الحرارة وخيارات الشحن بحسب المنتج والوجهة والموعد المطلوب." },
 } satisfies Record<string, BilingualText>;
 
-type ProductSeed = Omit<Product, "images" | "farming" | "harvest" | "packing" | "shipping">;
-const seed = (item: ProductSeed): Product => ({ ...item, ...common, images: stitchProductImages[item.slug] ? [stitchProductImages[item.slug]] : [] });
+type ProductSeed = Omit<Product, "images" | "technicalSheetUrl" | "farming" | "harvest" | "packing" | "shipping">;
+const seed = (item: ProductSeed): Product => ({
+  ...item,
+  ...common,
+  images: stitchProductImages[item.slug] ? [stitchProductImages[item.slug]] : [],
+  technicalSheetUrl: technicalSheetUrls[item.slug] ?? site.brochureUrl,
+});
+// TODO(confirm): Replace each temporary brochure URL with the approved
+// Google Drive technical-sheet URL for that product.
+const technicalSheetUrls: Record<string, string> = {
+  grapes: site.brochureUrl,
+  pomegranate: site.brochureUrl,
+  peach: site.brochureUrl,
+  "green-onion": site.brochureUrl,
+  cabbage: site.brochureUrl,
+  broccoli: site.brochureUrl,
+  citrus: site.brochureUrl,
+  strawberry: site.brochureUrl,
+  "green-beans": site.brochureUrl,
+  "sweet-potato": site.brochureUrl,
+  lettuce: site.brochureUrl,
+};
 const stitchProductImages: Record<string, string> = {
   // TODO(replace): Citrus product photograph | Crest creative team | Replace public/images/stitch-products/citrus.jpg with approved product photography at the same path.
   citrus: "/images/stitch-products/citrus.jpg",
@@ -54,7 +77,7 @@ export const products: Product[] = [
   // TODO(replace): Egyptian grape season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update this product entry.
   seed({ slug: "grapes", name: { en: "Grapes", ar: "عنب" }, type: "fruit", forms: ["fresh"], season: { en: "Typically late spring through summer; timing varies by variety and growing area.", ar: "عادةً من أواخر الربيع حتى الصيف؛ ويختلف التوقيت باختلاف الصنف ومنطقة الزراعة." }, seasonWindows: [{ start: { month: 5, day: 1 }, end: { month: 8, day: 31 } }], summary: { en: "Egyptian table grapes selected for fresh-market programmes, with variety, sizing and pack details agreed for each destination.", ar: "عنب مائدة مصري لبرامج السوق الطازج، مع الاتفاق على الصنف والأحجام والتعبئة وفق كل وجهة." }, featured: true }),
   // TODO(replace): Egyptian pomegranate season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update this product entry.
-  seed({ slug: "pomegranate", name: { en: "Pomegranate", ar: "رمان" }, type: "fruit", forms: ["fresh", "frozen", "dried"], season: { en: "Fresh fruit is typically available from late summer into autumn; processed forms depend on the programme.", ar: "يتوفر الرمان الطازج عادةً من أواخر الصيف حتى الخريف؛ وتتحدد الأشكال المصنعة وفق برنامج التوريد." }, seasonWindows: [{ start: { month: 8, day: 1 }, end: { month: 11, day: 30 } }], summary: { en: "A versatile fruit for fresh retail, food service and ingredient use, with processing options discussed to suit the brief.", ar: "فاكهة متعددة الاستخدامات للبيع الطازج وخدمات الطعام والمكونات، مع مناقشة خيارات التصنيع وفق متطلبات المشتري." }, featured: true }),
+  seed({ slug: "pomegranate", name: { en: "Pomegranate", ar: "رمان" }, type: "fruit", forms: ["fresh", "frozen"], season: { en: "Fresh fruit is typically available from late summer into autumn; frozen forms depend on the programme.", ar: "يتوفر الرمان الطازج عادةً من أواخر الصيف حتى الخريف؛ وتتحدد الأشكال المجمدة وفق برنامج التوريد." }, seasonWindows: [{ start: { month: 8, day: 1 }, end: { month: 11, day: 30 } }], summary: { en: "A versatile fruit for fresh retail, food service and ingredient use, with processing options discussed to suit the brief.", ar: "فاكهة متعددة الاستخدامات للبيع الطازج وخدمات الطعام والمكونات، مع مناقشة خيارات التصنيع وفق متطلبات المشتري." }, featured: true }),
   // TODO(replace): Egyptian peach season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update this product entry.
   seed({ slug: "peach", name: { en: "Peach", ar: "خوخ" }, type: "fruit", forms: ["fresh", "frozen"], season: { en: "Typically a late-spring and summer crop; availability varies by variety and year.", ar: "يكون موسمه عادةً في أواخر الربيع والصيف؛ ويتغير التوفر بحسب الصنف والسنة." }, seasonWindows: [{ start: { month: 5, day: 1 }, end: { month: 8, day: 31 } }], summary: { en: "Fresh peaches for seasonal retail programmes, with frozen formats considered when suitable for the buyer’s application.", ar: "خوخ طازج لبرامج البيع الموسمية، مع بحث الأشكال المجمدة عندما تلائم استخدام المشتري." }, featured: true }),
   // TODO(replace): Egyptian green onion season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update this product entry.

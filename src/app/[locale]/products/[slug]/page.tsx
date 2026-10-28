@@ -8,6 +8,7 @@ import { RelatedProducts } from "@/components/RelatedProducts";
 import { ButtonLink } from "@/components/Button";
 import { SeasonTimeline } from "@/components/SeasonTimeline";
 import { products, getProductBySlug } from "@/content/products";
+import { DirectionalArrow } from "@/components/DirectionalArrow";
 
 type DetailProps = { params: Promise<{ locale: string; slug: string }> };
 
@@ -38,7 +39,7 @@ export default async function ProductDetailPage({ params }: DetailProps) {
   return (
     <main className="page-shell detail-page">
       <nav className="breadcrumb" aria-label={t("breadcrumbLabel")}>
-        <Link href="/products">{t("title")}</Link><span aria-hidden="true">›</span><span>{product.name[language]}</span>
+        <Link href="/products">{t("title")}</Link><DirectionalArrow kind="chevron" /><span>{product.name[language]}</span>
       </nav>
       <section className="detail-hero">
         <div className="detail-copy">
@@ -54,8 +55,10 @@ export default async function ProductDetailPage({ params }: DetailProps) {
             <p>{product.harvest[language]}</p>
           </div>
           <div className="detail-actions">
-            <ButtonLink href={quoteHref} variant="primary">{t("request")} <span aria-hidden="true">→</span></ButtonLink>
-            <ButtonLink href="/contact#quote" variant="secondary">{t("commercialInquiry")}</ButtonLink>
+            <ButtonLink href={quoteHref} variant="primary">{t("request")} <DirectionalArrow kind="forward" /></ButtonLink>
+            <ButtonLink href={product.technicalSheetUrl} target="_blank" rel="noreferrer" variant="secondary">
+              {t("technicalSheet")} <DirectionalArrow kind="external" />
+            </ButtonLink>
           </div>
         </div>
         <div className="detail-gallery">
@@ -76,7 +79,7 @@ export default async function ProductDetailPage({ params }: DetailProps) {
         <div className="packing-fact"><p className="eyebrow">{t("packing")}</p><p>{product.packing[language]}</p></div>
       </section>
       <section className="page-section">
-        <div className="section-heading"><h2>{t("related")}</h2><Link className="text-link" href="/products">{t("allProducts")} <span aria-hidden="true">↗</span></Link></div>
+        <div className="section-heading"><h2>{t("related")}</h2><Link className="text-link" href="/products">{t("allProducts")} <DirectionalArrow kind="forward" /></Link></div>
         <RelatedProducts products={related} />
       </section>
     </main>

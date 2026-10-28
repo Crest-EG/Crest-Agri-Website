@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { QuoteForm } from "@/components/QuoteForm";
 import { Link } from "@/i18n/navigation";
+import { DirectionalArrow } from "@/components/DirectionalArrow";
 import { site } from "@/content/site";
 import { products } from "@/content/products";
 
@@ -48,7 +49,7 @@ export default async function ContactPage({ params, searchParams }: ContactProps
             <a href={site.website}>{t("website")}</a>
           </div>
           <p className="contact-prompt">{t("followUp")}</p>
-          <Link className="text-link" href="/products">{t("browseProducts")} <span aria-hidden="true">↗</span></Link>
+          <Link className="text-link" href="/products">{t("browseProducts")} <DirectionalArrow kind="forward" /></Link>
         </section>
         <section id="quote" className="contact-quote">
           <p className="eyebrow">{q("title")}</p>
@@ -57,8 +58,24 @@ export default async function ContactPage({ params, searchParams }: ContactProps
       </div>
       <section className="page-section" aria-labelledby="contact-faq-title">
         <header className="page-intro"><h2 id="contact-faq-title">{faq("title")}</h2></header>
-        <div className="product-grid faq-grid">
-          {faqItems.map((item) => <article className="content-card" key={item.question}><h3>{item.question}</h3><p>{item.answer}</p></article>)}
+        <div className="faq-list">
+          {faqItems.map((item) => (
+            <details className="faq-item" key={item.question}>
+              <summary className="faq-question">
+                <span className="faq-question-copy">
+                  <span className="faq-label">{faq("questionLabel")}</span>
+                  <span className="faq-question-text">{item.question}</span>
+                </span>
+                <span className="faq-toggle" aria-hidden="true" />
+              </summary>
+              <div className="faq-answer">
+                <div className="faq-answer-inner">
+                  <span className="faq-label">{faq("answerLabel")}</span>
+                  <p>{item.answer}</p>
+                </div>
+              </div>
+            </details>
+          ))}
         </div>
       </section>
     </main>

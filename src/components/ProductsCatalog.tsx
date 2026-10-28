@@ -6,7 +6,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { products, type ProductForm } from "@/content/products";
 
 type ProductFilter = ProductForm | "all";
-const filterKeys: ProductFilter[] = ["all", "fresh", "frozen", "dried"];
+const filterKeys: ProductFilter[] = ["all", "fresh", "frozen"];
 
 export function ProductsCatalog() {
   const t = useTranslations("products");

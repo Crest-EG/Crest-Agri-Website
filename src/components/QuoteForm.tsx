@@ -5,9 +5,11 @@ import { useLocale, useTranslations } from "next-intl";
 import { products } from "@/content/products";
 import { site } from "@/content/site";
 import { Link } from "@/i18n/navigation";
+import { ContactIcon } from "@/components/icons";
 
 type QuoteFormProps = { initialProduct?: string; variant?: "full" | "footer" };
-type PreparedMessage = { whatsapp: string; email: string; leadId: string };
+type SendChannel = "whatsapp" | "email";
+type SendError = "popup" | "tracking";
 
 type LeadPayload = {
   event: "lead";
@@ -25,22 +27,40 @@ type LeadPayload = {
   registrationCode: string;
 };
 
-function track(payload: LeadPayload | { event: "channel"; leadId: string; channel: "whatsapp" | "email" }) {
-  void fetch("/api/lead", {
+async function track(payload: LeadPayload | { event: "channel"; leadId: string; channel: SendChannel }) {
+  const response = await fetch("/api/lead", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
     keepalive: true,
-  }).catch(() => undefined);
+  });
+  const result: unknown = await response.json();
+  if (!response.ok || typeof result !== "object" || result === null || !("accepted" in result) || result.accepted !== true) {
+    throw new Error("Lead tracking was not accepted.");
+  }
 }
 
 export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormProps) {
   const locale = useLocale() as "ar" | "en";
   const t = useTranslations("quote");
-  const [prepared, setPrepared] = useState<PreparedMessage | null>(null);
+  const [sending, setSending] = useState<SendChannel | null>(null);
+  const [sendError, setSendError] = useState<SendError | null>(null);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const submitter = event.nativeEvent instanceof SubmitEvent && event.nativeEvent.submitter instanceof HTMLButtonElement
+      ? event.nativeEvent.submitter
+      : null;
+    const channel: SendChannel = submitter?.value === "email" ? "email" : "whatsapp";
+    const destinationWindow = window.open("about:blank", "_blank");
+    if (!destinationWindow) {
+      setSendError("popup");
+      return;
+    }
+    destinationWindow.opener = null;
+    setSending(channel);
+    setSendError(null);
+
     const form = new FormData(event.currentTarget);
     const leadId = crypto.randomUUID();
     const nameAndCompany = String(form.get("name") ?? "").trim();
@@ -53,11 +73,11 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
     const quantity = String(form.get("quantity") ?? "").trim();
     const message = String(form.get("message") ?? "").trim();
     const type = String(form.get("requestType") ?? "quote") as "quote" | "inquiry" | "contact";
-    track({
+    const leadPayload: LeadPayload = {
       event: "lead", leadId, locale, type, name, company, country, contact,
       product: String(form.get("product") ?? ""), quantity, message,
       page: window.location.pathname, registrationCode: String(form.get("registrationCode") ?? ""),
-    });
+    };
     const conciseValues = [
       [t("name"), name],
       [t("company"), company],
@@ -75,24 +95,35 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
       .map(([label, value]) => String(label) + ": " + String(value ?? ""));
     const body = values.join("\n");
     const subject = t("subject", { name });
-    setPrepared({
-      leadId,
-      whatsapp: "https://wa.me/" + site.whatsapp + "?text=" + encodeURIComponent(subject + "\n" + body),
-      email: "mailto:" + site.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body),
-    });
+    const destination = channel === "whatsapp"
+      ? "https://wa.me/" + site.whatsapp + "?text=" + encodeURIComponent(subject + "\n" + body)
+      : "mailto:" + site.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+
+    try {
+      await track(leadPayload);
+      await track({ event: "channel", leadId, channel });
+      destinationWindow.location.href = destination;
+    } catch {
+      destinationWindow.close();
+      setSendError("tracking");
+    } finally {
+      setSending(null);
+    }
   }
 
   const fieldId = (name: string) => `${variant === "footer" ? "footer-quote" : "contact-quote"}-${name}`;
 
   return (
-    <form id={variant === "footer" ? "quote" : undefined} className={`quote-form${variant === "footer" ? " quote-form-footer" : ""}`} onSubmit={handleSubmit} onChange={() => setPrepared(null)}>
+    <form id={variant === "footer" ? "quote" : undefined} className={`quote-form${variant === "footer" ? " quote-form-footer" : ""}`} onSubmit={handleSubmit} onChange={() => setSendError(null)}>
       {variant !== "footer" && <div className="quote-field">
         <label htmlFor="quote-type">{t("requestType")}</label>
-        <select id="quote-type" name="requestType" defaultValue="quote">
-          <option value="quote">{t("requestTypes.quote")}</option>
-          <option value="inquiry">{t("requestTypes.inquiry")}</option>
-          <option value="contact">{t("requestTypes.contact")}</option>
-        </select>
+        <div className="quote-select">
+          <select id="quote-type" name="requestType" defaultValue="quote">
+            <option value="quote">{t("requestTypes.quote")}</option>
+            <option value="inquiry">{t("requestTypes.inquiry")}</option>
+            <option value="contact">{t("requestTypes.contact")}</option>
+          </select>
+        </div>
       </div>}
       <div className="quote-honeypot" aria-hidden="true">
         <label htmlFor={`${variant}-quote-registration-code`}>{t("honeypotLabel")}</label>
@@ -120,10 +151,12 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
       </div>}
       <div className="quote-field">
         <label htmlFor={fieldId("product")}>{variant === "footer" ? t("product") : t("product")}</label>
-        <select id={fieldId("product")} name="product" defaultValue={initialProduct}>
-          <option value="">{t("chooseProduct")}</option>
-          {products.map((product) => <option value={product.slug} key={product.slug}>{product.name[locale]}</option>)}
-        </select>
+        <div className="quote-select">
+          <select id={fieldId("product")} name="product" defaultValue={initialProduct}>
+            <option value="">{t("chooseProduct")}</option>
+            {products.map((product) => <option value={product.slug} key={product.slug}>{product.name[locale]}</option>)}
+          </select>
+        </div>
       </div>
       {variant !== "footer" && <div className="quote-field">
         <label htmlFor="quote-quantity">{t("quantity")}</label>
@@ -133,16 +166,15 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
         <label htmlFor="quote-message">{t("message")}</label>
         <textarea id="quote-message" name="message" placeholder={t("placeholder.message")} required />
       </div>}
-      <button className="button button-primary" type="submit">{variant === "footer" ? t("footerSubmit") : t("submit")} <span aria-hidden="true">▷</span></button>
-      {prepared && (
-        <div className="quote-result" aria-live="polite">
-          <strong>{t("sentTitle")}</strong>
-          <p>{t("sentBody")}</p>
-          <a href={prepared.whatsapp} target="_blank" rel="noreferrer" onClick={() => track({ event: "channel", leadId: prepared.leadId, channel: "whatsapp" })}>{t("whatsappAction")}</a>
-          <a href={prepared.email} onClick={() => track({ event: "channel", leadId: prepared.leadId, channel: "email" })}>{t("emailAction")}</a>
-        </div>
-      )}
-      <p className="quote-consent">{t.rich("consent", { privacy: (chunks) => <Link href="/privacy">{chunks}</Link> })}</p>
+      <div className="quote-send-actions">
+        <button className="button button-primary quote-send-whatsapp" type="submit" name="channel" value="whatsapp" disabled={sending !== null}>
+          <ContactIcon kind="whatsapp" />{sending === "whatsapp" ? t("sending") : t("whatsappAction")}
+        </button>
+        <button className="button button-secondary quote-send-email" type="submit" name="channel" value="email" disabled={sending !== null}>
+          <ContactIcon kind="mail" />{sending === "email" ? t("sending") : t("emailAction")}
+        </button>
+      </div>
+      {sendError && <p className="quote-send-error" role="alert">{t(sendError === "popup" ? "popupError" : "sendError")}</p>}
     </form>
   );
 }

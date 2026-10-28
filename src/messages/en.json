@@ -60,21 +60,21 @@
     "metadata": {
       "title": "Crest for Agricultural Development",
       "shortName": "Crest",
-      "description": "Fresh, frozen and dried agricultural products from Egypt."
+      "description": "Fresh and frozen agricultural products from Egypt."
     }
   },
   "landing": {
     "sylva": {
       "documentTitle": "Crest — Rooted in Egypt, grown for the world",
-      "metaDescription": "Fresh, frozen and dried agricultural products from Crest for Agricultural Development, Alexandria, Egypt.",
+      "metaDescription": "Fresh and frozen agricultural products from Crest for Agricultural Development, Alexandria, Egypt.",
       "headlineLine1": "Rooted in Egypt",
       "headlineLine2": "grown for the world",
-      "lede": "Fresh, frozen and dried agricultural products, prepared with care for buyers around the world.",
+      "lede": "Fresh and frozen agricultural products, prepared with care for buyers around the world.",
       "quoteCta": "Request a quote",
       "productLabel": "Featured product",
       "productCta": "View product",
       "statFormsLabel": "What we export",
-      "statFormsValue": "Fresh · Frozen · Dried",
+      "statFormsValue": "Fresh · Frozen",
       "statOriginLabel": "Our origin",
       "statOriginValue": "Alexandria, Egypt",
       "scroll": "Explore Crest",
@@ -83,7 +83,7 @@
     "hero": {
       "eyebrow": "Crest for Agricultural Development · Alexandria, Egypt",
       "title": "From Egyptian fields to buyers around the world.",
-      "description": "Fresh, frozen and dried agricultural products from Egypt.",
+      "description": "Fresh and frozen agricultural products from Egypt.",
       "quote": "Request a quote",
       "browse": "Browse products"
     },
@@ -94,24 +94,25 @@
         "title": "Rooted in Egypt. Ready for the world.",
         "body": "Crest for Agricultural Development connects agricultural products from Egypt with international buyers. Explore our products and export services.",
         "link": "Our story",
-        "certifications": "Standards discussed by programme: GlobalGAP, SMETA and ISO"
+        "certifications": "Standards discussed by programme: GlobalGAP and ISO"
       },
       "harvest": {
         "eyebrow": "Our products",
         "title": "Harvest possibilities",
-        "body": "Explore a range of fresh, frozen and dried agricultural products.",
+        "body": "Explore a range of fresh and frozen agricultural products.",
         "all": "View all products"
       },
       "packing": {
         "eyebrow": "Prepared for your market",
         "title": "Packing that fits your needs",
         "body": "Discuss product presentation and packing requirements with our team.",
-        "privateLabel": "Private-label options can be discussed for your brand and destination."
+        "privateLabel": "Your brand on the packaging",
+        "privateLabelBody": "We can discuss options to suit the product, market and destination."
       },
       "shipping": {
         "eyebrow": "Export and logistics",
         "title": "From origin to destination",
-        "body": "Fresh, frozen and dried product options for international buyers. Share your destination and requirements with us."
+        "body": "Fresh and frozen product options for international buyers. Share your destination and requirements with us."
       },
       "markets": {
         "eyebrow": "Markets",
@@ -131,31 +132,17 @@
         "quote": "Request a quote"
       }
     },
-    "quoteSection": {
-      "eyebrow": "Let’s talk business",
-      "title": "Tell us what you need.",
-      "body": "Share your product and destination requirements with our team.",
-      "submit": "Prepare your message",
-      "email": "Send via Email",
-      "whatsapp": "Send via WhatsApp"
-    },
-    "outro": {
-      "label": "Contact Crest",
-      "word": "Let’s Talk",
-      "cta": "Contact us"
-    },
     "loading": "Preparing the journey…"
   },
   "products": {
-    "eyebrow": "Fresh, frozen and dried",
+    "eyebrow": "Fresh and frozen",
     "title": "Agricultural products",
-    "intro": "Explore fresh, frozen and dried Egyptian produce. Seasonal windows are indicative and can shift with variety, growing area and conditions; our team confirms availability for each enquiry.",
+    "intro": "Explore fresh and frozen Egyptian produce. Seasonal windows are indicative and can shift with variety, growing area and conditions; our team confirms availability for each enquiry.",
     "filters": {
       "label": "Filter products",
       "all": "All products",
       "fresh": "Fresh",
-      "frozen": "Frozen",
-      "dried": "Dried"
+      "frozen": "Frozen"
     },
     "fruit": "Fruit",
     "vegetable": "Vegetable",
@@ -164,7 +151,8 @@
     "dossier": "Export dossier",
     "worldwide": "Worldwide shipping",
     "originPacking": "Origin and packing assurance",
-    "commercialInquiry": "Commercial inquiry",
+    "brochure": "Company brochure",
+    "technicalSheet": "Technical sheet",
     "allProducts": "View all agricultural products",
     "breadcrumbLabel": "Breadcrumb",
     "forms": "Available forms",
@@ -210,8 +198,7 @@
   },
   "forms": {
     "fresh": "Fresh",
-    "frozen": "Frozen",
-    "dried": "Dried"
+    "frozen": "Frozen"
   },
   "about": {
     "title": "About us",
@@ -237,13 +224,15 @@
     "title": "Certifications & accreditations",
     "intro": "A commitment to exceptional quality",
     "qualityTitle": "Quality",
-    "quality": "Quality certifications play an important role in agriculture. They help demonstrate that products meet defined standards and support product safety. They can show commitment to recognized practices, strengthen trust, and support traceability and accountability across the supply chain. Certifications can also help address international market requirements, encourage continuous improvement in farming practices, and give consumers clearer information about product quality and production methods. Crest for Agricultural Development has therefore obtained certifications and accreditations that support product quality and meet international standards, in line with the global direction toward healthy and safe food. SMETA is described on this page as a social audit methodology, not as a certification.",
+    "quality": "Quality certifications play an important role in agriculture. They help demonstrate that products meet defined standards and support product safety. They can show commitment to recognized practices, strengthen trust, and support traceability and accountability across the supply chain. Certifications can also help address international market requirements, encourage continuous improvement in farming practices, and give consumers clearer information about product quality and production methods. Crest for Agricultural Development has therefore obtained certifications and accreditations that support product quality and meet international standards, in line with the global direction toward healthy and safe food.",
     "globalgap": "GLOBALG.A.P.",
-    "smeta": "SMETA",
+    "iso22000": "ISO 22000",
     "iso": "ISO 9001:2015",
+    "brcgs": "BRCGS Food Safety",
+    "fda": "FDA",
+    "gacc": "GACC",
+    "haccp": "HACCP",
     "certAlt": "{certification} certification mark",
-    "smetaType": "Social audit methodology",
-    "smetaNote": "SMETA is included here as a social audit methodology, not as a certification.",
     "grasp": "GRASP",
     "benefitsTitle": "Why quality certification matters",
     "benefits": [
@@ -328,11 +317,11 @@
     "message": "Message",
     "required": "This field is required.",
     "invalidEmail": "Enter a valid email address.",
-    "submit": "Prepare message",
     "whatsappAction": "Send via WhatsApp",
     "emailAction": "Send via Email",
-    "sentTitle": "Your message is ready",
-    "sentBody": "Your inquiry is ready. Choose a channel to send the details to our export team.",
+    "sending": "Saving request...",
+    "sendError": "We couldn't save your request. Please try again.",
+    "popupError": "Allow pop-ups in your browser, then try again.",
     "placeholder": {
       "name": "Your name",
       "company": "Company name",
@@ -348,22 +337,22 @@
     "footerNameCompany": "Your name & company",
     "footerEmailPhone": "Corporate email / WhatsApp",
     "footerDestination": "Destination country & port",
-    "footerSubmit": "Request quote",
     "placeholderNameCompany": "e.g. buyer name — company",
     "placeholderDestination": "Country and destination port",
-    "consent": "By submitting this form, you agree that we may use your details only to reply to your inquiry. Read our <privacy>privacy notice</privacy>.",
     "honeypotLabel": "Leave this field empty"
   },
   "faq": {
     "title": "Frequently asked questions",
+    "questionLabel": "Question",
+    "answerLabel": "Answer",
     "items": [
       {
         "question": "Which products and forms can I request?",
-        "answer": "Our range includes fresh, frozen and dried products. Available forms vary by crop and season; share your requirement and we will confirm what can be discussed."
+        "answer": "Our range includes fresh and frozen products. Available forms vary by crop and season; share your requirement and we will confirm what can be discussed."
       },
       {
         "question": "When is a product available?",
-        "answer": "Fresh crop windows are seasonal and may shift with variety and growing conditions. Frozen and dried availability depends on the product programme. Contact us for current availability."
+        "answer": "Fresh crop windows are seasonal and may shift with variety and growing conditions. Frozen availability depends on the product programme. Contact us for current availability."
       },
       {
         "question": "Can packaging carry my brand?",
