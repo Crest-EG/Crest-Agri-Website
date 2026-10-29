@@ -5,7 +5,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { brandFont } from "@/styles/fonts";
+import { acuminFont, dubaiFont } from "@/styles/fonts";
 import "@/shaders/threeui.css";
 import "../globals.css";
 
@@ -50,7 +50,12 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   setRequestLocale(locale as Locale);
   const messages = await getMessages();
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className={brandFont.variable} data-scroll-behavior="smooth">
+    <html
+      lang={locale}
+      dir={locale === "ar" ? "rtl" : "ltr"}
+      className={`${acuminFont.variable} ${dubaiFont.variable}`}
+      data-scroll-behavior="smooth"
+    >
       <body>
         <NextIntlClientProvider messages={messages}>
           <div id="top" />

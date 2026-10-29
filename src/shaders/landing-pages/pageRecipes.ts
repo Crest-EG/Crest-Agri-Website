@@ -46,6 +46,18 @@ const LEXEND: PageFont = {
   stack: "'Lexend', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
 };
 
+const CREST_ACUMIN: PageFont = {
+  value: "crest-acumin",
+  label: "Acumin",
+  stack: "'Acumin', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+};
+
+const CREST_DUBAI: PageFont = {
+  value: "crest-dubai",
+  label: "Dubai",
+  stack: "'Dubai', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+};
+
 const OUTFIT: PageFont = {
   value: "outfit",
   label: "Outfit",
@@ -390,8 +402,8 @@ h1:not(.jp), h2:not(.jp), h3:not(.jp), .display:not(.jp) {
    type and the two tints the page derives from it, and leaves the moss to
    the variants. Sizes ride the page's own --u design unit. */
 export const SYLVA_TYPOGRAPHY: PageTypographyRecipe = {
-  headingFonts: [LEXEND, INSTRUMENT_SERIF, NEWSREADER, GEIST],
-  bodyFonts: [LEXEND, GEIST, NEWSREADER, INSTRUMENT_SERIF],
+  headingFonts: [LEXEND, CREST_DUBAI, CREST_ACUMIN, INSTRUMENT_SERIF, NEWSREADER, GEIST],
+  bodyFonts: [LEXEND, CREST_ACUMIN, CREST_DUBAI, GEIST, NEWSREADER, INSTRUMENT_SERIF],
   headingWeights: ["200", "300", "400", "500", "600"],
   headingWeight: "300",
   bodyWeights: ["200", "300", "400", "500"],

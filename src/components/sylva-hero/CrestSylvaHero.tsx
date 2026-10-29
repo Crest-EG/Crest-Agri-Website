@@ -43,11 +43,8 @@ export function CrestSylvaHero({ srcDoc, title }: CrestSylvaHeroProps) {
       variant="living-green"
       srcDoc={srcDoc}
       title={title}
-      // The authored scene typography is Lexend. TODO(confirm): keep this
-      // visual-fidelity exception inside the sandboxed frame, or switch the
-      // hero copy to the Crest brand font.
-      headingFont="lexend"
-      bodyFont="lexend"
+      headingFont={locale === "ar" ? "crest-dubai" : "crest-acumin"}
+      bodyFont={locale === "ar" ? "crest-dubai" : "crest-acumin"}
       headingWeight="300"
       bodyWeight="300"
       primaryColor="#ffffff"

@@ -38,12 +38,12 @@ const CANONICAL_PATH = path.join(
   process.cwd(),
   "src/components/sylva-hero/source/inner-green-3d.html",
 );
-const LEXEND_PATH = path.join(
-  process.cwd(),
-  "public/landing-pages/inner-green-assets/lexend-latin.woff2",
-);
+const SITE_FONT_PATHS = {
+  en: path.join(process.cwd(), "brand/fonts/Acumin Variable Concept.woff2"),
+  ar: path.join(process.cwd(), "brand/fonts/DUBAI-REGULAR.woff2"),
+} as const;
 let canonicalSource: string | undefined;
-let lexendBase64: string | undefined;
+const siteFontBase64: Partial<Record<"en" | "ar", string>> = {};
 
 function getCanonicalSource() {
   canonicalSource ??= readFileSync(CANONICAL_PATH, "utf8");
@@ -52,12 +52,11 @@ function getCanonicalSource() {
 
 /**
  * The frame is sandboxed without allow-same-origin, so its origin is opaque
- * and cross-origin font requests are blocked. Inline the authored Lexend file
- * to keep the original typography.
+ * and cross-origin font requests are blocked. Inline the locale's site font.
  */
-function getLexendDataUri() {
-  lexendBase64 ??= readFileSync(LEXEND_PATH).toString("base64");
-  return `data:font/woff2;base64,${lexendBase64}`;
+function getSiteFontDataUri(locale: "en" | "ar") {
+  siteFontBase64[locale] ??= readFileSync(SITE_FONT_PATHS[locale]).toString("base64");
+  return `data:font/woff2;base64,${siteFontBase64[locale]}`;
 }
 
 function escapeHtml(value: string) {
@@ -115,6 +114,8 @@ export function buildCrestSylvaDocument({ locale, copy }: SylvaDocumentOptions) 
   const firstHref = href(`/products/${first.slug}`);
   const secondHref = href(`/products/${second.slug}`);
   const quoteHref = href("/contact#quote");
+  const fontFamily = locale === "ar" ? "Dubai" : "Acumin";
+  const fontWeight = locale === "ar" ? "400" : "100 900";
 
   let html = getCanonicalSource();
 
@@ -132,8 +133,14 @@ export function buildCrestSylvaDocument({ locale, copy }: SylvaDocumentOptions) 
   html = replaceOnce(
     html,
     "src:url('inner-green-assets/lexend-latin.woff2') format('woff2');",
-    `src:url('${getLexendDataUri()}') format('woff2');`,
+    `src:url('${getSiteFontDataUri(locale)}') format('woff2');`,
   );
+  html = replaceOnce(
+    html,
+    "font-weight:100 900; font-style:normal; font-display:swap;",
+    `font-weight:${fontWeight}; font-style:normal; font-display:swap;`,
+  );
+  html = html.replaceAll("'Lexend'", `'${fontFamily}'`);
 
   // Remove the authored Sylva dock and the play control. Crest's own header
   // and quote CTA replace them; the product cards, stats, scroll cue and the

@@ -2,7 +2,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-brand), Arial, sans-serif; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-body); }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
 img { max-width: 100%; }
