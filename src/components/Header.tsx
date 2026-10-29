@@ -115,7 +115,7 @@ export function Header() {
     observeFooterBand();
     window.addEventListener("resize", observeFooterBand);
     return () => {
-      observer.disconnect();
+      observer?.disconnect();
       window.removeEventListener("resize", observeFooterBand);
     };
   }, [isHome]);
