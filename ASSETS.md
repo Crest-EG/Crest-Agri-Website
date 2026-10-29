@@ -75,15 +75,6 @@ The bilingual mock content and the exact owner, item and replacement action for 
 
 Product technical sheets open as external Google Drive links configured by product slug in `src/content/products.ts`. For initial review, every product temporarily points to the company brochure Drive URL. `TODO(confirm)`: replace each temporary URL with the approved technical-sheet link for that product.
 
-## Stitch source references
-
-The source HTML, referenced images, and full-height preview images are stored under `stitch/crest-export-website/` by screen ID. The available references are:
-
-- Landing: `7b360f04e7c449b082622925db2e1a86`, 1280×8192 PNG preview.
-- Products: `92271d6075f54f85b0ca55cf65967575`, 1280×2385 JPEG preview.
-- About: `c2dc21c6830d456494a9f22a992315ee`, 1280×2547 JPEG preview.
-- Product detail: `324cd36efdba442aa0aa6314e12f28b8`, 1280×2595 JPEG preview.
-- Services: `cbbe7654288b4ffab582cfb1660b9b97`, 1280×3389 JPEG preview.
 
 The smaller `screenshot.png` or `screenshot-preview.jpg` files preserve original Stitch responses; `screenshot-full.png` / `screenshot-full.jpg` are larger previews. Image references from the Stitch HTML exports have local copies beside each export.
 
@@ -91,18 +82,3 @@ The smaller `screenshot.png` or `screenshot-preview.jpg` files preserve original
 
 - Stitch introduces extra greens (`#006e15`, `#43a141`, `#8ffb86`) and dark olive surfaces. The implemented site keeps PLAN.md's Crest palette and uses the existing text token for dark contrast surfaces.
 - Stitch uses Plus Jakarta Sans and Material Symbols. Those are not brand assets; no external fonts or icon packages were added. System font fallbacks and text glyphs are used until the brand fonts are supplied.
-
-## Certification page marks
-
-| Path | Format and use | Source / note |
-|---|---|---|
-| `public/images/certifications/globalgap.webp` | 625×625 WebP, quality 88; certification page | Optimized from [LSQA Middle East’s GLOBALG.A.P. asset](https://lsqame.com/wp-content/uploads/2022/12/GG.png). Confirm current mark and permitted use before publication; GLOBALG.A.P. says logo use may require prior approval. |
-| `public/images/certifications/grasp.webp` | 625×625 WebP, quality 88; certification page | Optimized from [LSQA Middle East’s GRASP asset](https://lsqame.com/wp-content/uploads/2022/12/GRASP.png). Confirm current mark and permitted use before publication. |
-| `public/images/certifications/iso-22000.webp` | 177×179 WebP; certification page | Cropped from the owner-provided reference screenshot. Confirm current mark and validity before publication. |
-| `public/images/certifications/brcgs.webp` | 158×126 WebP; certification page | Cropped from the owner-provided reference screenshot. Confirm current mark and validity before publication. |
-| `public/images/certifications/fda.webp` | 190×93 WebP; certification page | Cropped from the owner-provided reference screenshot. Confirm current mark and validity before publication. |
-| `public/images/certifications/gacc.webp` | 222×103 WebP; certification page | Cropped from the owner-provided reference screenshot. Confirm current mark and validity before publication. |
-| `public/images/certifications/haccp.webp` | 189×164 WebP; certification page | Cropped from the owner-provided reference screenshot. Confirm current mark and validity before publication. |
-| `public/images/certifications/iso.webp` | 365×335 WebP, quality 90; certification page | Optimized from the owner-provided reference screenshot. Confirm current certification mark and validity before publication. |
-
-`src/app/[locale]/privacy/page.tsx` and `src/app/[locale]/terms/page.tsx` include `TODO(confirm)` legal review notes. The inquiry workflow description reflects the existing optional Google Apps Script / Google Sheets forwarding route.

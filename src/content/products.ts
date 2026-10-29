@@ -52,26 +52,18 @@ const technicalSheetUrls: Record<string, string> = {
   lettuce: site.brochureUrl,
 };
 const stitchProductImages: Record<string, string> = {
-  // TODO(replace): Citrus product photograph | Crest creative team | Replace public/images/stitch-products/citrus.jpg with approved product photography at the same path.
   citrus: "/images/stitch-products/citrus.jpg",
-  // TODO(replace): Grape product photograph | Crest creative team | Replace public/images/stitch-products/grapes.jpg with approved product photography at the same path.
   grapes: "/images/stitch-products/grapes.jpg",
-  // TODO(replace): Green bean product photograph | Crest creative team | Replace public/images/stitch-products/green-beans.jpg with approved product photography at the same path.
-  "green-beans": "/images/stitch-products/green-beans.jpg",
-  // TODO(replace): Green onion product photograph | Crest creative team | Replace public/images/stitch-products/green-onion.jpg with approved product photography at the same path.
-  "green-onion": "/images/stitch-products/green-onion.jpg",
-  // TODO(replace): Pomegranate product photograph | Crest creative team | Replace public/images/stitch-products/pomegranate.jpg with approved product photography at the same path.
   pomegranate: "/images/stitch-products/pomegranate.jpg",
-  // TODO(replace): Strawberry product photograph | Crest creative team | Replace public/images/stitch-products/strawberry.jpg with approved product photography at the same path.
   strawberry: "/images/stitch-products/strawberry.jpg",
-
   broccoli: "/images/stitch-products/strawberry.jpg",
   cabbage: "/images/stitch-products/strawberry.jpg",
   peach: "/images/stitch-products/strawberry.jpg",
-  "sweet-potato": "/images/stitch-products/strawberry.jpg",
   lettuce: "/images/stitch-products/strawberry.jpg",
+  "green-beans": "/images/stitch-products/green-beans.jpg",
+  "green-onion": "/images/stitch-products/green-onion.jpg",
+  "sweet-potato": "/images/stitch-products/strawberry.jpg",
 };
-// TODO(replace): Broccoli, cabbage, peach, sweet potato and lettuce product photography | Crest creative team | Add approved images to public/images/stitch-products/ and add each path to the image map above.
 
 export const products: Product[] = [
   // TODO(replace): Egyptian grape season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update this product entry.

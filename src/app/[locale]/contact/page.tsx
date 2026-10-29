@@ -14,7 +14,6 @@ type ContactProps = {
 export async function generateMetadata({ params }: Pick<ContactProps, "params">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "contact" });
-  // TODO(replace): Bilingual contact page copy | Crest office administrator | Review the contact namespace in both message files and replace any office or response wording that needs adjustment.
   return { title: t("title"), description: t("intro") };
 }
 

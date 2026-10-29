@@ -1,4 +1,4 @@
-export const FRAMES_PER_SCENE = 120;
+export const FRAMES_PER_SCENE = 150;
 export const SCENE_COUNT = 7;
 export const LITE_MODE_STEP = 2;
 export const FRAME_EXTENSION = "webp";

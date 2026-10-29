@@ -8,9 +8,8 @@ export const site = {
     ar: "منتجات زراعية مصرية طازجة ومجمدة.",
   },
   address: {
-    en: "B Entrance, Grand Towers, Smouha 21523, Alexandria, Egypt",
-    // TODO(replace): Arabic office address | Crest office administrator | Confirm the preferred Arabic spelling, then replace this transliteration.
-    ar: "مدخل B، جراند تاورز، سموحة 21523، الإسكندرية، مصر",
+    en: "D Entrance, Grand Towers, Smouha 21523, Alexandria, Egypt",
+    ar: "مدخل د، جراند تاورز، سموحة 21523، الإسكندرية، مصر",
   },
   phones: ["+20 100 209 0007", "+20 108 002 1191"],
   whatsapp: "201080021190",

@@ -19,12 +19,5 @@ npm run build
 
 ## Journey frames
 
-The seven-scene scroll journey uses 120 WebP frames per scene. Regenerate the complete sequence in one command with local `ffmpeg` and Python Pillow installed:
+The seven-scene scroll journey uses 120 WebP frames per scene. Regenerate the complete sequence in one command with local `ffmpeg`.
 
-```bash
-npm run frames:generate
-```
-
-## Content and assets
-
-Real product availability, specifications, market relationships, standards scope, office details and contact routing need confirmation from the Crest team. Mock content is marked in `CONTENT_TODO.md` with a replace instruction beside each item. Replaceable visual assets and their specifications are listed in `ASSETS.md`.

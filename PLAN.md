@@ -24,7 +24,7 @@ Next.js (App Router) + TypeScript (strict) + Tailwind CSS + GSAP/ScrollTrigger (
 | Token | Value | Use |
 |---|---|---|
 | `--green` | `#50b94e` | Primary green: fills, borders, icons, buttons (~30%) |
-| `--green-ink` | `#2f7d2e` | Darker green for text/links on white (contrast) — `TODO(confirm)` |
+| `--green-ink` | `#2f7d2e` | Darker green for text/links on white (contrast) |
 | `--orange` | `#f7941d` | Accent only (~10%): small highlights, pins. Never large areas |
 | `--bg` | `#faf9f5` | Page background (off-white) |
 | `--surface` | `#ffffff` | Secondary surfaces (cards, panels, header, inputs) — always with a 1px `--green` border |
@@ -33,7 +33,6 @@ Next.js (App Router) + TypeScript (strict) + Tailwind CSS + GSAP/ScrollTrigger (
 Radius 16px cards, 999px buttons/pills; one soft shadow. Primary button: filled green, white text (check contrast). Secondary: white + green border. Never use primary green for small body text on white.
 
 Fonts (files in `brand/fonts/`, `display: swap`; one file `src/styles/fonts.ts` so the mapping is a one-line change):
-- **Milan Display** — main headings (both languages)
 - **Dubai Light** — sub-headings and Arabic body
 - **Acumin Variable Concept** — Latin body
 `TODO(confirm)`: this role mapping is an assumption. Missing font file → system fallback + entry in `ASSETS.md`.

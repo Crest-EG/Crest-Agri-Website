@@ -29,7 +29,6 @@ function getCertificationRows<T>(items: readonly T[], maxColumns = 5) {
   });
 }
 
-// TODO(confirm): verify validity and permitted use for the newly supplied marks.
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "certifications" });

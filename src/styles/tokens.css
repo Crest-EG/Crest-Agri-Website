@@ -5,7 +5,7 @@
   --orange: #f7941d;
   --bg: #faf9f5;
   --surface: #ffffff;
-  --text: #1c2a1c;
+  --text: #174A30;
   --text-muted: #5b6b5b;
   --font-site: var(--font-montserrat), Arial, sans-serif;
   --font-display: var(--font-site);
@@ -40,8 +40,4 @@
   --line: color-mix(in srgb, var(--green) 28%, transparent);
   --surface-soft: color-mix(in srgb, var(--bg) 82%, var(--green) 3%);
   --glass: color-mix(in srgb, var(--text) 72%, transparent);
-}
-
-html[lang="ar"] {
-  --font-site: var(--font-arabic);
 }
