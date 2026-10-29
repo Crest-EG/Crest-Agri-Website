@@ -10,6 +10,8 @@ img { max-width: 100%; }
 .site-header { position: fixed; inset-block-start: 0; inset-inline: 0; z-index: 40; padding-block-start: 14px; background: transparent; border: 0; pointer-events: none; }
 .site-header-home { position: fixed; background: transparent; border: 0; }
 .header-inner { position: relative; width: min(100% - 56px, var(--page-width)); min-height: 68px; margin-inline: auto; padding: 8px 14px; display: flex; align-items: center; justify-content: space-between; gap: clamp(12px, 2vw, 24px); pointer-events: auto; border: 1px solid color-mix(in srgb, var(--text) 12%, transparent); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--surface) 52%, transparent); box-shadow: var(--shadow-soft), inset 0 1px 0 color-mix(in srgb, var(--surface) 82%, transparent); -webkit-backdrop-filter: blur(22px) saturate(.3); backdrop-filter: blur(22px) saturate(.3); transition: width 420ms cubic-bezier(.2,.8,.2,1), min-height 320ms ease, padding 320ms ease, border-radius 320ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
+.site-header-home .header-inner { width: max-content; max-width: calc(100vw - 28px); min-height: 60px; padding-block: 4px; justify-content: center; transition-property: background-color, border-color, box-shadow; }
+.site-header-home .primary-navigation { flex: 0 1 auto; }
 .site-header[data-scrolled="true"] .header-inner { min-height: 60px; padding-block: 4px; }
 .site-header[data-tone="white"] .header-inner { border-color: color-mix(in srgb, var(--surface) 48%, transparent); background: color-mix(in srgb, var(--surface) 14%, transparent); box-shadow: 0 12px 32px color-mix(in srgb, var(--text) 22%, transparent), inset 0 1px 0 color-mix(in srgb, var(--surface) 48%, transparent), inset 0 -1px 0 color-mix(in srgb, var(--surface) 12%, transparent); }
 .brand-link { position: relative; display: inline-flex; width: 158px; height: 52px; flex: 0 0 auto; align-items: center; justify-content: center; overflow: hidden; }
@@ -167,11 +169,11 @@ img { max-width: 100%; }
 .editorial-image { position: absolute; overflow: hidden; margin: 0; padding: 8px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); box-shadow: var(--shadow-soft); }
 .editorial-image img { border-radius: calc(var(--radius-card) - 6px); object-fit: cover; transition: transform 500ms cubic-bezier(.2, .7, .2, 1); }
 .editorial-image:hover img { transform: scale(1.035); }
-.editorial-image-1 { inset-block-start: 8%; inset-inline-start: 6%; width: 20%; aspect-ratio: 1.55; transform: rotate(-4deg); }
-.editorial-image-2 { inset-block-start: 30%; inset-inline-start: 70%; width: 16%; aspect-ratio: 1.55; transform: rotate(4deg); }
-.editorial-image-3 { inset-block-start: 52%; inset-inline-start: 30%; width: 22%; aspect-ratio: 1.55; transform: rotate(1deg); }
-.editorial-image-4 { inset-block-start: 14%; inset-inline-start: 46%; width: 14%; aspect-ratio: 1.55; transform: rotate(3deg); }
-.editorial-image-5 { inset-block-start: 66%; inset-inline-start: 8%; width: 15%; aspect-ratio: 1.55; transform: rotate(-3deg); }
+.editorial-image-1 { inset-block-start: 8%; inset-inline-start: 6%; width: 22%; aspect-ratio: 1.55; transform: rotate(-4deg); }
+.editorial-image-2 { inset-block-start: 30%; inset-inline-start: 70%; width: 18%; aspect-ratio: 1.55; transform: rotate(4deg); }
+.editorial-image-3 { inset-block-start: 52%; inset-inline-start: 30%; width: 24%; aspect-ratio: 1.55; transform: rotate(1deg); }
+.editorial-image-4 { inset-block-start: 14%; inset-inline-start: 46%; width: 16%; aspect-ratio: 1.55; transform: rotate(3deg); }
+.editorial-image-5 { inset-block-start: 66%; inset-inline-start: 8%; width: 17%; aspect-ratio: 1.55; transform: rotate(-3deg); }
 
 /* Pinned seven-scene landing journey */
 .journey-track { --scene-scroll-vh: 200; position: relative; height: calc((var(--scene-count) * var(--scene-scroll-vh) + 100) * 1svh); }
@@ -350,11 +352,11 @@ img { max-width: 100%; }
   .journey-overlay { padding: 28px; }
   .editorial-break { padding-block-start: 132px; }
   .editorial-field { height: 560px; }
-  .editorial-image-1 { width: 24%; }
-  .editorial-image-2 { width: 18%; }
-  .editorial-image-3 { width: 25%; }
-  .editorial-image-4 { width: 16%; }
-  .editorial-image-5 { width: 17%; }
+  .editorial-image-1 { width: 26%; }
+  .editorial-image-2 { width: 20%; }
+  .editorial-image-3 { width: 27%; }
+  .editorial-image-4 { width: 18%; }
+  .editorial-image-5 { width: 19%; }
   .featured-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .contact-grid { grid-template-columns: 1fr; }
@@ -391,11 +393,11 @@ img { max-width: 100%; }
   .editorial-field { height: 660px; margin-block-start: 22px; }
   .editorial-image { padding: 5px; border-radius: 12px; }
   .editorial-image img { border-radius: 8px; }
-  .editorial-image-1 { inset-block-start: 1%; inset-inline-start: 1%; width: 50%; transform: rotate(-4deg); }
-  .editorial-image-2 { inset-block-start: 20%; inset-inline-start: 60%; width: 38%; transform: rotate(4deg); }
-  .editorial-image-3 { inset-block-start: 36%; inset-inline-start: 30%; width: 58%; transform: rotate(1deg); }
-  .editorial-image-4 { inset-block-start: 60%; inset-inline-start: 2%; width: 43%; transform: rotate(3deg); }
-  .editorial-image-5 { inset-block-start: 70%; inset-inline-start: 57%; width: 40%; transform: rotate(-3deg); }
+  .editorial-image-1 { inset-block-start: 1%; inset-inline-start: 1%; width: 54%; transform: rotate(-4deg); }
+  .editorial-image-2 { inset-block-start: 20%; inset-inline-start: 60%; width: 41%; transform: rotate(4deg); }
+  .editorial-image-3 { inset-block-start: 36%; inset-inline-start: 30%; width: 61%; transform: rotate(1deg); }
+  .editorial-image-4 { inset-block-start: 60%; inset-inline-start: 2%; width: 46%; transform: rotate(3deg); }
+  .editorial-image-5 { inset-block-start: 70%; inset-inline-start: 57%; width: 43%; transform: rotate(-3deg); }
   .journey-stage { min-height: 560px; }
   .journey-overlay { align-items: flex-end; padding: 16px; }
   .scene-content { width: 100%; padding: 0; border-radius: 0; }

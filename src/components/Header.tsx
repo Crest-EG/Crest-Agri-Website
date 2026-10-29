@@ -63,6 +63,7 @@ export function Header() {
   const headerTone = isHome ? tone : "default";
 
   useEffect(() => {
+    if (isHome) return;
     let frame = 0;
     const update = () => {
       frame = 0;
@@ -92,27 +93,30 @@ export function Header() {
       window.removeEventListener("resize", resize);
       if (frame) cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
     if (!isHome) return;
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const footer = document.querySelector<HTMLElement>(".site-footer");
-      const footerTop = footer?.getBoundingClientRect().top ?? Number.POSITIVE_INFINITY;
-      setTone(footerTop < HEADER_BAND ? "default" : "white");
+    const footer = document.querySelector<HTMLElement>(".site-footer");
+    if (!footer) return;
+
+    let observer: IntersectionObserver | undefined;
+    const observeFooterBand = () => {
+      observer?.disconnect();
+      observer = new IntersectionObserver(
+        ([entry]) => setTone(entry.isIntersecting ? "default" : "white"),
+        {
+          rootMargin: `0px 0px -${Math.max(0, window.innerHeight - HEADER_BAND)}px 0px`,
+          threshold: 0,
+        },
+      );
+      observer.observe(footer);
     };
-    const schedule = () => {
-      if (!frame) frame = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule);
+    observeFooterBand();
+    window.addEventListener("resize", observeFooterBand);
     return () => {
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
-      if (frame) cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("resize", observeFooterBand);
     };
   }, [isHome]);
 
@@ -120,12 +124,12 @@ export function Header() {
     <header
       className={`site-header${isHome ? " site-header-home" : ""}`}
       data-tone={headerTone}
-      data-scrolled={scrolled}
+      data-scrolled={isHome || scrolled}
     >
       <div
         ref={headerRef}
         className="header-inner"
-        style={scrolled && compactWidth ? { width: `${compactWidth}px` } : undefined}
+        style={!isHome && scrolled && compactWidth ? { width: `${compactWidth}px` } : undefined}
       >
         <Link href="/" className="brand-link" aria-label={t("navigation.home")} onClick={() => setOpen(false)}>
           <Logo alt={t("logoAlt")} tone={headerTone} className="header-logo" />
