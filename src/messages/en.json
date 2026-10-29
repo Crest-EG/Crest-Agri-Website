@@ -88,6 +88,11 @@
       "browse": "Browse products"
     },
     "skip": "Skip to products",
+    "editorial": {
+      "eyebrow": "A little breathing room",
+      "title": "Good things, grown with care.",
+      "description": "A few of the fresh products we bring from Egypt to the world."
+    },
     "scenes": {
       "care": {
         "eyebrow": "Grown with care",

@@ -27,7 +27,7 @@ All image placeholders are usable today. Replace them with files at the same pat
 | `public/images/products/pomegranate/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
 | `public/images/products/strawberry/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
 | `public/images/products/sweet-potato/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
-| `public/images/stitch-products/{citrus,grapes,green-beans,green-onion,pomegranate,strawberry}.jpg` | 1280×698 JPEG | Provisional Stitch product-card and detail photos |
+| `public/images/stitch-products/{citrus,grapes,green-beans,green-onion,pomegranate,strawberry}.jpg` | 1280×698 JPEG | Provisional product-card/detail photos; citrus, grapes, green beans, pomegranate and strawberry also appear in the landing-page editorial image panel |
 | `public/images/stitch-about/orchard.jpg` | 1280×714 JPEG | Provisional About page orchard photo |
 | `public/images/stitch-services/assurance.jpg` | 1280×698 JPEG | Provisional Services quality photo |
 | `public/images/stitch-services/shipping.jpg` | 1280×698 JPEG | Provisional Services shipping photo |

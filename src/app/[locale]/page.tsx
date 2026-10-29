@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
+import { EditorialGallery } from "@/components/EditorialGallery";
 import { MarketMap } from "@/components/MarketMap";
 import { ScrollJourney } from "@/components/ScrollJourney";
 import { CrestSylvaHero } from "@/components/sylva-hero/CrestSylvaHero";
@@ -32,6 +33,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <main id="home">
       <CrestSylvaHero srcDoc={srcDoc} title={t("documentTitle")} />
+      <EditorialGallery />
       <div id="crest-journey">
         <ScrollJourney marketMap={<MarketMap locale={activeLocale} />} />
       </div>
