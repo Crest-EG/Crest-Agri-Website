@@ -1,12 +1,16 @@
 :root {
   --green: #50b94e;
-  /* TODO(replace): Accessible dark green text token | Crest brand team | Approve a brand-compliant accessible dark green and replace this value if needed. */
   --green-ink: #2f7d2e;
-  --orange: #f7941d;
-  --bg: #faf9f5;
+  --orange: #f97316;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --text: #174A30;
-  --text-muted: #5b6b5b;
+  --surface-soft: #f0fdf4;
+  --line: #e2e8f0;
+  --text: #222222;
+  --text-muted: #64748b;
+  --footer-bg: #0a1810;
+  --quote-surface: #11251A;
+  --quote-field: #0a1810;
   --font-site: var(--font-montserrat), Arial, sans-serif;
   --font-display: var(--font-site);
   --font-body: var(--font-site);
@@ -36,8 +40,5 @@
   --radius-card: 16px;
   --radius-image: 24px;
   --radius-pill: 999px;
-  --shadow-soft: 0 12px 32px rgb(28 42 28 / 8%);
-  --line: color-mix(in srgb, var(--green) 28%, transparent);
-  --surface-soft: color-mix(in srgb, var(--bg) 82%, var(--green) 3%);
   --glass: color-mix(in srgb, var(--text) 72%, transparent);
 }

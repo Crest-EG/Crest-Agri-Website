@@ -4,10 +4,9 @@ import { useState, type FormEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { products } from "@/content/products";
 import { site } from "@/content/site";
-import { Link } from "@/i18n/navigation";
 import { ContactIcon } from "@/components/icons";
 
-type QuoteFormProps = { initialProduct?: string; variant?: "full" | "footer" };
+type QuoteFormProps = { initialProduct?: string };
 type SendChannel = "whatsapp" | "email";
 type SendError = "popup" | "tracking";
 
@@ -40,7 +39,7 @@ async function track(payload: LeadPayload | { event: "channel"; leadId: string; 
   }
 }
 
-export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormProps) {
+export function QuoteForm({ initialProduct = "" }: QuoteFormProps) {
   const locale = useLocale() as "ar" | "en";
   const t = useTranslations("quote");
   const [sending, setSending] = useState<SendChannel | null>(null);
@@ -63,10 +62,8 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
 
     const form = new FormData(event.currentTarget);
     const leadId = crypto.randomUUID();
-    const nameAndCompany = String(form.get("name") ?? "").trim();
-    const [footerName, footerCompany] = nameAndCompany.split(/\s+[—–-]\s+/, 2);
-    const name = variant === "footer" ? (footerName || nameAndCompany) : nameAndCompany;
-    const company = String(form.get("company") ?? (variant === "footer" ? footerCompany : "") ?? "").trim();
+    const name = String(form.get("name") ?? "").trim();
+    const company = String(form.get("company") ?? "").trim();
     const contact = String(form.get("email") ?? "").trim() + (String(form.get("phone") ?? "").trim() ? ` / ${String(form.get("phone")).trim()}` : "");
     const country = String(form.get("country") ?? "").trim();
     const productName = products.find((product) => product.slug === form.get("product"))?.name[locale] ?? "";
@@ -78,21 +75,13 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
       product: String(form.get("product") ?? ""), quantity, message,
       page: window.location.pathname, registrationCode: String(form.get("registrationCode") ?? ""),
     };
-    const conciseValues = [
-      [t("name"), name],
-      [t("company"), company],
-      [t("footerEmailPhone"), contact],
-      [t("country"), country],
-      [t("product"), productName],
-    ];
     const fullValues = [
       [t("requestType"), t(`requestTypes.${type}`)],
       [t("name"), name], [t("company"), company], [t("country"), country],
       [t("email"), form.get("email")], [t("phone"), form.get("phone")],
       [t("product"), productName], [t("quantity"), quantity], [t("message"), message],
     ];
-    const values = (variant === "footer" ? conciseValues : fullValues)
-      .map(([label, value]) => String(label) + ": " + String(value ?? ""));
+    const values = fullValues.map(([label, value]) => String(label) + ": " + String(value ?? ""));
     const body = values.join("\n");
     const subject = t("subject", { name });
     const destination = channel === "whatsapp"
@@ -111,11 +100,11 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
     }
   }
 
-  const fieldId = (name: string) => `${variant === "footer" ? "footer-quote" : "contact-quote"}-${name}`;
+  const fieldId = (name: string) => `contact-quote-${name}`;
 
   return (
-    <form id={variant === "footer" ? "quote" : undefined} className={`quote-form${variant === "footer" ? " quote-form-footer" : ""}`} onSubmit={handleSubmit} onChange={() => setSendError(null)}>
-      {variant !== "footer" && <div className="quote-field">
+    <form className="quote-form" onSubmit={handleSubmit} onChange={() => setSendError(null)}>
+      <div className="quote-field">
         <label htmlFor="quote-type">{t("requestType")}</label>
         <div className="quote-select">
           <select id="quote-type" name="requestType" defaultValue="quote">
@@ -124,33 +113,33 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
             <option value="contact">{t("requestTypes.contact")}</option>
           </select>
         </div>
-      </div>}
+      </div>
       <div className="quote-honeypot" aria-hidden="true">
-        <label htmlFor={`${variant}-quote-registration-code`}>{t("honeypotLabel")}</label>
-        <input id={`${variant}-quote-registration-code`} name="registrationCode" tabIndex={-1} autoComplete="off" />
+        <label htmlFor={fieldId("registration-code")}>{t("honeypotLabel")}</label>
+        <input id={fieldId("registration-code")} name="registrationCode" tabIndex={-1} autoComplete="off" />
       </div>
       <div className="quote-field">
-        <label htmlFor={fieldId("name")}>{variant === "footer" ? t("footerNameCompany") : t("name")}</label>
-        <input id={fieldId("name")} name="name" autoComplete="name" placeholder={variant === "footer" ? t("placeholder.nameCompany") : t("placeholder.name")} required />
+        <label htmlFor={fieldId("name")}>{t("name")}</label>
+        <input id={fieldId("name")} name="name" autoComplete="name" placeholder={t("placeholder.name")} required />
       </div>
-      {variant !== "footer" && <div className="quote-field">
+      <div className="quote-field">
         <label htmlFor="quote-company">{t("company")}</label>
         <input id="quote-company" name="company" autoComplete="organization" placeholder={t("placeholder.company")} />
-      </div>}
-      <div className="quote-field">
-        <label htmlFor={fieldId("email")}>{variant === "footer" ? t("footerEmailPhone") : t("email")}</label>
-        <input id={fieldId("email")} name="email" type={variant === "footer" ? "text" : "email"} autoComplete={variant === "footer" ? "email" : "email"} placeholder={t("placeholder.email")} required />
       </div>
       <div className="quote-field">
-        <label htmlFor={fieldId("country")}>{variant === "footer" ? t("footerDestination") : t("country")}</label>
-        <input id={fieldId("country")} name="country" autoComplete="country-name" placeholder={variant === "footer" ? t("placeholder.destination") : t("placeholder.country")} />
+        <label htmlFor={fieldId("email")}>{t("email")}</label>
+        <input id={fieldId("email")} name="email" type="email" autoComplete="email" placeholder={t("placeholder.email")} required />
       </div>
-      {variant !== "footer" && <div className="quote-field">
+      <div className="quote-field">
+        <label htmlFor={fieldId("country")}>{t("country")}</label>
+        <input id={fieldId("country")} name="country" autoComplete="country-name" placeholder={t("placeholder.country")} />
+      </div>
+      <div className="quote-field">
         <label htmlFor="quote-phone">{t("phone")}</label>
         <input id="quote-phone" name="phone" type="tel" autoComplete="tel" placeholder={t("placeholder.phone")} />
-      </div>}
+      </div>
       <div className="quote-field">
-        <label htmlFor={fieldId("product")}>{variant === "footer" ? t("product") : t("product")}</label>
+        <label htmlFor={fieldId("product")}>{t("product")}</label>
         <div className="quote-select">
           <select id={fieldId("product")} name="product" defaultValue={initialProduct}>
             <option value="">{t("chooseProduct")}</option>
@@ -158,14 +147,14 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
           </select>
         </div>
       </div>
-      {variant !== "footer" && <div className="quote-field">
+      <div className="quote-field">
         <label htmlFor="quote-quantity">{t("quantity")}</label>
         <input id="quote-quantity" name="quantity" placeholder={t("placeholder.quantity")} />
-      </div>}
-      {variant !== "footer" && <div className="quote-field quote-field-wide">
+      </div>
+      <div className="quote-field quote-field-wide">
         <label htmlFor="quote-message">{t("message")}</label>
         <textarea id="quote-message" name="message" placeholder={t("placeholder.message")} required />
-      </div>}
+      </div>
       <div className="quote-send-actions">
         <button className="button button-primary quote-send-whatsapp" type="submit" name="channel" value="whatsapp" disabled={sending !== null}>
           <ContactIcon kind="whatsapp" />{sending === "whatsapp" ? t("sending") : t("whatsappAction")}
