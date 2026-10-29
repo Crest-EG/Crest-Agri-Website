@@ -5,7 +5,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { acuminFont, dubaiFont } from "@/styles/fonts";
+import { acuminFont, montserratArabicFont } from "@/styles/fonts";
 import "@/shaders/threeui.css";
 import "../globals.css";
 
@@ -53,7 +53,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
     <html
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
-      className={`${acuminFont.variable} ${dubaiFont.variable}`}
+      className={`${acuminFont.variable} ${montserratArabicFont.variable}`}
       data-scroll-behavior="smooth"
     >
       <body>

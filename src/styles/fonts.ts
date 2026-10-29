@@ -8,10 +8,10 @@ export const acuminFont = localFont({
   fallback: ["Arial", "sans-serif"],
 });
 
-export const dubaiFont = localFont({
-  src: "../../brand/fonts/DUBAI-REGULAR.woff2",
+export const montserratArabicFont = localFont({
+  src: "../../brand/fonts/Montserrat-Arabic-Regular.woff2",
   display: "swap",
   weight: "400",
-  variable: "--font-dubai",
+  variable: "--font-montserrat-arabic",
   fallback: ["Arial", "sans-serif"],
 });

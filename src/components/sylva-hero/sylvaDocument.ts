@@ -40,7 +40,7 @@ const CANONICAL_PATH = path.join(
 );
 const SITE_FONT_PATHS = {
   en: path.join(process.cwd(), "brand/fonts/Acumin Variable Concept.woff2"),
-  ar: path.join(process.cwd(), "brand/fonts/DUBAI-REGULAR.woff2"),
+  ar: path.join(process.cwd(), "brand/fonts/Montserrat-Arabic-Regular.woff2"),
 } as const;
 let canonicalSource: string | undefined;
 const siteFontBase64: Partial<Record<"en" | "ar", string>> = {};
@@ -114,7 +114,7 @@ export function buildCrestSylvaDocument({ locale, copy }: SylvaDocumentOptions) 
   const firstHref = href(`/products/${first.slug}`);
   const secondHref = href(`/products/${second.slug}`);
   const quoteHref = href("/contact#quote");
-  const fontFamily = locale === "ar" ? "Dubai" : "Acumin";
+  const fontFamily = locale === "ar" ? "Montserrat Arabic" : "Acumin";
   const fontWeight = locale === "ar" ? "400" : "100 900";
 
   let html = getCanonicalSource();
