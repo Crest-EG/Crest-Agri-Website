@@ -4,16 +4,16 @@ import { useState, type FormEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { products } from "@/content/products";
 import { site } from "@/content/site";
-import { Link } from "@/i18n/navigation";
 import { ContactIcon } from "@/components/icons";
 
 type QuoteFormProps = { initialProduct?: string; variant?: "full" | "footer" };
 type SendChannel = "whatsapp" | "email";
-type SendError = "popup" | "tracking";
+type SendError = "popup";
 
 type LeadPayload = {
   event: "lead";
   leadId: string;
+  channel: SendChannel;
   locale: "ar" | "en";
   type: "quote" | "inquiry" | "contact";
   name: string;
@@ -27,23 +27,26 @@ type LeadPayload = {
   registrationCode: string;
 };
 
-async function track(payload: LeadPayload | { event: "channel"; leadId: string; channel: SendChannel }) {
-  const response = await fetch("/api/lead", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-    keepalive: true,
-  });
-  const result: unknown = await response.json();
-  if (!response.ok || typeof result !== "object" || result === null || !("accepted" in result) || result.accepted !== true) {
-    throw new Error("Lead tracking was not accepted.");
+async function track(payload: LeadPayload) {
+  try {
+    const response = await fetch("/api/lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      keepalive: true,
+    });
+    const result: unknown = await response.json();
+    if (!response.ok || typeof result !== "object" || result === null || !("accepted" in result) || result.accepted !== true) {
+      console.error("Quote request could not be recorded.");
+    }
+  } catch {
+    console.error("Quote request could not be recorded.");
   }
 }
 
 export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormProps) {
   const locale = useLocale() as "ar" | "en";
   const t = useTranslations("quote");
-  const [sending, setSending] = useState<SendChannel | null>(null);
   const [sendError, setSendError] = useState<SendError | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -52,13 +55,6 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
       ? event.nativeEvent.submitter
       : null;
     const channel: SendChannel = submitter?.value === "email" ? "email" : "whatsapp";
-    const destinationWindow = window.open("about:blank", "_blank");
-    if (!destinationWindow) {
-      setSendError("popup");
-      return;
-    }
-    destinationWindow.opener = null;
-    setSending(channel);
     setSendError(null);
 
     const form = new FormData(event.currentTarget);
@@ -74,7 +70,7 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
     const message = String(form.get("message") ?? "").trim();
     const type = String(form.get("requestType") ?? "quote") as "quote" | "inquiry" | "contact";
     const leadPayload: LeadPayload = {
-      event: "lead", leadId, locale, type, name, company, country, contact,
+      event: "lead", leadId, channel, locale, type, name, company, country, contact,
       product: String(form.get("product") ?? ""), quantity, message,
       page: window.location.pathname, registrationCode: String(form.get("registrationCode") ?? ""),
     };
@@ -99,16 +95,13 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
       ? "https://wa.me/" + site.whatsapp + "?text=" + encodeURIComponent(subject + "\n" + body)
       : "mailto:" + site.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
 
-    try {
-      await track(leadPayload);
-      await track({ event: "channel", leadId, channel });
-      destinationWindow.location.href = destination;
-    } catch {
-      destinationWindow.close();
-      setSendError("tracking");
-    } finally {
-      setSending(null);
+    const destinationWindow = window.open(destination, "_blank");
+    if (destinationWindow) {
+      destinationWindow.opener = null;
+    } else {
+      setSendError("popup");
     }
+    void track(leadPayload);
   }
 
   const fieldId = (name: string) => `${variant === "footer" ? "footer-quote" : "contact-quote"}-${name}`;
@@ -167,14 +160,14 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
         <textarea id="quote-message" name="message" placeholder={t("placeholder.message")} required />
       </div>}
       <div className="quote-send-actions">
-        <button className="button button-primary quote-send-whatsapp" type="submit" name="channel" value="whatsapp" disabled={sending !== null}>
-          <ContactIcon kind="whatsapp" />{sending === "whatsapp" ? t("sending") : t("whatsappAction")}
+        <button className="button button-primary quote-send-whatsapp" type="submit" name="channel" value="whatsapp">
+          <ContactIcon kind="whatsapp" />{t("whatsappAction")}
         </button>
-        <button className="button button-secondary quote-send-email" type="submit" name="channel" value="email" disabled={sending !== null}>
-          <ContactIcon kind="mail" />{sending === "email" ? t("sending") : t("emailAction")}
+        <button className="button button-secondary quote-send-email" type="submit" name="channel" value="email">
+          <ContactIcon kind="mail" />{t("emailAction")}
         </button>
       </div>
-      {sendError && <p className="quote-send-error" role="alert">{t(sendError === "popup" ? "popupError" : "sendError")}</p>}
+      {sendError && <p className="quote-send-error" role="alert">{t("popupError")}</p>}
     </form>
   );
 }

@@ -324,8 +324,6 @@
     "invalidEmail": "Enter a valid email address.",
     "whatsappAction": "Send via WhatsApp",
     "emailAction": "Send via Email",
-    "sending": "Saving request...",
-    "sendError": "We couldn't save your request. Please try again.",
     "popupError": "Allow pop-ups in your browser, then try again.",
     "placeholder": {
       "name": "Your name",

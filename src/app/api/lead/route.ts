@@ -5,6 +5,7 @@ const requiredText = (max: number) => z.string().trim().min(1).max(max);
 const base = z.object({
   event: z.literal("lead"),
   leadId: z.string().uuid(),
+  channel: z.enum(["whatsapp", "email"]),
   locale: z.enum(["en", "ar"]),
   type: z.enum(["quote", "inquiry", "contact"]),
   name: requiredText(120),
@@ -17,8 +18,7 @@ const base = z.object({
   page: text(300),
   registrationCode: text(200),
 });
-const channel = z.object({ event: z.literal("channel"), leadId: z.string().uuid(), channel: z.enum(["whatsapp", "email"]) });
-const payloadSchema = z.discriminatedUnion("event", [base, channel]);
+const payloadSchema = base;
 const hits = new Map<string, { count: number; resetAt: number }>();
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_REQUESTS = 12;
@@ -50,7 +50,9 @@ export async function POST(request: Request) {
     console.warn("Lead endpoint rejected an invalid payload.");
     return json({ accepted: false }, 400);
   }
-  if (result.data.event === "lead" && result.data.registrationCode) return json({ accepted: true }, 202);
+  if (result.data.event === "lead" && result.data.registrationCode) {
+    return json({ accepted: false, error: "request_rejected" }, 400);
+  }
 
   const webhookUrl = process.env.LEADS_WEBHOOK_URL;
   const secret = process.env.LEADS_SECRET;
