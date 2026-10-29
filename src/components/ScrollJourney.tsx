@@ -70,7 +70,11 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
   }, []);
 
   useEffect(() => {
-    if (reducedMotion) return;
+    if (
+      reducedMotion ||
+      window.matchMedia("(max-width: 767px)").matches ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) return;
     const canvas = canvasRef.current;
     const stage = stageRef.current;
     const track = trackRef.current;
@@ -321,20 +325,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       onUpdate: () => setProgress(progressState.value),
     });
 
-    const jumpToProducts = (event: MouseEvent) => {
-      event.preventDefault();
-      const trigger = ScrollTrigger.getById("crest-journey");
-      const start = trigger?.start ?? window.scrollY + track.getBoundingClientRect().top;
-      const end = trigger?.end ?? start + track.offsetHeight - window.innerHeight;
-      const sceneProgress = 2 / (frameConfig.scenes - 1);
-      window.history.replaceState(null, "", `${window.location.pathname}#products`);
-      window.scrollTo({ top: start + (end - start) * sceneProgress, behavior: "smooth" });
-    };
-    const productJumpLinks = document.querySelectorAll<HTMLAnchorElement>('a[href="#products"]');
-    productJumpLinks.forEach((link) => link.addEventListener("click", jumpToProducts));
-
     return () => {
-      productJumpLinks.forEach((link) => link.removeEventListener("click", jumpToProducts));
       disposed = true;
       resizeObserver.disconnect();
       if (drawRequest) window.cancelAnimationFrame(drawRequest);
@@ -346,15 +337,42 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
     };
   }, [liteMode, reducedMotion]);
 
+  useEffect(() => {
+    const jumpToProducts = (event: MouseEvent) => {
+      event.preventDefault();
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const useStaticScenes = window.matchMedia("(max-width: 767px)").matches || reduceMotion;
+      window.history.replaceState(null, "", `${window.location.pathname}#products`);
+
+      if (useStaticScenes) {
+        const productsScene = document.getElementById("products");
+        if (productsScene) {
+          window.scrollTo({
+            top: window.scrollY + productsScene.getBoundingClientRect().top,
+            behavior: reduceMotion ? "auto" : "smooth",
+          });
+        }
+        return;
+      }
+
+      const trigger = ScrollTrigger.getById("crest-journey");
+      const track = trackRef.current;
+      if (!track) return;
+      const start = trigger?.start ?? window.scrollY + track.getBoundingClientRect().top;
+      const end = trigger?.end ?? start + track.offsetHeight - window.innerHeight;
+      const sceneProgress = 2 / (frameConfig.scenes - 1);
+      window.scrollTo({ top: start + (end - start) * sceneProgress, behavior: "smooth" });
+    };
+    const productJumpLinks = document.querySelectorAll<HTMLAnchorElement>('a[href="#products"]');
+    productJumpLinks.forEach((link) => link.addEventListener("click", jumpToProducts));
+    return () => productJumpLinks.forEach((link) => link.removeEventListener("click", jumpToProducts));
+  }, []);
+
   const sceneContents = [
     <div className="scene-content hero-content" key="hero">
       <p className="scene-eyebrow">{t("hero.eyebrow")}</p>
       <h1>{t("hero.title")}</h1>
       <p className="scene-description">{t("hero.description")}</p>
-      <div className="scene-actions">
-        <a className="button button-primary" href="#quote">{t("hero.quote")}</a>
-        <a className="button button-secondary" href="#products">{t("hero.browse")}</a>
-      </div>
     </div>,
     <div className="scene-content split-content" key="care">
       <p className="scene-eyebrow">{t("scenes.care.eyebrow")}</p>
@@ -413,27 +431,25 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
 
   return (
     <>
-      {reducedMotion ? <div className="journey-static">{staticScenes}</div> : (
-        <div className={`journey-track${liteMode ? " is-lite" : ""}`} ref={trackRef} style={{ "--scene-count": frameConfig.scenes } as CSSProperties}>
-          <div className="journey-stage" ref={stageRef}>
-            <canvas ref={canvasRef} className="journey-canvas" aria-hidden="true" />
-            <div className="journey-shade" aria-hidden="true" />
-            {!ready && <div className="journey-loader" role="status"><span className="loader-mark" aria-hidden="true" /><span>{t("loading")}</span></div>}
-            {sceneContents.map((content, index) => (
-              <div
-                key={`overlay-${index}`}
-                id={index === 2 ? "products" : undefined}
-                ref={(element) => { overlayRefs.current[index] = element; }}
-                className={`journey-overlay journey-overlay-${index + 1}${activeScene === index ? " is-active" : ""}`}
-                aria-hidden={activeScene !== index}
-                inert={activeScene !== index}
-              >
-                {content}
-              </div>
-            ))}
-          </div>
+      <div className="journey-static">{staticScenes}</div>
+      <div className={`journey-track${liteMode ? " is-lite" : ""}`} ref={trackRef} style={{ "--scene-count": frameConfig.scenes } as CSSProperties}>
+        <div className="journey-stage" ref={stageRef}>
+          <canvas ref={canvasRef} className="journey-canvas" aria-hidden="true" />
+          <div className="journey-shade" aria-hidden="true" />
+          {!ready && <div className="journey-loader" role="status"><span className="loader-mark" aria-hidden="true" /><span>{t("loading")}</span></div>}
+          {sceneContents.map((content, index) => (
+            <div
+              key={`overlay-${index}`}
+              ref={(element) => { overlayRefs.current[index] = element; }}
+              className={`journey-overlay journey-overlay-${index + 1}${activeScene === index ? " is-active" : ""}`}
+              aria-hidden={activeScene !== index}
+              inert={activeScene !== index}
+            >
+              {content}
+            </div>
+          ))}
         </div>
-      )}
+      </div>
     </>
   );
 }

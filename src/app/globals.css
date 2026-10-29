@@ -316,7 +316,7 @@ img { max-width: 100%; }
 .shipping-card > div { max-width: 660px; }
 .shipping-card-visual { position: relative; width: 100%; aspect-ratio: 1.7; overflow: hidden; border-radius: var(--radius-card); }
 .services-link { padding-block: var(--space-4) var(--space-8); }
-.journey-static { display: block; }
+.journey-static { display: none; }
 .journey-static-scene { position: relative; display: grid; min-height: 82svh; align-items: center; overflow: hidden; padding: var(--page-gutter); background-color: var(--text); background-image: var(--static-frame); background-position: center; background-size: cover; }
 .static-scene-shade { z-index: 0; }
 .journey-static-scene .journey-overlay { position: relative; inset: auto; opacity: 1; pointer-events: auto; }
@@ -412,6 +412,10 @@ img { max-width: 100%; }
   .journey-static-scene { min-height: 72svh; padding: 16px; }
   .journey-static-scene .journey-overlay { align-items: flex-end; }
   .journey-loader { inset-block-end: 68px; }
+}
+@media (max-width: 767px), (prefers-reduced-motion: reduce) {
+  .journey-static { display: block; }
+  .journey-track { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .map-routes path, .map-pin { animation: none; }
