@@ -138,9 +138,8 @@ export function buildCrestSylvaDocument({ locale, copy }: SylvaDocumentOptions) 
   );
   html = html.replaceAll("'Lexend'", `'${fontFamily}'`);
 
-  // Remove the authored Sylva dock and the play control. Crest's own header
-  // and quote CTA replace them; the product cards, stats, scroll cue and the
-  // native Explore liquid-metal control remain.
+  // Remove the authored Sylva dock, play control and decorative card knobs.
+  // Crest's own header, quote CTA and clickable product cards replace them.
   html = removeBetween(html, '<div class="dock-wrap">', '<div class="stage" id="stage">');
   html = removeBetween(html, '<span class="play-wrap"', '<dl class="stat stat--a');
 
@@ -164,14 +163,34 @@ export function buildCrestSylvaDocument({ locale, copy }: SylvaDocumentOptions) 
 
   html = replaceOnce(
     html,
-    'aria-label="Read about Sylva"',
-    `aria-label="${escapeHtml(`${copy.productCta}: ${first.name[locale]}`)}" data-crest-href="${firstHref}"`,
+    '<article class="card card--about mask" style="--d:760ms; --pd:10; --pr:2.2">',
+    `<a class="card card--about mask" style="--d:760ms; --pd:10; --pr:2.2" href="${firstHref}" data-crest-href="${firstHref}" aria-label="${escapeHtml(`${copy.productCta}: ${first.name[locale]}`)}">`,
   );
   html = replaceOnce(
     html,
-    'aria-label="Open field note: After the Rain"',
-    `aria-label="${escapeHtml(`${copy.productCta}: ${second.name[locale]}`)}" data-crest-href="${secondHref}"`,
+    "</article>\n\n    <!-- the About knob rides *outside* the card:",
+    "</a>\n\n    <!-- the About knob rides *outside* the card:",
   );
+  html = replaceOnce(
+    html,
+    `    <!-- the About knob rides *outside* the card: the card has to stay a plain
+         painted box under #scene, so anything that must sit in front of the
+         moss lives here instead, sharing the card's parallax origin -->
+`,
+    "",
+  );
+  html = removeBetween(html, '<span class="knob-float" style="--pd:10; --pr:2.2">', "</span>\n\n    <h1 class=\"headline\"");
+  html = replaceOnce(
+    html,
+    '<article class="card card--stove mask" style="--d:880ms; --pd:22; --pr:2.4">',
+    `<a class="card card--stove mask" style="--d:880ms; --pd:22; --pr:2.4" href="${secondHref}" data-crest-href="${secondHref}" aria-label="${escapeHtml(`${copy.productCta}: ${second.name[locale]}`)}">`,
+  );
+  html = removeBetween(
+    html,
+    '<button class="knob" aria-label="Open field note: After the Rain">',
+    "</button>\n    </article>",
+  );
+  html = replaceOnce(html, "</button>\n    </article>", "</a>");
 
   html = replaceOnce(html, '<i style="--d:260ms">Step into</i>', `<i style="--d:260ms">${escapeHtml(copy.headlineLine1)}</i>`);
   html = replaceOnce(html, '<i style="--d:360ms">the living world</i>', `<i style="--d:360ms">${escapeHtml(copy.headlineLine2)}</i>`);
@@ -240,10 +259,19 @@ export function buildCrestSylvaDocument({ locale, copy }: SylvaDocumentOptions) 
   }
   html[dir="rtl"] .liquid-button--explore .ico { transform: scaleX(-1); }
   @media (max-width: 900px) {
-    /* Keep the product cards readable on phones instead of letting the
-       procedural branch paint across their plates and knobs. */
+    /* Keep product cards above the procedural branch on phones. */
     #scene { z-index: 2; }
     .card { z-index: 4; }
+    .card--about,
+    .card--stove {
+      left: calc(80 * var(--u));
+      width: calc(600 * var(--u));
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .knob-float,
+    .card .knob { display: none; }
     html[dir="rtl"] .pill-clip { left: calc(160 * var(--u)); }
   }
   html[dir="rtl"] .card .label,
