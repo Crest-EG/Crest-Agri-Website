@@ -7,10 +7,9 @@
   --surface: #ffffff;
   --text: #1c2a1c;
   --text-muted: #5b6b5b;
-  --font-site: var(--font-acumin), Arial, sans-serif;
+  --font-site: var(--font-montserrat), Arial, sans-serif;
   --font-display: var(--font-site);
   --font-body: var(--font-site);
-  --font-arabic: var(--font-montserrat-arabic), Arial, sans-serif;
 
   --space-1: 4px;
   --space-2: 8px;

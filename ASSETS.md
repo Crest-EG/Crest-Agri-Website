@@ -14,8 +14,7 @@ All image placeholders are usable today. Replace them with files at the same pat
 | `src/app/icon.png` | 512×512 PNG | Browser tab icon |
 | `src/app/apple-icon.png` | 180×180 PNG | Apple touch icon |
 | `src/app/opengraph-image.png` | 1200×630 PNG | Social preview; keep logo within the image safe area |
-| `brand/fonts/Acumin Variable Concept.woff2` | Variable WOFF2 font | English site font via `next/font/local` |
-| `brand/fonts/Montserrat-Arabic-Regular.woff2` | Regular WOFF2 font | Arabic site font via `next/font/local` |
+| `brand/fonts/Montserrat-Arabic-Regular.woff2` | Regular WOFF2 font | Arabic and English site font via `next/font/local` |
 | `public/frames/scene-{1..7}/{001..120}.webp` | 1280×720 WebP, quality 75; 120 frames per scene, 840 total | Scroll journey canvas backgrounds |
 | `public/images/products/broccoli/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
 | `public/images/products/cabbage/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
@@ -60,14 +59,14 @@ instead in the two floating product cards:
 Both are already tracked in the replaceable product-photography rows above.
 
 The hero's visible copy lives in `landing.sylva` in both message files. The
-sandboxed frame embeds Acumin for English and Montserrat Arabic for Arabic
-because its opaque origin blocks local font requests.
+sandboxed frame embeds Montserrat for both languages because its opaque origin
+blocks local font requests.
 
 
 ## Font
 
-The site uses `Acumin Variable Concept.woff2` for English and
-`Montserrat-Arabic-Regular.woff2` for Arabic, with an Arial system fallback.
+The site uses `Montserrat-Arabic-Regular.woff2` for both languages, with an
+Arial system fallback.
 `src/styles/fonts.ts` centralizes the local font mapping.
 
 ## Content replacement

@@ -43,10 +43,10 @@ export function CrestSylvaHero({ srcDoc, title }: CrestSylvaHeroProps) {
       variant="living-green"
       srcDoc={srcDoc}
       title={title}
-      headingFont={locale === "ar" ? "crest-montserrat-arabic" : "crest-acumin"}
-      bodyFont={locale === "ar" ? "crest-montserrat-arabic" : "crest-acumin"}
-      headingWeight={locale === "ar" ? "400" : "300"}
-      bodyWeight={locale === "ar" ? "400" : "300"}
+      headingFont="crest-montserrat"
+      bodyFont="crest-montserrat"
+      headingWeight="400"
+      bodyWeight="400"
       primaryColor="#ffffff"
       headingSize={63}
       bodySize={16.5}

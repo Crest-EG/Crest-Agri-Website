@@ -46,16 +46,10 @@ const LEXEND: PageFont = {
   stack: "'Lexend', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
 };
 
-const CREST_ACUMIN: PageFont = {
-  value: "crest-acumin",
-  label: "Acumin",
-  stack: "'Acumin', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-};
-
-const CREST_MONTSERRAT_ARABIC: PageFont = {
-  value: "crest-montserrat-arabic",
-  label: "Montserrat Arabic",
-  stack: "'Montserrat Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+const CREST_MONTSERRAT: PageFont = {
+  value: "crest-montserrat",
+  label: "Montserrat",
+  stack: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
 };
 
 const OUTFIT: PageFont = {
@@ -402,8 +396,8 @@ h1:not(.jp), h2:not(.jp), h3:not(.jp), .display:not(.jp) {
    type and the two tints the page derives from it, and leaves the moss to
    the variants. Sizes ride the page's own --u design unit. */
 export const SYLVA_TYPOGRAPHY: PageTypographyRecipe = {
-  headingFonts: [LEXEND, CREST_MONTSERRAT_ARABIC, CREST_ACUMIN, INSTRUMENT_SERIF, NEWSREADER, GEIST],
-  bodyFonts: [LEXEND, CREST_ACUMIN, CREST_MONTSERRAT_ARABIC, GEIST, NEWSREADER, INSTRUMENT_SERIF],
+  headingFonts: [CREST_MONTSERRAT, INSTRUMENT_SERIF, NEWSREADER, GEIST],
+  bodyFonts: [CREST_MONTSERRAT, GEIST, NEWSREADER, INSTRUMENT_SERIF],
   headingWeights: ["200", "300", "400", "500", "600"],
   headingWeight: "300",
   bodyWeights: ["200", "300", "400", "500"],

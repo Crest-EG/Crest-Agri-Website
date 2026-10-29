@@ -38,12 +38,9 @@ const CANONICAL_PATH = path.join(
   process.cwd(),
   "src/components/sylva-hero/source/inner-green-3d.html",
 );
-const SITE_FONT_PATHS = {
-  en: path.join(process.cwd(), "brand/fonts/Acumin Variable Concept.woff2"),
-  ar: path.join(process.cwd(), "brand/fonts/Montserrat-Arabic-Regular.woff2"),
-} as const;
+const SITE_FONT_PATH = path.join(process.cwd(), "brand/fonts/Montserrat-Arabic-Regular.woff2");
 let canonicalSource: string | undefined;
-const siteFontBase64: Partial<Record<"en" | "ar", string>> = {};
+let siteFontBase64: string | undefined;
 
 function getCanonicalSource() {
   canonicalSource ??= readFileSync(CANONICAL_PATH, "utf8");
@@ -54,9 +51,9 @@ function getCanonicalSource() {
  * The frame is sandboxed without allow-same-origin, so its origin is opaque
  * and cross-origin font requests are blocked. Inline the locale's site font.
  */
-function getSiteFontDataUri(locale: "en" | "ar") {
-  siteFontBase64[locale] ??= readFileSync(SITE_FONT_PATHS[locale]).toString("base64");
-  return `data:font/woff2;base64,${siteFontBase64[locale]}`;
+function getSiteFontDataUri() {
+  siteFontBase64 ??= readFileSync(SITE_FONT_PATH).toString("base64");
+  return `data:font/woff2;base64,${siteFontBase64}`;
 }
 
 function escapeHtml(value: string) {
@@ -114,8 +111,7 @@ export function buildCrestSylvaDocument({ locale, copy }: SylvaDocumentOptions) 
   const firstHref = href(`/products/${first.slug}`);
   const secondHref = href(`/products/${second.slug}`);
   const quoteHref = href("/contact#quote");
-  const fontFamily = locale === "ar" ? "Montserrat Arabic" : "Acumin";
-  const fontWeight = locale === "ar" ? "400" : "100 900";
+  const fontFamily = "Montserrat";
 
   let html = getCanonicalSource();
 
@@ -133,12 +129,12 @@ export function buildCrestSylvaDocument({ locale, copy }: SylvaDocumentOptions) 
   html = replaceOnce(
     html,
     "src:url('inner-green-assets/lexend-latin.woff2') format('woff2');",
-    `src:url('${getSiteFontDataUri(locale)}') format('woff2');`,
+    `src:url('${getSiteFontDataUri()}') format('woff2');`,
   );
   html = replaceOnce(
     html,
     "font-weight:100 900; font-style:normal; font-display:swap;",
-    `font-weight:${fontWeight}; font-style:normal; font-display:swap;`,
+    "font-weight:400; font-style:normal; font-display:swap;",
   );
   html = html.replaceAll("'Lexend'", `'${fontFamily}'`);
 
