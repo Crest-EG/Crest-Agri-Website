@@ -3,10 +3,10 @@
   /* TODO(replace): Accessible dark green text token | Crest brand team | Approve a brand-compliant accessible dark green and replace this value if needed. */
   --green-ink: #2f7d2e;
   --orange: #f7941d;
-  --bg: #faf9f5;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --text: #174A30;
-  --text-muted: #5b6b5b;
+  --text: #1c2a1c;
+  --text-muted: #64748b;
   --font-site: var(--font-montserrat), Arial, sans-serif;
   --font-display: var(--font-site);
   --font-body: var(--font-site);
