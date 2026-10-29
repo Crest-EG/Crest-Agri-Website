@@ -449,7 +449,10 @@ img { max-width: 100%; }
   .journey-static-scene .journey-overlay { align-items: flex-end; }
   .journey-loader { inset-block-end: 68px; }
 }
-@media (max-width: 767px), (prefers-reduced-motion: reduce) {
+@media (max-width: 767px) {
+  .journey-stage { position: sticky; inset-block-start: 0; height: 100svh; min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
   .journey-static { display: block; }
   .journey-track { display: none; }
 }

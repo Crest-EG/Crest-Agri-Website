@@ -72,7 +72,6 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
   useEffect(() => {
     if (
       reducedMotion ||
-      window.matchMedia("(max-width: 767px)").matches ||
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) return;
     const canvas = canvasRef.current;
@@ -312,7 +311,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
         start: "top top",
         end: "bottom bottom",
         scrub: 0.5,
-        pin: stage,
+        pin: window.matchMedia("(max-width: 767px)").matches ? false : stage,
         id: "crest-journey",
         anticipatePin: 1,
         invalidateOnRefresh: true,
@@ -341,10 +340,9 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
     const jumpToProducts = (event: MouseEvent) => {
       event.preventDefault();
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const useStaticScenes = window.matchMedia("(max-width: 767px)").matches || reduceMotion;
       window.history.replaceState(null, "", `${window.location.pathname}#products`);
 
-      if (useStaticScenes) {
+      if (reduceMotion) {
         const productsScene = document.getElementById("products");
         if (productsScene) {
           window.scrollTo({
