@@ -23,24 +23,14 @@ Next.js (App Router) + TypeScript (strict) + Tailwind CSS + GSAP/ScrollTrigger (
 ## 3. Design tokens (`src/styles/tokens.css`, mapped in Tailwind)
 | Token | Value | Use |
 |---|---|---|
-| `--green` | `#50b94e` | Brand green for borders, icons and highlights |
-| `--green-ink` | `#2f7d2e` | Green for text/links and filled buttons with white text |
-| `--orange` | `#f97316` | Accent only (~10%): small highlights and pins; use on dark surfaces or decoratively |
-| `--bg` | `#ffffff` | Main page background |
-| `--surface` | `#ffffff` | Secondary surfaces (cards, panels, header, inputs) |
-| `--surface-soft` | `#f0fdf4` | Pale green surfaces |
-| `--line` | `#e2e8f0` | Borders and separators |
-| `--text` | `#222222` | Primary body text |
-| `--text-muted` | `#64748b` | Secondary text |
-| `--footer-bg` | `#0a1810` | Dark green footer background |
-| `--quote-surface` | `#11251A` | Dark green surface for the quote panel |
-| `--quote-field` | `#0a1810` | Dark green input surface inside the quote panel |
-| `--shadow-soft` | `0 4px 20px -2px rgb(15 23 42 / 5%)` | Soft shadow |
-
-Primary buttons use `--green-ink` with white text; `--green` is used for borders,
-icons and decorative highlights. Radius 16px cards, 999px buttons/pills.
-Secondary buttons use white with a `--green` border. Never use primary green for
-small body text on white.
+| `--green` | `#50b94e` | Primary green: fills, borders, icons, buttons (~30%) |
+| `--green-ink` | `#2f7d2e` | Darker green for text/links on white (contrast) |
+| `--orange` | `#f7941d` | Accent only (~10%): small highlights, pins. Never large areas |
+| `--bg` | `#faf9f5` | Page background (off-white) |
+| `--surface` | `#ffffff` | Secondary surfaces (cards, panels, header, inputs) — always with a 1px `--green` border |
+| `--text` | `#1c2a1c` | Body text |
+| `--text-muted` | `#5b6b5b` | Secondary text |
+Radius 16px cards, 999px buttons/pills; one soft shadow. Primary button: filled green, white text (check contrast). Secondary: white + green border. Never use primary green for small body text on white.
 
 Fonts (files in `brand/fonts/`, `display: swap`; one file `src/styles/fonts.ts` so the mapping is a one-line change):
 - **Dubai Light** — sub-headings and Arabic body
