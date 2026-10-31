@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 
 import { EditorialGallery } from "@/components/EditorialGallery";
+import { LandingCallToAction } from "@/components/LandingCallToAction";
 import { MarketMap } from "@/components/MarketMap";
 import { ScrollJourney } from "@/components/ScrollJourney";
 import { CrestSylvaHero } from "@/components/sylva-hero/CrestSylvaHero";
@@ -10,6 +11,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const activeLocale = locale === "ar" ? "ar" : "en";
   const t = await getTranslations({ locale: activeLocale, namespace: "landing.sylva" });
+  const cta = await getTranslations({ locale: activeLocale, namespace: "landing.finalCta" });
   const srcDoc = buildCrestSylvaDocument({
     locale: activeLocale,
     copy: {
@@ -37,6 +39,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <div id="crest-journey">
         <ScrollJourney marketMap={<MarketMap locale={activeLocale} />} />
       </div>
+      <LandingCallToAction
+        eyebrow={cta("eyebrow")}
+        title={cta("title")}
+        description={cta("description")}
+        buttonLabel={cta("button")}
+      />
     </main>
   );
 }

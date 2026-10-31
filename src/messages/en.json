@@ -93,6 +93,12 @@
       "title": "Good things, grown with care.",
       "description": "A few of the fresh products we bring from Egypt to the world."
     },
+    "finalCta": {
+      "eyebrow": "Your next shipment starts here",
+      "title": "Let’s grow your business together.",
+      "description": "Tell us what your market needs. Our team is ready to talk.",
+      "button": "Request a quote"
+    },
     "scenes": {
       "care": {
         "eyebrow": "Grown with care",
