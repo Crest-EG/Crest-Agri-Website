@@ -31,6 +31,7 @@ All image placeholders are usable today. Replace them with files at the same pat
 | `public/images/stitch-about/orchard.jpg` | 1280×714 JPEG | Provisional About page orchard photo |
 | `public/images/stitch-services/assurance.jpg` | 1280×698 JPEG | Provisional Services quality photo |
 | `public/images/stitch-services/shipping.jpg` | 1280×698 JPEG | Provisional Services shipping photo |
+| `public/images/footer/forest-landscape.webp` | 1472×828 WebP | User-provided forest photo, cropped to landscape for the footer wave; replace with an equally wide or higher-resolution crop for the sharpest desktop display |
 
 ## Landing hero scene
 

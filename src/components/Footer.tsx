@@ -34,11 +34,31 @@ export function Footer() {
 
   return (
     <footer className="site-footer" id="site-footer">
+      <svg className="footer-landscape" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <clipPath id="footer-forest-clip">
+            <path d="M0 94 C170 42 310 126 470 94 C620 60 680 40 830 90 C1010 154 1125 132 1240 85 C1320 52 1380 70 1440 96 V260 H0 Z" />
+          </clipPath>
+          <linearGradient id="footer-forest-fade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="56%" stopColor="var(--surface-soft)" stopOpacity="0" />
+            <stop offset="100%" stopColor="var(--surface-soft)" stopOpacity="0.9" />
+          </linearGradient>
+        </defs>
+        <image
+          href="/images/footer/forest-landscape.webp"
+          width="1440"
+          height="260"
+          preserveAspectRatio="xMidYMid slice"
+          clipPath="url(#footer-forest-clip)"
+        />
+        <rect width="1440" height="260" fill="url(#footer-forest-fade)" clipPath="url(#footer-forest-clip)" />
+        <path d="M0 0 H1440 V96 C1380 70 1320 52 1240 85 C1125 132 1010 154 830 90 C680 40 620 60 470 94 C310 126 170 42 0 94 Z" fill="var(--bg)" />
+      </svg>
       <div className="footer-inner">
         <div className="footer-top">
           <section className="footer-brand" aria-label={t("companyName")}>
             <Link href="/" aria-label={t("navigation.home")} className="footer-brand-link">
-              <Logo alt={t("logoAlt")} tone="white" className="footer-logo" />
+              <Logo alt={t("logoAlt")} className="footer-logo" />
             </Link>
             <p>{t("footer.description")}</p>
             <address className="footer-contact">
