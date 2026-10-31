@@ -184,13 +184,12 @@ img { max-width: 100%; }
 .landing-cta-description { max-width: 48ch; margin: var(--space-4) auto 0; color: var(--text-muted); font-size: clamp(16px, 1.7vw, 19px); line-height: 1.7; }
 .landing-cta-button { margin-block-start: clamp(24px, 3vw, 36px); gap: 12px; }
 .landing-cta-gallery { position: absolute; z-index: 0; inset: 0; pointer-events: none; }
-.landing-cta-image { position: absolute; overflow: hidden; width: clamp(150px, 17vw, 238px); aspect-ratio: 1.45; margin: 0; padding: 7px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); box-shadow: var(--shadow-soft); }
-.landing-cta-image img { border-radius: calc(var(--radius-card) - 6px); object-fit: cover; animation: landing-cta-float 7s ease-in-out infinite alternate; }
-.landing-cta-image-1 { inset-block-start: 16%; inset-inline-start: 8%; transform: rotate(-7deg); }
-.landing-cta-image-2 { inset-block-start: 22%; inset-inline-end: 8%; transform: rotate(6deg); }
-.landing-cta-image-3 { inset-block-end: 13%; inset-inline-start: 20%; transform: rotate(4deg); }
-.landing-cta-image-4 { inset-block-end: 16%; inset-inline-end: 17%; transform: rotate(-5deg); }
-@keyframes landing-cta-float { from { translate: 0 -7px; } to { translate: 0 7px; } }
+.landing-cta-image { position: absolute; width: clamp(150px, 17vw, 238px); aspect-ratio: 1.45; margin: 0; }
+.landing-cta-image img { border-radius: var(--radius-sm); object-fit: cover; }
+.landing-cta-image-1 { inset-block-start: 16%; inset-inline-start: 8%; }
+.landing-cta-image-2 { inset-block-start: 22%; inset-inline-end: 8%; }
+.landing-cta-image-3 { inset-block-end: 13%; inset-inline-start: 20%; }
+.landing-cta-image-4 { inset-block-end: 16%; inset-inline-end: 17%; }
 
 /* Pinned seven-scene landing journey */
 .journey-track { --scene-scroll-vh: 200; position: relative; height: calc((var(--scene-count) * var(--scene-scroll-vh) + 100) * 1svh); }
@@ -576,10 +575,9 @@ img { max-width: 100%; }
   .detail-page { padding-block-start: 92px; }
   .landing-cta { min-height: max(100svh, 720px); padding: 150px 24px; }
   .landing-cta-content h2 { font-size: clamp(36px, 10vw, 48px); }
-  .landing-cta-image { width: clamp(112px, 31vw, 148px); padding: 5px; border-radius: 12px; }
-  .landing-cta-image img { border-radius: 8px; }
-  .landing-cta-image-1 { inset-block-start: 12%; inset-inline-start: -4%; }
-  .landing-cta-image-2 { inset-block-start: 17%; inset-inline-end: -4%; }
+  .landing-cta-image { width: clamp(112px, 31vw, 148px); }
+  .landing-cta-image-1 { inset-block-start: 12%; inset-inline-start: 0; }
+  .landing-cta-image-2 { inset-block-start: 17%; inset-inline-end: 0; }
   .landing-cta-image-3 { inset-block-end: 8%; inset-inline-start: 3%; }
   .landing-cta-image-4 { inset-block-end: 11%; inset-inline-end: 2%; }
   .footer-directory { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; }

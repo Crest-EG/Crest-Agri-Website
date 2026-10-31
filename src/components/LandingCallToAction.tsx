@@ -1,5 +1,12 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
 
 type LandingCallToActionProps = {
   eyebrow: string;
@@ -21,8 +28,31 @@ export function LandingCallToAction({
   description,
   buttonLabel,
 }: LandingCallToActionProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const context = gsap.context(() => {
+      gsap.utils.toArray<HTMLImageElement>(".landing-cta-image img").forEach((image) => {
+        gsap.to(image, {
+          scale: 1.07,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.6,
+          },
+        });
+      });
+    }, sectionRef);
+
+    return () => context.revert();
+  }, []);
+
   return (
-    <section className="landing-cta" aria-labelledby="landing-cta-title">
+    <section className="landing-cta" aria-labelledby="landing-cta-title" ref={sectionRef}>
       <div className="landing-cta-gallery" aria-hidden="true">
         {productPhotos.map(({ src, className }) => (
           <figure className={`landing-cta-image ${className}`} key={src}>
