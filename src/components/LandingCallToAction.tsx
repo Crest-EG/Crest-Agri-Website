@@ -36,7 +36,7 @@ export function LandingCallToAction({
     const context = gsap.context(() => {
       gsap.utils.toArray<HTMLImageElement>(".landing-cta-image img").forEach((image) => {
         gsap.to(image, {
-          scale: 1.07,
+          scale: 1.5,
           ease: "none",
           scrollTrigger: {
             trigger: sectionRef.current,
