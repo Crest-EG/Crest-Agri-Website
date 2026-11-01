@@ -10,11 +10,11 @@ import { products } from "@/content/products";
 if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
 
 const GALLERY_IMAGES = [
-  { slug: "grapes", src: "/images/stitch-products/grapes.jpg", depth: 60 },
-  { slug: "pomegranate", src: "/images/stitch-products/pomegranate.jpg", depth: -80 },
-  { slug: "strawberry", src: "/images/stitch-products/strawberry.jpg", depth: 40 },
-  { slug: "green-beans", src: "/images/stitch-products/green-beans.jpg", depth: -50 },
-  { slug: "citrus", src: "/images/stitch-products/citrus.jpg", depth: 90 },
+  { slug: "grapes", depth: 60 },
+  { slug: "pomegranate", depth: -80 },
+  { slug: "strawberry", depth: 40 },
+  { slug: "green-beans", depth: -50 },
+  { slug: "citrus", depth: 90 },
 ] as const;
 
 export function EditorialGallery() {
@@ -58,9 +58,10 @@ export function EditorialGallery() {
         <p className="editorial-description">{t("description")}</p>
       </div>
       <div className="editorial-field" ref={fieldRef}>
-        {GALLERY_IMAGES.map(({ slug, src, depth }, index) => {
+        {GALLERY_IMAGES.map(({ slug, depth }, index) => {
           const product = products.find((item) => item.slug === slug);
-          if (!product) return null;
+          const src = product?.images[0];
+          if (!product || !src) return null;
 
           return (
             <figure

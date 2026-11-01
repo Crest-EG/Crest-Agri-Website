@@ -5,6 +5,10 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { site } from "@/content/site";
+import { JsonLd } from "@/components/JsonLd";
+import { createSiteStructuredData } from "@/lib/structured-data";
+import type { SiteLocale } from "@/lib/seo";
 import { montserratFont } from "@/styles/fonts";
 import "@/shaders/threeui.css";
 import "../globals.css";
@@ -24,11 +28,14 @@ export async function generateMetadata({ params }: Pick<LayoutProps, "params">):
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
   const messages = (await import(`@/messages/${locale}.json`)).default;
+  const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+  const bingVerification = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
   return {
     metadataBase: new URL("https://crestagricultural.com"),
-    title: { default: messages.common.metadata.title, template: `%s | ${messages.common.companyName}` },
+    title: { default: messages.common.metadata.title, template: `%s | ${messages.common.metadata.shortName}` },
     description: messages.common.metadata.description,
     alternates: {
+      canonical: `/${locale}`,
       languages: {
         en: "/en",
         ar: "/ar",
@@ -38,9 +45,26 @@ export async function generateMetadata({ params }: Pick<LayoutProps, "params">):
     openGraph: {
       type: "website",
       siteName: messages.common.companyName,
+      title: messages.common.metadata.title,
+      description: messages.common.metadata.description,
       locale: locale === "ar" ? "ar_EG" : "en_US",
       alternateLocale: locale === "ar" ? ["en_US"] : ["ar_EG"],
+      images: [{ url: new URL("/opengraph-image.png", site.website).toString(), alt: messages.common.metadata.title }],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: messages.common.metadata.title,
+      description: messages.common.metadata.description,
+      images: [{ url: new URL("/opengraph-image.png", site.website).toString(), alt: messages.common.metadata.title }],
+    },
+    ...(googleVerification || bingVerification
+      ? {
+          verification: {
+            ...(googleVerification ? { google: googleVerification } : {}),
+            ...(bingVerification ? { other: { "msvalidate.01": bingVerification } } : {}),
+          },
+        }
+      : {}),
   };
 }
 
@@ -58,6 +82,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
     >
       <body>
         <NextIntlClientProvider messages={messages}>
+          <JsonLd data={createSiteStructuredData(locale as SiteLocale)} />
           <div id="top" />
           <Header />
           {children}

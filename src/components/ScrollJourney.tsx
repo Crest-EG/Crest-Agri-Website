@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -384,7 +385,21 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
           data-white-background={SCENE_FRAME_IDS[activeScene] === WHITE_BACKGROUND_SCENE_ID}
           ref={stageRef}
         >
-          <canvas ref={canvasRef} className="journey-canvas" aria-hidden="true" />
+          <Image
+            src={journeyFramePath(0, 1)}
+            alt=""
+            aria-hidden="true"
+            fill
+            sizes="100vw"
+            preload
+            className="journey-poster"
+          />
+          <canvas
+            ref={canvasRef}
+            className="journey-canvas"
+            aria-hidden="true"
+            style={{ opacity: ready ? 1 : 0 }}
+          />
           {!ready && <div className="journey-loader" role="status"><span className="loader-mark" aria-hidden="true" /><span>{t("loading")}</span></div>}
           {sceneContents.map((content, index) => (
             <div

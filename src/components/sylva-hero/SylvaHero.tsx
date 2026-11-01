@@ -13,6 +13,7 @@ export type SylvaHeroProps = PageTypographyProps & {
   variant?: "living-green";
   /** Localized Crest edition of the registered inner-green-3d document. */
   srcDoc: string;
+  poster?: string;
   title: string;
   className?: string;
   style?: CSSProperties;
@@ -27,6 +28,7 @@ const SYLVA_SOURCE_URL = "about:blank";
 export function SylvaHero({
   variant = "living-green",
   srcDoc,
+  poster,
   title,
   className,
   style,
@@ -55,6 +57,7 @@ export function SylvaHero({
     <LandingPageFrame
       key={variant}
       srcDoc={srcDoc}
+      poster={poster}
       sourceUrl={SYLVA_SOURCE_URL}
       title={title}
       customization={customization}

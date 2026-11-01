@@ -42,7 +42,7 @@ export const ProductCard = React.memo(function ProductCard({
       <div className="product-card-media">
         <Placeholder label={t("imageAlt", { product: label })} className="product-card-image">
           {product.images[0]
-            ? <Image src={product.images[0]} alt="" aria-hidden="true" fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" className="product-card-photo" />
+            ? <Image src={product.images[0]} alt={t("imageAlt", { product: label })} fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" className="product-card-photo" />
             : <span className="product-glyph" aria-hidden="true">{label.slice(0, 1)}</span>}
         </Placeholder>
       </div>

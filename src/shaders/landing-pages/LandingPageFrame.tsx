@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
+import Image from "next/image";
 
 import {
   applyPageCustomization,
@@ -16,6 +17,8 @@ export type LandingPageFrameProps = {
   /** Extra authored atmosphere layers (scrims, veils, vignettes) to retain. */
   backgroundVisualSelector?: string;
   className?: string;
+  /** Static first-frame image shown until the iframe's visual is ready. */
+  poster?: string;
   /** Loaded directly when the packaged document is byte-exact. */
   sourceUrl: string;
   /** Set only for derived variants; the frame renders this instead of fetching sourceUrl. */
@@ -120,6 +123,7 @@ export function LandingPageFrame({
   backgroundVisualSelector,
   className = "",
   customization,
+  poster,
   sourceUrl,
   srcDoc,
   style,
@@ -143,6 +147,17 @@ export function LandingPageFrame({
       data-state={ready ? "ready" : "loading"}
       style={{ position: "relative", overflow: "hidden", background: "#080808", pointerEvents: "auto", ...style }}
     >
+      {poster && (
+        <Image
+          src={poster}
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          preload
+          className="landing-page-poster"
+        />
+      )}
       <iframe
         ref={frameRef}
         title={title}
@@ -168,8 +183,8 @@ export function LandingPageFrame({
           // Keep that page visually sealed until onLoad has installed the
           // scene-only CSS, otherwise its authored navigation/copy can flash for
           // one paint before the canvas is isolated.
-          opacity: backgroundCanvasSelector && !ready ? 0 : 1,
-          pointerEvents: backgroundCanvasSelector && !ready ? "none" : "auto",
+          opacity: !ready && (backgroundCanvasSelector || poster) ? 0 : 1,
+          pointerEvents: !ready && (backgroundCanvasSelector || poster) ? "none" : "auto",
         }}
       />
     </div>

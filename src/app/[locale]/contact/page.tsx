@@ -5,6 +5,9 @@ import { Link } from "@/i18n/navigation";
 import { DirectionalArrow } from "@/components/DirectionalArrow";
 import { site } from "@/content/site";
 import { products } from "@/content/products";
+import { JsonLd } from "@/components/JsonLd";
+import { createBreadcrumbStructuredData } from "@/lib/structured-data";
+import { createPageMetadata, type SiteLocale } from "@/lib/seo";
 
 type ContactProps = {
   params: Promise<{ locale: string }>;
@@ -13,8 +16,9 @@ type ContactProps = {
 
 export async function generateMetadata({ params }: Pick<ContactProps, "params">): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "contact" });
-  return { title: t("title"), description: t("intro") };
+  const language: SiteLocale = locale === "ar" ? "ar" : "en";
+  const t = await getTranslations({ locale: language, namespace: "seo.contact" });
+  return createPageMetadata({ locale: language, title: t("title"), description: t("description"), path: "/contact" });
 }
 
 export default async function ContactPage({ params, searchParams }: ContactProps) {
@@ -22,7 +26,7 @@ export default async function ContactPage({ params, searchParams }: ContactProps
   const query = await searchParams;
   const requested = Array.isArray(query.product) ? query.product[0] : query.product;
   const initialProduct = products.some((product) => product.slug === requested) ? requested ?? "" : "";
-  const language = locale === "ar" ? "ar" : "en";
+  const language: SiteLocale = locale === "ar" ? "ar" : "en";
   const t = await getTranslations({ locale, namespace: "contact" });
   const q = await getTranslations({ locale, namespace: "quote" });
   const faq = await getTranslations({ locale, namespace: "faq" });
@@ -31,6 +35,17 @@ export default async function ContactPage({ params, searchParams }: ContactProps
 
   return (
     <main className="page-shell contact-page">
+      <JsonLd data={createBreadcrumbStructuredData(language, [
+        { name: site.name[language], path: "/" },
+        { name: t("title"), path: "/contact" },
+      ])} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        name: t("title"),
+        url: `${site.website}/${language}/contact`,
+        inLanguage: language,
+      }} />
       <header className="page-intro">
         <p className="eyebrow">{t("eyebrow")}</p>
         <h1>{t("title")}</h1>

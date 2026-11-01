@@ -53,6 +53,8 @@
       "notFoundTitle": "Page not found",
       "notFoundBody": "The page you are looking for may have moved or is no longer available.",
       "backHome": "Back to home",
+      "browseProducts": "Explore our agricultural products",
+      "contactTeam": "Contact our export team",
       "errorTitle": "Something went wrong",
       "errorBody": "Please try again. If the issue continues, contact our team.",
       "tryAgain": "Try again"
@@ -61,6 +63,74 @@
       "title": "Crest for Agricultural Development",
       "shortName": "Crest",
       "description": "Fresh and frozen agricultural products from Egypt."
+    }
+  },
+  "seo": {
+    "products": {
+      "title": "Egyptian fruits and vegetables export",
+      "description": "Explore Egyptian fruits and vegetables for fresh and frozen export. Review products, seasonal availability and packing options with Crest."
+    },
+    "product": {
+      "title": "{product} export from Egypt",
+      "description": "Ask about {product} from Egypt for export programmes, seasonal availability, product specifications and packing options.",
+      "strawberryTitle": "Egyptian strawberry exporter",
+      "strawberryDescription": "Egyptian strawberry exporter for fresh retail programmes. Ask Crest about seasonal availability, specifications and packing.",
+      "frozenStrawberryTitle": "Frozen strawberries from Egypt",
+      "frozenStrawberryDescription": "Frozen strawberries from Egypt for ingredient and food-service enquiries. Ask Crest about preparation, packing and current supply.",
+      "titles": {
+        "grapes": "Egyptian grape exporter",
+        "pomegranate": "Egyptian pomegranate exporter",
+        "peach": "Egyptian peach exporter",
+        "green-onion": "Egyptian green onion exporter",
+        "cabbage": "Egyptian cabbage exporter",
+        "broccoli": "Egyptian broccoli exporter",
+        "citrus": "Egyptian oranges and citrus export",
+        "strawberry": "Egyptian strawberry exporter",
+        "green-beans": "Egyptian green bean exporter",
+        "sweet-potato": "Egyptian sweet potato exporter",
+        "lettuce": "Egyptian lettuce exporter",
+        "garlic": "Egyptian garlic export",
+        "dried-tomato": "Egyptian dried tomato export",
+        "frozen-peas": "Egyptian frozen peas export",
+        "mango": "Frozen mango from Egypt",
+        "banana": "Egyptian banana exporter",
+        "frozen-pomegranate": "Frozen pomegranate from Egypt",
+        "frozen-guava": "Frozen guava from Egypt",
+        "frozen-green-beans": "Frozen green beans from Egypt",
+        "frozen-artichokes": "Frozen artichokes from Egypt",
+        "dried-jalapeno-peppers": "Dried jalapeno peppers from Egypt",
+        "dried-dates": "Egyptian dried dates export",
+        "onion": "Egyptian onion exporter",
+        "cucumber": "Egyptian cucumber exporter",
+        "carrots": "Egyptian carrot exporter",
+        "frozen-strawberry": "Frozen strawberries from Egypt",
+        "dried-garlic": "Dried garlic from Egypt",
+        "frozen-broccoli": "Frozen broccoli from Egypt"
+      }
+    },
+    "about": {
+      "title": "About Crest Agricultural Development",
+      "description": "Learn about Crest for Agricultural Development, an Egyptian agricultural exporter based in Alexandria."
+    },
+    "certifications": {
+      "title": "GlobalG.A.P. certified exporter",
+      "description": "Explore Crest's certification and accreditation information, including GlobalG.A.P. and other listed standards."
+    },
+    "services": {
+      "title": "Private label and export services",
+      "description": "Discuss private label fruits and vegetables from Egypt, export packing and shipping of fresh produce with Crest."
+    },
+    "contact": {
+      "title": "Contact Crest in Alexandria",
+      "description": "Contact Crest in Alexandria, Egypt, to discuss agricultural products, export packing, shipping and quote requests."
+    },
+    "privacy": {
+      "title": "Privacy policy",
+      "description": "Read how Crest for Agricultural Development handles information shared through this website and inquiry forms."
+    },
+    "terms": {
+      "title": "Terms and conditions",
+      "description": "Review the terms for using the Crest for Agricultural Development website."
     }
   },
   "landing": {
@@ -81,6 +151,16 @@
       "ghost": "CREST"
     },
     "skip": "Skip to products",
+    "seo": {
+      "title": "Egyptian produce exporter",
+      "description": "Crest for Agricultural Development exports Egyptian fresh and frozen fruits and vegetables from Alexandria to international buyers.",
+      "heading": "Egyptian fresh and frozen fruits and vegetables exporter",
+      "body": "Crest for Agricultural Development connects Egyptian agricultural products with international buyers, with fresh and frozen options discussed by product and destination.",
+      "productsHeading": "Egyptian fruits and vegetables for export",
+      "productLink": "Explore {product} export from Egypt",
+      "servicesLink": "Private label packing and export shipping services",
+      "contactLink": "Contact Crest's Alexandria export team"
+    },
     "editorial": {
       "eyebrow": "A little breathing room",
       "title": "Good things, grown with care.",
@@ -138,13 +218,14 @@
   },
   "products": {
     "eyebrow": "Fresh and frozen",
-    "title": "Agricultural products",
-    "intro": "Explore fresh and frozen Egyptian produce. Seasonal windows are indicative and can shift with variety, growing area and conditions; our team confirms availability for each enquiry.",
+    "title": "Egyptian fruits and vegetables export",
+    "intro": "Explore Egyptian fruits and vegetables for fresh and frozen export. Seasonal windows are indicative and can shift with variety, growing area and conditions; our team confirms availability for each enquiry.",
     "filters": {
       "label": "Filter products",
       "all": "All products",
       "fresh": "Fresh",
-      "frozen": "Frozen"
+      "frozen": "Frozen",
+      "dried": "Dried"
     },
     "fruit": "Fruit",
     "vegetable": "Vegetable",
@@ -167,7 +248,9 @@
     "related": "Related products",
     "request": "Request a quote for this product",
     "back": "All products",
-    "imageAlt": "Illustrative {product} image",
+    "imageAlt": "Product photo: {product}",
+    "servicesLink": "Explore private label packing and export shipping",
+    "servicesLinkBody": "Discuss private-label options and shipment planning with Crest's export team.",
     "seasonWindowTitle": "Harvest window",
     "monthNames": [
       "Jan",
@@ -200,7 +283,8 @@
   },
   "forms": {
     "fresh": "Fresh",
-    "frozen": "Frozen"
+    "frozen": "Frozen",
+    "dried": "Dried"
   },
   "about": {
     "title": "About us",
@@ -224,7 +308,7 @@
   },
   "certifications": {
     "title": "Certifications & accreditations",
-    "intro": "A commitment to exceptional quality",
+    "intro": "GlobalG.A.P. certified Egyptian exporter, with certification and accreditation details for buyer review.",
     "qualityTitle": "Quality",
     "quality": "Quality certifications play an important role in agriculture. They help demonstrate that products meet defined standards and support product safety. They can show commitment to recognized practices, strengthen trust, and support traceability and accountability across the supply chain. Certifications can also help address international market requirements, encourage continuous improvement in farming practices, and give consumers clearer information about product quality and production methods. Crest for Agricultural Development has therefore obtained certifications and accreditations that support product quality and meet international standards, in line with the global direction toward healthy and safe food.",
     "globalgap": "GLOBALG.A.P.",
@@ -282,12 +366,14 @@
   "services": {
     "eyebrow": "Export coordination",
     "title": "Agricultural Export & Partnerships",
-    "intro": "We help buyers discuss product sourcing, private-label packaging and shipment planning for agricultural products from Egypt.",
+    "intro": "We help buyers discuss private label fruits and vegetables from Egypt, export packing and shipping of fresh produce, product sourcing and shipment planning.",
     "provenance": "Sourcing and export coordination",
     "oversight": "Clear coordination from product selection to dispatch.",
     "oversightBody": "We align product specifications, packing discussions and shipping requirements with the buyer’s destination and intended use.",
     "quality": "Quality assurance",
     "qualityBody": "Discuss grading, handling, packing and document requirements with our export team before confirming a programme.",
+    "assuranceImageAlt": "Agricultural produce quality assurance for export",
+    "shippingImageAlt": "Fresh produce prepared for export shipping",
     "sourcing": "Confirm product and specification",
     "artwork": "Review and approve artwork and pack specification",
     "packing": "Confirm packing format and handling requirements",

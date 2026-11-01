@@ -3,6 +3,8 @@ import fullLogo from "../../brand/logo/logo.svg";
 import fullLogoWhite from "../../brand/logo/logo-white.svg";
 import markLogo from "../../brand/logo/mark.svg";
 
+export const LOGO_SRC = fullLogo.src;
+
 type LogoProps = {
   variant?: "full" | "mark";
   /** "white" renders the wordmark lettering in white for dark surfaces. */

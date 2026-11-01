@@ -4,6 +4,7 @@ import { useCallback } from "react";
 import { useLocale } from "next-intl";
 
 import { useRouter } from "@/i18n/navigation";
+import { journeyFramePath } from "@/config/frames";
 import { SylvaHero } from "@/components/sylva-hero/SylvaHero";
 
 type CrestSylvaHeroProps = {
@@ -42,6 +43,7 @@ export function CrestSylvaHero({ srcDoc, title }: CrestSylvaHeroProps) {
     <SylvaHero
       variant="living-green"
       srcDoc={srcDoc}
+      poster={journeyFramePath(0, 1)}
       title={title}
       headingFont="crest-montserrat"
       bodyFont="crest-montserrat"

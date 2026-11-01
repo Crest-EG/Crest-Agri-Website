@@ -15,14 +15,24 @@ Every entry below follows the same three fields used beside its code: **what thi
 - Egyptian green bean season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update the green bean entry.
 - Egyptian sweet potato season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update the sweet potato entry.
 - Egyptian lettuce season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update the lettuce entry.
+- Fresh garlic product copy | Crest export team | Confirm varieties, seasonal window and export specifications, then update the garlic entry.
+- Dried tomato product copy | Crest export team | Confirm cut, moisture, packaging and destination specifications, then update the dried-tomato entry.
+- Frozen peas product copy | Crest export team | Confirm variety, processing specifications and supply schedule, then update the frozen-peas entry.
+- Frozen mango product copy | Crest export team | Confirm variety, cut and processing specifications, then update the mango entry.
+- Fresh banana product copy | Crest export team | Confirm origin, seasonal availability and export specifications, then update the banana entry.
+- Frozen pomegranate product copy | Crest export team | Confirm preparation, processing and packaging specifications, then update the frozen-pomegranate entry.
+- Frozen guava product copy | Crest export team | Confirm preparation, processing and packaging specifications, then update the frozen-guava entry.
+- Frozen green bean product copy | Crest export team | Confirm cut, grade and processing specifications, then update the frozen-green-beans entry.
+- Frozen artichoke product copy | Crest export team | Confirm cuts, grades and processing specifications, then update the frozen-artichokes entry.
+- Dried jalapeno pepper product copy | Crest export team | Confirm variety, preparation and packaging specifications, then update the dried-jalapeno-peppers entry.
+- Dried date product copy | Crest export team | Confirm variety, grade, storage and packaging specifications, then update the dried-dates entry.
+- Fresh onion product copy | Crest export team | Confirm types, seasonal window and export specifications, then update the onion entry.
+- Fresh cucumber product copy | Crest export team | Confirm varieties, seasonal window and export specifications, then update the cucumber entry.
+- Fresh carrot product copy | Crest export team | Confirm varieties, seasonal window and export specifications, then update the carrots entry.
+- Frozen strawberry product copy | Crest export team | Confirm grade, preparation and processing specifications, then update the frozen-strawberry entry.
+- Dried garlic product copy | Crest export team | Confirm cut, moisture and packaging specifications, then update the dried-garlic entry.
+- Frozen broccoli product copy | Crest export team | Confirm cuts, grade and processing specifications, then update the frozen-broccoli entry.
 - Shared farming, harvest, packing and shipping descriptions | Crest export team | Update the `common` bilingual fields to match the actual sourcing, handling and export process; keep packaging and availability conditional by inquiry.
-- Citrus product photograph | Crest creative team | Replace `public/images/stitch-products/citrus.jpg` with approved product photography at the same path.
-- Grape product photograph | Crest creative team | Replace `public/images/stitch-products/grapes.jpg` with approved product photography at the same path.
-- Green bean product photograph | Crest creative team | Replace `public/images/stitch-products/green-beans.jpg` with approved product photography at the same path.
-- Green onion product photograph | Crest creative team | Replace `public/images/stitch-products/green-onion.jpg` with approved product photography at the same path.
-- Pomegranate product photograph | Crest creative team | Replace `public/images/stitch-products/pomegranate.jpg` with approved product photography at the same path.
-- Strawberry product photograph | Crest creative team | Replace `public/images/stitch-products/strawberry.jpg` with approved product photography at the same path.
-- Broccoli, cabbage, peach, sweet potato and lettuce product photographs | Crest creative team | Add approved images under `public/images/stitch-products/` and add their paths to `stitchProductImages`.
 
 ## `src/content/countries.ts`
 
@@ -60,6 +70,7 @@ Every entry below follows the same three fields used beside its code: **what thi
 - Contact page wording | Crest office administrator | Review the `contact` namespace in both files and replace any office or response wording that needs adjustment.
 - FAQ answers on product availability, private label, pricing and shipping | Crest export team | Confirm operating practices, then update the `faq.items` entries in both files.
 - Export service and private-label copy | Crest export team | Confirm service scope and approval flow, then update the `services` namespace in both files.
+- Website terms | Legal counsel | Review and approve the generic terms shown in `/terms` before launch. // TODO(legal)
 
 ## `src/app/[locale]/certifications/page.tsx`
 

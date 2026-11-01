@@ -4,13 +4,28 @@ import { EditorialGallery } from "@/components/EditorialGallery";
 import { LandingCallToAction } from "@/components/LandingCallToAction";
 import { MarketMap } from "@/components/MarketMap";
 import { ScrollJourney } from "@/components/ScrollJourney";
+import { Link } from "@/i18n/navigation";
 import { CrestSylvaHero } from "@/components/sylva-hero/CrestSylvaHero";
 import { buildCrestSylvaDocument } from "@/components/sylva-hero/sylvaDocument";
+import { products } from "@/content/products";
+import { createPageMetadata, type SiteLocale } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const language: SiteLocale = locale === "ar" ? "ar" : "en";
+  const t = await getTranslations({ locale: language, namespace: "landing.seo" });
+  return createPageMetadata({
+    locale: language,
+    title: t("title"),
+    description: t("description"),
+  });
+}
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const activeLocale = locale === "ar" ? "ar" : "en";
+  const activeLocale: SiteLocale = locale === "ar" ? "ar" : "en";
   const t = await getTranslations({ locale: activeLocale, namespace: "landing.sylva" });
+  const seo = await getTranslations({ locale: activeLocale, namespace: "landing.seo" });
   const cta = await getTranslations({ locale: activeLocale, namespace: "landing.finalCta" });
   const srcDoc = buildCrestSylvaDocument({
     locale: activeLocale,
@@ -35,6 +50,24 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <main id="home">
       <CrestSylvaHero srcDoc={srcDoc} title={t("documentTitle")} />
+      <section className="landing-seo-content page-shell" aria-labelledby="landing-seo-title">
+        <h1 id="landing-seo-title">{seo("heading")}</h1>
+        <p>{seo("body")}</p>
+        <h2>{seo("productsHeading")}</h2>
+        <ul className="landing-seo-products">
+          {products.filter((product) => product.featured).map((product) => (
+            <li key={product.slug}>
+              <Link href={`/products/${product.slug}`}>
+                {seo("productLink", { product: product.name[activeLocale] })}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <nav className="landing-seo-links" aria-label={seo("productsHeading")}>
+          <Link href="/services">{seo("servicesLink")}</Link>
+          <Link href="/contact">{seo("contactLink")}</Link>
+        </nav>
+      </section>
       <EditorialGallery />
       <div id="crest-journey">
         <ScrollJourney marketMap={<MarketMap locale={activeLocale} />} />

@@ -11,6 +11,10 @@ export default function LocaleNotFound() {
       <h1>{t("errors.notFoundTitle")}</h1>
       <p>{t("errors.notFoundBody")}</p>
       <Link className="button button-primary" href="/">{t("errors.backHome")}</Link>
+      <div className="status-page-links">
+        <Link className="text-link" href="/products">{t("errors.browseProducts")}</Link>
+        <Link className="text-link" href="/contact">{t("errors.contactTeam")}</Link>
+      </div>
     </main>
   );
 }

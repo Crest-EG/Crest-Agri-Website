@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { JsonLd } from "@/components/JsonLd";
+import { site } from "@/content/site";
+import { createBreadcrumbStructuredData } from "@/lib/structured-data";
+import { createPageMetadata, type SiteLocale } from "@/lib/seo";
 
 type CopyItem = { title: string; body: string };
 
@@ -31,16 +35,23 @@ function getCertificationRows<T>(items: readonly T[], maxColumns = 5) {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "certifications" });
-  return { title: t("title"), description: t("intro") };
+  const language: SiteLocale = locale === "ar" ? "ar" : "en";
+  const t = await getTranslations({ locale: language, namespace: "seo.certifications" });
+  return createPageMetadata({ locale: language, title: t("title"), description: t("description"), path: "/certifications" });
 }
 
-export default async function CertificationsPage() {
+export default async function CertificationsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const language: SiteLocale = locale === "ar" ? "ar" : "en";
   const t = await getTranslations("certifications");
   const benefits = t.raw("benefits") as CopyItem[];
   const certificationRows = getCertificationRows(certifications);
   return (
     <main className="page-shell certification-page">
+      <JsonLd data={createBreadcrumbStructuredData(language, [
+        { name: site.name[language], path: "/" },
+        { name: t("title"), path: "/certifications" },
+      ])} />
       <header className="page-intro">
         <p className="eyebrow">{t("title")}</p>
         <h1>{t("intro")}</h1>

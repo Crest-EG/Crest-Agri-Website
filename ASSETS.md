@@ -1,6 +1,6 @@
 # Replaceable assets
 
-All image placeholders are usable today. Replace them with files at the same paths so code does not need changes.
+Product imagery supplied for the fresh, frozen and dried ranges is installed under stable slug-based paths. The normalized files below are the images used by product pages, cards, and social metadata.
 
 | Path / pattern | Required size and format | Used for |
 |---|---|---|
@@ -16,18 +16,34 @@ All image placeholders are usable today. Replace them with files at the same pat
 | `src/app/opengraph-image.png` | 1200×630 PNG | Social preview; keep logo within the image safe area |
 | `brand/fonts/Montserrat-Arabic-Regular.woff2` | Regular WOFF2 font | Arabic and English site font via `next/font/local` |
 | `public/frames/scene-{1..5}/{001..150}.webp` | 1280×720 WebP; 150 frames per scene, 750 total | Scroll journey canvas backgrounds in landing order; scene 1 uses the supplied `Crest agri.mp4` video |
-| `public/images/products/broccoli/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
-| `public/images/products/cabbage/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
-| `public/images/products/citrus/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
-| `public/images/products/grapes/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
-| `public/images/products/green-beans/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
-| `public/images/products/green-onion/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
-| `public/images/products/lettuce/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
-| `public/images/products/peach/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
-| `public/images/products/pomegranate/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
-| `public/images/products/strawberry/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
-| `public/images/products/sweet-potato/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
-| `public/images/stitch-products/{citrus,grapes,green-beans,green-onion,pomegranate,strawberry}.jpg` | 1280×698 JPEG | Provisional product-card/detail photos; citrus, grapes, green beans, pomegranate and strawberry also appear in the landing-page editorial image panel |
+| `public/images/products/grapes/1.webp` | 1024×683 WebP | Grapes product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/pomegranate/1.webp` | 600×600 WebP | Pomegranate product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/peach/1.webp` | 259×195 WebP | Peach product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/green-onion/1.webp` | 600×300 WebP | Green onion product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/cabbage/1.webp` | 600×600 WebP | Cabbage product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/broccoli/1.webp` | 1000×1000 WebP | Broccoli product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/citrus/1.webp` | 1000×809 WebP | Citrus product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/strawberry/1.webp` | 225×225 WebP | Fresh strawberry product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/green-beans/1.webp` | 1700×1045 WebP | Fresh green beans product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/sweet-potato/1.webp` | 700×600 WebP | Sweet potato product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/lettuce/1.webp` | 480×480 WebP | Lettuce product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/garlic/1.webp` | 600×600 WebP | Fresh garlic product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/dried-tomato/1.webp` | 600×600 WebP | Dried tomato product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/frozen-peas/1.webp` | 600×600 WebP | Frozen peas product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/mango/1.webp` | 1000×1000 WebP | Frozen mango product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/banana/1.webp` | 600×600 WebP | Banana product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/frozen-pomegranate/1.webp` | 600×600 WebP | Frozen pomegranate product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/frozen-guava/1.webp` | 383×309 WebP | Frozen guava product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/frozen-green-beans/1.webp` | 517×386 WebP | Frozen green beans product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/frozen-artichokes/1.webp` | 600×600 WebP | Frozen artichokes product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/dried-jalapeno-peppers/1.webp` | 600×600 WebP | Dried jalapeno peppers product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/dried-dates/1.webp` | 600×600 WebP | Dried dates product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/onion/1.webp` | 600×600 WebP | Onion product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/cucumber/1.webp` | 600×600 WebP | Cucumber product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/carrots/1.webp` | 600×600 WebP | Carrots product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/frozen-strawberry/1.webp` | 600×600 WebP | Frozen strawberry product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/dried-garlic/1.webp` | 600×600 WebP | Dried garlic product card, detail image, Open Graph and Product JSON-LD |
+| `public/images/products/frozen-broccoli/1.webp` | 600×600 WebP | Frozen broccoli product card, detail image, Open Graph and Product JSON-LD |
 | `public/images/stitch-about/orchard.jpg` | 1280×714 JPEG | Provisional About page orchard photo |
 | `public/images/stitch-services/assurance.jpg` | 1280×698 JPEG | Provisional Services quality photo |
 | `public/images/stitch-services/shipping.jpg` | 1280×698 JPEG | Provisional Services shipping photo |
@@ -63,6 +79,8 @@ Arial system fallback.
 The bilingual mock content and the exact owner, item and replacement action for each pending review are tracked in [CONTENT_TODO.md](CONTENT_TODO.md). The map's named destinations are presented as indicative areas for discussion and need the export team's confirmation. Certification descriptions are reference-only until scope and supporting documents are confirmed.
 
 Product technical sheets open as external Google Drive links configured by product slug in `src/content/products.ts`. For initial review, every product temporarily points to the company brochure Drive URL. `TODO(confirm)`: replace each temporary URL with the approved technical-sheet link for that product.
+
+The map in `src/config/redirects.ts` covers the old product sitemap and the numeric products verified from the old pages. Review it against the owner's final WordPress export before launch and add any unlisted routes.
 
 
 The smaller `screenshot.png` or `screenshot-preview.jpg` files preserve original Stitch responses; `screenshot-full.png` / `screenshot-full.jpg` are larger previews. Image references from the Stitch HTML exports have local copies beside each export.
