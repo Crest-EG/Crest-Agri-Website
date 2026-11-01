@@ -348,6 +348,11 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
         {(["fresh", "frozen"] as const).map((form) => <span key={form}>{formsT(form)}</span>)}
       </div>
     </div>,
+    <div className="scene-content split-content" key="logistics">
+      <p className="scene-eyebrow">{t("scenes.logistics.eyebrow")}</p>
+      <h2>{t("scenes.logistics.title")}</h2>
+      <p className="scene-description">{t("scenes.logistics.body")}</p>
+    </div>,
     <div className="scene-content map-content" key="markets">
       <div className="map-content-heading"><div><p className="scene-eyebrow">{t("scenes.markets.eyebrow")}</p><h2>{t("scenes.markets.title")}</h2></div><p>{t("scenes.markets.body")}</p></div>
       {marketMap}

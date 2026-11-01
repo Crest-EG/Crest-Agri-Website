@@ -191,7 +191,7 @@ img { max-width: 100%; }
 .landing-cta-pill-3 { inset-block-end: 23%; inset-inline-start: 13%; }
 .landing-cta-pill-4 { inset-block-end: 18%; inset-inline-end: 13%; }
 
-/* Pinned five-scene landing journey */
+/* Pinned six-scene landing journey */
 .journey-track { --scene-scroll-vh: 200; position: relative; height: calc((var(--scene-count) * var(--scene-scroll-vh) + 100) * 1svh); }
 .journey-stage { position: relative; width: 100%; height: 100svh; min-height: 540px; overflow: hidden; isolation: isolate; background: var(--text); }
 .journey-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -341,7 +341,7 @@ img { max-width: 100%; }
 .static-scene-shade { z-index: 0; }
 .journey-static-scene .journey-overlay { position: relative; inset: auto; opacity: 1; pointer-events: auto; }
 .journey-static-scene .scene-content { margin-inline-start: auto; }
-.journey-static-scene-1 .scene-content, .journey-static-scene-5 .scene-content { margin-inline: auto; }
+.journey-static-scene-1 .scene-content, .journey-static-scene-6 .scene-content { margin-inline: auto; }
 
 @media (max-width: 900px) {
   .header-inner { min-height: 66px; }

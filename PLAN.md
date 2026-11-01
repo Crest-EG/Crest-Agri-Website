@@ -97,7 +97,7 @@ next-intl routing, locales `['ar','en']`, `defaultLocale: 'en'`, prefix always. 
 ## 8. Scroll journey (landing page)
 One pinned full-viewport stage with a single `<canvas>` drawing a frame sequence driven by ScrollTrigger `scrub`, with real HTML overlays (text, buttons, cards) so translation, clicks and SEO work. After it: the compact quote section, then the footer.
 
-**Frames contract:** `public/frames/scene-{1,2,4,5,6}/{001..150}.webp` (1280x720). 750 frames as one continuous sequence; scenes 3 and 7 are intentionally omitted while scene 4 retains its own frame folder. If frames are missing, draw a procedural placeholder on the canvas (brand gradient + scene number) so the page still works. Never show a blank canvas; keep the last loaded frame.
+**Frames contract:** `public/frames/scene-{1,2,4,5,6,7}/{001..150}.webp` (1280x720). 900 frames as one continuous sequence; scene 3 is intentionally omitted, and the final delivery overlay remains removed. If frames are missing, draw a procedural placeholder on the canvas (brand gradient + scene number) so the page still works. Never show a blank canvas; keep the last loaded frame.
 
 | # | Scene | Overlay |
 |---|---|---|
@@ -105,11 +105,12 @@ One pinned full-viewport stage with a single `<canvas>` drawing a frame sequence
 | 2 | Farm and care | 2–3 lines about the company + link About + certification logos row |
 | 4 | Packing | Packing quality + **private label** option (importer's own label) |
 | 5 | Shipping and export | Export service anywhere, fresh/frozen/dried |
+| 7 | Logistics | Air, road and sea transport options |
 | 6 | Markets | `<MarketMap />` in a white panel with green border over the dimmed canvas: static SVG world map (d3-geo + world-atlas), flag pins, current = green, target = gray, legend; GCC and North Africa as gray circles labeled "GCC"/"NA" |
 
 **Mechanics**
 - Height ≈ 140vh per scene desktop, ≈ 120vh mobile; total ≤ ~10 screens. Do not make it longer.
-- Load scene 1 first (minimal loader until its first ~12 frames are ready), then current scene ±1 while scrolling; bounded cache; never load all 750 up front.
+- Load scene 1 first (minimal loader until its first ~12 frames are ready), then current scene ±1 while scrolling; bounded cache; never load all 900 up front.
 - `requestAnimationFrame` draw, cover-fit, DPR capped at 2, `scrub: 0.5`.
 - **Lite mode** (every 2nd frame = 75/scene) when viewport < 768px, `deviceMemory <= 4`, `saveData`, or a slow connection. **Reduced motion:** no pin/canvas animation; each scene is a normal stacked block with a static first frame and the same content.
 - Overlays fade by each scene's progress window; `pointer-events: auto` only on the active scene; all text stays in the DOM in order. Mobile: overlay becomes a bottom panel (white, green border) for readability.
