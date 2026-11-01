@@ -191,7 +191,7 @@ img { max-width: 100%; }
 .landing-cta-pill-3 { inset-block-end: 23%; inset-inline-start: 13%; }
 .landing-cta-pill-4 { inset-block-end: 18%; inset-inline-end: 13%; }
 
-/* Pinned seven-scene landing journey */
+/* Pinned six-scene landing journey */
 .journey-track { --scene-scroll-vh: 200; position: relative; height: calc((var(--scene-count) * var(--scene-scroll-vh) + 100) * 1svh); }
 .journey-stage { position: relative; width: 100%; height: 100svh; min-height: 540px; overflow: hidden; isolation: isolate; background: var(--text); }
 .journey-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -211,17 +211,6 @@ img { max-width: 100%; }
 .certification-row span { min-width: 82px; padding: 9px 14px; border: 1px solid color-mix(in srgb, var(--surface) 35%, transparent); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--text) 48%, transparent); color: var(--surface); font-size: var(--font-size-xs); font-weight: 800; text-align: center; }
 .journey-overlay-2 { justify-content: flex-start; }
 .journey-overlay-2 .scene-content { max-width: 700px; }
-.product-content { width: min(100%, 1220px); margin-inline: auto; padding: clamp(18px, 2.5vw, 32px); }
-.product-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-5); margin-block-end: var(--space-4); }
-.product-heading > p { max-width: 42ch; margin: 0; color: color-mix(in srgb, var(--surface) 86%, transparent); line-height: 1.5; }
-.product-heading h2 { font-size: clamp(28px, 3vw, 40px); }
-.featured-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(12px, 2vw, 26px); }
-.journey-product-card { display: flex; min-width: 0; flex-direction: column; gap: 5px; padding: 0; color: var(--surface); border: 0; border-radius: 0; background: transparent; text-decoration: none; }
-.journey-product-image { width: 100%; aspect-ratio: 1.8; min-height: 54px; max-height: 118px; border-radius: 6px; background: color-mix(in srgb, var(--green) 36%, var(--text)); }
-.journey-product-name { overflow: hidden; font-size: var(--font-size-sm); font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
-.journey-product-forms { color: color-mix(in srgb, var(--surface) 72%, transparent); font-size: var(--font-size-xs); }
-.product-glyph { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--surface) 80%, transparent); color: var(--green-ink); font-family: var(--font-display); font-size: 1.2rem; }
-.product-content > .text-link { margin-block-start: var(--space-3); }
 .split-content { margin-inline-start: auto; }
 .private-label { display: grid; gap: 5px; max-width: 38rem; margin-block-start: var(--space-4); padding: 12px 16px; border-inline-start: 3px solid var(--orange); border-radius: var(--radius-sm); background: color-mix(in srgb, var(--text) 42%, transparent); color: var(--surface); }
 .private-label-title { font-size: var(--font-size-lg); font-weight: 800; line-height: 1.35; }
@@ -355,7 +344,7 @@ img { max-width: 100%; }
 .static-scene-shade { z-index: 0; }
 .journey-static-scene .journey-overlay { position: relative; inset: auto; opacity: 1; pointer-events: auto; }
 .journey-static-scene .scene-content { margin-inline-start: auto; }
-.journey-static-scene-1 .scene-content, .journey-static-scene-7 .scene-content { margin-inline: auto; }
+.journey-static-scene-1 .scene-content, .journey-static-scene-6 .scene-content { margin-inline: auto; }
 
 @media (max-width: 900px) {
   .header-inner { min-height: 66px; }
@@ -373,7 +362,6 @@ img { max-width: 100%; }
   .editorial-image-3 { width: 27%; }
   .editorial-image-4 { width: 18%; }
   .editorial-image-5 { width: 19%; }
-  .featured-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .contact-grid { grid-template-columns: 1fr; }
   .service-overview { grid-template-columns: 1fr; }
@@ -424,14 +412,6 @@ img { max-width: 100%; }
   .scene-actions { margin-block-start: var(--space-4); }
   .scene-actions .button { flex: 1 1 auto; padding-inline: 14px; font-size: var(--font-size-xs); }
   .split-content { margin-inline-start: 0; }
-  .product-content { padding: 13px; }
-  .product-heading { align-items: flex-start; flex-direction: column; gap: 8px; margin-block-end: var(--space-3); }
-  .product-heading > p { font-size: var(--font-size-xs); }
-  .featured-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-  .journey-product-card:nth-child(n+3) { display: none; }
-  .journey-product-image { aspect-ratio: 1.8; min-height: 42px; max-height: 82px; }
-  .journey-product-name { font-size: var(--font-size-xs); }
-  .journey-product-forms { font-size: 10px; }
   .map-content { align-items: flex-start; flex-direction: column; gap: 10px; max-height: 100%; }
   .map-content-heading { width: 100%; }
   .map-content h2 { font-size: 26px; }
@@ -538,13 +518,6 @@ img { max-width: 100%; }
 /* Journey copy sits directly on the cinematic scene; only the map keeps a panel. */
 .scene-content:not(.map-content) { max-width: min(100%, 760px); }
 .hero-content { max-width: 780px; }
-.product-content { width: min(100%, 1420px); padding: 0; }
-.product-heading { margin-block-end: clamp(14px, 2.2vh, 24px); }
-.featured-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(12px, 2vw, 26px); }
-.journey-product-card:nth-child(n+7) { display: none; }
-.journey-product-card:hover .journey-product-image { transform: translateY(-2px); }
-.journey-product-image { transition: transform 180ms ease; }
-
 .certification-page { padding-block-end: clamp(72px, 9vw, 120px); }
 .certification-intro-copy { max-width: 88ch; }
 .certification-intro-copy > p { color: var(--text-muted); font-size: var(--font-size-md); line-height: 1.75; }
@@ -567,8 +540,6 @@ img { max-width: 100%; }
 @media (max-width: 900px) {
   .footer-top { grid-template-columns: 1fr; gap: 28px; }
   .footer-brand { max-width: none; }
-  .featured-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .journey-product-card:nth-child(n+5) { display: none; }
   .certification-benefits ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 600px) {
@@ -589,14 +560,6 @@ img { max-width: 100%; }
   .footer-bottom { margin-block-start: 18px; }
   .footer-brand-link { width: min(100%, 250px); }
   .footer-logo { max-width: 232px; flex-basis: 232px; }
-  .product-content { padding: 0; }
-  .product-heading { flex-direction: row; align-items: flex-end; }
-  .product-heading > p { display: none; }
-  .featured-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; }
-  .journey-product-card:nth-child(n+3) { display: none; }
-  .journey-product-image { max-height: 74px; }
-  .journey-overlay-3 { align-items: center; padding: 16px; }
-  .journey-overlay-3 .product-content { align-self: center; }
   .certification-benefits ul { grid-template-columns: 1fr; gap: 18px; }
   .certification-card { min-height: 190px; }
 }

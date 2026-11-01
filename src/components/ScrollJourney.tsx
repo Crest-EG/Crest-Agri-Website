@@ -1,16 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "@/i18n/navigation";
 import { DirectionalArrow } from "@/components/DirectionalArrow";
-import { Placeholder } from "@/components/Placeholder";
-import { featuredProducts, type Product, type ProductForm } from "@/content/products";
-import { CROSSFADE_FRAMES, frameConfig, framePath, LITE_MODE_STEP } from "@/config/frames";
+import { CROSSFADE_FRAMES, frameConfig, journeyFramePath, LITE_MODE_STEP, SCENE_FRAME_IDS } from "@/config/frames";
 
 
 type ScrollJourneyProps = { marketMap: ReactNode };
@@ -23,23 +20,7 @@ function isLiteDevice() {
     device.connection?.saveData === true || ["slow-2g", "2g", "3g"].includes(device.connection?.effectiveType ?? "");
 }
 
-function FeaturedCard({ product, locale, formLabel }: { product: Product; locale: "ar" | "en"; formLabel: (form: ProductForm) => string }) {
-  const name = product.name[locale];
-  return (
-    <Link className="journey-product-card" href={`/products/${product.slug}`}>
-      <Placeholder label={name} className="journey-product-image">
-        {product.images[0]
-          ? <Image src={product.images[0]} alt="" aria-hidden="true" fill sizes="(max-width: 600px) 45vw, 20vw" className="product-card-photo" />
-          : <span className="product-glyph" aria-hidden="true">{name.slice(0, 1)}</span>}
-      </Placeholder>
-      <span className="journey-product-name">{name}</span>
-      <span className="journey-product-forms">{product.forms.slice(0, 2).map(formLabel).join(" · ")}</span>
-    </Link>
-  );
-}
-
 export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
-  const locale = useLocale() as "ar" | "en";
   const t = useTranslations("landing");
   const formsT = useTranslations("forms");
   const certificationsT = useTranslations("certifications");
@@ -51,8 +32,6 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
   const [reducedMotion, setReducedMotion] = useState(false);
   const [liteMode, setLiteMode] = useState(false);
   const [ready, setReady] = useState(false);
-
-  const formLabel = useCallback((form: ProductForm) => formsT(form), [formsT]);
 
   useEffect(() => {
     const reduceQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -137,18 +116,18 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
     };
 
     const findNearestFrame = (scene: number, frame: number) => {
-      const desired = framePath(scene + 1, frame);
+      const desired = journeyFramePath(scene, frame);
       if (frameCache.has(desired)) return [desired, frameCache.get(desired)!] as const;
       for (let distance = 1; distance < frames.length; distance += 1) {
         const before = frames[frames.indexOf(frame) - distance];
         const after = frames[frames.indexOf(frame) + distance];
         if (before !== undefined) {
-          const key = framePath(scene + 1, before);
+          const key = journeyFramePath(scene, before);
           const image = frameCache.get(key);
           if (image) return [key, image] as const;
         }
         if (after !== undefined) {
-          const key = framePath(scene + 1, after);
+          const key = journeyFramePath(scene, after);
           const image = frameCache.get(key);
           if (image) return [key, image] as const;
         }
@@ -171,7 +150,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
         const nextFrames = frames;
         const dissolveFrames = Math.min(Math.ceil(CROSSFADE_FRAMES / frameStep), nextFrames.length);
         const incomingIndex = Math.min(dissolveFrames - 1, Math.round(dissolve * (dissolveFrames - 1)));
-        const incoming = frameCache.get(framePath(activeScene + 2, nextFrames[incomingIndex]));
+        const incoming = frameCache.get(journeyFramePath(activeScene + 1, nextFrames[incomingIndex]));
         if (incoming) drawImageCover(incoming, dissolve);
       }
       if (nearest[0] !== lastDrawnKey) lastDrawnKey = nearest[0];
@@ -185,10 +164,11 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       const activeActualFrame = currentFrame * frameStep + 1;
       for (const key of frameCache.keys()) {
         const match = key.match(/scene-(\d+)\//);
-        const sceneNumber = match ? Number(match[1]) : 0;
+        const frameSceneId = match ? Number(match[1]) : 0;
+        const sequenceScene = SCENE_FRAME_IDS.findIndex((sceneId) => sceneId === frameSceneId);
         const frameMatch = key.match(/\/(\d+)\./);
         const frameNumber = frameMatch ? Number(frameMatch[1]) : 0;
-        const offset = sceneNumber - (activeScene + 1);
+        const offset = sequenceScene - activeScene;
         const keepCurrentWindow = offset === 0 && Math.abs(frameNumber - activeActualFrame) <= frameStep * 4;
         const keepNextDissolve = offset === 1 && activeActualFrame >= frameConfig.framesPerScene - CROSSFADE_FRAMES - 1 && frameNumber <= CROSSFADE_FRAMES + 1;
         const keepPreviousEdge = offset === -1 && activeActualFrame <= CROSSFADE_FRAMES + 1 && frameNumber >= frameConfig.framesPerScene - CROSSFADE_FRAMES - 1;
@@ -202,7 +182,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
 
     const loadFrame = (scene: number, frame: number) => {
       if (Math.abs(scene - activeScene) > 1) return Promise.resolve();
-      const key = framePath(scene + 1, frame);
+      const key = journeyFramePath(scene, frame);
       if (frameCache.has(key)) return Promise.resolve();
       const existing = frameLoads.get(key);
       if (existing) return existing;
@@ -239,17 +219,17 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       const jobs: Promise<void>[] = [];
       const range = frames.slice(Math.max(0, frameIndex - 4), Math.min(frames.length, frameIndex + 5));
       for (const frame of range) {
-        if (!frameCache.has(framePath(scene + 1, frame))) jobs.push(loadFrame(scene, frame));
+        if (!frameCache.has(journeyFramePath(scene, frame))) jobs.push(loadFrame(scene, frame));
       }
       const activeActualFrame = frameIndex * frameStep + 1;
       if (scene < frameConfig.scenes - 1 && activeActualFrame >= frameConfig.framesPerScene - CROSSFADE_FRAMES - 1) {
         for (const frame of frames.filter((item) => item <= CROSSFADE_FRAMES + 1)) {
-          if (!frameCache.has(framePath(scene + 2, frame))) jobs.push(loadFrame(scene + 1, frame));
+          if (!frameCache.has(journeyFramePath(scene + 1, frame))) jobs.push(loadFrame(scene + 1, frame));
         }
       }
       if (scene > 0 && activeActualFrame <= CROSSFADE_FRAMES + 1) {
         for (const frame of frames.filter((item) => item >= frameConfig.framesPerScene - CROSSFADE_FRAMES - 1)) {
-          if (!frameCache.has(framePath(scene, frame))) jobs.push(loadFrame(scene - 1, frame));
+          if (!frameCache.has(journeyFramePath(scene - 1, frame))) jobs.push(loadFrame(scene - 1, frame));
         }
       }
       void Promise.all(jobs).then(trimCache);
@@ -336,36 +316,6 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
     };
   }, [liteMode, reducedMotion]);
 
-  useEffect(() => {
-    const jumpToProducts = (event: MouseEvent) => {
-      event.preventDefault();
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      window.history.replaceState(null, "", `${window.location.pathname}#products`);
-
-      if (reduceMotion) {
-        const productsScene = document.getElementById("products");
-        if (productsScene) {
-          window.scrollTo({
-            top: window.scrollY + productsScene.getBoundingClientRect().top,
-            behavior: reduceMotion ? "auto" : "smooth",
-          });
-        }
-        return;
-      }
-
-      const trigger = ScrollTrigger.getById("crest-journey");
-      const track = trackRef.current;
-      if (!track) return;
-      const start = trigger?.start ?? window.scrollY + track.getBoundingClientRect().top;
-      const end = trigger?.end ?? start + track.offsetHeight - window.innerHeight;
-      const sceneProgress = 2 / (frameConfig.scenes - 1);
-      window.scrollTo({ top: start + (end - start) * sceneProgress, behavior: "smooth" });
-    };
-    const productJumpLinks = document.querySelectorAll<HTMLAnchorElement>('a[href="#products"]');
-    productJumpLinks.forEach((link) => link.addEventListener("click", jumpToProducts));
-    return () => productJumpLinks.forEach((link) => link.removeEventListener("click", jumpToProducts));
-  }, []);
-
   const sceneContents = [
     <div className="scene-content hero-content" key="hero">
       <p className="scene-eyebrow">{t("hero.eyebrow")}</p>
@@ -380,16 +330,6 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       <div className="certification-row" aria-label={t("scenes.care.certifications")}>
         <span>{certificationsT("globalgap")}</span><span>{certificationsT("iso")}</span>
       </div>
-    </div>,
-    <div className="scene-content product-content" key="harvest">
-      <div className="product-heading">
-        <div><p className="scene-eyebrow">{t("scenes.harvest.eyebrow")}</p><h2>{t("scenes.harvest.title")}</h2></div>
-        <p>{t("scenes.harvest.body")}</p>
-      </div>
-      <div className="featured-grid">
-        {featuredProducts.map((product) => <FeaturedCard key={product.slug} product={product} locale={locale} formLabel={formLabel} />)}
-      </div>
-      <Link className="text-link" href="/products">{t("scenes.harvest.all")} <DirectionalArrow kind="forward" /></Link>
     </div>,
     <div className="scene-content split-content" key="packing">
       <p className="scene-eyebrow">{t("scenes.packing.eyebrow")}</p>
@@ -421,7 +361,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
   ];
 
   const staticScenes = sceneContents.map((content, index) => (
-    <section id={index === 2 ? "products" : undefined} key={`static-${index}`} className={`journey-static-scene journey-static-scene-${index + 1}`} style={{ "--static-frame": `url("${framePath(index + 1, 1)}")` } as CSSProperties}>
+    <section key={`static-${index}`} className={`journey-static-scene journey-static-scene-${index + 1}`} style={{ "--static-frame": `url("${journeyFramePath(index, 1)}")` } as CSSProperties}>
       <div className="static-scene-shade" />
       <div className={`journey-overlay journey-overlay-${index + 1}`}>{content}</div>
     </section>
