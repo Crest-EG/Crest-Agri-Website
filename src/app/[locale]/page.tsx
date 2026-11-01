@@ -44,6 +44,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         title={cta("title")}
         description={cta("description")}
         buttonLabel={cta("button")}
+        servicesLabel={cta("servicesLabel")}
+        services={[
+          cta("serviceFresh"),
+          cta("servicePacking"),
+          cta("serviceQuality"),
+          cta("serviceExport"),
+        ]}
       />
     </main>
   );

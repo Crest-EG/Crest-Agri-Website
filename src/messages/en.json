@@ -97,7 +97,12 @@
       "eyebrow": "Your next shipment starts here",
       "title": "Let’s grow your business together.",
       "description": "Tell us what your market needs. Our team is ready to talk.",
-      "button": "Request a quote"
+      "button": "Request a quote",
+      "servicesLabel": "Our export services",
+      "serviceFresh": "Fresh, frozen & dried",
+      "servicePacking": "Private label packing",
+      "serviceQuality": "Quality-focused handling",
+      "serviceExport": "Export coordination"
     },
     "scenes": {
       "care": {

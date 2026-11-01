@@ -57,8 +57,7 @@ export function Header() {
   const [compactWidth, setCompactWidth] = useState(0);
   const headerRef = useRef<HTMLDivElement>(null);
   const scrolledRef = useRef(false);
-  // On the landing journey the header sits on dark scenes: show the white wordmark,
-  // and switch back to the dark wordmark while the light outro section passes under it.
+  // Use the white wordmark over dark landing scenes and the dark wordmark over light sections.
   const [tone, setTone] = useState<"default" | "white">(isHome ? "white" : "default");
   const headerTone = isHome ? tone : "default";
 
@@ -98,19 +97,29 @@ export function Header() {
   useEffect(() => {
     if (!isHome) return;
     const footer = document.querySelector<HTMLElement>(".site-footer");
-    if (!footer) return;
+    const lightSections = document.querySelectorAll<HTMLElement>(".editorial-break, .landing-cta");
+    const observedSections = [footer, ...lightSections].filter(
+      (section): section is HTMLElement => section !== null,
+    );
+    if (!observedSections.length) return;
 
     let observer: IntersectionObserver | undefined;
     const observeFooterBand = () => {
       observer?.disconnect();
       observer = new IntersectionObserver(
-        ([entry]) => setTone(entry.isIntersecting ? "default" : "white"),
+        () => {
+          const lightSectionUnderHeader = observedSections.some((section) => {
+            const bounds = section.getBoundingClientRect();
+            return bounds.top < HEADER_BAND && bounds.bottom > 0;
+          });
+          setTone(lightSectionUnderHeader ? "default" : "white");
+        },
         {
           rootMargin: `0px 0px -${Math.max(0, window.innerHeight - HEADER_BAND)}px 0px`,
           threshold: 0,
         },
       );
-      observer.observe(footer);
+      observedSections.forEach((section) => observer?.observe(section));
     };
     observeFooterBand();
     window.addEventListener("resize", observeFooterBand);

@@ -97,7 +97,12 @@
       "eyebrow": "شحنك القادم يبدأ من هنا",
       "title": "لنكبر أعمالك معًا.",
       "description": "أخبرنا باحتياجات سوقك، وفريقنا جاهز للتواصل.",
-      "button": "اطلب عرض سعر"
+      "button": "اطلب عرض سعر",
+      "servicesLabel": "خدمات التصدير",
+      "serviceFresh": "طازج ومجمد ومجفف",
+      "servicePacking": "تعبئة بعلامتك التجارية",
+      "serviceQuality": "عناية بالجودة",
+      "serviceExport": "تنسيق التصدير"
     },
     "scenes": {
       "care": {
