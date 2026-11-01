@@ -21,4 +21,10 @@
 - [ ] Add the Google and/or Bing verification token to the deployment environment, then verify the domain in Search Console and Webmaster Tools.
 - [ ] Submit `https://crestagricultural.com/sitemap.xml` after domain verification.
 - [ ] Confirm company social profile URLs, contact details, certification claims and the illustrative product photos.
-- [ ] Run Lighthouse mobile against `/en`, `/ar`, one product detail and `/services` on the deployed site; record the four category scores and address any score below 90. A local Chrome/Lighthouse executable was not available during implementation.
+- [ ] Run Lighthouse mobile against `/en`, `/ar`, one product detail and `/services` on the deployed site; record Performance, Accessibility, Best Practices and SEO scores for each page, and address any score below 90. This has not been run; the project has no Lighthouse executable and deployment-only results cannot be inferred from local checks.
+
+## Local regression checks
+
+- The sandboxed 3D landing hero is verified in English and Arabic; a message handshake reveals it after its internal document is ready, even if its iframe load event fires before React hydrates.
+- The crawlable landing copy follows the original hero → editorial gallery → scroll journey → quote CTA sequence.
+- The scroll-journey poster remains lazy-loaded below the fold; only the hero poster is preloaded as the LCP candidate.

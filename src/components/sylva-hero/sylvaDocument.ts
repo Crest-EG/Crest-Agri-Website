@@ -82,6 +82,10 @@ function removeBetween(source: string, startMarker: string, endMarker: string) {
 
 const CLICK_BRIDGE = `<script>
 (function () {
+  window.addEventListener("message", function (event) {
+    if (event.source !== parent || !event.data || event.data.type !== "crest-sylva-ready-check") return;
+    parent.postMessage({ type: "crest-sylva-ready" }, "*");
+  });
   function send(href) {
     parent.postMessage({ type: "crest-sylva-navigate", href: href }, "*");
   }

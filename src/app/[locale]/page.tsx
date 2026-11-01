@@ -50,6 +50,23 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <main id="home">
       <CrestSylvaHero srcDoc={srcDoc} title={t("documentTitle")} />
+      <EditorialGallery />
+      <div id="crest-journey">
+        <ScrollJourney marketMap={<MarketMap locale={activeLocale} />} />
+      </div>
+      <LandingCallToAction
+        eyebrow={cta("eyebrow")}
+        title={cta("title")}
+        description={cta("description")}
+        buttonLabel={cta("button")}
+        servicesLabel={cta("servicesLabel")}
+        services={[
+          cta("serviceFresh"),
+          cta("servicePacking"),
+          cta("serviceQuality"),
+          cta("serviceExport"),
+        ]}
+      />
       <section className="landing-seo-content page-shell" aria-labelledby="landing-seo-title">
         <h1 id="landing-seo-title">{seo("heading")}</h1>
         <p>{seo("body")}</p>
@@ -68,23 +85,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <Link href="/contact">{seo("contactLink")}</Link>
         </nav>
       </section>
-      <EditorialGallery />
-      <div id="crest-journey">
-        <ScrollJourney marketMap={<MarketMap locale={activeLocale} />} />
-      </div>
-      <LandingCallToAction
-        eyebrow={cta("eyebrow")}
-        title={cta("title")}
-        description={cta("description")}
-        buttonLabel={cta("button")}
-        servicesLabel={cta("servicesLabel")}
-        services={[
-          cta("serviceFresh"),
-          cta("servicePacking"),
-          cta("serviceQuality"),
-          cta("serviceExport"),
-        ]}
-      />
     </main>
   );
 }

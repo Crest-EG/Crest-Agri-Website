@@ -199,6 +199,7 @@ img { max-width: 100%; }
 .journey-track { --scene-scroll-vh: 140; position: relative; height: calc((var(--scene-count) * var(--scene-scroll-vh) + 100) * 1svh); }
 .journey-stage { position: relative; width: 100%; height: 100svh; min-height: 540px; overflow: hidden; isolation: isolate; background: var(--surface); }
 .landing-page-poster, .journey-poster { object-fit: cover; }
+.journey-poster-frame { position: absolute; z-index: 0; inset: 0; }
 .journey-poster { z-index: 0; }
 .journey-canvas { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; background: var(--surface); }
 .journey-overlay { position: absolute; z-index: 2; inset: 0; display: flex; align-items: center; padding: var(--page-gutter); opacity: 0; pointer-events: none; transition: opacity 180ms linear; }

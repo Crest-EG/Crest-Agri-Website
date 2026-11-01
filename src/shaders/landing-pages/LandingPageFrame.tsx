@@ -141,6 +141,29 @@ export function LandingPageFrame({
     if (frameRef.current) applyScene?.(frameRef.current);
   }, [applyScene, backgroundCanvasSelector, backgroundVisualSelector, customization]);
 
+  useEffect(() => {
+    const frame = frameRef.current;
+    if (!frame) return;
+
+    const handleReady = (event: MessageEvent<{ type?: string }>) => {
+      if (event.source === frame.contentWindow && event.data?.type === "crest-sylva-ready") {
+        setReady(true);
+      }
+    };
+    const requestReady = () => {
+      frame.contentWindow?.postMessage({ type: "crest-sylva-ready-check" }, "*");
+    };
+
+    window.addEventListener("message", handleReady);
+    frame.addEventListener("load", requestReady);
+    requestReady();
+
+    return () => {
+      window.removeEventListener("message", handleReady);
+      frame.removeEventListener("load", requestReady);
+    };
+  }, []);
+
   return (
     <div
       className={`threeui-background landing-page-frame${className ? ` ${className}` : ""}`}
@@ -170,6 +193,7 @@ export function LandingPageFrame({
           applyBackgroundPresentation(event.currentTarget, backgroundCanvasSelector, backgroundVisualSelector);
           applyScene?.(event.currentTarget);
           setReady(true);
+          event.currentTarget.contentWindow?.postMessage({ type: "crest-sylva-ready-check" }, "*");
         }}
         style={{
           position: "absolute",

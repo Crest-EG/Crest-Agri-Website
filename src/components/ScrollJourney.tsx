@@ -385,15 +385,16 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
           data-white-background={SCENE_FRAME_IDS[activeScene] === WHITE_BACKGROUND_SCENE_ID}
           ref={stageRef}
         >
-          <Image
-            src={journeyFramePath(0, 1)}
-            alt=""
-            aria-hidden="true"
-            fill
-            sizes="100vw"
-            preload
-            className="journey-poster"
-          />
+          <div className="journey-poster-frame">
+            <Image
+              src={journeyFramePath(0, 1)}
+              alt=""
+              aria-hidden="true"
+              fill
+              sizes="100vw"
+              className="journey-poster"
+            />
+          </div>
           <canvas
             ref={canvasRef}
             className="journey-canvas"
