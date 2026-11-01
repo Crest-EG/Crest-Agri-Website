@@ -100,7 +100,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       context.globalAlpha = 1;
     };
 
-    const drawImageFrame = (image: HTMLImageElement, alpha = 1, dim = true, contain = false) => {
+    const drawImageFrame = (image: HTMLImageElement, alpha = 1) => {
       const rect = canvas.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       if (canvas.width !== Math.round(rect.width * dpr) || canvas.height !== Math.round(rect.height * dpr)) {
@@ -108,18 +108,11 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
         canvas.height = Math.round(rect.height * dpr);
       }
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const scale = (contain ? Math.min : Math.max)(rect.width / image.naturalWidth, rect.height / image.naturalHeight);
+      const scale = Math.max(rect.width / image.naturalWidth, rect.height / image.naturalHeight);
       const width = image.naturalWidth * scale;
       const height = image.naturalHeight * scale;
-      const top = contain && window.innerWidth < 768 ? rect.height - height : (rect.height - height) / 2;
       context.globalAlpha = alpha;
-      context.drawImage(image, (rect.width - width) / 2, top, width, height);
-      context.globalAlpha = 1;
-      if (dim) {
-        context.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--text").trim();
-        context.globalAlpha = 0.35 * alpha;
-        context.fillRect(0, 0, rect.width, rect.height);
-      }
+      context.drawImage(image, (rect.width - width) / 2, (rect.height - height) / 2, width, height);
       context.globalAlpha = 1;
     };
 
@@ -164,15 +157,13 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       drawImageFrame(
         nearest[1],
         fadingToWhite ? 1 - dissolve : 1,
-        !activeIsWhite,
-        activeIsWhite,
       );
       if (dissolve > 0) {
         const nextFrames = frames;
         const dissolveFrames = Math.min(Math.ceil(CROSSFADE_FRAMES / frameStep), nextFrames.length);
         const incomingIndex = Math.min(dissolveFrames - 1, Math.round(dissolve * (dissolveFrames - 1)));
         const incoming = frameCache.get(journeyFramePath(incomingScene, nextFrames[incomingIndex]));
-        if (incoming) drawImageFrame(incoming, dissolve, !incomingIsWhite, incomingIsWhite);
+        if (incoming) drawImageFrame(incoming, dissolve);
       }
       if (nearest[0] !== lastDrawnKey) lastDrawnKey = nearest[0];
     };
@@ -380,7 +371,6 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
 
   const staticScenes = sceneContents.map((content, index) => (
     <section key={`static-${index}`} className={`journey-static-scene journey-static-scene-${index + 1}`} style={{ "--static-frame": `url("${journeyFramePath(index, 1)}")` } as CSSProperties}>
-      <div className="static-scene-shade" />
       <div className={`journey-overlay journey-overlay-${index + 1}`}>{content}</div>
     </section>
   ));
@@ -395,7 +385,6 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
           ref={stageRef}
         >
           <canvas ref={canvasRef} className="journey-canvas" aria-hidden="true" />
-          <div className="journey-shade" aria-hidden="true" />
           {!ready && <div className="journey-loader" role="status"><span className="loader-mark" aria-hidden="true" /><span>{t("loading")}</span></div>}
           {sceneContents.map((content, index) => (
             <div

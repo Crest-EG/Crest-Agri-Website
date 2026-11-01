@@ -95,7 +95,7 @@ next-intl routing, locales `['ar','en']`, `defaultLocale: 'en'`, prefix always. 
 - target: USA, Germany, Netherlands, Spain, Russia, Cyprus, GCC (grouped), North Africa (grouped)
 
 ## 8. Scroll journey (landing page)
-One pinned full-viewport stage with a single `<canvas>` drawing a frame sequence driven by ScrollTrigger `scrub`, with real HTML overlays (text, buttons, cards) so translation, clicks and SEO work. After it: the compact quote section, then the footer.
+One pinned full-viewport stage with a single `<canvas>` drawing a frame sequence driven by ScrollTrigger `scrub`, with real HTML overlays (text and buttons) so translation, clicks and SEO work. After it: the compact quote section, then the footer.
 
 **Frames contract:** `public/frames/scene-{2,4,5,6,7}/{001..150}.webp` (1280x720). 750 frames as one continuous sequence; the 3D intro remains, while frame-based scene 1, scene 3 and the final delivery overlay are omitted. If frames are missing, draw a procedural placeholder on the canvas (brand gradient + scene number) so the page still works. Never show a blank canvas; keep the last loaded frame.
 
@@ -105,14 +105,14 @@ One pinned full-viewport stage with a single `<canvas>` drawing a frame sequence
 | 4 | Packing | Packing quality + **private label** option (importer's own label) |
 | 5 | Shipping and export | Export service anywhere, fresh/frozen/dried |
 | 7 | Logistics | Air, road and sea transport options |
-| 6 | Markets | `<MarketMap />` in a white panel with green border over the dimmed canvas: static SVG world map (d3-geo + world-atlas), flag pins, current = green, target = gray, legend; GCC and North Africa as gray circles labeled "GCC"/"NA" |
+| 6 | Markets | `<MarketMap />` and its text directly over the undimmed canvas: static SVG world map (d3-geo + world-atlas), flag pins, current = green, target = gray, legend; GCC and North Africa as gray circles labeled "GCC"/"NA" |
 
 **Mechanics**
 - Height ≈ 140vh per scene desktop/tablet, ≈ 120vh mobile; total ≤ ~10 screens. Do not make it longer.
 - Load scene 2 first (minimal loader until its first ~12 frames are ready), then current scene ±1 while scrolling; bounded cache; never load all 750 up front. Keep the localized 3D intro separate from the frame sequence.
-- `requestAnimationFrame` draw, cover-fit, DPR capped at 2, `scrub: 0.5`. The white logistics scene uses a matching white canvas background, no dark shade, and dark text on the logical inline-start side.
+- `requestAnimationFrame` draw, cover-fit to fill the viewport without distorting frames, DPR capped at 2, `scrub: 0.5`. Do not tint or shade the video frames. Keep overlay copy directly over the footage without blurred or opaque panels; use dark copy on the bright scenes and light copy on dark footage. The white logistics scene retains its matching white canvas background.
 - **Lite mode** (every 2nd frame = 75/scene) when viewport < 768px, `deviceMemory <= 4`, `saveData`, or a slow connection. **Reduced motion:** no pin/canvas animation; each scene is a normal stacked block with a static first frame and the same content.
-- Overlays fade by each scene's progress window; `pointer-events: auto` only on the active scene; all text stays in the DOM in order. Mobile: overlay becomes a bottom panel (white, green border) for readability.
+- Overlays fade by each scene's progress window; `pointer-events: auto` only on the active scene; all text stays in the DOM in order. Mobile: copy remains directly over the full-screen scene, with responsive sizing and placement.
 - Visitors are never trapped: sticky header + "Skip to products".
 - Kill ScrollTriggers and cancel animation frames on unmount; no horizontal scroll, no layout jank.
 
