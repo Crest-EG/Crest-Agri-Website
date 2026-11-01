@@ -15,6 +15,7 @@ const navItems = [
 ] as const;
 
 const HEADER_BAND = 96;
+const HEADER_TONE_LINE = HEADER_BAND / 2;
 
 function measureCompactWidth(header: HTMLElement) {
   const brand = header.querySelector<HTMLElement>(".brand-link");
@@ -96,47 +97,32 @@ export function Header() {
 
   useEffect(() => {
     if (!isHome) return;
+    const hero = document.querySelector<HTMLElement>(".landing-page-frame");
     const footer = document.querySelector<HTMLElement>(".site-footer");
-    const journeyStage = document.querySelector<HTMLElement>(".journey-stage");
-    const lightSections = document.querySelectorAll<HTMLElement>(".editorial-break, .landing-cta, .journey-static-scene-4");
-    const observedSections = [footer, ...lightSections].filter(
+    const darkSections = [hero, footer].filter(
       (section): section is HTMLElement => section !== null,
     );
-    if (!observedSections.length) return;
+    if (!darkSections.length) return;
 
-    let observer: IntersectionObserver | undefined;
+    let frame = 0;
     const updateTone = () => {
-      const lightSectionUnderHeader = observedSections.some((section) => {
+      frame = 0;
+      const darkSectionUnderHeader = darkSections.some((section) => {
         const bounds = section.getBoundingClientRect();
-        return bounds.top < HEADER_BAND && bounds.bottom > 0;
+        return bounds.top <= HEADER_TONE_LINE && bounds.bottom > HEADER_TONE_LINE;
       });
-      const whiteJourneySceneUnderHeader = journeyStage?.dataset.whiteBackground === "true" &&
-        journeyStage.getBoundingClientRect().top < HEADER_BAND &&
-        journeyStage.getBoundingClientRect().bottom > 0;
-      setTone(lightSectionUnderHeader || whiteJourneySceneUnderHeader ? "default" : "white");
+      setTone(darkSectionUnderHeader ? "white" : "default");
     };
-    const sceneObserver = journeyStage ? new MutationObserver(updateTone) : undefined;
-    if (journeyStage) {
-      sceneObserver?.observe(journeyStage, { attributes: true, attributeFilter: ["data-white-background"] });
-    }
-    const observeFooterBand = () => {
-      observer?.disconnect();
-      observer = new IntersectionObserver(
-        updateTone,
-        {
-          rootMargin: `0px 0px -${Math.max(0, window.innerHeight - HEADER_BAND)}px 0px`,
-          threshold: 0,
-        },
-      );
-      observedSections.forEach((section) => observer?.observe(section));
-      if (journeyStage) observer?.observe(journeyStage);
+    const scheduleUpdate = () => {
+      if (!frame) frame = requestAnimationFrame(updateTone);
     };
-    observeFooterBand();
-    window.addEventListener("resize", observeFooterBand);
+    updateTone();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
     return () => {
-      observer?.disconnect();
-      sceneObserver?.disconnect();
-      window.removeEventListener("resize", observeFooterBand);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (frame) cancelAnimationFrame(frame);
     };
   }, [isHome]);
 
