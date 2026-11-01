@@ -157,20 +157,20 @@ img { max-width: 100%; }
 .placeholder-label { z-index: 1; padding: 12px; font-size: var(--font-size-sm); font-weight: 800; text-align: center; }
 
 /* Editorial pause between the animated hero and the scroll journey. */
-.editorial-break { overflow: hidden; padding: clamp(64px, 9vw, 116px) var(--page-gutter) clamp(72px, 9vw, 120px); background: var(--bg); }
+.editorial-break { display: flex; min-height: 150svh; flex-direction: column; justify-content: center; overflow: hidden; padding: clamp(64px, 9vw, 116px) var(--page-gutter) clamp(72px, 9vw, 120px); background: var(--bg); }
 .editorial-heading { position: relative; z-index: 1; max-width: 620px; margin: 0 auto; text-align: center; }
 .editorial-eyebrow { margin: 0 0 var(--space-2); color: var(--green-ink); font-size: var(--font-size-xs); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .editorial-heading h2 { margin: 0; color: var(--text); font-family: var(--font-display); font-size: clamp(30px, 4vw, 48px); font-weight: 600; line-height: 1.15; letter-spacing: -.025em; }
 .editorial-description { max-width: 48ch; margin: var(--space-3) auto 0; color: var(--text-muted); font-size: var(--font-size-md); line-height: 1.7; }
-.editorial-field { position: relative; width: min(100%, 1120px); height: clamp(440px, 57vw, 690px); margin: clamp(28px, 4vw, 52px) auto 0; }
-.editorial-image { position: absolute; overflow: hidden; margin: 0; padding: 8px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); box-shadow: var(--shadow-soft); }
-.editorial-image img { border-radius: calc(var(--radius-card) - 6px); object-fit: cover; transition: transform 500ms cubic-bezier(.2, .7, .2, 1); }
+.editorial-field { position: relative; width: min(100%, 1120px); min-height: clamp(560px, 82svh, 820px); flex: 1 1 auto; margin: clamp(28px, 4vw, 52px) auto 0; }
+.editorial-image { position: absolute; margin: 0; }
+.editorial-image img { object-fit: contain; transition: transform 500ms cubic-bezier(.2, .7, .2, 1); }
 .editorial-image:hover img { transform: scale(1.035); }
-.editorial-image-1 { inset-block-start: 8%; inset-inline-start: 6%; width: 22%; aspect-ratio: 1.55; transform: rotate(-4deg); }
-.editorial-image-2 { inset-block-start: 30%; inset-inline-start: 70%; width: 18%; aspect-ratio: 1.55; transform: rotate(4deg); }
-.editorial-image-3 { inset-block-start: 52%; inset-inline-start: 30%; width: 24%; aspect-ratio: 1.55; transform: rotate(1deg); }
-.editorial-image-4 { inset-block-start: 14%; inset-inline-start: 46%; width: 16%; aspect-ratio: 1.55; transform: rotate(3deg); }
-.editorial-image-5 { inset-block-start: 66%; inset-inline-start: 8%; width: 17%; aspect-ratio: 1.55; transform: rotate(-3deg); }
+.editorial-image-1 { inset-block-start: 6%; inset-inline-start: 6%; width: 28%; aspect-ratio: 1.55; }
+.editorial-image-2 { inset-block-start: 25%; inset-inline-start: 70%; width: 23%; aspect-ratio: 1.55; }
+.editorial-image-3 { inset-block-start: 45%; inset-inline-start: 30%; width: 30%; aspect-ratio: 1.55; }
+.editorial-image-4 { inset-block-start: 65%; inset-inline-start: 46%; width: 21%; aspect-ratio: 1.55; }
+.editorial-image-5 { inset-block-start: 84%; inset-inline-start: 8%; width: 22%; aspect-ratio: 1.55; }
 
 /* Sticky closing moment between the journey and footer. */
 .landing-cta { position: relative; height: 260svh; background: var(--bg); }
@@ -186,6 +186,7 @@ img { max-width: 100%; }
 .landing-cta-pill-2 { inset-block-start: 27%; inset-inline-end: 10%; }
 .landing-cta-pill-3 { inset-block-end: 23%; inset-inline-start: 13%; }
 .landing-cta-pill-4 { inset-block-end: 18%; inset-inline-end: 13%; }
+
 
 
 /* Pinned five-scene landing journey */
@@ -352,12 +353,12 @@ img { max-width: 100%; }
   .journey-stage { min-height: 500px; }
   .journey-overlay { padding: 28px; }
   .editorial-break { padding-block-start: 132px; }
-  .editorial-field { height: 560px; }
-  .editorial-image-1 { width: 26%; }
-  .editorial-image-2 { width: 20%; }
-  .editorial-image-3 { width: 27%; }
-  .editorial-image-4 { width: 18%; }
-  .editorial-image-5 { width: 19%; }
+  .editorial-field { min-height: clamp(560px, 82svh, 820px); }
+  .editorial-image-1 { width: 30%; }
+  .editorial-image-2 { width: 24%; }
+  .editorial-image-3 { width: 31%; }
+  .editorial-image-4 { width: 22%; }
+  .editorial-image-5 { width: 23%; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .contact-grid { grid-template-columns: 1fr; }
   .service-overview { grid-template-columns: 1fr; }
@@ -386,14 +387,12 @@ img { max-width: 100%; }
   .editorial-break { padding-block: 82px 72px; }
   .editorial-heading h2 { font-size: clamp(29px, 8vw, 38px); }
   .editorial-description { max-width: 34ch; font-size: var(--font-size-sm); }
-  .editorial-field { height: 660px; margin-block-start: 22px; }
-  .editorial-image { padding: 5px; border-radius: 12px; }
-  .editorial-image img { border-radius: 8px; }
-  .editorial-image-1 { inset-block-start: 1%; inset-inline-start: 1%; width: 54%; transform: rotate(-4deg); }
-  .editorial-image-2 { inset-block-start: 20%; inset-inline-start: 60%; width: 41%; transform: rotate(4deg); }
-  .editorial-image-3 { inset-block-start: 36%; inset-inline-start: 30%; width: 61%; transform: rotate(1deg); }
-  .editorial-image-4 { inset-block-start: 60%; inset-inline-start: 2%; width: 46%; transform: rotate(3deg); }
-  .editorial-image-5 { inset-block-start: 70%; inset-inline-start: 57%; width: 43%; transform: rotate(-3deg); }
+  .editorial-field { min-height: clamp(560px, 82svh, 760px); margin-block-start: 22px; }
+  .editorial-image-1 { inset-block-start: 2%; inset-inline-start: 1%; width: 64%; }
+  .editorial-image-2 { inset-block-start: 22%; inset-inline-start: 50%; width: 50%; }
+  .editorial-image-3 { inset-block-start: 42%; inset-inline-start: 30%; width: 70%; }
+  .editorial-image-4 { inset-block-start: 62%; inset-inline-start: 2%; width: 56%; }
+  .editorial-image-5 { inset-block-start: 82%; inset-inline-start: 45%; width: 52%; }
   .journey-stage { min-height: 560px; }
   .journey-overlay { align-items: flex-end; padding: 16px; }
   .journey-overlay-4 { align-items: flex-start; padding-block-start: max(112px, calc(env(safe-area-inset-top) + 96px)); }
