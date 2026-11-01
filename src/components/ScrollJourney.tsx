@@ -7,7 +7,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "@/i18n/navigation";
 import { DirectionalArrow } from "@/components/DirectionalArrow";
-import { CROSSFADE_FRAMES, frameConfig, journeyFramePath, LITE_MODE_STEP, SCENE_FRAME_IDS } from "@/config/frames";
+import { CROSSFADE_FRAMES, frameConfig, journeyFramePath, LITE_MODE_STEP, SCENE_FRAME_IDS, WHITE_BACKGROUND_SCENE_ID } from "@/config/frames";
 
 
 type ScrollJourneyProps = { marketMap: ReactNode };
@@ -79,6 +79,11 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       canvas.height = Math.max(1, Math.round(rect.height * dpr));
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
       const rootStyle = getComputedStyle(document.documentElement);
+      if (SCENE_FRAME_IDS[activeScene] === WHITE_BACKGROUND_SCENE_ID) {
+        context.fillStyle = rootStyle.getPropertyValue("--surface").trim();
+        context.fillRect(0, 0, rect.width, rect.height);
+        return;
+      }
       const bg = rootStyle.getPropertyValue("--green").trim();
       const surface = rootStyle.getPropertyValue("--bg").trim();
       const gradient = context.createLinearGradient(0, 0, rect.width, rect.height);
@@ -95,7 +100,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       context.globalAlpha = 1;
     };
 
-    const drawImageCover = (image: HTMLImageElement, alpha = 1) => {
+    const drawImageFrame = (image: HTMLImageElement, alpha = 1, dim = true, contain = false) => {
       const rect = canvas.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       if (canvas.width !== Math.round(rect.width * dpr) || canvas.height !== Math.round(rect.height * dpr)) {
@@ -103,15 +108,18 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
         canvas.height = Math.round(rect.height * dpr);
       }
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const scale = Math.max(rect.width / image.naturalWidth, rect.height / image.naturalHeight);
+      const scale = (contain ? Math.min : Math.max)(rect.width / image.naturalWidth, rect.height / image.naturalHeight);
       const width = image.naturalWidth * scale;
       const height = image.naturalHeight * scale;
+      const top = contain && window.innerWidth < 768 ? rect.height - height : (rect.height - height) / 2;
       context.globalAlpha = alpha;
-      context.drawImage(image, (rect.width - width) / 2, (rect.height - height) / 2, width, height);
+      context.drawImage(image, (rect.width - width) / 2, top, width, height);
       context.globalAlpha = 1;
-      context.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--text").trim();
-      context.globalAlpha = 0.35;
-      context.fillRect(0, 0, rect.width, rect.height);
+      if (dim) {
+        context.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--text").trim();
+        context.globalAlpha = 0.35 * alpha;
+        context.fillRect(0, 0, rect.width, rect.height);
+      }
       context.globalAlpha = 1;
     };
 
@@ -145,13 +153,26 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       const dissolve = activeScene < frameConfig.scenes - 1
         ? Math.max(0, Math.min(1, (currentFrame - dissolveStartIndex) / (frames.length - 1 - dissolveStartIndex)))
         : 0;
-      drawImageCover(nearest[1]);
+      const activeIsWhite = SCENE_FRAME_IDS[activeScene] === WHITE_BACKGROUND_SCENE_ID;
+      const incomingScene = activeScene + 1;
+      const incomingIsWhite = SCENE_FRAME_IDS[incomingScene] === WHITE_BACKGROUND_SCENE_ID;
+      const fadingToWhite = dissolve > 0 && incomingIsWhite;
+      if (activeIsWhite || fadingToWhite) {
+        context.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--surface").trim();
+        context.fillRect(0, 0, canvas.width / Math.min(window.devicePixelRatio || 1, 2), canvas.height / Math.min(window.devicePixelRatio || 1, 2));
+      }
+      drawImageFrame(
+        nearest[1],
+        fadingToWhite ? 1 - dissolve : 1,
+        !activeIsWhite,
+        activeIsWhite,
+      );
       if (dissolve > 0) {
         const nextFrames = frames;
         const dissolveFrames = Math.min(Math.ceil(CROSSFADE_FRAMES / frameStep), nextFrames.length);
         const incomingIndex = Math.min(dissolveFrames - 1, Math.round(dissolve * (dissolveFrames - 1)));
-        const incoming = frameCache.get(journeyFramePath(activeScene + 1, nextFrames[incomingIndex]));
-        if (incoming) drawImageCover(incoming, dissolve);
+        const incoming = frameCache.get(journeyFramePath(incomingScene, nextFrames[incomingIndex]));
+        if (incoming) drawImageFrame(incoming, dissolve, !incomingIsWhite, incomingIsWhite);
       }
       if (nearest[0] !== lastDrawnKey) lastDrawnKey = nearest[0];
     };
@@ -162,6 +183,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
 
     const trimCache = () => {
       const activeActualFrame = currentFrame * frameStep + 1;
+      const crossfadeEdge = CROSSFADE_FRAMES + 1;
       for (const key of frameCache.keys()) {
         const match = key.match(/scene-(\d+)\//);
         const frameSceneId = match ? Number(match[1]) : 0;
@@ -170,8 +192,8 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
         const frameNumber = frameMatch ? Number(frameMatch[1]) : 0;
         const offset = sequenceScene - activeScene;
         const keepCurrentWindow = offset === 0 && Math.abs(frameNumber - activeActualFrame) <= frameStep * 4;
-        const keepNextDissolve = offset === 1 && activeActualFrame >= frameConfig.framesPerScene - CROSSFADE_FRAMES - 1 && frameNumber <= CROSSFADE_FRAMES + 1;
-        const keepPreviousEdge = offset === -1 && activeActualFrame <= CROSSFADE_FRAMES + 1 && frameNumber >= frameConfig.framesPerScene - CROSSFADE_FRAMES - 1;
+        const keepNextDissolve = offset === 1 && activeActualFrame >= frameConfig.framesPerScene - crossfadeEdge && frameNumber <= crossfadeEdge;
+        const keepPreviousEdge = offset === -1 && activeActualFrame <= crossfadeEdge && frameNumber >= frameConfig.framesPerScene - crossfadeEdge;
         if (!keepCurrentWindow && !keepNextDissolve && !keepPreviousEdge) {
           const image = frameCache.get(key);
           if (image) image.src = "";
@@ -193,11 +215,12 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
           frameLoads.delete(key);
           const offset = scene - activeScene;
           const activeActualFrame = currentFrame * frameStep + 1;
+          const crossfadeEdge = CROSSFADE_FRAMES + 1;
           const isRelevant = offset === 0
             ? Math.abs(frame - activeActualFrame) <= frameStep * 4
             : offset === 1
-              ? activeActualFrame >= frameConfig.framesPerScene - 16 && frame <= 16
-              : activeActualFrame <= 16 && frame >= frameConfig.framesPerScene - 16;
+                  ? activeActualFrame >= frameConfig.framesPerScene - crossfadeEdge && frame <= crossfadeEdge
+                  : activeActualFrame <= crossfadeEdge && frame >= frameConfig.framesPerScene - crossfadeEdge;
           if (!disposed && Math.abs(offset) <= 1 && isRelevant) {
             frameCache.set(key, image);
             trimCache();
@@ -222,13 +245,14 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
         if (!frameCache.has(journeyFramePath(scene, frame))) jobs.push(loadFrame(scene, frame));
       }
       const activeActualFrame = frameIndex * frameStep + 1;
-      if (scene < frameConfig.scenes - 1 && activeActualFrame >= frameConfig.framesPerScene - CROSSFADE_FRAMES - 1) {
-        for (const frame of frames.filter((item) => item <= CROSSFADE_FRAMES + 1)) {
+      const crossfadeEdge = CROSSFADE_FRAMES + 1;
+      if (scene < frameConfig.scenes - 1 && activeActualFrame >= frameConfig.framesPerScene - crossfadeEdge) {
+        for (const frame of frames.filter((item) => item <= crossfadeEdge)) {
           if (!frameCache.has(journeyFramePath(scene + 1, frame))) jobs.push(loadFrame(scene + 1, frame));
         }
       }
-      if (scene > 0 && activeActualFrame <= CROSSFADE_FRAMES + 1) {
-        for (const frame of frames.filter((item) => item >= frameConfig.framesPerScene - CROSSFADE_FRAMES - 1)) {
+      if (scene > 0 && activeActualFrame <= crossfadeEdge) {
+        for (const frame of frames.filter((item) => item >= frameConfig.framesPerScene - crossfadeEdge)) {
           if (!frameCache.has(journeyFramePath(scene - 1, frame))) jobs.push(loadFrame(scene - 1, frame));
         }
       }
@@ -317,11 +341,6 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
   }, [liteMode, reducedMotion]);
 
   const sceneContents = [
-    <div className="scene-content hero-content" key="hero">
-      <p className="scene-eyebrow">{t("hero.eyebrow")}</p>
-      <h1>{t("hero.title")}</h1>
-      <p className="scene-description">{t("hero.description")}</p>
-    </div>,
     <div className="scene-content split-content" key="care">
       <p className="scene-eyebrow">{t("scenes.care.eyebrow")}</p>
       <h2>{t("scenes.care.title")}</h2>
@@ -348,7 +367,7 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
         {(["fresh", "frozen"] as const).map((form) => <span key={form}>{formsT(form)}</span>)}
       </div>
     </div>,
-    <div className="scene-content split-content" key="logistics">
+    <div className="scene-content logistics-content" key="logistics">
       <p className="scene-eyebrow">{t("scenes.logistics.eyebrow")}</p>
       <h2>{t("scenes.logistics.title")}</h2>
       <p className="scene-description">{t("scenes.logistics.body")}</p>
@@ -370,7 +389,11 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
     <>
       <div className="journey-static">{staticScenes}</div>
       <div className={`journey-track${liteMode ? " is-lite" : ""}`} ref={trackRef} style={{ "--scene-count": frameConfig.scenes } as CSSProperties}>
-        <div className="journey-stage" ref={stageRef}>
+        <div
+          className="journey-stage"
+          data-white-background={SCENE_FRAME_IDS[activeScene] === WHITE_BACKGROUND_SCENE_ID}
+          ref={stageRef}
+        >
           <canvas ref={canvasRef} className="journey-canvas" aria-hidden="true" />
           <div className="journey-shade" aria-hidden="true" />
           {!ready && <div className="journey-loader" role="status"><span className="loader-mark" aria-hidden="true" /><span>{t("loading")}</span></div>}

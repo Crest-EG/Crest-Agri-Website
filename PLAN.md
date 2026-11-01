@@ -12,7 +12,7 @@ Read `AGENTS.md` first (standing rules), then this file. Work phase by phase.
 ## 1. Decisions already made (do not re-ask)
 - No backend, database, auth, admin panel, analytics, or third-party integrations (no Instagram feed, no Odoo, no Supabase, no CMS).
 - Arabic + English only. Device language by default, switchable, fallback English.
-- Landing = ONE continuous scroll journey (frame sequence), not stacked sections. Products are the main message; export/logistics is one part of the journey.
+- Landing keeps its 3D intro, then an editorial gallery and one continuous scroll journey (frame sequence). The intro and the first frame-based hero scene are separate; the first journey scene is removed. Products are the main message; export/logistics is one part of the journey.
 - Excluded for now: ads strip, Instagram feed, news, FAQ, prices, catalog download, dashboard.
 - Local git only (`git init`, commit per phase). Upload to GitHub/Vercel later by the owner.
 - Never invent company facts (numbers, years, certificates beyond GlobalGAP, SMETA, ISO). Use clearly marked `TODO(content)` placeholders.
@@ -52,7 +52,7 @@ src/app/icon.png               favicon / tab icon 512x512
 src/app/apple-icon.png         180x180
 src/app/opengraph-image.png    1200x630 social preview
 brand/fonts/*                  the three font files
-public/frames/scene-1..7/      journey frames
+public/frames/scene-{2,4,5,6,7}/ journey frames
 public/images/products/<slug>/ real product photos (later)
 ```
 `<Logo variant="full|mark" />` is the only code that references logo files. Placeholder logo = simple SVG with the text "CREST" in brand green. The logo must appear in: header, the single footer, browser tab (favicon), PWA icons, `not-found`, `error`, social preview.
@@ -97,11 +97,10 @@ next-intl routing, locales `['ar','en']`, `defaultLocale: 'en'`, prefix always. 
 ## 8. Scroll journey (landing page)
 One pinned full-viewport stage with a single `<canvas>` drawing a frame sequence driven by ScrollTrigger `scrub`, with real HTML overlays (text, buttons, cards) so translation, clicks and SEO work. After it: the compact quote section, then the footer.
 
-**Frames contract:** `public/frames/scene-{1,2,4,5,6,7}/{001..150}.webp` (1280x720). 900 frames as one continuous sequence; scene 3 is intentionally omitted, and the final delivery overlay remains removed. If frames are missing, draw a procedural placeholder on the canvas (brand gradient + scene number) so the page still works. Never show a blank canvas; keep the last loaded frame.
+**Frames contract:** `public/frames/scene-{2,4,5,6,7}/{001..150}.webp` (1280x720). 750 frames as one continuous sequence; the 3D intro remains, while frame-based scene 1, scene 3 and the final delivery overlay are omitted. If frames are missing, draw a procedural placeholder on the canvas (brand gradient + scene number) so the page still works. Never show a blank canvas; keep the last loaded frame.
 
 | # | Scene | Overlay |
 |---|---|---|
-| 1 | Hero | Headline (safe, high-quality agricultural products shipped worldwide) + buttons "Request a quote", "Browse products" |
 | 2 | Farm and care | 2–3 lines about the company + link About + certification logos row |
 | 4 | Packing | Packing quality + **private label** option (importer's own label) |
 | 5 | Shipping and export | Export service anywhere, fresh/frozen/dried |
@@ -109,9 +108,9 @@ One pinned full-viewport stage with a single `<canvas>` drawing a frame sequence
 | 6 | Markets | `<MarketMap />` in a white panel with green border over the dimmed canvas: static SVG world map (d3-geo + world-atlas), flag pins, current = green, target = gray, legend; GCC and North Africa as gray circles labeled "GCC"/"NA" |
 
 **Mechanics**
-- Height ≈ 140vh per scene desktop, ≈ 120vh mobile; total ≤ ~10 screens. Do not make it longer.
-- Load scene 1 first (minimal loader until its first ~12 frames are ready), then current scene ±1 while scrolling; bounded cache; never load all 900 up front.
-- `requestAnimationFrame` draw, cover-fit, DPR capped at 2, `scrub: 0.5`.
+- Height ≈ 140vh per scene desktop/tablet, ≈ 120vh mobile; total ≤ ~10 screens. Do not make it longer.
+- Load scene 2 first (minimal loader until its first ~12 frames are ready), then current scene ±1 while scrolling; bounded cache; never load all 750 up front. Keep the localized 3D intro separate from the frame sequence.
+- `requestAnimationFrame` draw, cover-fit, DPR capped at 2, `scrub: 0.5`. The white logistics scene uses a matching white canvas background, no dark shade, and dark text on the logical inline-start side.
 - **Lite mode** (every 2nd frame = 75/scene) when viewport < 768px, `deviceMemory <= 4`, `saveData`, or a slow connection. **Reduced motion:** no pin/canvas animation; each scene is a normal stacked block with a static first frame and the same content.
 - Overlays fade by each scene's progress window; `pointer-events: auto` only on the active scene; all text stays in the DOM in order. Mobile: overlay becomes a bottom panel (white, green border) for readability.
 - Visitors are never trapped: sticky header + "Skip to products".

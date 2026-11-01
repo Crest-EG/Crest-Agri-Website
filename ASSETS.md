@@ -15,7 +15,7 @@ All image placeholders are usable today. Replace them with files at the same pat
 | `src/app/apple-icon.png` | 180×180 PNG | Apple touch icon |
 | `src/app/opengraph-image.png` | 1200×630 PNG | Social preview; keep logo within the image safe area |
 | `brand/fonts/Montserrat-Arabic-Regular.woff2` | Regular WOFF2 font | Arabic and English site font via `next/font/local` |
-| `public/frames/scene-{1,2,4,5,6,7}/{001..150}.webp` | 1280×720 WebP, quality 75; 150 frames per scene, 900 total | Scroll journey canvas backgrounds; scenes 4, 5, 6 and 7 use the supplied videos |
+| `public/frames/scene-{2,4,5,6,7}/{001..150}.webp` | 1280×720 WebP, quality 75; 150 frames per scene, 750 total | Scroll journey canvas backgrounds; scenes 4, 5, 6 and 7 use the supplied videos |
 | `public/images/products/broccoli/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
 | `public/images/products/cabbage/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
 | `public/images/products/citrus/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
@@ -35,33 +35,21 @@ All image placeholders are usable today. Replace them with files at the same pat
 
 ## Landing hero scene
 
-The first screen is the registered ThreeUI `inner-green-3d` scene. Its authored
-source and runtime are exact copies and are not placeholders to redesign:
+The first screen is the registered ThreeUI `inner-green-3d` scene. The
+localized Crest edition is generated from its authored source:
 
 | Path | Format and use | Source / note |
 |---|---|---|
-| `src/components/sylva-hero/source/inner-green-3d.html` | 197,914-byte HTML; exact registered source | Build input only. It stays outside `public/` so the unmodified Sylva-branded page is not served. Do not edit; the Crest edition is generated in memory by `src/components/sylva-hero/sylvaDocument.ts`. |
+| `src/components/sylva-hero/source/inner-green-3d.html` | 197,914-byte HTML; exact registered source | Build input only. The Crest page is generated in memory by `src/components/sylva-hero/sylvaDocument.ts`. |
 | `public/landing-pages/inner-green-assets/three.min.js` | Exact bundled Three.js runtime | Required by the authored scene; do not replace with a different build. |
-| `public/landing-pages/inner-green-assets/lexend-latin.woff2` | Variable WOFF2, Latin subset | Preserved by the authored source; the generated Crest frame replaces it with the locale's brand font and does not use this file. |
-| `src/shaders/fonts/fragment-mono.woff2` | WOFF2 | Required by the shared ThreeUI stylesheet (`threeui.css`), not by the hero copy. |
-| `public/landing-pages/inner-green-assets/card-ethos.jpg` | 1200×800 JPEG | Original Sylva card art. Still referenced by the exact source, but replaced by Crest product photos in the generated edition. |
-| `public/landing-pages/inner-green-assets/card-ecostove.jpg` | 1200×600 JPEG | Original Sylva card art. Still referenced by the exact source, but replaced by Crest product photos in the generated edition. |
+| `public/landing-pages/inner-green-assets/lexend-latin.woff2` | Variable WOFF2, Latin subset | Preserved by the authored source; the generated frame embeds the local site font. |
+| `src/shaders/fonts/fragment-mono.woff2` | WOFF2 | Required by the shared ThreeUI stylesheet (`threeui.css`). |
+| `public/landing-pages/inner-green-assets/card-ethos.jpg` | 1200×800 JPEG | Original art referenced in the source and replaced in the Crest edition. |
+| `public/landing-pages/inner-green-assets/card-ecostove.jpg` | 1200×600 JPEG | Original art referenced in the source and replaced in the Crest edition. |
 
-The “tree” in the hero is **not an image**. It is a procedural Three.js
-composition: authored branch/fern/flower geometry, custom moss and haze shaders,
-GPU pollen, a butterfly, scan-reveal timing, and pointer parallax. There is no
-single replaceable bitmap, so a fruit photograph cannot be substituted without
-rebuilding the scene and losing its depth, lighting and motion. Fruit appears
-instead in the two floating product cards:
-
-- `public/images/stitch-products/grapes.jpg` (1280×698 JPEG)
-- `public/images/stitch-products/pomegranate.jpg` (1280×698 JPEG)
-
-Both are already tracked in the replaceable product-photography rows above.
-
-The hero's visible copy lives in `landing.sylva` in both message files. The
-sandboxed frame embeds Montserrat for both languages because its opaque origin
-blocks local font requests.
+The tree is a procedural Three.js composition rather than a replaceable
+photograph. The generated Crest page uses the first two featured product images
+for its cards; those photos are listed in the product photography rows above.
 
 
 ## Font

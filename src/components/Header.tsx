@@ -97,34 +97,45 @@ export function Header() {
   useEffect(() => {
     if (!isHome) return;
     const footer = document.querySelector<HTMLElement>(".site-footer");
-    const lightSections = document.querySelectorAll<HTMLElement>(".editorial-break, .landing-cta");
+    const journeyStage = document.querySelector<HTMLElement>(".journey-stage");
+    const lightSections = document.querySelectorAll<HTMLElement>(".editorial-break, .landing-cta, .journey-static-scene-4");
     const observedSections = [footer, ...lightSections].filter(
       (section): section is HTMLElement => section !== null,
     );
     if (!observedSections.length) return;
 
     let observer: IntersectionObserver | undefined;
+    const updateTone = () => {
+      const lightSectionUnderHeader = observedSections.some((section) => {
+        const bounds = section.getBoundingClientRect();
+        return bounds.top < HEADER_BAND && bounds.bottom > 0;
+      });
+      const whiteJourneySceneUnderHeader = journeyStage?.dataset.whiteBackground === "true" &&
+        journeyStage.getBoundingClientRect().top < HEADER_BAND &&
+        journeyStage.getBoundingClientRect().bottom > 0;
+      setTone(lightSectionUnderHeader || whiteJourneySceneUnderHeader ? "default" : "white");
+    };
+    const sceneObserver = journeyStage ? new MutationObserver(updateTone) : undefined;
+    if (journeyStage) {
+      sceneObserver?.observe(journeyStage, { attributes: true, attributeFilter: ["data-white-background"] });
+    }
     const observeFooterBand = () => {
       observer?.disconnect();
       observer = new IntersectionObserver(
-        () => {
-          const lightSectionUnderHeader = observedSections.some((section) => {
-            const bounds = section.getBoundingClientRect();
-            return bounds.top < HEADER_BAND && bounds.bottom > 0;
-          });
-          setTone(lightSectionUnderHeader ? "default" : "white");
-        },
+        updateTone,
         {
           rootMargin: `0px 0px -${Math.max(0, window.innerHeight - HEADER_BAND)}px 0px`,
           threshold: 0,
         },
       );
       observedSections.forEach((section) => observer?.observe(section));
+      if (journeyStage) observer?.observe(journeyStage);
     };
     observeFooterBand();
     window.addEventListener("resize", observeFooterBand);
     return () => {
       observer?.disconnect();
+      sceneObserver?.disconnect();
       window.removeEventListener("resize", observeFooterBand);
     };
   }, [isHome]);
