@@ -14,9 +14,6 @@ const navItems = [
   ["contact", "/contact"],
 ] as const;
 
-const HEADER_BAND = 96;
-const HEADER_TONE_LINE = HEADER_BAND / 2;
-
 function measureCompactWidth(header: HTMLElement) {
   const brand = header.querySelector<HTMLElement>(".brand-link");
   const navigation = header.querySelector<HTMLElement>(".primary-navigation");
@@ -58,9 +55,6 @@ export function Header() {
   const [compactWidth, setCompactWidth] = useState(0);
   const headerRef = useRef<HTMLDivElement>(null);
   const scrolledRef = useRef(false);
-  // Use the white wordmark over dark landing scenes and the dark wordmark over light sections.
-  const [tone, setTone] = useState<"default" | "white">(isHome ? "white" : "default");
-  const headerTone = isHome ? tone : "default";
 
   useEffect(() => {
     if (isHome) return;
@@ -95,41 +89,9 @@ export function Header() {
     };
   }, [isHome]);
 
-  useEffect(() => {
-    if (!isHome) return;
-    const hero = document.querySelector<HTMLElement>(".landing-page-frame");
-    const footer = document.querySelector<HTMLElement>(".site-footer");
-    const darkSections = [hero, footer].filter(
-      (section): section is HTMLElement => section !== null,
-    );
-    if (!darkSections.length) return;
-
-    let frame = 0;
-    const updateTone = () => {
-      frame = 0;
-      const darkSectionUnderHeader = darkSections.some((section) => {
-        const bounds = section.getBoundingClientRect();
-        return bounds.top <= HEADER_TONE_LINE && bounds.bottom > HEADER_TONE_LINE;
-      });
-      setTone(darkSectionUnderHeader ? "white" : "default");
-    };
-    const scheduleUpdate = () => {
-      if (!frame) frame = requestAnimationFrame(updateTone);
-    };
-    updateTone();
-    window.addEventListener("scroll", scheduleUpdate, { passive: true });
-    window.addEventListener("resize", scheduleUpdate);
-    return () => {
-      window.removeEventListener("scroll", scheduleUpdate);
-      window.removeEventListener("resize", scheduleUpdate);
-      if (frame) cancelAnimationFrame(frame);
-    };
-  }, [isHome]);
-
   return (
     <header
       className={`site-header${isHome ? " site-header-home" : ""}`}
-      data-tone={headerTone}
       data-scrolled={isHome || scrolled}
     >
       <div
@@ -138,7 +100,7 @@ export function Header() {
         style={!isHome && scrolled && compactWidth ? { width: `${compactWidth}px` } : undefined}
       >
         <Link href="/" className="brand-link" aria-label={t("navigation.home")} onClick={() => setOpen(false)}>
-          <Logo alt={t("logoAlt")} tone={headerTone} className="header-logo" />
+          <Logo alt={t("logoAlt")} className="header-logo" />
         </Link>
         <nav id="primary-navigation" className={`primary-navigation${open ? " is-open" : ""}`} aria-label={t("navigation.menu")}>
           <ul>

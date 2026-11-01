@@ -9,12 +9,10 @@ img { max-width: 100%; }
 
 .site-header { position: fixed; inset-block-start: 0; inset-inline: 0; z-index: 40; padding-block-start: 14px; background: transparent; border: 0; pointer-events: none; }
 .site-header-home { position: fixed; background: transparent; border: 0; }
-.header-inner { position: relative; width: min(100% - 56px, var(--page-width)); min-height: 68px; margin-inline: auto; padding: 8px 14px; display: flex; align-items: center; justify-content: space-between; gap: clamp(12px, 2vw, 24px); pointer-events: auto; border: 1px solid color-mix(in srgb, var(--text) 12%, transparent); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--surface) 52%, transparent); box-shadow: var(--shadow-soft), inset 0 1px 0 color-mix(in srgb, var(--surface) 82%, transparent); -webkit-backdrop-filter: blur(22px) saturate(.3); backdrop-filter: blur(22px) saturate(.3); transition: width 420ms cubic-bezier(.2,.8,.2,1), min-height 320ms ease, padding 320ms ease, border-radius 320ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
+.header-inner { position: relative; width: min(100% - 56px, var(--page-width)); min-height: 68px; margin-inline: auto; padding: 8px 14px; display: flex; align-items: center; justify-content: space-between; gap: clamp(12px, 2vw, 24px); pointer-events: auto; border: 1px solid color-mix(in srgb, var(--text) 12%, transparent); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--surface) 90%, transparent); box-shadow: var(--shadow-soft), inset 0 1px 0 color-mix(in srgb, var(--surface) 82%, transparent); -webkit-backdrop-filter: blur(22px) saturate(.3); backdrop-filter: blur(22px) saturate(.3); transition: width 420ms cubic-bezier(.2,.8,.2,1), min-height 320ms ease, padding 320ms ease, border-radius 320ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
 .site-header-home .header-inner { width: max-content; max-width: calc(100vw - 28px); min-height: 60px; padding-block: 4px; justify-content: center; transition-property: background-color, border-color, box-shadow; }
 .site-header-home .primary-navigation { flex: 0 1 auto; }
 .site-header[data-scrolled="true"] .header-inner { min-height: 60px; padding-block: 4px; }
-.site-header[data-tone="white"] .header-inner { border-color: color-mix(in srgb, var(--surface) 48%, transparent); background: color-mix(in srgb, var(--surface) 14%, transparent); box-shadow: 0 12px 32px color-mix(in srgb, var(--text) 22%, transparent), inset 0 1px 0 color-mix(in srgb, var(--surface) 48%, transparent), inset 0 -1px 0 color-mix(in srgb, var(--surface) 12%, transparent); }
-.site-header-home[data-tone="default"] .header-inner { border-color: color-mix(in srgb, var(--text) 12%, transparent); background: color-mix(in srgb, var(--surface) 90%, transparent); box-shadow: var(--shadow-soft), inset 0 1px 0 color-mix(in srgb, var(--surface) 82%, transparent); }
 .brand-link { position: relative; display: inline-flex; width: 158px; height: 52px; flex: 0 0 auto; align-items: center; justify-content: center; overflow: hidden; }
 .site-header-home .brand-link { padding: 4px 8px; border-radius: var(--radius-sm); background: transparent; }
 .header-logo { width: clamp(122px, 15vw, 158px); max-width: none; height: auto; flex: 0 0 clamp(122px, 15vw, 158px); }
@@ -26,9 +24,6 @@ img { max-width: 100%; }
 .primary-navigation li a { display: block; position: relative; padding: 10px 12px; border-radius: var(--radius-pill); color: var(--text-muted); white-space: nowrap; transition: background-color 180ms ease, color 180ms ease; }
 .primary-navigation li a:hover { background: color-mix(in srgb, var(--green) 10%, transparent); }
 .primary-navigation li a[aria-current="page"] { color: var(--green-ink); background: color-mix(in srgb, var(--green) 12%, transparent); }
-.site-header[data-tone="white"] .primary-navigation li a { color: color-mix(in srgb, var(--surface) 88%, transparent); }
-.site-header[data-tone="white"] .primary-navigation li a:hover,
-.site-header[data-tone="white"] .primary-navigation li a[aria-current="page"] { color: var(--surface); background: color-mix(in srgb, var(--surface) 16%, transparent); }
 .header-actions { display: flex; align-items: center; gap: 14px; }
 .language-switcher { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 4px; border: 1px solid var(--line); border-radius: var(--radius-pill); color: var(--text-muted); font-size: var(--font-size-xs); font-weight: 700; text-decoration: none; }
 .language-switcher span { padding: 6px 10px; border-radius: var(--radius-pill); }
@@ -42,7 +37,6 @@ img { max-width: 100%; }
 .directional-arrow { display: inline-block; flex: 0 0 auto; line-height: 1; }
 [dir="rtl"] .directional-arrow { transform: scaleX(-1); }
 .menu-toggle { display: none; width: 42px; height: 42px; place-items: center; border: 1px solid color-mix(in srgb, var(--text) 14%, transparent); border-radius: 50%; background: color-mix(in srgb, var(--surface) 58%, transparent); color: var(--text); cursor: pointer; }
-.site-header[data-tone="white"] .menu-toggle { border-color: color-mix(in srgb, var(--surface) 42%, transparent); background: color-mix(in srgb, var(--surface) 14%, transparent); color: var(--surface); }
 .header-quote { min-height: 42px; padding: 10px 18px; }
 .skip-link { position: absolute; z-index: 50; inset-block-start: calc(100% + 8px); inset-inline-start: 0; border-radius: var(--radius-pill); padding: 10px 16px; background: var(--surface); color: var(--text); border: 1px solid var(--green); box-shadow: var(--shadow-soft); font-size: var(--font-size-xs); font-weight: 700; text-decoration: none; }
 .site-footer { position: relative; isolation: isolate; width: 100%; margin-block-start: clamp(32px, 5vw, 64px); padding: 0 var(--page-gutter) 18px; overflow: hidden; color: var(--bg); background: linear-gradient(160deg, color-mix(in srgb, var(--text) 94%, transparent), color-mix(in srgb, var(--green-ink) 92%, transparent)), url("/images/footer/forest-landscape.webp") center / cover no-repeat; }
@@ -382,10 +376,6 @@ img { max-width: 100%; }
   .primary-navigation li a { padding-block: 12px; }
   .header-actions { padding-block-start: var(--space-3); border-block-start: 1px solid var(--line); }
   .menu-toggle { display: grid; }
-  .site-header[data-tone="white"] .primary-navigation { border-color: color-mix(in srgb, var(--text) 14%, transparent); background: color-mix(in srgb, var(--surface) 88%, transparent); box-shadow: var(--shadow-soft), inset 0 1px 0 color-mix(in srgb, var(--surface) 78%, transparent); }
-  .site-header[data-tone="white"] .primary-navigation li a { color: var(--text); }
-  .site-header[data-tone="white"] .primary-navigation li a:hover,
-  .site-header[data-tone="white"] .primary-navigation li a[aria-current="page"] { color: var(--green-ink); background: color-mix(in srgb, var(--green) 10%, transparent); }
 }
 @media (max-width: 600px) {
   .site-header { padding-block-start: 10px; }
