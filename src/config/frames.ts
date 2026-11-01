@@ -1,7 +1,7 @@
 export const FRAMES_PER_SCENE = 150;
-export const SCENE_FRAME_IDS = [2, 4, 5, 7, 6] as const;
+export const SCENE_FRAME_IDS = [1, 2, 3, 4, 5] as const;
 export const SCENE_COUNT = SCENE_FRAME_IDS.length;
-export const WHITE_BACKGROUND_SCENE_ID = 7;
+export const WHITE_BACKGROUND_SCENE_ID = 4;
 export const LITE_MODE_STEP = 2;
 export const FRAME_EXTENSION = "webp";
 export const CROSSFADE_FRAMES = 15;

@@ -75,7 +75,7 @@ Every entry below follows the same three fields used beside its code: **what thi
 
 ## `src/config/frames.ts`
 
-- Landing journey frame sequence | Crest creative team | Replace the 150 images in `public/frames/scene-{2,4,5,6,7}` with approved journey photography.
+- Landing journey frame sequence | Crest creative team | Replace the 150 images in each folder in `public/frames/scene-{1..5}` with approved journey photography.
 
 ## `src/styles/tokens.css`
 

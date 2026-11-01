@@ -15,7 +15,7 @@ All image placeholders are usable today. Replace them with files at the same pat
 | `src/app/apple-icon.png` | 180×180 PNG | Apple touch icon |
 | `src/app/opengraph-image.png` | 1200×630 PNG | Social preview; keep logo within the image safe area |
 | `brand/fonts/Montserrat-Arabic-Regular.woff2` | Regular WOFF2 font | Arabic and English site font via `next/font/local` |
-| `public/frames/scene-{2,4,5,6,7}/{001..150}.webp` | 1280×720 WebP, quality 75; 150 frames per scene, 750 total | Scroll journey canvas backgrounds; scenes 4, 5, 6 and 7 use the supplied videos |
+| `public/frames/scene-{1..5}/{001..150}.webp` | 1280×720 WebP; 150 frames per scene, 750 total | Scroll journey canvas backgrounds in landing order; scene 1 uses the supplied `Crest agri.mp4` video |
 | `public/images/products/broccoli/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
 | `public/images/products/cabbage/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |
 | `public/images/products/citrus/{1,2,3}.jpg` | 1280×853 JPEG | Product photography placeholders; not used while `images` is empty |

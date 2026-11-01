@@ -52,7 +52,7 @@ src/app/icon.png               favicon / tab icon 512x512
 src/app/apple-icon.png         180x180
 src/app/opengraph-image.png    1200x630 social preview
 brand/fonts/*                  the three font files
-public/frames/scene-{2,4,5,6,7}/ journey frames
+public/frames/scene-{1..5}/ journey frames
 public/images/products/<slug>/ real product photos (later)
 ```
 `<Logo variant="full|mark" />` is the only code that references logo files. Placeholder logo = simple SVG with the text "CREST" in brand green. The logo must appear in: header, the single footer, browser tab (favicon), PWA icons, `not-found`, `error`, social preview.
@@ -97,19 +97,19 @@ next-intl routing, locales `['ar','en']`, `defaultLocale: 'en'`, prefix always. 
 ## 8. Scroll journey (landing page)
 One pinned full-viewport stage with a single `<canvas>` drawing a frame sequence driven by ScrollTrigger `scrub`, with real HTML overlays (text and buttons) so translation, clicks and SEO work. After it: the compact quote section, then the footer.
 
-**Frames contract:** `public/frames/scene-{2,4,5,6,7}/{001..150}.webp` (1280x720). 750 frames as one continuous sequence; the 3D intro remains, while frame-based scene 1, scene 3 and the final delivery overlay are omitted. If frames are missing, draw a procedural placeholder on the canvas (brand gradient + scene number) so the page still works. Never show a blank canvas; keep the last loaded frame.
+**Frames contract:** `public/frames/scene-{1..5}/{001..150}.webp` (1280x720). 750 frames as one continuous sequence; the 3D intro remains separate. These five frame scenes are numbered in their landing-page order. If frames are missing, draw a procedural placeholder on the canvas (brand gradient + scene number) so the page still works. Never show a blank canvas; keep the last loaded frame.
 
 | # | Scene | Overlay |
 |---|---|---|
-| 2 | Produce to export (150 frames extracted from the supplied video) | 2–3 lines about the company + link About + certification logos row |
-| 4 | Packing | Packing quality + **private label** option (importer's own label) |
-| 5 | Shipping and export | Export service anywhere, fresh/frozen/dried |
-| 7 | Logistics | Air, road and sea transport options |
-| 6 | Markets | `<MarketMap />` beside its text in a compact translucent glass card over the undimmed canvas: static SVG world map (d3-geo + world-atlas), flag pins, current = green, target = gray, legend; GCC and North Africa as gray circles labeled "GCC"/"NA" |
+| 1 | Produce to export (150 frames extracted from the supplied video) | 2–3 lines about the company + link About + certification logos row |
+| 2 | Packing | Packing quality + **private label** option (importer's own label) |
+| 3 | Shipping and export | Export service anywhere, fresh/frozen/dried |
+| 4 | Logistics | Air, road and sea transport options |
+| 5 | Markets | `<MarketMap />` beside its text in a compact translucent glass card over the undimmed canvas: static SVG world map (d3-geo + world-atlas), flag pins, current = green, target = gray, legend; GCC and North Africa as gray circles labeled "GCC"/"NA" |
 
 **Mechanics**
 - Height ≈ 140vh per scene desktop/tablet, ≈ 120vh mobile; total ≤ ~10 screens. Do not make it longer.
-- Load scene 2 first (minimal loader until its first ~12 frames are ready), then current scene ±1 while scrolling; bounded cache; never load all 750 up front. Keep the localized 3D intro separate from the frame sequence.
+- Load scene 1 first (minimal loader until its first ~12 frames are ready), then current scene ±1 while scrolling; bounded cache; never load all 750 up front. Keep the localized 3D intro separate from the frame sequence.
 - `requestAnimationFrame` draw, cover-fit to fill the viewport without distorting frames, DPR capped at 2, `scrub: 0.5`. Do not tint or shade the video frames. Place scene copy in compact translucent glass cards with a restrained blur; use dark text for contrast. The white logistics scene retains its matching white canvas background.
 - **Lite mode** (every 2nd frame = 75/scene) when viewport < 768px, `deviceMemory <= 4`, `saveData`, or a slow connection. **Reduced motion:** no pin/canvas animation; each scene is a normal stacked block with a static first frame and the same content.
 - Overlays fade by each scene's progress window; `pointer-events: auto` only on the active scene; all text stays in the DOM in order. Mobile: glass cards remain sized to their copy and fit the full-screen scene.
