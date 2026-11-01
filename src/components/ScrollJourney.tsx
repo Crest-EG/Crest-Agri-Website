@@ -352,12 +352,6 @@ export function ScrollJourney({ marketMap }: ScrollJourneyProps) {
       <div className="map-content-heading"><div><p className="scene-eyebrow">{t("scenes.markets.eyebrow")}</p><h2>{t("scenes.markets.title")}</h2></div><p>{t("scenes.markets.body")}</p></div>
       {marketMap}
     </div>,
-    <div className="scene-content closing-content" key="delivery">
-      <p className="scene-eyebrow">{t("scenes.delivery.eyebrow")}</p>
-      <h2>{t("scenes.delivery.title")}</h2>
-      <p className="scene-description">{t("scenes.delivery.body")}</p>
-      <a className="button button-primary" href="#quote">{t("scenes.delivery.quote")}</a>
-    </div>,
   ];
 
   const staticScenes = sceneContents.map((content, index) => (

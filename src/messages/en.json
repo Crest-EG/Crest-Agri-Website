@@ -134,12 +134,6 @@
         "worldMap": "World map",
         "gccPin": "GCC",
         "northAfricaPin": "NA"
-      },
-      "delivery": {
-        "eyebrow": "Start a conversation",
-        "title": "Let’s plan your next shipment.",
-        "body": "Tell us what you are looking for and our team will follow up.",
-        "quote": "Request a quote"
       }
     },
     "loading": "Preparing the journey…"
