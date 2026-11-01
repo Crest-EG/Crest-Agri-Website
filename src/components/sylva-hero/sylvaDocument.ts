@@ -223,7 +223,10 @@ export function buildCrestSylvaDocument({ locale, copy }: SylvaDocumentOptions) 
   html = replaceOnce(html, "<dt>Canopy restored</dt><dd>282 ha</dd>", `<dt>${escapeHtml(copy.statFormsLabel)}</dt><dd>${escapeHtml(copy.statFormsValue)}</dd>`);
   html = replaceOnce(html, "<dt>Native species</dt><dd>43 mapped</dd>", `<dt>${escapeHtml(copy.statOriginLabel)}</dt><dd>${escapeHtml(copy.statOriginValue)}</dd>`);
 
-  html = replaceOnce(html, '<div class="ghost fade" style="--d:1150ms" aria-hidden="true">SYLVA</div>', `<div class="ghost fade" style="--d:1150ms" aria-hidden="true">${escapeHtml(copy.ghost)}</div>`);
+  const ghostLetters = [...copy.ghost]
+    .map((letter) => `<span>${escapeHtml(letter)}</span>`)
+    .join("");
+  html = replaceOnce(html, '<div class="ghost fade" style="--d:1150ms" aria-hidden="true">SYLVA</div>', `<div class="ghost fade" style="--d:1150ms" aria-hidden="true">${ghostLetters}</div>`);
   html = replaceOnce(
     html,
     '<a class="scroll mask" style="--d:1040ms; --pd:9" href="#">Discover<span class="track"></span></a>',
@@ -236,6 +239,20 @@ export function buildCrestSylvaDocument({ locale, copy }: SylvaDocumentOptions) 
 <style data-crest-sylva>
   /* Crest edition: the authored composition is preserved; these rules only
      localize alignment and clear the fixed Crest header on narrow phones. */
+  .ghost {
+    z-index: 1;
+    bottom: calc(24 * var(--u));
+    left: 12%;
+    display: flex;
+    width: 76%;
+    justify-content: space-between;
+    font-size: calc(360 * var(--u));
+    letter-spacing: 0;
+    direction: ltr;
+    color: rgba(255, 255, 255, .12);
+  }
+  .ghost span:nth-child(even) { transform: translateY(calc(42 * var(--u))); }
+  .ghost span:nth-child(odd) { transform: translateY(calc(-26 * var(--u))); }
   html[dir="rtl"] .headline,
   html[dir="rtl"] .lede { text-align: right; }
   /* Crest's headline is longer than the authored "Step into / the living
@@ -262,6 +279,13 @@ export function buildCrestSylvaDocument({ locale, copy }: SylvaDocumentOptions) 
     /* Keep product cards above the procedural branch on phones. */
     #scene { z-index: 2; }
     .card { z-index: 4; }
+    .ghost {
+      bottom: calc(760 * var(--u));
+      left: 50%;
+      width: 76vw;
+      transform: translateX(-50%);
+      font-size: calc(170 * var(--u));
+    }
     .card--about,
     .card--stove {
       left: calc(80 * var(--u));
