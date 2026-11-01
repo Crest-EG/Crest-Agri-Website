@@ -101,7 +101,7 @@ One pinned full-viewport stage with a single `<canvas>` drawing a frame sequence
 
 | # | Scene | Overlay |
 |---|---|---|
-| 2 | Farm and care | 2–3 lines about the company + link About + certification logos row |
+| 2 | Produce to export (150 frames extracted from the supplied video) | 2–3 lines about the company + link About + certification logos row |
 | 4 | Packing | Packing quality + **private label** option (importer's own label) |
 | 5 | Shipping and export | Export service anywhere, fresh/frozen/dried |
 | 7 | Logistics | Air, road and sea transport options |
