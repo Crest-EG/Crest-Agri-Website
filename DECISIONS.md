@@ -5,7 +5,7 @@
 - Supplied category photos are copied to stable `/images/products/<slug>/1.webp` paths and used by catalog cards, product detail pages, Open Graph metadata, and the landing gallery.
 - Product summaries, seasons, and packing stay conditional and enquiry-led because confirmed supply, sizes, and packaging terms were not provided.
 - Products filters are represented by `?form=` and applied in the server page so the URL, selected chip, and rendered product list stay aligned.
-- The crawlable landing copy follows the original hero, gallery, journey, and CTA sequence so SEO text does not interrupt the visual landing flow.
+- Landing SEO keywords stay in metadata and the existing designed content; no separate visible SEO-only section is added outside the approved page structure.
 - The sandboxed 3D hero uses a postMessage readiness handshake because its opaque origin cannot be inspected by the parent and its load event can precede hydration.
 - Legacy routes redirect directly to localized final pages; unknown old product slugs go to the products listing rather than an invented product detail.
 - Existing standalone About, Certifications, Privacy, and Terms routes retain their page layout; the generic Terms text is marked for legal review.

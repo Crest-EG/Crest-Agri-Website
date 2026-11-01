@@ -187,13 +187,6 @@ img { max-width: 100%; }
 .landing-cta-pill-3 { inset-block-end: 23%; inset-inline-start: 13%; }
 .landing-cta-pill-4 { inset-block-end: 18%; inset-inline-end: 13%; }
 
-.landing-seo-content { padding-block: clamp(42px, 7vw, 88px); }
-.landing-seo-content h1 { max-width: 20ch; margin: 0; font-size: clamp(34px, 5vw, 64px); line-height: 1.08; }
-.landing-seo-content > p { max-width: 72ch; margin-block: 18px 34px; color: var(--text-muted); line-height: 1.75; }
-.landing-seo-content h2 { margin-block: 0 16px; font-size: clamp(22px, 3vw, 32px); }
-.landing-seo-products, .landing-seo-links { display: flex; flex-wrap: wrap; gap: 10px 20px; margin: 0; padding: 0; list-style: none; }
-.landing-seo-content a { color: var(--green-ink); font-weight: 700; text-underline-offset: 4px; }
-.landing-seo-links { margin-block-start: 26px; }
 
 /* Pinned five-scene landing journey */
 .journey-track { --scene-scroll-vh: 140; position: relative; height: calc((var(--scene-count) * var(--scene-scroll-vh) + 100) * 1svh); }
