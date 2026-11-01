@@ -110,7 +110,7 @@ One pinned full-viewport stage with a single `<canvas>` drawing a frame sequence
 **Mechanics**
 - Height ≈ 140vh per scene desktop/tablet, ≈ 120vh mobile; total ≤ ~10 screens. Do not make it longer.
 - Load scene 2 first (minimal loader until its first ~12 frames are ready), then current scene ±1 while scrolling; bounded cache; never load all 750 up front. Keep the localized 3D intro separate from the frame sequence.
-- `requestAnimationFrame` draw, cover-fit to fill the viewport without distorting frames, DPR capped at 2, `scrub: 0.5`. Do not tint or shade the video frames. Keep overlay copy directly over the footage without blurred or opaque panels; use dark copy on the bright scenes and light copy on dark footage. The white logistics scene retains its matching white canvas background.
+- `requestAnimationFrame` draw, cover-fit to fill the viewport without distorting frames, DPR capped at 2, `scrub: 0.5`. Do not tint or shade the video frames. Keep overlay copy directly over the footage without blurred or opaque panels, with a subtle text shadow; use dark copy on the bright scenes and light copy on dark footage. The white logistics scene retains its matching white canvas background.
 - **Lite mode** (every 2nd frame = 75/scene) when viewport < 768px, `deviceMemory <= 4`, `saveData`, or a slow connection. **Reduced motion:** no pin/canvas animation; each scene is a normal stacked block with a static first frame and the same content.
 - Overlays fade by each scene's progress window; `pointer-events: auto` only on the active scene; all text stays in the DOM in order. Mobile: copy remains directly over the full-screen scene, with responsive sizing and placement.
 - Visitors are never trapped: sticky header + "Skip to products".

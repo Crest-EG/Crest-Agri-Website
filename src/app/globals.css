@@ -197,7 +197,7 @@ img { max-width: 100%; }
 .journey-canvas { position: absolute; inset: 0; width: 100%; height: 100%; background: var(--surface); }
 .journey-overlay { position: absolute; z-index: 2; inset: 0; display: flex; align-items: center; padding: var(--page-gutter); opacity: 0; pointer-events: none; transition: opacity 180ms linear; }
 .journey-overlay.is-active { z-index: 3; opacity: 1; pointer-events: auto; }
-.scene-content { width: min(100%, 760px); padding: 0; color: var(--surface); background: transparent; border: 0; border-radius: 0; box-shadow: none; text-shadow: 0 1px 12px color-mix(in srgb, var(--text) 66%, transparent); }
+.scene-content { width: min(100%, 760px); padding: 0; color: var(--surface); background: transparent; border: 0; border-radius: 0; box-shadow: none; text-shadow: 0 2px 3px color-mix(in srgb, var(--text) 22%, transparent); }
 .scene-content .scene-eyebrow { color: var(--green); margin: 0 0 var(--space-3); }
 .scene-content h2 { margin: 0; font-family: var(--font-display); font-size: clamp(28px, 4vw, 52px); font-weight: 700; line-height: 1.06; letter-spacing: -.035em; }
 .scene-description { max-width: 54ch; margin: var(--space-4) 0 0; color: color-mix(in srgb, var(--surface) 88%, transparent); font-size: clamp(16px, 1.3vw, 19px); line-height: 1.65; }
@@ -212,7 +212,7 @@ img { max-width: 100%; }
 .journey-overlay-2 .scene-content,
 .journey-overlay-3 .scene-content,
 .journey-overlay-4 .scene-content,
-.journey-overlay-5 .scene-content { color: var(--text); text-shadow: none; }
+.journey-overlay-5 .scene-content { color: var(--text); }
 .journey-overlay-2 .scene-eyebrow,
 .journey-overlay-3 .scene-eyebrow,
 .journey-overlay-4 .scene-eyebrow,
