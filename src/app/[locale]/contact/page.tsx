@@ -29,9 +29,6 @@ export default async function ContactPage({ params, searchParams }: ContactProps
   const language: SiteLocale = locale === "ar" ? "ar" : "en";
   const t = await getTranslations({ locale, namespace: "contact" });
   const q = await getTranslations({ locale, namespace: "quote" });
-  const faq = await getTranslations({ locale, namespace: "faq" });
-  // TODO(replace): Bilingual FAQ answers | Crest export team | Confirm product, season, private-label and quotation practices, then update the faq namespace in both message files.
-  const faqItems = faq.raw("items") as { question: string; answer: string }[];
 
   return (
     <main className="page-shell contact-page">
@@ -70,28 +67,6 @@ export default async function ContactPage({ params, searchParams }: ContactProps
           <QuoteForm initialProduct={initialProduct} />
         </section>
       </div>
-      <section className="page-section" aria-labelledby="contact-faq-title">
-        <header className="page-intro"><h2 id="contact-faq-title">{faq("title")}</h2></header>
-        <div className="faq-list">
-          {faqItems.map((item) => (
-            <details className="faq-item" key={item.question}>
-              <summary className="faq-question">
-                <span className="faq-question-copy">
-                  <span className="faq-label">{faq("questionLabel")}</span>
-                  <span className="faq-question-text">{item.question}</span>
-                </span>
-                <span className="faq-toggle" aria-hidden="true" />
-              </summary>
-              <div className="faq-answer">
-                <div className="faq-answer-inner">
-                  <span className="faq-label">{faq("answerLabel")}</span>
-                  <p>{item.answer}</p>
-                </div>
-              </div>
-            </details>
-          ))}
-        </div>
-      </section>
     </main>
   );
 }
