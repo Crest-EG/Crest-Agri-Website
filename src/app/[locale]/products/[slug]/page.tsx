@@ -5,7 +5,6 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { RelatedProducts } from "@/components/RelatedProducts";
 import { ButtonLink } from "@/components/Button";
-import { PrivateLabelIllustration } from "@/components/PrivateLabelIllustration";
 import { products, getProductBySlug, type ProductContent } from "@/content/products";
 import { site } from "@/content/site";
 import { DirectionalArrow } from "@/components/DirectionalArrow";
@@ -125,7 +124,9 @@ export default async function ProductDetailPage({ params }: DetailProps) {
           <ul>{(["privatePoint1", "privatePoint2", "privatePoint3"] as const).map((key) => <li key={key}>{home(key)}</li>)}</ul>
           <ButtonLink href="/services#private-label" variant="secondary">{home("privateLink")} <DirectionalArrow kind="forward" /></ButtonLink>
         </div>
-        <div className="detail-private-art"><PrivateLabelIllustration /></div>
+        <div className="detail-private-art">
+          <Image src="/images/landing/private-label.webp" alt={home("privateImageAlt")} width={1608} height={946} sizes="(max-width: 600px) 90vw, 38vw" />
+        </div>
       </section>
       <section className="page-section">
         <div className="section-heading"><h2>{t("related")}</h2><Link className="text-link" href="/products">{t("allProducts")} <DirectionalArrow kind="forward" /></Link></div>

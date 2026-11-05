@@ -199,7 +199,8 @@
       "certGlobalgap": "GlobalG.A.P.",
       "certGrasp": "GRASP",
       "certIso22000": "ISO 22000",
-      "ctaImageAlt": "Fresh berries ready for export"
+      "ctaImageAlt": "Fresh berries ready for export",
+      "privateImageAlt": "Private-label packaging concept with space for a buyer’s own brand"
     },
     "scenes": {
       "markets": {

@@ -6,7 +6,6 @@ import { ProductCard } from "@/components/ProductCard";
 import { MarketMap } from "@/components/MarketMap";
 import { ButtonLink } from "@/components/Button";
 import { DirectionalArrow } from "@/components/DirectionalArrow";
-import { PrivateLabelIllustration } from "@/components/PrivateLabelIllustration";
 import { Link } from "@/i18n/navigation";
 import { featuredProducts, products } from "@/content/products";
 import { createPageMetadata, type SiteLocale } from "@/lib/seo";
@@ -108,7 +107,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <ul>{(["privatePoint1", "privatePoint2", "privatePoint3"] as const).map((key) => <li key={key}>{t(key)}</li>)}</ul>
           <ButtonLink href="/services" variant="secondary">{t("privateLink")} <DirectionalArrow kind="forward" /></ButtonLink>
         </div>
-        <div className="home-private-image"><PrivateLabelIllustration /></div>
+        <div className="home-private-image">
+          <Image src="/images/landing/private-label.webp" alt={t("privateImageAlt")} fill sizes="(max-width: 800px) 100vw, 48vw" />
+        </div>
       </section>
 
       <section className="home-services page-shell" aria-labelledby="services-title">
