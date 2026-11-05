@@ -199,6 +199,8 @@
       "certGlobalgap": "GlobalG.A.P.",
       "certGrasp": "GRASP",
       "certIso22000": "ISO 22000",
+      "certIso9001": "ISO 9001:2015",
+      "certSmeta": "SMETA",
       "privateImageAlt": "تصميم مقترح لعبوة بعلامة خاصة ومساحة لعلامة المشتري"
     },
     "scenes": {

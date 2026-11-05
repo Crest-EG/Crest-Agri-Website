@@ -15,6 +15,8 @@ const homeCertifications = [
   { key: "certGlobalgap", image: "/images/certifications/globalgap.webp", width: 625, height: 625 },
   { key: "certGrasp", image: "/images/certifications/grasp.webp", width: 625, height: 625 },
   { key: "certIso22000", image: "/images/certifications/iso-22000.webp", width: 177, height: 179 },
+  { key: "certIso9001", image: "/images/certifications/iso.webp", width: 365, height: 335 },
+  { key: "certSmeta", image: null, width: 0, height: 0 },
 ];
 const serviceCards = [
   { key: "sourcing", image: "/images/landing/harvest.webp" },
@@ -74,7 +76,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <h2 id="home-certifications-title">{t("certificationsTitle")}</h2>
         <div className="home-certification-logos">
           {homeCertifications.map(({ key, image, width, height }) => (
-            <Image key={key} src={image} alt={t(key)} width={width} height={height} />
+            image ? <Image key={key} src={image} alt={t(key)} width={width} height={height} /> : <span className="home-certification-wordmark" key={key}>{t(key)}</span>
           ))}
         </div>
         <Link href="/certifications">{t("certificationsLink")} <DirectionalArrow kind="forward" /></Link>
