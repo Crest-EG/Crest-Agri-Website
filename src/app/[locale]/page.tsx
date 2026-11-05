@@ -15,6 +15,17 @@ const homeCertifications = [
   { key: "certGrasp", image: "/images/certifications/grasp.webp", width: 625, height: 625 },
   { key: "certIso22000", image: "/images/certifications/iso-22000.webp", width: 177, height: 179 },
 ];
+const serviceCards = [
+  { key: "sourcing", image: "/images/landing/harvest.webp" },
+  { key: "packing", image: "/images/categories/fresh.webp" },
+  { key: "logistics", image: "/images/services/shipping.webp" },
+] as const;
+const floatingProducts = [
+  { slug: "strawberry", image: "/images/products/strawberry.webp", className: "floating-product-strawberry", width: 144, height: 176 },
+  { slug: "orange", image: "/images/products/orange.webp", className: "floating-product-orange", width: 160, height: 160 },
+  { slug: "mango", image: "/images/products/mango.webp", className: "floating-product-mango", width: 136, height: 172 },
+  { slug: "green-beans", image: "/images/products/green-beans.webp", className: "floating-product-green-beans", width: 142, height: 172 },
+] as const;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -117,11 +128,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <p className="eyebrow">{t("servicesEyebrow")}</p><h2 id="services-title">{t("servicesTitle")}</h2><p>{t("servicesBody")}</p>
         </div>
         <div className="home-service-grid">
-          {(["sourcing", "packing", "logistics"] as const).map((item, index) => (
-            <article className="home-service-card" key={item}>
-              <span className="home-service-number">0{index + 1}</span>
-              <h3>{t(`services.${item}.title`)}</h3>
-              <p>{t(`services.${item}.body`)}</p>
+          {serviceCards.map(({ key, image }, index) => (
+            <article className="home-service-card" key={key}>
+              <div className="home-service-image">
+                <Image src={image} alt="" aria-hidden="true" fill sizes="(max-width: 900px) 100vw, 33vw" />
+              </div>
+              <div className="home-service-copy">
+                <span className="home-service-number">0{index + 1}</span>
+                <h3>{t(`services.${key}.title`)}</h3>
+                <p>{t(`services.${key}.body`)}</p>
+              </div>
             </article>
           ))}
         </div>
@@ -136,10 +152,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       <section className="home-cta" aria-labelledby="cta-title">
-        <Image src="/images/landing/cta-berries.webp" alt={t("ctaImageAlt")} fill sizes="100vw" className="home-cta-image" />
-        <span className="home-cta-shade" aria-hidden="true" />
-        <div><p className="eyebrow">{t("ctaEyebrow")}</p><h2 id="cta-title">{t("ctaTitle")}</h2><p>{t("ctaBody")}</p></div>
-        <ButtonLink href="/contact#quote" variant="primary">{t("ctaButton")} <DirectionalArrow kind="forward" /></ButtonLink>
+        {floatingProducts.map(({ slug, image, className, width, height }) => (
+          <Image key={slug} src={image} alt="" aria-hidden="true" width={width} height={height} sizes="(max-width: 600px) 76px, 144px" className={`home-cta-product ${className}`} />
+        ))}
+        <div className="home-cta-content">
+          <p className="eyebrow">{t("ctaEyebrow")}</p>
+          <h2 id="cta-title">{t("ctaTitle")}</h2>
+          <p>{t("ctaBody")}</p>
+          <ButtonLink href="/contact#quote" variant="primary">{t("ctaButton")} <DirectionalArrow kind="forward" /></ButtonLink>
+        </div>
       </section>
     </main>
   );

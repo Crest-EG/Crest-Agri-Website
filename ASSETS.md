@@ -18,7 +18,6 @@ The landing page, certification page and product catalogue use supplied company/
 | `brand/fonts/Dubai-Light` | Not supplied | TODO(confirm): planned Arabic/display font; system fallback remains active |
 | `brand/fonts/Acumin-Variable-Concept` | Not supplied | TODO(confirm): planned Latin body font; system fallback remains active |
 | `public/images/landing/export-truck.webp` | 1800×1012 WebP | Landing hero |
-| `public/images/landing/cta-berries.webp` | 1800×2700 WebP | Full-screen quote call-to-action |
 | `public/images/landing/private-label.webp` | 1608×946 WebP | Original private-label illustration on the landing page and product details |
 | `public/images/categories/fresh.webp` | 1800×1012 WebP | Fresh category card |
 | `public/images/categories/frozen.webp` | 1800×1012 WebP | Frozen category card, landing and About imagery |
