@@ -5,11 +5,11 @@ import { Link } from "@/i18n/navigation";
 import { ButtonLink } from "@/components/Button";
 import { DirectionalArrow } from "@/components/DirectionalArrow";
 import { JsonLd } from "@/components/JsonLd";
+import { PrivateLabelSection } from "@/components/PrivateLabelSection";
 import { site } from "@/content/site";
 import { createBreadcrumbStructuredData, createFaqStructuredData } from "@/lib/structured-data";
 import { createPageMetadata, type SiteLocale } from "@/lib/seo";
 
-const processSteps = ["query", "quotation", "inspection", "booking", "contract", "dispatch"] as const;
 // TODO(replace): Bilingual export service and private-label descriptions | Crest export team | Confirm service scope and approval flow, then update the services namespace in both message files.
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -52,18 +52,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
           <div className="service-support"><span>{t("sourcing")}</span><span>{t("dispatch")}</span></div>
         </div>
       </section>
-      <section id="private-label" className="page-section service-private-label">
-        <div className="section-heading"><h2>{t("privateLabel")}</h2><p>{t("privateLabelBody")}</p></div>
-        <ol className="service-steps" aria-label={t("privateLabel")}>
-          {processSteps.map((key, index) => (
-            <li key={key}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <h3>{t(`workflow.${key}.title`)}</h3>
-              <p>{t(`workflow.${key}.body`)}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
+      <PrivateLabelSection id="private-label" />
       <section className="shipping-card content-card">
         <div><p className="eyebrow">{t("dispatch")}</p><h2>{t("shipping")}</h2><p>{t("shippingBody")}</p></div>
         <div className="shipping-card-visual"><Image src="/images/services/shipping.webp" alt={t("shippingImageAlt")} fill sizes="(max-width: 900px) 100vw, 40vw" /></div>

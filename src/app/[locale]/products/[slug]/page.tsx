@@ -125,7 +125,7 @@ export default async function ProductDetailPage({ params }: DetailProps) {
           <h2 id="detail-private-title">{home("privateTitle")}</h2>
           <p>{home("privateBody")}</p>
           <ul>{(["privatePoint1", "privatePoint2", "privatePoint3"] as const).map((key) => <li key={key}>{home(key)}</li>)}</ul>
-          <ButtonLink href="/services#private-label" variant="secondary">{home("privateLink")} <DirectionalArrow kind="forward" /></ButtonLink>
+          <ButtonLink href="/contact#quote" variant="secondary">{home("privateLink")} <DirectionalArrow kind="forward" /></ButtonLink>
         </div>
         <div className="detail-private-art">
           <Image src="/images/landing/private-label.webp" alt={home("privateImageAlt")} width={1608} height={946} sizes="(max-width: 600px) 90vw, 38vw" />

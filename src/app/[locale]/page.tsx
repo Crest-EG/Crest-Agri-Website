@@ -7,6 +7,7 @@ import { MarketMap } from "@/components/MarketMap";
 import { ButtonLink } from "@/components/Button";
 import { DirectionalArrow } from "@/components/DirectionalArrow";
 import { HomeCallToAction } from "@/components/HomeCallToAction";
+import { PrivateLabelSection } from "@/components/PrivateLabelSection";
 import { Link } from "@/i18n/navigation";
 import { featuredProducts, products } from "@/content/products";
 import { createPageMetadata, type SiteLocale } from "@/lib/seo";
@@ -18,11 +19,6 @@ const homeCertifications = [
   { key: "certIso9001", image: "/images/certifications/iso.webp", width: 365, height: 335 },
   { key: "certSmeta", image: null, width: 0, height: 0 },
 ];
-const serviceCards = [
-  { key: "sourcing", image: "/images/landing/harvest.webp" },
-  { key: "packing", image: "/images/categories/fresh.webp" },
-  { key: "logistics", image: "/images/services/shipping.webp" },
-] as const;
 const floatingProducts = [
   { slug: "strawberry", image: "/images/products/strawberry.webp", className: "floating-product-strawberry", width: 144, height: 176 },
   { slug: "orange", image: "/images/products/orange.webp", className: "floating-product-orange", width: 160, height: 160 },
@@ -113,39 +109,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      <section className="home-private page-shell" aria-labelledby="private-title">
-        <div className="home-private-copy">
-          <p className="eyebrow">{t("privateEyebrow")}</p>
-          <h2 id="private-title">{t("privateTitle")}</h2>
-          <p>{t("privateBody")}</p>
-          <ul>{(["privatePoint1", "privatePoint2", "privatePoint3"] as const).map((key) => <li key={key}>{t(key)}</li>)}</ul>
-          <ButtonLink href="/services" variant="secondary">{t("privateLink")} <DirectionalArrow kind="forward" /></ButtonLink>
-        </div>
-        <div className="home-private-image">
-          <Image src="/images/landing/private-label.webp" alt={t("privateImageAlt")} fill sizes="(max-width: 800px) 100vw, 48vw" />
-        </div>
-      </section>
-
-      <section className="home-services page-shell" aria-labelledby="services-title">
-        <div className="home-section-heading">
-          <p className="eyebrow">{t("servicesEyebrow")}</p><h2 id="services-title">{t("servicesTitle")}</h2><p>{t("servicesBody")}</p>
-        </div>
-        <div className="home-service-grid">
-          {serviceCards.map(({ key, image }, index) => (
-            <article className="home-service-card" key={key}>
-              <div className="home-service-image">
-                <Image src={image} alt="" aria-hidden="true" fill sizes="(max-width: 900px) 100vw, 33vw" />
-              </div>
-              <div className="home-service-copy">
-                <span className="home-service-number">0{index + 1}</span>
-                <h3>{t(`services.${key}.title`)}</h3>
-                <p>{t(`services.${key}.body`)}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-        <Link href="/services" className="text-link">{t("servicesLink")} <DirectionalArrow kind="forward" /></Link>
-      </section>
+      <PrivateLabelSection />
 
       <section className="home-markets" aria-labelledby="markets-title">
         <div className="home-markets-inner page-shell">
