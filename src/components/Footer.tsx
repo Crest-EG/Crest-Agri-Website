@@ -16,7 +16,7 @@ export function Footer() {
     { label: t("navigation.services"), href: "/services" },
     { label: t("navigation.about"), href: "/about" },
     { label: t("navigation.contact"), href: "/contact" },
-    { label: t("navigation.quote"), href: "/contact#quote" },
+    { label: t("navigation.quote"), href: "/contact#quote", action: true },
   ];
   const informationLinks = [
     { label: t("navigation.certifications"), href: "/certifications" },
@@ -68,14 +68,14 @@ export function Footer() {
           <nav className="footer-directory" aria-label={t("navigation.menu")}>
             <section className="footer-column">
               <h2>{footer.pagesTitle}</h2>
-              <ul>{pageLinks.map(({ label, href }) => <li key={href}><Link href={href}>{label}</Link></li>)}</ul>
+              <ul>{pageLinks.map(({ label, href, action }) => <li key={href}><Link href={href} className={action ? "footer-action-button" : undefined}>{label}{action && <DirectionalArrow kind="forward" />}</Link></li>)}</ul>
             </section>
             <section className="footer-column">
               <h2>{footer.informationTitle}</h2>
               <ul>
                 {informationLinks.map(({ label, href }) => <li key={href}><Link href={href}>{label}</Link></li>)}
                 <li>
-                  <a href={site.brochureUrl} target="_blank" rel="noreferrer" className="footer-brochure-link">
+                  <a href={site.brochureUrl} target="_blank" rel="noreferrer" className="footer-action-button">
                     <span>{footer.brochure}</span>
                     <DirectionalArrow kind="external" />
                   </a>
