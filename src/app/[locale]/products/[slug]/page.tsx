@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { RelatedProducts } from "@/components/RelatedProducts";
 import { ButtonLink } from "@/components/Button";
+import { SeasonTimeline } from "@/components/SeasonTimeline";
 import { products, getProductBySlug, type ProductContent } from "@/content/products";
 import { site } from "@/content/site";
 import { DirectionalArrow } from "@/components/DirectionalArrow";
@@ -55,6 +56,8 @@ export default async function ProductDetailPage({ params }: DetailProps) {
   const productCopy = t.raw(`items.${product.slug}`) as ProductContent;
   const forms = await getTranslations({ locale, namespace: "forms" });
   const home = await getTranslations({ locale, namespace: "landing.home" });
+  const monthNames = t.raw("monthNames") as string[];
+  const shortMonths = t.raw("monthLabels") as string[];
   const related = products.filter((item) => item.slug !== product.slug).slice(0, 4);
   const quoteHref = `/contact?product=${encodeURIComponent(product.slug)}#quote`;
 
@@ -83,10 +86,6 @@ export default async function ProductDetailPage({ params }: DetailProps) {
             {product.forms.map((form) => <span key={form}>{forms(form)}</span>)}
           </div>
           <div className="product-quickfacts">
-            <article className="product-quickfact product-quickfact-season">
-              <span>{t("seasonWindowTitle")}</span>
-              <strong>{productCopy.season}</strong>
-            </article>
             {productCopy.specs.slice(0, 2).map((item, index) => (
               <article className="product-quickfact" key={`${item.key}-${index}`}>
                 <span>{t(`specs.${item.key}`)}</span>
@@ -97,6 +96,10 @@ export default async function ProductDetailPage({ params }: DetailProps) {
               <span>{t("packing")}</span>
               <strong>{productCopy.packing}</strong>
             </article>
+          </div>
+          <div className="product-season-timeline">
+            <SeasonTimeline locale={language} windows={product.seasonWindows} months={monthNames} shortMonths={shortMonths} title={t("seasonWindowTitle")} />
+            <p className="product-season-note">{productCopy.season}</p>
           </div>
           {productCopy.variants.length > 0 && <ul className="product-variant-grid" aria-label={t("variantsTitle")}>
             {productCopy.variants.map((variant) => <li className="product-variant-card" key={variant}>{variant}</li>)}

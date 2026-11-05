@@ -6,6 +6,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { MarketMap } from "@/components/MarketMap";
 import { ButtonLink } from "@/components/Button";
 import { DirectionalArrow } from "@/components/DirectionalArrow";
+import { HomeCallToAction } from "@/components/HomeCallToAction";
 import { Link } from "@/i18n/navigation";
 import { featuredProducts, products } from "@/content/products";
 import { createPageMetadata, type SiteLocale } from "@/lib/seo";
@@ -24,7 +25,7 @@ const floatingProducts = [
   { slug: "strawberry", image: "/images/products/strawberry.webp", className: "floating-product-strawberry", width: 144, height: 176 },
   { slug: "orange", image: "/images/products/orange.webp", className: "floating-product-orange", width: 160, height: 160 },
   { slug: "mango", image: "/images/products/mango.webp", className: "floating-product-mango", width: 136, height: 172 },
-  { slug: "green-beans", image: "/images/products/green-beans.webp", className: "floating-product-green-beans", width: 142, height: 172 },
+  { slug: "green-beans", image: "/images/products/green-beans.webp", className: "floating-product-green-beans", width: 142, height: 142 },
 ] as const;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -151,17 +152,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      <section className="home-cta" aria-labelledby="cta-title">
-        {floatingProducts.map(({ slug, image, className, width, height }) => (
-          <Image key={slug} src={image} alt="" aria-hidden="true" width={width} height={height} sizes="(max-width: 600px) 76px, 144px" className={`home-cta-product ${className}`} />
-        ))}
-        <div className="home-cta-content">
-          <p className="eyebrow">{t("ctaEyebrow")}</p>
-          <h2 id="cta-title">{t("ctaTitle")}</h2>
-          <p>{t("ctaBody")}</p>
-          <ButtonLink href="/contact#quote" variant="primary">{t("ctaButton")} <DirectionalArrow kind="forward" /></ButtonLink>
-        </div>
-      </section>
+      <HomeCallToAction
+        eyebrow={t("ctaEyebrow")}
+        title={t("ctaTitle")}
+        body={t("ctaBody")}
+        button={t("ctaButton")}
+        products={[...floatingProducts]}
+      />
     </main>
   );
 }

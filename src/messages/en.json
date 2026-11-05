@@ -249,7 +249,7 @@
     "imageAlt": "Product photo: {product}",
     "servicesLink": "Explore private label packing and export shipping",
     "servicesLinkBody": "Discuss private-label options and shipment planning with Crest's export team.",
-    "seasonWindowTitle": "Harvest window",
+    "seasonWindowTitle": "Harvest and supply window",
     "monthNames": [
       "Jan",
       "Feb",
@@ -294,7 +294,7 @@
       "orange": {
         "name": "Orange",
         "summary": "Fresh Egyptian oranges prepared to the buyer’s size, variety and export packing requirements.",
-        "season": "Seasonal availability; confirm the current window with the export team.",
+        "season": "December to May across the main Egyptian orange varieties.",
         "farming": "Growing area and sourcing are confirmed for each order programme.",
         "harvest": "Navel and Valencia types are listed.",
         "packing": "Open-top: 65 × 15 kg cartons per pallet, 1,300 cartons and 19.5 tons net/container. Telescopic: 80 × 15 kg cartons per pallet, 1,600 cartons and 24 tons net/container. Both list 20 pallets.",
@@ -320,7 +320,7 @@
       "lemon": {
         "name": "Lemon",
         "summary": "Fresh lemons for export programmes, with variety, sizing and packing confirmed to order.",
-        "season": "Seasonal availability; confirm the current window with the export team.",
+        "season": "October to May across lemon varieties; timing varies by variety.",
         "farming": "Growing area and sourcing are confirmed for each order programme.",
         "harvest": "Eureka and Verna types are listed.",
         "packing": "Telescopic: 80 × 15 kg cartons per pallet, 1,600 cartons and 24 tons net/container, on 20 pallets.",
@@ -346,7 +346,7 @@
       "sweet-potato": {
         "name": "Sweet potato",
         "summary": "Fresh Egyptian sweet potatoes graded and packed for the buyer’s requested market.",
-        "season": "Seasonal availability; confirm the current window with the export team.",
+        "season": "Indicative export season: August to January.",
         "farming": "Growing area and sourcing are confirmed for each order programme.",
         "harvest": "Size grades are listed from M to XXL.",
         "packing": "Open-top and telescopic: 180 × 6 kg cartons per pallet, 3,600 cartons and 21.6 tons net/container, on 20 pallets.",
@@ -570,7 +570,7 @@
       "mixed-vegetables": {
         "name": "Mixed vegetables",
         "summary": "Frozen mixed vegetables, cut to the requested specification.",
-        "season": "Season not specified in the company profile",
+        "season": "Frozen supply can be planned year-round; its component crops have different harvest windows.",
         "farming": "Growing area and sourcing are confirmed for each order programme.",
         "harvest": "The mix composition can be confirmed for each enquiry.",
         "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
@@ -680,7 +680,7 @@
       "green-beans": {
         "name": "Green beans",
         "summary": "Frozen green beans with whole or cut preparation options.",
-        "season": "March to May and November to January",
+        "season": "March to May and November to January.",
         "farming": "Growing area and sourcing are confirmed for each order programme.",
         "harvest": "The company profile does not specify varieties.",
         "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
@@ -842,7 +842,7 @@
       "french-fries": {
         "name": "French fries · par-fried",
         "summary": "Par-fried frozen potato strips in multiple cut sizes.",
-        "season": "Two harvest periods are listed: September to January and mid-August to November; the profile does not map the periods to varieties.",
+        "season": "The profile lists September to January and mid-August to November; it does not map the periods to varieties.",
         "farming": "Growing area and sourcing are confirmed for each order programme.",
         "harvest": "Spunta, Diamond and Silany varieties are listed.",
         "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",

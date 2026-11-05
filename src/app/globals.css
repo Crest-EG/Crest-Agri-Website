@@ -607,7 +607,7 @@ img { max-width: 100%; }
 .service-steps::before { position: absolute; inset-inline: 8%; inset-block-start: 25px; height: 2px; content: ""; background: linear-gradient(90deg, var(--green), color-mix(in srgb, var(--orange) 65%, var(--green))); }
 .service-steps li { position: relative; display: flex; min-height: 220px; flex-direction: column; align-items: center; padding: 0 9px 16px; border: 0; background: transparent; text-align: center; }
 .service-steps li > span { z-index: 1; display: grid; width: 52px; height: 52px; place-items: center; border: 5px solid var(--bg); border-radius: 50%; background: var(--green); color: var(--surface); font-size: var(--font-size-sm); }
-.service-steps li:nth-child(even) > span { background: var(--orange); }
+.service-steps li:nth-child(even) > span { background: var(--green-ink); }
 .service-steps h3 { margin: 18px 0 0; font-size: var(--font-size-md); }
 .service-steps p { margin: 8px 0 0; color: var(--text-muted); font-size: var(--font-size-xs); line-height: 1.5; }
 .shipping-card { border: 0; border-radius: 0; background: var(--surface-soft); box-shadow: none; }
@@ -720,3 +720,23 @@ img { max-width: 100%; }
   padding: clamp(24px, 4vw, 52px);
 }
 .shipping-card-visual { border-radius: var(--radius-image); }
+
+.site-footer {
+  width: calc(100% - clamp(24px, 6vw, 88px));
+  margin: clamp(28px, 4vw, 52px) auto 24px;
+  padding: clamp(30px, 4vw, 48px) clamp(20px, 3vw, 42px) 20px;
+  border-radius: var(--radius-image);
+  background: linear-gradient(132deg, color-mix(in srgb, var(--green-ink) 78%, var(--text)), var(--green-ink) 58%, color-mix(in srgb, var(--green-ink) 90%, var(--orange)));
+}
+.product-season-timeline { margin-block-start: var(--space-4); padding: 14px; border-radius: var(--radius-card); background: var(--surface-soft); }
+.product-season-timeline .season-timeline-heading { align-items: flex-start; flex-direction: column; gap: 8px; margin-block-end: 8px; }
+.product-season-timeline .season-timeline-heading h3 { font-size: var(--font-size-sm); }
+.product-season-timeline .season-timeline-heading > p { gap: 6px; }
+.product-season-timeline .season-timeline-heading > p span { padding: 5px 9px; font-size: 10px; }
+.product-season-timeline .season-month-labels { font-size: 9px; }
+.product-season-timeline .season-track { height: 12px; margin-block-start: 7px; }
+.product-season-note { margin: 9px 0 0; color: var(--text-muted); font-size: var(--font-size-xs); line-height: 1.45; }
+.home-cta-content { color: var(--text-muted); }
+@media (max-width: 600px) {
+  .site-footer { width: calc(100% - 24px); margin-block: 28px 16px; padding: 28px 18px 18px; border-radius: 20px; }
+}

@@ -30,7 +30,18 @@ export const products: Product[] = [
     "forms": [
       "fresh"
     ],
-    "seasonWindows": [],
+    "seasonWindows": [
+      {
+        "start": {
+          "month": 12,
+          "day": 1
+        },
+        "end": {
+          "month": 5,
+          "day": 31
+        }
+      }
+    ],
     "images": [
       "/images/products/orange.webp"
     ],
@@ -42,7 +53,18 @@ export const products: Product[] = [
     "forms": [
       "fresh"
     ],
-    "seasonWindows": [],
+    "seasonWindows": [
+      {
+        "start": {
+          "month": 10,
+          "day": 1
+        },
+        "end": {
+          "month": 5,
+          "day": 31
+        }
+      }
+    ],
     "images": [
       "/images/products/lemon.webp"
     ],
@@ -54,7 +76,18 @@ export const products: Product[] = [
     "forms": [
       "fresh"
     ],
-    "seasonWindows": [],
+    "seasonWindows": [
+      {
+        "start": {
+          "month": 8,
+          "day": 1
+        },
+        "end": {
+          "month": 1,
+          "day": 31
+        }
+      }
+    ],
     "images": [
       "/images/products/sweet-potato.webp"
     ],
@@ -227,7 +260,18 @@ export const products: Product[] = [
     "forms": [
       "frozen"
     ],
-    "seasonWindows": [],
+    "seasonWindows": [
+      {
+        "start": {
+          "month": 1,
+          "day": 1
+        },
+        "end": {
+          "month": 12,
+          "day": 31
+        }
+      }
+    ],
     "images": [
       "/images/products/mixed-vegetables.webp"
     ],
@@ -308,7 +352,28 @@ export const products: Product[] = [
     "forms": [
       "frozen"
     ],
-    "seasonWindows": [],
+    "seasonWindows": [
+      {
+        "start": {
+          "month": 3,
+          "day": 1
+        },
+        "end": {
+          "month": 5,
+          "day": 31
+        }
+      },
+      {
+        "start": {
+          "month": 11,
+          "day": 1
+        },
+        "end": {
+          "month": 1,
+          "day": 31
+        }
+      }
+    ],
     "images": [
       "/images/products/green-beans.webp"
     ],
@@ -435,7 +500,28 @@ export const products: Product[] = [
     "forms": [
       "frozen"
     ],
-    "seasonWindows": [],
+    "seasonWindows": [
+      {
+        "start": {
+          "month": 8,
+          "day": 15
+        },
+        "end": {
+          "month": 11,
+          "day": 30
+        }
+      },
+      {
+        "start": {
+          "month": 9,
+          "day": 1
+        },
+        "end": {
+          "month": 1,
+          "day": 31
+        }
+      }
+    ],
     "images": [
       "/images/products/french-fries.webp"
     ],

@@ -55,7 +55,7 @@ The landing page, certification page and product catalogue use supplied company/
 
 ## Content confirmation
 
-- `TODO(confirm)`: confirm product seasons, commercial grades, orange/lemon pack-size mapping and current loading details with Crest before publishing product specifications.
+- `TODO(confirm)`: confirm seasonal windows for fresh orange, lemon and sweet potato, and year-round frozen mixed-vegetable supply. Their timelines are estimates from public Egyptian crop and export calendars; confirm commercial availability with Crest before publishing. Also confirm commercial grades, pack-size mapping and current loading details.
 - `TODO(confirm)`: confirm the named markets and certification wording against current company documents.
 - `TODO(confirm)`: replace placeholder brand files where the final approved logo and font assets are provided.
 - FFmpeg resized and color-converted the supplied CMYK/JPEG and Pexels images; the installed `cwebp` encoder wrote the compressed WebP files because the FFmpeg build does not include `libwebp`. The oversized source photo attachments were removed after conversion. The supplied workflow graphic was used as a layout reference and its labels were rebuilt as localized HTML text.
