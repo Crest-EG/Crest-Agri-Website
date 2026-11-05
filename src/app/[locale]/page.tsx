@@ -7,6 +7,7 @@ import { MarketMap } from "@/components/MarketMap";
 import { ButtonLink } from "@/components/Button";
 import { DirectionalArrow } from "@/components/DirectionalArrow";
 import { HomeCallToAction } from "@/components/HomeCallToAction";
+import { HomeMarketsSection } from "@/components/HomeMarketsSection";
 import { PrivateLabelSection } from "@/components/PrivateLabelSection";
 import { Link } from "@/i18n/navigation";
 import { featuredProducts, products } from "@/content/products";
@@ -111,12 +112,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       <PrivateLabelSection />
 
-      <section className="home-markets" aria-labelledby="markets-title">
-        <div className="home-markets-inner page-shell">
-          <div className="home-markets-copy"><p className="eyebrow">{t("marketsEyebrow")}</p><h2 id="markets-title">{t("marketsTitle")}</h2><p>{t("marketsBody")}</p><p className="home-markets-note">{t("marketsNote")}</p></div>
-          <MarketMap locale={language} />
-        </div>
-      </section>
+      <HomeMarketsSection eyebrow={t("marketsEyebrow")} title={t("marketsTitle")}>
+        <MarketMap locale={language} />
+      </HomeMarketsSection>
 
       <HomeCallToAction
         eyebrow={t("ctaEyebrow")}
