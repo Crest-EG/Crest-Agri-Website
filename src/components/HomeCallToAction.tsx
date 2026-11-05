@@ -33,34 +33,36 @@ export function HomeCallToAction({ eyebrow, title, body, button, products }: Hom
       const section = sectionRef.current;
       const copy = copyRef.current;
       if (!section || !copy) return;
-      const muted = getComputedStyle(document.documentElement).getPropertyValue("--text-muted").trim();
+      const muted = getComputedStyle(section).getPropertyValue("--cta-word-muted").trim();
       const text = getComputedStyle(document.documentElement).getPropertyValue("--text").trim();
       const words = copy.querySelectorAll<HTMLElement>(".home-cta-word");
+      const products = section.querySelectorAll<HTMLElement>(".home-cta-product");
       const context = gsap.context(() => {
-        gsap.fromTo(words, { color: muted }, {
-          color: text,
-          ease: "none",
-          stagger: { each: 0.035 },
+        const timeline = gsap.timeline({
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: () => `+=${Math.round(window.innerHeight * 1.2)}`,
+            end: () => `+=${Math.round(window.innerHeight * 0.9)}`,
             pin: section,
             pinSpacing: true,
-            pinType: "transform",
-            scrub: 0.6,
+            scrub: 0.8,
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
         });
-        gsap.fromTo(section.querySelectorAll(".home-cta-product"), { autoAlpha: 0, scale: 0.86, y: 14 }, {
+        timeline.fromTo(words, { color: muted }, {
+          color: text,
+          duration: 1,
+          ease: "none",
+          stagger: { each: 0.05 },
+        }, 0);
+        timeline.fromTo(products, { autoAlpha: 0, scale: 0.97, y: 6 }, {
           autoAlpha: 1,
           scale: 1,
           y: 0,
-          duration: 0.75,
-          stagger: 0.1,
-          ease: "power2.out",
-          scrollTrigger: { trigger: section, start: "top 76%" },
+          duration: 0.3,
+          stagger: 0.04,
+          ease: "none",
         });
       }, section);
       return () => context.revert();
