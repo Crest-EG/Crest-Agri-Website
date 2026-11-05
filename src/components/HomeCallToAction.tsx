@@ -60,10 +60,10 @@ export function HomeCallToAction({ eyebrow, title, body, button, products }: Hom
           autoAlpha: 1,
           scale: 1,
           y: 0,
-          duration: 0.3,
-          stagger: 0.04,
+          duration: 0.15,
+          stagger: 0.02,
           ease: "none",
-        });
+        }, 0);
       }, section);
       return () => context.revert();
     });
