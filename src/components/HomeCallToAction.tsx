@@ -16,6 +16,12 @@ type HomeCallToActionProps = {
   products: FloatingProduct[];
 };
 
+function animatedWords(text: string, prefix: string) {
+  return text.split(/(\s+)/).map((part, index) => (
+    /\s+/.test(part) ? part : <span className="home-cta-word" key={`${prefix}-${index}`}>{part}</span>
+  ));
+}
+
 export function HomeCallToAction({ eyebrow, title, body, button, products }: HomeCallToActionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const copyRef = useRef<HTMLDivElement>(null);
@@ -29,13 +35,23 @@ export function HomeCallToAction({ eyebrow, title, body, button, products }: Hom
       if (!section || !copy) return;
       const muted = getComputedStyle(document.documentElement).getPropertyValue("--text-muted").trim();
       const text = getComputedStyle(document.documentElement).getPropertyValue("--text").trim();
-      const targets = copy.querySelectorAll<HTMLElement>(".home-cta-eyebrow, h2, .home-cta-body");
+      const words = copy.querySelectorAll<HTMLElement>(".home-cta-word");
       const context = gsap.context(() => {
-        gsap.fromTo(targets, { color: muted, fontWeight: 500 }, {
+        gsap.fromTo(words, { color: muted }, {
           color: text,
-          fontWeight: 700,
           ease: "none",
-          scrollTrigger: { trigger: section, start: "top 86%", end: "center 48%", scrub: 0.8 },
+          stagger: { each: 0.035 },
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => `+=${Math.round(window.innerHeight * 1.2)}`,
+            pin: section,
+            pinSpacing: true,
+            pinType: "transform",
+            scrub: 0.6,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
         });
         gsap.fromTo(section.querySelectorAll(".home-cta-product"), { autoAlpha: 0, scale: 0.86, y: 14 }, {
           autoAlpha: 1,
@@ -58,9 +74,9 @@ export function HomeCallToAction({ eyebrow, title, body, button, products }: Hom
         <Image key={slug} src={image} alt="" aria-hidden="true" width={width} height={height} sizes="(max-width: 600px) 76px, 144px" className={`home-cta-product ${className}`} />
       ))}
       <div className="home-cta-content" ref={copyRef}>
-        <p className="eyebrow home-cta-eyebrow">{eyebrow}</p>
-        <h2 id="cta-title">{title}</h2>
-        <p className="home-cta-body">{body}</p>
+        <p className="eyebrow home-cta-eyebrow">{animatedWords(eyebrow, "eyebrow")}</p>
+        <h2 id="cta-title">{animatedWords(title, "title")}</h2>
+        <p className="home-cta-body">{animatedWords(body, "body")}</p>
         <ButtonLink href="/contact#quote" variant="primary">{button} <DirectionalArrow kind="forward" /></ButtonLink>
       </div>
     </section>

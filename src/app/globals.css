@@ -742,6 +742,7 @@ img { max-width: 100%; }
 .product-season-timeline .season-track { height: 12px; margin-block-start: 7px; }
 .product-season-note { margin: 9px 0 0; color: var(--text-muted); font-size: var(--font-size-xs); line-height: 1.45; }
 .home-cta-content { color: var(--text-muted); }
+.home-cta-word { color: var(--text-muted); }
 @media (max-width: 600px) {
   .site-footer { width: calc(100% - 24px); margin-block: 28px 16px; padding: 28px 18px 18px; border-radius: 20px; }
 }
