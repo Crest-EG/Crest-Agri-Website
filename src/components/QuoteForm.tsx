@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { products } from "@/content/products";
 import { site } from "@/content/site";
 import { ContactIcon } from "@/components/icons";
@@ -10,43 +10,9 @@ type QuoteFormProps = { initialProduct?: string; variant?: "full" | "footer" };
 type SendChannel = "whatsapp" | "email";
 type SendError = "popup";
 
-type LeadPayload = {
-  event: "lead";
-  leadId: string;
-  channel: SendChannel;
-  locale: "ar" | "en";
-  type: "quote" | "inquiry" | "contact";
-  name: string;
-  company: string;
-  country: string;
-  contact: string;
-  product: string;
-  quantity: string;
-  message: string;
-  page: string;
-  registrationCode: string;
-};
-
-async function track(payload: LeadPayload) {
-  try {
-    const response = await fetch("/api/lead", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-      keepalive: true,
-    });
-    const result: unknown = await response.json();
-    if (!response.ok || typeof result !== "object" || result === null || !("accepted" in result) || result.accepted !== true) {
-      console.error("Quote request could not be recorded.");
-    }
-  } catch {
-    console.error("Quote request could not be recorded.");
-  }
-}
-
 export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormProps) {
-  const locale = useLocale() as "ar" | "en";
   const t = useTranslations("quote");
+  const productMessages = useTranslations("products");
   const [sendError, setSendError] = useState<SendError | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -58,22 +24,18 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
     setSendError(null);
 
     const form = new FormData(event.currentTarget);
-    const leadId = crypto.randomUUID();
     const nameAndCompany = String(form.get("name") ?? "").trim();
     const [footerName, footerCompany] = nameAndCompany.split(/\s+[—–-]\s+/, 2);
     const name = variant === "footer" ? (footerName || nameAndCompany) : nameAndCompany;
     const company = String(form.get("company") ?? (variant === "footer" ? footerCompany : "") ?? "").trim();
     const contact = String(form.get("email") ?? "").trim() + (String(form.get("phone") ?? "").trim() ? ` / ${String(form.get("phone")).trim()}` : "");
     const country = String(form.get("country") ?? "").trim();
-    const productName = products.find((product) => product.slug === form.get("product"))?.name[locale] ?? "";
+    const productSlug = String(form.get("product") ?? "");
+    const productName = products.some((product) => product.slug === productSlug)
+      ? productMessages(`items.${productSlug}.name`)
+      : "";
     const quantity = String(form.get("quantity") ?? "").trim();
     const message = String(form.get("message") ?? "").trim();
-    const type = String(form.get("requestType") ?? "quote") as "quote" | "inquiry" | "contact";
-    const leadPayload: LeadPayload = {
-      event: "lead", leadId, channel, locale, type, name, company, country, contact,
-      product: String(form.get("product") ?? ""), quantity, message,
-      page: window.location.pathname, registrationCode: String(form.get("registrationCode") ?? ""),
-    };
     const conciseValues = [
       [t("name"), name],
       [t("company"), company],
@@ -82,7 +44,7 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
       [t("product"), productName],
     ];
     const fullValues = [
-      [t("requestType"), t(`requestTypes.${type}`)],
+      [t("requestType"), t(`requestTypes.${String(form.get("requestType") ?? "quote")}`)],
       [t("name"), name], [t("company"), company], [t("country"), country],
       [t("email"), form.get("email")], [t("phone"), form.get("phone")],
       [t("product"), productName], [t("quantity"), quantity], [t("message"), message],
@@ -101,7 +63,6 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
     } else {
       setSendError("popup");
     }
-    void track(leadPayload);
   }
 
   const fieldId = (name: string) => `${variant === "footer" ? "footer-quote" : "contact-quote"}-${name}`;
@@ -118,10 +79,6 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
           </select>
         </div>
       </div>}
-      <div className="quote-honeypot" aria-hidden="true">
-        <label htmlFor={`${variant}-quote-registration-code`}>{t("honeypotLabel")}</label>
-        <input id={`${variant}-quote-registration-code`} name="registrationCode" tabIndex={-1} autoComplete="off" />
-      </div>
       <div className="quote-field">
         <label htmlFor={fieldId("name")}>{variant === "footer" ? t("footerNameCompany") : t("name")}</label>
         <input id={fieldId("name")} name="name" autoComplete="name" placeholder={variant === "footer" ? t("placeholder.nameCompany") : t("placeholder.name")} required />
@@ -147,7 +104,7 @@ export function QuoteForm({ initialProduct = "", variant = "full" }: QuoteFormPr
         <div className="quote-select">
           <select id={fieldId("product")} name="product" defaultValue={initialProduct}>
             <option value="">{t("chooseProduct")}</option>
-            {products.map((product) => <option value={product.slug} key={product.slug}>{product.name[locale]}</option>)}
+            {products.map((product) => <option value={product.slug} key={product.slug}>{productMessages(`items.${product.slug}.name`)}</option>)}
           </select>
         </div>
       </div>

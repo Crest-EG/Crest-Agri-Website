@@ -11,7 +11,6 @@ import { createPageMetadata, type SiteLocale } from "@/lib/seo";
 
 const processSteps = ["sourcing", "artwork", "packing", "dispatch"] as const;
 // TODO(replace): Bilingual export service and private-label descriptions | Crest export team | Confirm service scope and approval flow, then update the services namespace in both message files.
-// TODO(replace): Services page photography | Crest creative team | Replace the Stitch reference images under public/images/stitch-services/ with approved service photography at the same paths.
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -40,7 +39,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       </header>
       <section className="service-overview page-section">
         <div className="service-photo">
-          <Image src="/images/stitch-services/assurance.jpg" alt={t("assuranceImageAlt")} fill sizes="(max-width: 900px) 100vw, 36vw" />
+          <Image src="/images/landing/harvest.webp" alt={t("assuranceImageAlt")} fill sizes="(max-width: 900px) 100vw, 36vw" />
           <aside className="service-photo-note content-card">
             <p className="eyebrow">{t("quality")}</p>
             <p>{t("qualityBody")}</p>
@@ -61,7 +60,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       </section>
       <section className="shipping-card content-card">
         <div><p className="eyebrow">{t("dispatch")}</p><h2>{t("shipping")}</h2><p>{t("shippingBody")}</p></div>
-        <div className="shipping-card-visual"><Image src="/images/stitch-services/shipping.jpg" alt={t("shippingImageAlt")} fill sizes="(max-width: 900px) 100vw, 40vw" /></div>
+        <div className="shipping-card-visual"><Image src="/images/landing/export-truck.webp" alt={t("shippingImageAlt")} fill sizes="(max-width: 900px) 100vw, 40vw" /></div>
         <ButtonLink href="/contact#quote">{t("contactAction")} <DirectionalArrow kind="forward" /></ButtonLink>
       </section>
       <section className="services-link"><Link className="text-link" href="/products">{t("productsAction")} <DirectionalArrow kind="forward" /></Link></section>

@@ -1,97 +1,30 @@
-# Content replacement register
+# Content confirmation register
 
-Every entry below follows the same three fields used beside its code: **what this is | who provides it | how to replace it**. Copy in both language files should be replaced together. Current public copy is intentionally cautious and must not be read as a guarantee of availability, certification scope, customer relationships or shipping commitments.
+Copy is bilingual in `src/messages/en.json` and `src/messages/ar.json`. Product facts live in `src/content/products.ts`. Confirm these with the relevant Crest owner before launch.
 
 ## `src/content/products.ts`
 
-- Egyptian grape season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update the grapes entry.
-- Egyptian pomegranate season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update the pomegranate entry.
-- Egyptian peach season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update the peach entry.
-- Egyptian green onion season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update the green onion entry.
-- Egyptian cabbage season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update the cabbage entry.
-- Egyptian broccoli season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update the broccoli entry.
-- Egyptian citrus season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update the citrus entry.
-- Egyptian strawberry season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update the strawberry entry.
-- Egyptian green bean season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update the green bean entry.
-- Egyptian sweet potato season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update the sweet potato entry.
-- Egyptian lettuce season and product copy | Crest export team | Confirm seasonal window, varieties and specifications, then update the lettuce entry.
-- Fresh garlic product copy | Crest export team | Confirm varieties, seasonal window and export specifications, then update the garlic entry.
-- Dried tomato product copy | Crest export team | Confirm cut, moisture, packaging and destination specifications, then update the dried-tomato entry.
-- Frozen peas product copy | Crest export team | Confirm variety, processing specifications and supply schedule, then update the frozen-peas entry.
-- Frozen mango product copy | Crest export team | Confirm variety, cut and processing specifications, then update the mango entry.
-- Fresh banana product copy | Crest export team | Confirm origin, seasonal availability and export specifications, then update the banana entry.
-- Frozen pomegranate product copy | Crest export team | Confirm preparation, processing and packaging specifications, then update the frozen-pomegranate entry.
-- Frozen guava product copy | Crest export team | Confirm preparation, processing and packaging specifications, then update the frozen-guava entry.
-- Frozen green bean product copy | Crest export team | Confirm cut, grade and processing specifications, then update the frozen-green-beans entry.
-- Frozen artichoke product copy | Crest export team | Confirm cuts, grades and processing specifications, then update the frozen-artichokes entry.
-- Dried jalapeno pepper product copy | Crest export team | Confirm variety, preparation and packaging specifications, then update the dried-jalapeno-peppers entry.
-- Dried date product copy | Crest export team | Confirm variety, grade, storage and packaging specifications, then update the dried-dates entry.
-- Fresh onion product copy | Crest export team | Confirm types, seasonal window and export specifications, then update the onion entry.
-- Fresh cucumber product copy | Crest export team | Confirm varieties, seasonal window and export specifications, then update the cucumber entry.
-- Fresh carrot product copy | Crest export team | Confirm varieties, seasonal window and export specifications, then update the carrots entry.
-- Frozen strawberry product copy | Crest export team | Confirm grade, preparation and processing specifications, then update the frozen-strawberry entry.
-- Dried garlic product copy | Crest export team | Confirm cut, moisture and packaging specifications, then update the dried-garlic entry.
-- Frozen broccoli product copy | Crest export team | Confirm cuts, grade and processing specifications, then update the frozen-broccoli entry.
-- Shared farming, harvest, packing and shipping descriptions | Crest export team | Update the `common` bilingual fields to match the actual sourcing, handling and export process; keep packaging and availability conditional by inquiry.
+- Product seasons, grades, fruit/vegetable varieties, and freezing/preparation details | Crest export team | Verify against current specifications and update both language values.
+- Orange, lemon and sweet potato loading plans and carton details | Crest export team | Confirm the count/size mapping, pallet configuration and net container weights.
+- French fry season periods | Crest export team | Confirm which periods map to which varieties; the profile lists two periods without identifying that relationship.
+- Mixed vegetable composition and season | Crest export team | Confirm the current mix components and supply window.
+- Shared sourcing and shipping descriptions | Crest export team | Confirm actual handling and export practices.
 
 ## `src/content/countries.ts`
 
-- Canada market status and map pin | Crest export team | Confirm the relationship and replace or remove this illustrative entry.
-- Turkey market status and map pin | Crest export team | Confirm the relationship and replace or remove this illustrative entry.
-- Switzerland market status and map pin | Crest export team | Confirm the relationship and replace or remove this illustrative entry.
-- Italy market status and map pin | Crest export team | Confirm the relationship and replace or remove this illustrative entry.
-- Slovenia market status and map pin | Crest export team | Confirm the relationship and replace or remove this illustrative entry.
-- UAE market status and map pin | Crest export team | Confirm the relationship and replace or remove this illustrative entry.
-- Jordan market status and map pin | Crest export team | Confirm the relationship and replace or remove this illustrative entry.
-- Saudi Arabia market status and map pin | Crest export team | Confirm the relationship and replace or remove this illustrative entry.
-- Brazil market status and map pin | Crest export team | Confirm the relationship and replace or remove this illustrative entry.
-- United States market status and map pin | Crest export team | Confirm the relationship and replace or remove this illustrative entry.
-- Germany market status and map pin | Crest export team | Confirm the relationship and replace or remove this illustrative entry.
-- Netherlands market status and map pin | Crest export team | Confirm the relationship and replace or remove this illustrative entry.
-- Spain market status and map pin | Crest export team | Confirm the relationship and replace or remove this illustrative entry.
-- Russia market status and map pin | Crest export team | Confirm the relationship and replace or remove this illustrative entry.
-- Cyprus market status and map pin | Crest export team | Confirm the relationship and replace or remove this illustrative entry.
-- GCC grouped market status and map pin | Crest export team | Confirm included destinations and replace the grouped marker.
-- North Africa grouped market status and map pin | Crest export team | Confirm included destinations and replace the grouped marker.
+- Destination names and current/target status | Crest export team | Confirm each market relationship and grouped region before public launch.
 
 ## `src/content/site.ts`
 
-- Arabic office address | Crest office administrator | Confirm the preferred Arabic spelling, then replace the transliteration. // كرست للتنمية الزراعية
-- WhatsApp sales contact | Confirmed (+20 108 002 1190) and updated in site configuration.
+- Address, phone and WhatsApp details | Crest office administrator | Confirm current published contact information and approved Arabic address wording.
 
 ## `src/messages/en.json`, `src/messages/ar.json`
 
-- Footer company summary | Crest marketing team | Update the `common.footer.description` translation in both files with the approved brand description.
-- Company story, vision and mission | Crest management | Replace the `about.story`, `about.vision` and `about.mission` translations in both files with approved company wording.
-- Landing journey copy | Crest marketing team | Review and replace the `landing` namespace in both files with approved company copy.
-- 3D intro copy and product cards (`landing.sylva`) | Crest marketing team | Review the headline, lede, quote CTA, card labels, stats and scroll cue in both files. The cards use the first two featured products in `src/content/products.ts`.
-- Product summaries and seasonal guidance | Crest export team | Keep names aligned with `src/content/products.ts` and update matching `products` copy in both files when specifications are approved.
-- Certification reference descriptions | Crest quality lead | Confirm standards scope and supporting documents before changing the `certifications` descriptions or presenting a standard as held.
-- Contact page wording | Crest office administrator | Review the `contact` namespace in both files and replace any office or response wording that needs adjustment.
-- FAQ answers on product availability, private label, pricing and shipping | Crest export team | Confirm operating practices, then update the `faq.items` entries in both files.
-- Export service and private-label copy | Crest export team | Confirm service scope and approval flow, then update the `services` namespace in both files.
-- Website terms | Legal counsel | Review and approve the generic terms shown in `/terms` before launch. // TODO(legal)
+- Company story, vision, mission and service descriptions | Crest management | Approve the bilingual copy before launch.
+- GlobalG.A.P., SMETA and ISO wording | Crest quality lead | Confirm current scope and supporting documents; public copy currently identifies the standards named in the company profile.
+- Footer company summary, contact wording and FAQs | Crest marketing team | Review the bilingual text for current accuracy.
 
-## `src/app/[locale]/certifications/page.tsx`
+## Brand assets
 
-- GlobalG.A.P., SMETA and ISO reference scope | Crest quality lead | Confirm which standards apply to the relevant supply partners and replace the reference-only descriptions; do not imply current certification without evidence.
-
-## `src/app/[locale]/about/page.tsx`
-
-- About page orchard image | Crest creative team | Replace `public/images/stitch-about/orchard.jpg` with an approved orchard photograph at the same path.
-
-## `src/app/[locale]/services/page.tsx`
-
-- Services page photography | Crest creative team | Replace the Stitch reference images under `public/images/stitch-services/` with approved service photography at the same paths.
-
-## `src/config/frames.ts`
-
-- Landing journey frame sequence | Crest creative team | Replace the 150 images in each folder in `public/frames/scene-{1..5}` with approved journey photography.
-
-## `src/styles/tokens.css`
-
-- Accessible dark green text token | Crest brand team | Approve a brand-compliant accessible dark green and replace the value if needed.
-
-## `src/styles/fonts.ts`
-
-- Brand font file mapping | Crest brand team | Add the approved local brand font files and update the centralized font mapping.
+- Final logo and approved local font files | Crest brand team | Replace the placeholders at the stable paths listed in `ASSETS.md`.
+- Product photography | Crest creative team | Replace any product-pack artwork that is not approved for public use; retain each stable WebP path.

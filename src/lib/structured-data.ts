@@ -57,15 +57,16 @@ export function createBreadcrumbStructuredData(
 
 export function createProductStructuredData(
   product: Product,
-  locale: SiteLocale,
   category: string,
+  name: string,
+  description: string,
 ) {
   const image = product.images[0];
   return {
     "@context": schemaContext,
     "@type": "Product",
-    name: product.name[locale],
-    description: product.summary[locale],
+    name,
+    description,
     ...(image ? { image: new URL(image, site.website).toString() } : {}),
     category,
   };

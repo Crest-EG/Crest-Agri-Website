@@ -10,7 +10,6 @@ import { JsonLd } from "@/components/JsonLd";
 import { createSiteStructuredData } from "@/lib/structured-data";
 import type { SiteLocale } from "@/lib/seo";
 import { montserratFont } from "@/styles/fonts";
-import "@/shaders/threeui.css";
 import "../globals.css";
 
 type Locale = (typeof routing.locales)[number];

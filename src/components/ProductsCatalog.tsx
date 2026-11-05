@@ -7,7 +7,7 @@ import { Link } from "@/i18n/navigation";
 import type { Product, ProductForm } from "@/content/products";
 
 type ProductFilter = ProductForm | "all";
-const filterKeys: ProductFilter[] = ["all", "fresh", "frozen", "dried"];
+const filterKeys: ProductFilter[] = ["all", "fresh", "frozen"];
 
 type ProductsCatalogProps = {
   products: Product[];

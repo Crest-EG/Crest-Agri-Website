@@ -73,39 +73,32 @@
     "product": {
       "title": "{product} export from Egypt",
       "description": "Ask about {product} from Egypt for export programmes, seasonal availability, product specifications and packing options.",
-      "strawberryTitle": "Egyptian strawberry exporter",
-      "strawberryDescription": "Egyptian strawberry exporter for fresh retail programmes. Ask Crest about seasonal availability, specifications and packing.",
+      "strawberryTitle": "Frozen strawberries from Egypt",
+      "strawberryDescription": "Frozen strawberries from Egypt, supplied with preparation and export packing options. Ask Crest to confirm current availability and specification.",
       "frozenStrawberryTitle": "Frozen strawberries from Egypt",
       "frozenStrawberryDescription": "Frozen strawberries from Egypt for ingredient and food-service enquiries. Ask Crest about preparation, packing and current supply.",
       "titles": {
-        "grapes": "Egyptian grape exporter",
-        "pomegranate": "Egyptian pomegranate exporter",
-        "peach": "Egyptian peach exporter",
-        "green-onion": "Egyptian green onion exporter",
-        "cabbage": "Egyptian cabbage exporter",
-        "broccoli": "Egyptian broccoli exporter",
-        "citrus": "Egyptian oranges and citrus export",
-        "strawberry": "Egyptian strawberry exporter",
-        "green-beans": "Egyptian green bean exporter",
-        "sweet-potato": "Egyptian sweet potato exporter",
-        "lettuce": "Egyptian lettuce exporter",
-        "garlic": "Egyptian garlic export",
-        "dried-tomato": "Egyptian dried tomato export",
-        "frozen-peas": "Egyptian frozen peas export",
+        "orange": "Egyptian orange export",
+        "lemon": "Egyptian lemon export",
+        "sweet-potato": "Egyptian sweet potato export",
+        "strawberry": "Frozen strawberries from Egypt",
+        "fig": "Frozen figs from Egypt",
         "mango": "Frozen mango from Egypt",
-        "banana": "Egyptian banana exporter",
-        "frozen-pomegranate": "Frozen pomegranate from Egypt",
-        "frozen-guava": "Frozen guava from Egypt",
-        "frozen-green-beans": "Frozen green beans from Egypt",
-        "frozen-artichokes": "Frozen artichokes from Egypt",
-        "dried-jalapeno-peppers": "Dried jalapeno peppers from Egypt",
-        "dried-dates": "Egyptian dried dates export",
-        "onion": "Egyptian onion exporter",
-        "cucumber": "Egyptian cucumber exporter",
-        "carrots": "Egyptian carrot exporter",
-        "frozen-strawberry": "Frozen strawberries from Egypt",
-        "dried-garlic": "Dried garlic from Egypt",
-        "frozen-broccoli": "Frozen broccoli from Egypt"
+        "guava": "Frozen guava from Egypt",
+        "pomegranate": "Frozen pomegranate from Egypt",
+        "apricot": "Frozen apricots from Egypt",
+        "cauliflower": "Frozen cauliflower from Egypt",
+        "mixed-vegetables": "Frozen mixed vegetables from Egypt",
+        "okra": "Frozen okra from Egypt",
+        "carrot": "Frozen carrots from Egypt",
+        "peas": "Frozen peas from Egypt",
+        "green-beans": "Frozen green beans from Egypt",
+        "molokhia": "Frozen molokhia from Egypt",
+        "spinach": "Frozen spinach from Egypt",
+        "sweet-corn": "Frozen sweet corn from Egypt",
+        "broccoli": "Frozen broccoli from Egypt",
+        "artichoke": "Frozen artichokes from Egypt",
+        "french-fries": "Par-fried frozen French fries from Egypt"
       }
     },
     "about": {
@@ -113,8 +106,8 @@
       "description": "Learn about Crest for Agricultural Development, an Egyptian agricultural exporter based in Alexandria."
     },
     "certifications": {
-      "title": "GlobalG.A.P. certified exporter",
-      "description": "Explore Crest's certification and accreditation information, including GlobalG.A.P. and other listed standards."
+      "title": "Certification information for Crest",
+      "description": "Review the standards named in the company profile. Certification scope and current documents should be confirmed with Crest."
     },
     "services": {
       "title": "Private label and export services",
@@ -134,68 +127,82 @@
     }
   },
   "landing": {
-    "sylva": {
-      "documentTitle": "Crest — Rooted in Egypt, grown for the world",
-      "metaDescription": "Fresh and frozen agricultural products from Crest for Agricultural Development, Alexandria, Egypt.",
-      "headlineLine1": "Rooted in Egypt",
-      "headlineLine2": "grown for the world",
-      "lede": "Fresh and frozen agricultural products, prepared with care for buyers around the world.",
-      "quoteCta": "Request a quote",
-      "productLabel": "Featured product",
-      "productCta": "View product",
-      "statFormsLabel": "What we export",
-      "statFormsValue": "Fresh · Frozen",
-      "statOriginLabel": "Our origin",
-      "statOriginValue": "Alexandria, Egypt",
-      "scroll": "Explore Crest",
-      "ghost": "CREST"
-    },
-    "skip": "Skip to products",
     "seo": {
       "title": "Egyptian produce exporter",
       "description": "Crest for Agricultural Development exports Egyptian fresh and frozen fruits and vegetables from Alexandria to international buyers."
     },
-    "editorial": {
-      "eyebrow": "A little breathing room",
-      "title": "Good things, grown with care.",
-      "description": "A few of the fresh products we bring from Egypt to the world."
-    },
-    "finalCta": {
-      "eyebrow": "Your next shipment starts here",
-      "title": "Let’s grow your business together.",
-      "description": "Tell us what your market needs. Our team is ready to talk.",
-      "button": "Request a quote",
-      "servicesLabel": "Our export services",
-      "serviceFresh": "Fresh, frozen & dried",
-      "servicePacking": "Private label packing",
-      "serviceQuality": "Quality-focused handling",
-      "serviceExport": "Export coordination"
+    "home": {
+      "skipProducts": "Skip to products",
+      "heroEyebrow": "Crest for Agricultural Development · Alexandria, Egypt",
+      "heroTitle": "From Egyptian harvests to your market.",
+      "heroBody": "Fresh and frozen fruits and vegetables prepared for international trade, with export packing and logistics planned around your requirements.",
+      "heroProducts": "Explore our products",
+      "heroQuote": "Talk to our export team",
+      "heroImageAlt": "Crest export truck and agricultural products ready for international delivery",
+      "originLabel": "Grown and prepared in Egypt",
+      "typesEyebrow": "Two ways to supply",
+      "typesTitle": "Fresh or frozen, ready for your programme",
+      "fresh": {
+        "label": "Harvested for fresh supply",
+        "body": "Seasonal produce, selected and packed to order.",
+        "imageAlt": "Fresh Egyptian oranges prepared for export"
+      },
+      "frozen": {
+        "label": "Frozen for dependable supply",
+        "body": "IQF options with cuts and pack sizes to specify.",
+        "imageAlt": "Frozen strawberry product range"
+      },
+      "aboutEyebrow": "About Crest",
+      "aboutTitle": "Care from the growing area to the shipment.",
+      "aboutBody": "Crest for Agricultural Development works with fresh and frozen Egyptian produce for buyers, manufacturers and distributors. We coordinate product specifications, packing and shipment details with each enquiry.",
+      "aboutImageAlt": "Fresh fruit at harvest, ready for selection and packing",
+      "aboutImageCaption": "Egyptian produce · prepared for export",
+      "aboutLink": "Our company",
+      "certificationsTitle": "Quality systems and certifications",
+      "certificationsLink": "View certifications",
+      "productsEyebrow": "The range",
+      "productsTitle": "Products for your specification",
+      "productsBody": "See available preparations, seasonal windows and packing details. Final options are confirmed for each enquiry.",
+      "allProducts": "View all products",
+      "privateEyebrow": "Made for your brand",
+      "privateTitle": "Your product. Your label.",
+      "privateBody": "Private label and contract packing can support buyers who want to sell under their own brand. Discuss product, pack format, artwork and destination with our team.",
+      "privatePoint1": "Buyer-selected product and preparation",
+      "privatePoint2": "Retail and food-service pack discussions",
+      "privatePoint3": "Export coordination to your destination",
+      "privateLink": "Explore private label",
+      "privateImageAlt": "Private label packaging concept with space for a buyer’s own brand",
+      "servicesEyebrow": "From order to dispatch",
+      "servicesTitle": "Export support at every step",
+      "servicesBody": "We coordinate the details that move a produce order from specification to shipment.",
+      "services": {
+        "sourcing": {
+          "title": "Product coordination",
+          "body": "Confirm crop, variety, grade, preparation and seasonal availability for your request."
+        },
+        "packing": {
+          "title": "Packing and preparation",
+          "body": "Discuss export cartons, bulk formats, private label and product handling requirements."
+        },
+        "logistics": {
+          "title": "Shipping and logistics",
+          "body": "Plan temperature, documentation and sea or air freight requirements for the destination."
+        }
+      },
+      "servicesLink": "See our services",
+      "marketsEyebrow": "Markets",
+      "marketsTitle": "From Egypt to buyers worldwide",
+      "marketsBody": "Crest works with international buyers and coordinates shipment details around each destination.",
+      "marketsNote": "Destination availability and documentation are confirmed for every enquiry.",
+      "ctaEyebrow": "Start a conversation",
+      "ctaTitle": "Tell us what your market needs.",
+      "ctaBody": "Share the product, preparation, volume and destination you have in mind. Our export team will follow up with the details.",
+      "ctaButton": "Request a quote",
+      "certGlobalgap": "GlobalG.A.P.",
+      "certSmeta": "SMETA",
+      "certIso": "ISO"
     },
     "scenes": {
-      "care": {
-        "eyebrow": "Grown with care",
-        "title": "Rooted in Egypt. Ready for the world.",
-        "body": "Crest for Agricultural Development connects agricultural products from Egypt with international buyers. Explore our products and export services.",
-        "link": "Our story",
-        "certifications": "Standards discussed by programme: GlobalGAP and ISO"
-      },
-      "packing": {
-        "eyebrow": "Prepared for your market",
-        "title": "Packing that fits your needs",
-        "body": "Discuss product presentation and packing requirements with our team.",
-        "privateLabel": "Your brand on the packaging",
-        "privateLabelBody": "We can discuss options to suit the product, market and destination."
-      },
-      "shipping": {
-        "eyebrow": "Export and logistics",
-        "title": "From origin to destination",
-        "body": "Fresh and frozen product options for international buyers. Share your destination and requirements with us."
-      },
-      "logistics": {
-        "eyebrow": "Flexible shipping",
-        "title": "A route that fits your shipment",
-        "body": "Air, road and sea transport offer different ways to discuss timing and handling for your product and destination."
-      },
       "markets": {
         "eyebrow": "Markets",
         "title": "Destinations to discuss",
@@ -207,8 +214,7 @@
         "gccPin": "GCC",
         "northAfricaPin": "NA"
       }
-    },
-    "loading": "Preparing the journey…"
+    }
   },
   "products": {
     "eyebrow": "Fresh and frozen",
@@ -218,8 +224,7 @@
       "label": "Filter products",
       "all": "All products",
       "fresh": "Fresh",
-      "frozen": "Frozen",
-      "dried": "Dried"
+      "frozen": "Frozen"
     },
     "fruit": "Fruit",
     "vegetable": "Vegetable",
@@ -238,7 +243,7 @@
     "farming": "Farming",
     "harvest": "Harvest",
     "packing": "Packing",
-    "shipping": "Shipping",
+    "shipping": "Shipping requirements",
     "related": "Related products",
     "request": "Request a quote for this product",
     "back": "All products",
@@ -273,12 +278,606 @@
       "Oct",
       "Nov",
       "Dec"
-    ]
+    ],
+    "specs": {
+      "varieties": "Varieties and grades",
+      "freezing": "Freezing method",
+      "cuts": "Available cuts",
+      "packing": "Export packing",
+      "storage": "Storage temperature",
+      "freshPacking": "Packing and loading",
+      "sizes": "Sizes and counts"
+    },
+    "specificationHighlights": "Specification highlights",
+    "specificationsTitle": "Product specifications",
+    "variantsTitle": "Available variants",
+    "items": {
+      "orange": {
+        "name": "Orange",
+        "summary": "Fresh Egyptian oranges prepared to the buyer’s size, variety and export packing requirements.",
+        "season": "Seasonal availability; confirm the current window with the export team.",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "Navel and Valencia types are listed.",
+        "packing": "Open-top: 65 × 15 kg cartons per pallet, 1,300 cartons and 19.5 tons net/container. Telescopic: 80 × 15 kg cartons per pallet, 1,600 cartons and 24 tons net/container. Both list 20 pallets.",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "36–113 count"
+        ],
+        "specs": [
+          {
+            "key": "varieties",
+            "value": "Navel · Valencia"
+          },
+          {
+            "key": "sizes",
+            "value": "36–113 count"
+          },
+          {
+            "key": "freshPacking",
+            "value": "Open-top · telescopic · 15 kg cartons"
+          }
+        ]
+      },
+      "lemon": {
+        "name": "Lemon",
+        "summary": "Fresh lemons for export programmes, with variety, sizing and packing confirmed to order.",
+        "season": "Seasonal availability; confirm the current window with the export team.",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "Eureka and Verna types are listed.",
+        "packing": "Telescopic: 80 × 15 kg cartons per pallet, 1,600 cartons and 24 tons net/container, on 20 pallets.",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "75–144 count"
+        ],
+        "specs": [
+          {
+            "key": "varieties",
+            "value": "Eureka · Verna"
+          },
+          {
+            "key": "sizes",
+            "value": "75–144 count"
+          },
+          {
+            "key": "freshPacking",
+            "value": "Telescopic · 15 kg cartons"
+          }
+        ]
+      },
+      "sweet-potato": {
+        "name": "Sweet potato",
+        "summary": "Fresh Egyptian sweet potatoes graded and packed for the buyer’s requested market.",
+        "season": "Seasonal availability; confirm the current window with the export team.",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "Size grades are listed from M to XXL.",
+        "packing": "Open-top and telescopic: 180 × 6 kg cartons per pallet, 3,600 cartons and 21.6 tons net/container, on 20 pallets.",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "M",
+          "L1",
+          "L2",
+          "XL",
+          "XXL"
+        ],
+        "specs": [
+          {
+            "key": "sizes",
+            "value": "M · L1 · L2 · XL · XXL"
+          },
+          {
+            "key": "freshPacking",
+            "value": "6 kg cartons · 20 pallets/container · 21.6 tons net"
+          }
+        ]
+      },
+      "strawberry": {
+        "name": "Strawberry",
+        "summary": "Frozen strawberries with whole, halved or diced preparation options.",
+        "season": "Mid-November to late May",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "Festival, Fortuna, Sensation and Florida varieties are listed.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "Whole",
+          "halves",
+          "diced"
+        ],
+        "specs": [
+          {
+            "key": "varieties",
+            "value": "Festival · Fortuna · Sensation · Florida"
+          },
+          {
+            "key": "freezing",
+            "value": "IQF · blast freezing"
+          },
+          {
+            "key": "cuts",
+            "value": "Whole · halves · diced"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "fig": {
+        "name": "Fig",
+        "summary": "Frozen figs available whole or halved.",
+        "season": "Late June to late October",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "The company profile does not specify varieties.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "Whole",
+          "halves"
+        ],
+        "specs": [
+          {
+            "key": "freezing",
+            "value": "IQF · blast freezing"
+          },
+          {
+            "key": "cuts",
+            "value": "Whole · halves"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "mango": {
+        "name": "Mango",
+        "summary": "Egyptian frozen mango in whole, sliced or diced cuts.",
+        "season": "Late June to late November",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "Keitt and Zebda varieties are listed.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "Whole",
+          "sliced",
+          "diced"
+        ],
+        "specs": [
+          {
+            "key": "varieties",
+            "value": "Keitt · Zebda"
+          },
+          {
+            "key": "freezing",
+            "value": "IQF · blast freezing"
+          },
+          {
+            "key": "cuts",
+            "value": "Whole · sliced · diced"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "guava": {
+        "name": "Guava",
+        "summary": "Frozen guava supplied whole or halved.",
+        "season": "Late July to late December",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "The company profile does not specify varieties.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "Whole",
+          "halves"
+        ],
+        "specs": [
+          {
+            "key": "freezing",
+            "value": "IQF · blast freezing"
+          },
+          {
+            "key": "cuts",
+            "value": "Whole · halves"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "pomegranate": {
+        "name": "Pomegranate",
+        "summary": "Frozen pomegranate arils for ingredient and food-service use.",
+        "season": "Late July to late November",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "Arils are the preparation listed.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "Arils"
+        ],
+        "specs": [
+          {
+            "key": "freezing",
+            "value": "IQF / blast freezing"
+          },
+          {
+            "key": "cuts",
+            "value": "Arils"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "apricot": {
+        "name": "Apricot",
+        "summary": "Frozen apricots with whole or halved preparation options.",
+        "season": "Mid-April to mid-June",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "The company profile does not specify varieties.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "Whole",
+          "halves"
+        ],
+        "specs": [
+          {
+            "key": "freezing",
+            "value": "IQF · blast freezing"
+          },
+          {
+            "key": "cuts",
+            "value": "Whole · halves"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "cauliflower": {
+        "name": "Cauliflower",
+        "summary": "Frozen cauliflower in export size grades.",
+        "season": "Late October to late March",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "The profile lists size grades 3–5 and 5–8.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "3–5",
+          "5–8"
+        ],
+        "specs": [
+          {
+            "key": "freezing",
+            "value": "IQF"
+          },
+          {
+            "key": "sizes",
+            "value": "3–5 · 5–8"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "mixed-vegetables": {
+        "name": "Mixed vegetables",
+        "summary": "Frozen mixed vegetables, cut to the requested specification.",
+        "season": "Season not specified in the company profile",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "The mix composition can be confirmed for each enquiry.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "Cut mix; composition to be confirmed"
+        ],
+        "specs": [
+          {
+            "key": "freezing",
+            "value": "IQF"
+          },
+          {
+            "key": "cuts",
+            "value": "Cut mix; composition to be confirmed"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "okra": {
+        "name": "Okra",
+        "summary": "Frozen whole okra, graded for export.",
+        "season": "Mid-May to late October",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "Extra, Excellent, One, Zero and Turkish grades are listed.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "Whole"
+        ],
+        "specs": [
+          {
+            "key": "varieties",
+            "value": "Extra · Excellent · One · Zero · Turkish"
+          },
+          {
+            "key": "freezing",
+            "value": "IQF"
+          },
+          {
+            "key": "cuts",
+            "value": "Whole"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "carrot": {
+        "name": "Carrot",
+        "summary": "Frozen carrots in sliced or diced cuts.",
+        "season": "Early December to late May",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "The company profile does not specify varieties.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "Sliced",
+          "diced"
+        ],
+        "specs": [
+          {
+            "key": "freezing",
+            "value": "IQF"
+          },
+          {
+            "key": "cuts",
+            "value": "Sliced · diced"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "peas": {
+        "name": "Peas",
+        "summary": "Frozen shelled peas, available in sweet and dry grades.",
+        "season": "Early November to late March",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "Sweet and dry grades are listed.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "Sweet",
+          "Dry"
+        ],
+        "specs": [
+          {
+            "key": "freezing",
+            "value": "IQF"
+          },
+          {
+            "key": "cuts",
+            "value": "Shelled"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "green-beans": {
+        "name": "Green beans",
+        "summary": "Frozen green beans with whole or cut preparation options.",
+        "season": "March to May and November to January",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "The company profile does not specify varieties.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "Whole",
+          "cut"
+        ],
+        "specs": [
+          {
+            "key": "freezing",
+            "value": "IQF · blast freezing"
+          },
+          {
+            "key": "cuts",
+            "value": "Whole · cut"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "molokhia": {
+        "name": "Molokhia",
+        "summary": "Frozen molokhia supplied minced or whole.",
+        "season": "Early May to late October",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "The company profile does not specify varieties.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "Minced",
+          "whole"
+        ],
+        "specs": [
+          {
+            "key": "freezing",
+            "value": "IQF"
+          },
+          {
+            "key": "cuts",
+            "value": "Minced · whole"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "spinach": {
+        "name": "Spinach",
+        "summary": "Frozen spinach supplied minced or whole.",
+        "season": "Early November to late March",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "The company profile does not specify varieties.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "Minced",
+          "whole"
+        ],
+        "specs": [
+          {
+            "key": "freezing",
+            "value": "IQF"
+          },
+          {
+            "key": "cuts",
+            "value": "Minced · whole"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "sweet-corn": {
+        "name": "Sweet corn",
+        "summary": "Frozen sweet corn supplied whole or as kernels.",
+        "season": "Early June to late December",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "The company profile lists whole and kernel forms.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "Whole",
+          "kernels"
+        ],
+        "specs": [
+          {
+            "key": "freezing",
+            "value": "IQF"
+          },
+          {
+            "key": "cuts",
+            "value": "Whole · kernels"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "broccoli": {
+        "name": "Broccoli",
+        "summary": "Frozen broccoli in size grades 3–5 and 5–8.",
+        "season": "Late November to late April",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "The company profile lists size grades 3–5 and 5–8.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "3–5",
+          "5–8"
+        ],
+        "specs": [
+          {
+            "key": "freezing",
+            "value": "IQF"
+          },
+          {
+            "key": "sizes",
+            "value": "3–5 · 5–8"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "artichoke": {
+        "name": "Artichoke",
+        "summary": "Frozen artichokes prepared as quarters or bottoms.",
+        "season": "December to late April",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "The company profile lists quarters and bottoms.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "Quarters",
+          "bottoms"
+        ],
+        "specs": [
+          {
+            "key": "freezing",
+            "value": "IQF"
+          },
+          {
+            "key": "cuts",
+            "value": "Quarters · bottoms"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      },
+      "french-fries": {
+        "name": "French fries · par-fried",
+        "summary": "Par-fried frozen potato strips in multiple cut sizes.",
+        "season": "Two harvest periods are listed: September to January and mid-August to November; the profile does not map the periods to varieties.",
+        "farming": "Growing area and sourcing are confirmed for each order programme.",
+        "harvest": "Spunta, Diamond and Silany varieties are listed.",
+        "packing": "25 kg bulk, 10 kg box, 1 kg pack or 400 g pack",
+        "shipping": "Shipment timing and temperature requirements are agreed for the destination.",
+        "variants": [
+          "7×7",
+          "9×9",
+          "10×10",
+          "12×12 mm"
+        ],
+        "specs": [
+          {
+            "key": "varieties",
+            "value": "Spunta · Diamond · Silany"
+          },
+          {
+            "key": "freezing",
+            "value": "IQF"
+          },
+          {
+            "key": "cuts",
+            "value": "7×7 · 9×9 · 10×10 · 12×12 mm"
+          },
+          {
+            "key": "storage",
+            "value": "Store at −18°C"
+          }
+        ]
+      }
+    }
   },
   "forms": {
     "fresh": "Fresh",
-    "frozen": "Frozen",
-    "dried": "Dried"
+    "frozen": "Frozen"
   },
   "about": {
     "title": "About us",
@@ -341,7 +940,11 @@
         "body": "They encourage operations reviews and the development of methods and technologies that improve product quality and safety."
       }
     ],
-    "documentAction": "Request quality documents"
+    "documentAction": "Request quality documents",
+    "smeta": "SMETA",
+    "globalgapDescription": "A GlobalG.A.P. certification is listed in the company profile.",
+    "smetaDescription": "SMETA is listed in the company profile.",
+    "isoDescription": "ISO is listed in the company profile. Confirm the specific standard and scope."
   },
   "contact": {
     "eyebrow": "Alexandria export desk",

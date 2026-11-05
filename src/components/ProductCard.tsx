@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Placeholder } from "@/components/Placeholder";
 import { DirectionalArrow } from "@/components/DirectionalArrow";
-import type { Product } from "@/content/products";
+import type { Product, ProductContent } from "@/content/products";
 
 type ProductCardProps = {
   product: Product;
@@ -23,10 +23,10 @@ export const ProductCard = React.memo(function ProductCard({
   onHover,
   onLeave,
 }: ProductCardProps) {
-  const locale = useLocale() as "ar" | "en";
   const t = useTranslations("products");
   const forms = useTranslations("forms");
-  const label = product.name[locale];
+  const copy = t.raw(`items.${product.slug}`) as ProductContent;
+  const label = copy.name;
 
   const isFocusMode = hovered !== null && hovered !== undefined;
   const isHovered = index !== undefined && hovered === index;
@@ -52,7 +52,10 @@ export const ProductCard = React.memo(function ProductCard({
           <DirectionalArrow kind="forward" />
         </div>
         <h2>{label}</h2>
-        <p>{product.summary[locale]}</p>
+        <p>{copy.summary}</p>
+        <ul className="product-card-specs" aria-label={t("specificationHighlights")}>
+          {copy.specs.slice(0, 2).map((item, index) => <li key={`${item.key}-${index}`}>{item.value}</li>)}
+        </ul>
       </div>
     </Link>
   );

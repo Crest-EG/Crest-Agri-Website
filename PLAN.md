@@ -5,14 +5,14 @@ Read `AGENTS.md` first (standing rules), then this file. Work phase by phase.
 ## 0. Context
 - Company: **Crest for Agricultural Development** (Alexandria, Egypt). Exports fresh, frozen and dried agricultural products. This site replaces a WordPress site.
 - Audience: international importers (Europe, USA, Gulf, other Arab countries, Russia), factories, traders, intermediaries. Local factories are secondary.
-- Goal: premium, product-first site with a cinematic scroll journey. Main action: **request a quote**. No prices anywhere.
+- Goal: premium, product-first site. Main action: **request a quote**. No prices anywhere.
 - Final approver: the manager. The first deliverable is a working prototype to show him, so it must feel finished, fast and polished on real devices, in Arabic and English.
-- The project folder is empty except possibly `public/frames/` and an empty `public/images/products/` (delete the empty one). No product images are downloaded; use generated placeholders.
+- Product and landing photography is supplied locally under `Images/` and is optimized into stable WebP paths under `public/images/`.
 
 ## 1. Decisions already made (do not re-ask)
 - No backend, database, auth, admin panel, analytics, or third-party integrations (no Instagram feed, no Odoo, no Supabase, no CMS).
 - Arabic + English only. Device language by default, switchable, fallback English.
-- Landing keeps its 3D intro, then an editorial gallery and one continuous scroll journey (frame sequence). The intro and the first frame-based hero scene are separate; the first journey scene is removed. Products are the main message; export/logistics is one part of the journey.
+- Landing is a product-first page: photographic hero, fresh/frozen entry points, about and certifications, product cards, private label, services, markets, quote call-to-action, and the shared footer. The prior 3D intro, editorial gallery, frame sequence and scroll CTA are removed.
 - Excluded for now: ads strip, Instagram feed, news, FAQ, prices, catalog download, dashboard.
 - Local git only (`git init`, commit per phase). Upload to GitHub/Vercel later by the owner.
 - Never invent company facts (numbers, years, certificates beyond GlobalGAP, SMETA, ISO). Use clearly marked `TODO(content)` placeholders.
@@ -52,19 +52,19 @@ src/app/icon.png               favicon / tab icon 512x512
 src/app/apple-icon.png         180x180
 src/app/opengraph-image.png    1200x630 social preview
 brand/fonts/*                  the three font files
-public/frames/scene-{1..5}/ journey frames
-public/images/products/<slug>/ real product photos (later)
+public/images/landing/             compressed landing photography
+public/images/products/<slug>.webp  compressed fresh and frozen product images
 ```
 `<Logo variant="full|mark" />` is the only code that references logo files. Placeholder logo = simple SVG with the text "CREST" in brand green. The logo must appear in: header, the single footer, browser tab (favicon), PWA icons, `not-found`, `error`, social preview.
 
 ## 5. Routes and structure
 ```
 src/app/[locale]/layout.tsx          html lang/dir, fonts, Header, Footer (ONCE), providers
-src/app/[locale]/page.tsx            landing (scroll journey)
-src/app/[locale]/products/page.tsx   all products, filter Fresh/Frozen/Dried
+src/app/[locale]/page.tsx            product-first landing
+src/app/[locale]/products/page.tsx   all products, filter Fresh/Frozen
 src/app/[locale]/products/[slug]/page.tsx   product detail
 src/app/[locale]/about/page.tsx      story, vision, mission
-src/app/[locale]/certifications/page.tsx    GlobalGAP, SMETA, ISO (placeholder logos)
+src/app/[locale]/certifications/page.tsx    GlobalGAP, SMETA, ISO (text cards until approved logos are supplied)
 src/app/[locale]/contact/page.tsx    contact details + quote form
 src/app/[locale]/not-found.tsx       branded 404 (logo, message, links)
 src/app/[locale]/error.tsx           branded error + "Try again"
@@ -74,11 +74,11 @@ src/app/manifest.ts                  PWA manifest
 src/middleware.ts                    locale detection
 src/messages/en.json, ar.json        ALL UI strings (the "strings file")
 src/content/site.ts, products.ts, countries.ts
-src/components/                      Logo, Header, Footer, LanguageSwitcher, Button, Card, Placeholder, ScrollJourney, MarketMap, QuoteForm, ProductCard
+src/components/                      Logo, Header, Footer, LanguageSwitcher, Button, MarketMap, QuoteForm, ProductCard
 ```
 Static params for locales and product slugs. `generateMetadata` per page (localized title/description, `title.template` `%s | Crest`, hreflang alternates), sitemap, robots, semantic HTML, alt text.
 
-**Header** (sticky, white, green bottom border, visible during the journey): logo, Products, About, Certifications, Contact, language switcher, "Request a quote". On `/`, add a visible "Skip to products" link. Mobile: menu sheet.
+**Header** (sticky, white, green bottom border, visible while scrolling): logo, Products, About, Certifications, Contact, language switcher, "Request a quote". On `/`, add a visible "Skip to products" link. Mobile: menu sheet.
 **Footer** (single component): logo, short description, nav, contact details, language switcher, copyright.
 **PWA**: `manifest.ts` (name, short_name, `start_url: /`, `display: standalone`, theme `--green`, background `--bg`, icons above). No service worker, no offline mode.
 
@@ -88,39 +88,20 @@ next-intl routing, locales `['ar','en']`, `defaultLocale: 'en'`, prefix always. 
 ## 7. Content
 **`site.ts`:** Name EN `Crest for Agricultural Development`, AR `كريست للتنمية الزراعية`. Address `B Entrance, Grand Towers, Smouha 21523, Alexandria, Egypt` (Arabic version `TODO(confirm)`). Phones `+20 100 209 0007`, `+20 108 002 1191`; WhatsApp = first number (`201002090007`) `TODO(confirm)`. Email `info@crestagricultural.com`. Website `crestagricultural.com`.
 
-**`products.ts`** (11): grapes, pomegranate, peach, green-onion, cabbage, broccoli, citrus, strawberry, green-beans, sweet-potato, lettuce. Per product: `slug`, `name{en,ar}`, `type` (fruit|vegetable), `forms` (fresh|frozen|dried subset), `season{en,ar}`, `summary`, `farming/harvest/packing/shipping {en,ar}` (short generic placeholders, `TODO(content)`), `images: string[]` (empty now), `featured` (6 featured for the landing). Empty `images` → `<Placeholder />` (brand-color gradient with the product name).
+**`products.ts`**: use fresh and frozen products and specifications supplied in the 2026 company profile. Each entry includes bilingual name, summary, season, sourcing/harvest/packing/shipping notes, preparation variants and a WebP image. The catalogue has no dried category.
 
 **`countries.ts`:** `status: 'current' | 'target'`, EN name, AR name, coordinates. Use correct names (the source map has typos). Every status `TODO(confirm)`:
 - current: Canada, Turkey, Switzerland, Italy, Slovenia, UAE, Jordan, Saudi Arabia, Brazil
 - target: USA, Germany, Netherlands, Spain, Russia, Cyprus, GCC (grouped), North Africa (grouped)
 
-## 8. Scroll journey (landing page)
-One pinned full-viewport stage with a single `<canvas>` drawing a frame sequence driven by ScrollTrigger `scrub`, with real HTML overlays (text and buttons) so translation, clicks and SEO work. After it: the compact quote section, then the footer.
-
-**Frames contract:** `public/frames/scene-{1..5}/{001..150}.webp` (1280x720). 750 frames as one continuous sequence; the 3D intro remains separate. These five frame scenes are numbered in their landing-page order. If frames are missing, draw a procedural placeholder on the canvas (brand gradient + scene number) so the page still works. Never show a blank canvas; keep the last loaded frame.
-
-| # | Scene | Overlay |
-|---|---|---|
-| 1 | Produce to export (150 frames extracted from the supplied video) | 2–3 lines about the company + link About + certification logos row |
-| 2 | Packing | Packing quality + **private label** option (importer's own label) |
-| 3 | Shipping and export | Export service anywhere, fresh/frozen/dried |
-| 4 | Logistics | Air, road and sea transport options |
-| 5 | Markets | `<MarketMap />` beside its text in a compact translucent glass card over the undimmed canvas: static SVG world map (d3-geo + world-atlas), flag pins, current = green, target = gray, legend; GCC and North Africa as gray circles labeled "GCC"/"NA" |
-
-**Mechanics**
-- Height ≈ 140vh per scene desktop/tablet, ≈ 120vh mobile; total ≤ ~10 screens. Do not make it longer.
-- Load scene 1 first (minimal loader until its first ~12 frames are ready), then current scene ±1 while scrolling; bounded cache; never load all 750 up front. Keep the localized 3D intro separate from the frame sequence.
-- `requestAnimationFrame` draw, cover-fit to fill the viewport without distorting frames, DPR capped at 2, `scrub: 0.5`. Do not tint or shade the video frames. Place scene copy in compact translucent glass cards with a restrained blur; use dark text for contrast. The white logistics scene retains its matching white canvas background.
-- **Lite mode** (every 2nd frame = 75/scene) when viewport < 768px, `deviceMemory <= 4`, `saveData`, or a slow connection. **Reduced motion:** no pin/canvas animation; each scene is a normal stacked block with a static first frame and the same content.
-- Overlays fade by each scene's progress window; `pointer-events: auto` only on the active scene; all text stays in the DOM in order. Mobile: glass cards remain sized to their copy and fit the full-screen scene.
-- Visitors are never trapped: sticky header + "Skip to products".
-- Kill ScrollTriggers and cancel animation frames on unmount; no horizontal scroll, no layout jank.
+## 8. Landing page
+Build a responsive product-first page with real HTML copy and the supplied, compressed WebP assets. Keep the shared header and footer. Sections in order: photographic hero, fresh/frozen entry cards, about with certifications, products grouped by fresh and frozen, private label, sourcing/packing/logistics services, static market map, and quote call-to-action. Product cards expose specification highlights and link to full detail pages. There is no 3D intro, frame video, pinned scroll stage, or dried category.
 
 ## 9. Quote form (no backend)
 `<QuoteForm />` on the landing quote section and the contact page. Fields: request type (Quote / Inquiry / Contact), name, company, country, email, phone/WhatsApp, product (select; prefilled from `?product=`), quantity, message. Client validation. On submit show two buttons: **Send via WhatsApp** (`https://wa.me/<number>?text=<encoded>`) and **Send via Email** (`mailto:` with subject and body), message in the visitor's language with all fields. Nothing is stored.
 
 ## 10. Other pages
-- **Products:** grid of `ProductCard` + filter chips (All / Fresh / Frozen / Dried).
+- **Products:** grid of `ProductCard` + filter chips (All / Fresh / Frozen).
 - **Product detail:** gallery/placeholder, forms, season, farming → harvest → packing → shipping blocks, "Request a quote for this product", related products.
 - **About:** story, vision, mission (short placeholder copy, bilingual).
 - **Certifications:** three placeholder cards (GlobalGAP, SMETA, ISO) with a short text each.
@@ -130,7 +111,7 @@ One pinned full-viewport stage with a single `<canvas>` drawing a frame sequence
 - **P0** Scaffold with `create-next-app` (TS, Tailwind, ESLint, App Router, `src/`, npm, alias `@/*`) in the current folder; if it refuses due to a non-empty folder, scaffold in a temp dir and move files in. Install deps. Tokens, fonts, `ASSETS.md`.
 - **P1** Foundation: i18n + middleware, locale layout, `Logo`, `Header`, single `Footer`, language switcher, `not-found`, `error`, `global-error`, metadata, icons, manifest, `messages`.
 - **P2** Content layer: `site.ts`, `products.ts`, `countries.ts`, full `en.json`/`ar.json`.
-- **P3** Scroll journey with placeholder frames + `MarketMap`. **Acceptance:** smooth on desktop and a mid-range phone, no blank canvas, overlays clickable, works in Arabic and English, lite mode and reduced motion work. **STOP and report for review here.**
+- **P3** Product-first landing page with supplied WebP assets + `MarketMap`. **Acceptance:** responsive on desktop and mobile, sections and product cards work in Arabic and English, text remains accessible HTML, reduced-motion preferences are respected. **STOP and report for review here.**
 - **P4** Inner pages (products, detail, about, certifications, contact) + `QuoteForm`.
 - **P5** Polish: RTL pass on every page, 360px mobile pass, keyboard/focus, no hardcoded colors/strings, 404/error in both languages, language detection checks (Arabic browser → `/ar`, English → `/en`, French → `/en`, switcher persists), performance sanity, SEO basics.
 - **P6** `HANDOFF.md`: what was built, how to run, every `TODO(confirm)`/`TODO(content)`, assets to replace (from `ASSETS.md`), how to deploy later (GitHub → Vercel, no env vars).
@@ -138,5 +119,5 @@ One pinned full-viewport stage with a single `<canvas>` drawing a frame sequence
 ## 12. Definition of done
 - `npm run lint`, `npx tsc --noEmit`, `npm run build` pass.
 - All pages work in `/ar` (RTL) and `/en`, no console errors, no hardcoded visible strings or colors.
-- The journey is smooth on desktop and usable on a mid-range phone, with working light mode.
+- Landing and product pages are responsive in Arabic and English, with working light mode.
 - Every placeholder is listed in `ASSETS.md` with its final name and size, so real assets drop in with no code changes.

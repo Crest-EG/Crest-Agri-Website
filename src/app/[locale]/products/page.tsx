@@ -31,7 +31,7 @@ export default async function ProductsPage({ params, searchParams }: ProductsPag
   const query = await searchParams;
   const language: SiteLocale = locale === "ar" ? "ar" : "en";
   const requestedForm = Array.isArray(query.form) ? query.form[0] : query.form;
-  const form = requestedForm === "fresh" || requestedForm === "frozen" || requestedForm === "dried"
+  const form = requestedForm === "fresh" || requestedForm === "frozen"
     ? requestedForm
     : "all";
   const filteredProducts = form === "all"
