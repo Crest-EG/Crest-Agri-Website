@@ -6,10 +6,16 @@ import { ProductCard } from "@/components/ProductCard";
 import { MarketMap } from "@/components/MarketMap";
 import { ButtonLink } from "@/components/Button";
 import { DirectionalArrow } from "@/components/DirectionalArrow";
+import { PrivateLabelIllustration } from "@/components/PrivateLabelIllustration";
 import { Link } from "@/i18n/navigation";
 import { featuredProducts, products } from "@/content/products";
-import { site } from "@/content/site";
 import { createPageMetadata, type SiteLocale } from "@/lib/seo";
+
+const homeCertifications = [
+  { key: "certGlobalgap", image: "/images/certifications/globalgap.webp", width: 625, height: 625 },
+  { key: "certGrasp", image: "/images/certifications/grasp.webp", width: 625, height: 625 },
+  { key: "certIso22000", image: "/images/certifications/iso-22000.webp", width: 177, height: 179 },
+];
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -23,11 +29,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const language: SiteLocale = locale === "ar" ? "ar" : "en";
   const t = await getTranslations({ locale: language, namespace: "landing.home" });
   const forms = await getTranslations({ locale: language, namespace: "forms" });
-  const certificates = [t("certGlobalgap"), t("certSmeta"), t("certIso")];
-
   return (
     <main id="home" className="home-page">
-      <a className="skip-link" href="#home-products">{t("skipProducts")}</a>
       <section className="home-hero" aria-labelledby="home-title">
         <Image src="/images/landing/export-truck.webp" alt={t("heroImageAlt")} fill priority sizes="100vw" className="home-hero-image" />
         <div className="home-hero-shade" aria-hidden="true" />
@@ -43,6 +46,29 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <p className="home-hero-origin">{t("originLabel")}</p>
       </section>
 
+      <section className="home-about page-shell" aria-labelledby="about-title">
+        <div className="home-about-image">
+          <Image src="/images/categories/frozen.webp" alt={t("aboutImageAlt")} fill sizes="(max-width: 800px) 100vw, 48vw" />
+          <span>{t("aboutImageCaption")}</span>
+        </div>
+        <div className="home-about-copy">
+          <p className="eyebrow">{t("aboutEyebrow")}</p>
+          <h2 id="about-title">{t("aboutTitle")}</h2>
+          <p>{t("aboutBody")}</p>
+          <Link href="/about" className="text-link">{t("aboutLink")} <DirectionalArrow kind="forward" /></Link>
+        </div>
+      </section>
+
+      <section className="home-certifications-strip page-shell" aria-labelledby="home-certifications-title">
+        <h2 id="home-certifications-title">{t("certificationsTitle")}</h2>
+        <div className="home-certification-logos">
+          {homeCertifications.map(({ key, image, width, height }) => (
+            <Image key={key} src={image} alt={t(key)} width={width} height={height} />
+          ))}
+        </div>
+        <Link href="/certifications">{t("certificationsLink")} <DirectionalArrow kind="forward" /></Link>
+      </section>
+
       <section className="home-types page-shell" aria-labelledby="types-title">
         <div className="home-section-heading">
           <p className="eyebrow">{t("typesEyebrow")}</p>
@@ -51,29 +77,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="home-type-grid">
           {(["fresh", "frozen"] as const).map((form) => (
             <Link key={form} href={{ pathname: "/products", query: { form } }} className={`home-type-card home-type-${form}`}>
-              <Image src={form === "fresh" ? "/images/products/orange.webp" : "/images/products/strawberry.webp"} alt={t(`${form}.imageAlt`)} fill sizes="(max-width: 700px) 100vw, 50vw" />
+              <Image src={form === "fresh" ? "/images/categories/fresh.webp" : "/images/categories/frozen.webp"} alt={t(`${form}.imageAlt`)} fill sizes="(max-width: 700px) 100vw, 50vw" />
               <span className="home-type-shade" aria-hidden="true" />
               <span className="home-type-copy"><small>{t(`${form}.label`)}</small><strong>{forms(form)}</strong><span>{t(`${form}.body`)} <DirectionalArrow kind="forward" /></span></span>
             </Link>
           ))}
-        </div>
-      </section>
-
-      <section className="home-about page-shell" aria-labelledby="about-title">
-        <div className="home-about-image">
-          <Image src="/images/landing/harvest.webp" alt={t("aboutImageAlt")} fill sizes="(max-width: 800px) 100vw, 48vw" />
-          <span>{t("aboutImageCaption")}</span>
-        </div>
-        <div className="home-about-copy">
-          <p className="eyebrow">{t("aboutEyebrow")}</p>
-          <h2 id="about-title">{t("aboutTitle")}</h2>
-          <p>{t("aboutBody")}</p>
-          <Link href="/about" className="text-link">{t("aboutLink")} <DirectionalArrow kind="forward" /></Link>
-          <div className="home-certifications" aria-label={t("certificationsTitle")}>
-            <p>{t("certificationsTitle")}</p>
-            <ul>{certificates.map((name) => <li key={name}>{name}</li>)}</ul>
-            <Link href="/certifications">{t("certificationsLink")} <DirectionalArrow kind="forward" /></Link>
-          </div>
         </div>
       </section>
 
@@ -100,7 +108,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <ul>{(["privatePoint1", "privatePoint2", "privatePoint3"] as const).map((key) => <li key={key}>{t(key)}</li>)}</ul>
           <ButtonLink href="/services" variant="secondary">{t("privateLink")} <DirectionalArrow kind="forward" /></ButtonLink>
         </div>
-        <div className="home-private-image"><Image src="/images/landing/private-label.webp" alt={t("privateImageAlt")} fill sizes="(max-width: 800px) 100vw, 48vw" /></div>
+        <div className="home-private-image"><PrivateLabelIllustration /></div>
       </section>
 
       <section className="home-services page-shell" aria-labelledby="services-title">
@@ -126,11 +134,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      <section className="home-cta page-shell" aria-labelledby="cta-title">
+      <section className="home-cta" aria-labelledby="cta-title">
+        <Image src="/images/landing/cta-berries.webp" alt={t("ctaImageAlt")} fill sizes="100vw" className="home-cta-image" />
+        <span className="home-cta-shade" aria-hidden="true" />
         <div><p className="eyebrow">{t("ctaEyebrow")}</p><h2 id="cta-title">{t("ctaTitle")}</h2><p>{t("ctaBody")}</p></div>
         <ButtonLink href="/contact#quote" variant="primary">{t("ctaButton")} <DirectionalArrow kind="forward" /></ButtonLink>
       </section>
-      <div className="home-contact-strip"><span>{site.email}</span><span>{site.phones[0]}</span><span>{t("originLabel")}</span></div>
     </main>
   );
 }

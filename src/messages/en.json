@@ -132,7 +132,6 @@
       "description": "Crest for Agricultural Development exports Egyptian fresh and frozen fruits and vegetables from Alexandria to international buyers."
     },
     "home": {
-      "skipProducts": "Skip to products",
       "heroEyebrow": "Crest for Agricultural Development · Alexandria, Egypt",
       "heroTitle": "From Egyptian harvests to your market.",
       "heroBody": "Fresh and frozen fruits and vegetables prepared for international trade, with export packing and logistics planned around your requirements.",
@@ -155,7 +154,7 @@
       "aboutEyebrow": "About Crest",
       "aboutTitle": "Care from the growing area to the shipment.",
       "aboutBody": "Crest for Agricultural Development works with fresh and frozen Egyptian produce for buyers, manufacturers and distributors. We coordinate product specifications, packing and shipment details with each enquiry.",
-      "aboutImageAlt": "Fresh fruit at harvest, ready for selection and packing",
+      "aboutImageAlt": "Crest frozen products packed for export",
       "aboutImageCaption": "Egyptian produce · prepared for export",
       "aboutLink": "Our company",
       "certificationsTitle": "Quality systems and certifications",
@@ -171,7 +170,6 @@
       "privatePoint2": "Retail and food-service pack discussions",
       "privatePoint3": "Export coordination to your destination",
       "privateLink": "Explore private label",
-      "privateImageAlt": "Private label packaging concept with space for a buyer’s own brand",
       "servicesEyebrow": "From order to dispatch",
       "servicesTitle": "Export support at every step",
       "servicesBody": "We coordinate the details that move a produce order from specification to shipment.",
@@ -199,8 +197,9 @@
       "ctaBody": "Share the product, preparation, volume and destination you have in mind. Our export team will follow up with the details.",
       "ctaButton": "Request a quote",
       "certGlobalgap": "GlobalG.A.P.",
-      "certSmeta": "SMETA",
-      "certIso": "ISO"
+      "certGrasp": "GRASP",
+      "certIso22000": "ISO 22000",
+      "ctaImageAlt": "Fresh berries ready for export"
     },
     "scenes": {
       "markets": {
@@ -882,7 +881,7 @@
   "about": {
     "title": "About us",
     "intro": "Our journey began here",
-    "imageAlt": "Citrus orchards in the Nile Delta",
+    "imageAlt": "Crest frozen products packed for export",
     "storyTitle": "Our foundation",
     "story": "Crest for Agricultural Development was established in 2020, supported by advances in agricultural technology that strengthen sustainable farming practices. Its purpose was to support the growth of agriculture and food production in the Arab Republic of Egypt.",
     "visionTitle": "Looking ahead",
@@ -980,7 +979,33 @@
     "shipping": "Shipping to your destination",
     "shippingBody": "Share the product, destination and preferred schedule. Options and availability depend on the product and destination; our sales team will confirm.",
     "contactAction": "Start a trade inquiry",
-    "productsAction": "Explore products"
+    "productsAction": "Explore products",
+    "workflow": {
+      "query": {
+        "title": "Client query & order",
+        "body": "Share the product, preparation, volume and destination you need."
+      },
+      "quotation": {
+        "title": "Quotation",
+        "body": "Review availability, pack options, volumes and shipping details."
+      },
+      "inspection": {
+        "title": "Inspection",
+        "body": "Confirm product specifications and quality requirements together."
+      },
+      "booking": {
+        "title": "Booking",
+        "body": "Align the order schedule and reserve the agreed shipment window."
+      },
+      "contract": {
+        "title": "Contract & payment",
+        "body": "Confirm the commercial terms and required documentation."
+      },
+      "dispatch": {
+        "title": "Preparation & shipping",
+        "body": "Prepare, pack and coordinate the shipment to its destination."
+      }
+    }
   },
   "quote": {
     "title": "Request a quote",

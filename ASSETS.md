@@ -1,6 +1,6 @@
 # Replaceable assets
 
-The landing page and product catalogue now use the supplied company/profile images, converted to compressed WebP files. Product paths are stable and are referenced from `src/content/products.ts`.
+The landing page, certification page and product catalogue use supplied company/profile imagery converted to compressed WebP files. Product paths are stable and are referenced from `src/content/products.ts`.
 
 | Path | Current size and format | Use |
 |---|---:|---|
@@ -17,9 +17,20 @@ The landing page and product catalogue now use the supplied company/profile imag
 | `brand/fonts/Montserrat-Arabic-Regular.woff2` | WOFF2 | Local site font; Arial/sans-serif is the fallback |
 | `brand/fonts/Dubai-Light` | Not supplied | TODO(confirm): planned Arabic/display font; system fallback remains active |
 | `brand/fonts/Acumin-Variable-Concept` | Not supplied | TODO(confirm): planned Latin body font; system fallback remains active |
-| `public/images/landing/export-truck.webp` | 1800×1012 WebP | Landing hero and shipping page |
-| `public/images/landing/harvest.webp` | 910×1200 WebP | Landing about section, About page and services page |
-| `public/images/landing/private-label.webp` | 1608×946 WebP | Private-label section |
+| `public/images/landing/export-truck.webp` | 1800×1012 WebP | Landing hero |
+| `public/images/landing/cta-berries.webp` | 1800×2700 WebP | Full-screen quote call-to-action |
+| `public/images/categories/fresh.webp` | 1800×1012 WebP | Fresh category card |
+| `public/images/categories/frozen.webp` | 1800×1012 WebP | Frozen category card, landing and About imagery |
+| `public/images/services/shipping.webp` | 1500×818 WebP | Services shipping section |
+| `public/images/landing/harvest.webp` | 910×1200 WebP | Services page quality section |
+| `public/images/certifications/globalgap.webp` | 625×625 WebP | Landing certification strip and certification page |
+| `public/images/certifications/grasp.webp` | 625×625 WebP | Landing certification strip and certification page |
+| `public/images/certifications/iso-22000.webp` | 177×179 WebP | Landing certification strip and certification page |
+| `public/images/certifications/iso.webp` | 365×335 WebP | Certification page |
+| `public/images/certifications/brcgs.webp` | 158×126 WebP | Certification page |
+| `public/images/certifications/fda.webp` | 190×93 WebP | Certification page |
+| `public/images/certifications/gacc.webp` | 222×103 WebP | Certification page |
+| `public/images/certifications/haccp.webp` | 189×164 WebP | Certification page |
 | `public/images/products/orange.webp` | 594×595 WebP | Fresh orange |
 | `public/images/products/lemon.webp` | 716×717 WebP | Fresh lemon |
 | `public/images/products/sweet-potato.webp` | 792×793 WebP | Fresh sweet potato |
@@ -47,5 +58,5 @@ The landing page and product catalogue now use the supplied company/profile imag
 - `TODO(confirm)`: confirm product seasons, commercial grades, orange/lemon pack-size mapping and current loading details with Crest before publishing product specifications.
 - `TODO(confirm)`: confirm the named markets and certification wording against current company documents.
 - `TODO(confirm)`: replace placeholder brand files where the final approved logo and font assets are provided.
-- The supplied product-pack images are used as delivered. The source FFmpeg build does not include the `libwebp` encoder. FFmpeg resized the source assets and the installed `cwebp` encoder wrote the compressed WebP files.
+- FFmpeg resized and color-converted the supplied CMYK/JPEG and Pexels images; the installed `cwebp` encoder wrote the compressed WebP files because the FFmpeg build does not include `libwebp`. The oversized source photo attachments were removed after conversion. The supplied workflow graphic was used as a layout reference and its labels were rebuilt as localized HTML text.
 - Product copy and variant data are transcribed from `Images/Profile Company 2026 - Crest Agricultural.pdf`; the PDF contains several typos and incomplete lines, so unclear details are marked for confirmation instead of inferred.
