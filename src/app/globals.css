@@ -713,3 +713,10 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .home-service-image img { transition: none; }
 }
+
+.shipping-card {
+  overflow: hidden;
+  border-radius: var(--radius-image);
+  padding: clamp(24px, 4vw, 52px);
+}
+.shipping-card-visual { border-radius: var(--radius-image); }
