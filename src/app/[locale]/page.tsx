@@ -111,7 +111,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       <PrivateLabelSection />
 
-      <HomeMarketsSection alt={t("marketMapAlt")} />
+      <HomeMarketsSection alt={t("marketMapAlt")} title={t("marketsEyebrow")} />
 
       <HomeCallToAction
         eyebrow={t("ctaEyebrow")}

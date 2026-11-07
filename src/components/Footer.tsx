@@ -68,14 +68,14 @@ export function Footer() {
           <nav className="footer-directory" aria-label={t("navigation.menu")}>
             <section className="footer-column">
               <h2>{footer.pagesTitle}</h2>
-              <ul>{pageLinks.map(({ label, href, action }) => <li key={href}><Link href={href} className={action ? "footer-action-button" : undefined}>{label}{action && <DirectionalArrow kind="forward" />}</Link></li>)}</ul>
+              <ul>{pageLinks.map(({ label, href, action }) => <li key={href}><Link href={href} className={action ? "footer-action-button footer-action-button-primary" : undefined}>{label}{action && <DirectionalArrow kind="forward" />}</Link></li>)}</ul>
             </section>
             <section className="footer-column">
               <h2>{footer.informationTitle}</h2>
               <ul>
                 {informationLinks.map(({ label, href }) => <li key={href}><Link href={href}>{label}</Link></li>)}
                 <li>
-                  <a href={site.brochureUrl} target="_blank" rel="noreferrer" className="footer-action-button">
+                  <a href={site.brochureUrl} target="_blank" rel="noreferrer" className="footer-action-button footer-action-button-secondary">
                     <span>{footer.brochure}</span>
                     <DirectionalArrow kind="external" />
                   </a>
