@@ -1,22 +1,20 @@
-import type { ReactNode } from "react";
+import Image from "next/image";
 
 type HomeMarketsSectionProps = {
-  eyebrow: string;
-  title: string;
-  children: ReactNode;
+  alt: string;
 };
 
-export function HomeMarketsSection({ eyebrow, title, children }: HomeMarketsSectionProps) {
+export function HomeMarketsSection({ alt }: HomeMarketsSectionProps) {
   return (
-    <section className="home-markets" aria-labelledby="markets-title">
-      <div className="home-markets-inner page-shell">
-        <header className="home-markets-heading">
-          <p className="eyebrow">{eyebrow}</p>
-          <h2 id="markets-title">{title}</h2>
-        </header>
-        <div className="market-map-zoom">
-          {children}
-        </div>
+    <section className="home-markets" aria-label={alt}>
+      <div className="home-markets-inner">
+        <Image
+          src="/images/landing/market-map.webp"
+          alt={alt}
+          fill
+          sizes="100vw"
+          className="home-market-map-image"
+        />
       </div>
     </section>
   );

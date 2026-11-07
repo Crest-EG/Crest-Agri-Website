@@ -3,7 +3,6 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
 import { ProductCard } from "@/components/ProductCard";
-import { MarketMap } from "@/components/MarketMap";
 import { ButtonLink } from "@/components/Button";
 import { DirectionalArrow } from "@/components/DirectionalArrow";
 import { HomeCallToAction } from "@/components/HomeCallToAction";
@@ -112,9 +111,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       <PrivateLabelSection />
 
-      <HomeMarketsSection eyebrow={t("marketsEyebrow")} title={t("marketsTitle")}>
-        <MarketMap locale={language} />
-      </HomeMarketsSection>
+      <HomeMarketsSection alt={t("marketMapAlt")} />
 
       <HomeCallToAction
         eyebrow={t("ctaEyebrow")}
