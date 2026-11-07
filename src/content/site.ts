@@ -22,6 +22,7 @@ export const site = {
   socials: {
     facebook: "https://www.facebook.com/crest.agricultural",
     instagram: "https://www.instagram.com/crest.agridev",
+    linkedin: "https://www.linkedin.com/company/crest-agricultural/",
     youtube: "https://www.youtube.com/@crest.agridev",
     tiktok: "https://www.tiktok.com/@crestagricultural",
     x: "https://x.com/crest_agridev",

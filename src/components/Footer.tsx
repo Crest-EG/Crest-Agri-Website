@@ -26,6 +26,7 @@ export function Footer() {
   const socialLinks: Array<{ kind: SocialKind; href: string; label: string }> = [
     { kind: "facebook", href: site.socials.facebook, label: footer.socialFacebook },
     { kind: "instagram", href: site.socials.instagram, label: footer.socialInstagram },
+    { kind: "linkedin", href: site.socials.linkedin, label: footer.socialLinkedin },
     { kind: "x", href: site.socials.x, label: footer.socialX },
     { kind: "youtube", href: site.socials.youtube, label: footer.socialYoutube },
     { kind: "tiktok", href: site.socials.tiktok, label: footer.socialTiktok },

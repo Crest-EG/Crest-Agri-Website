@@ -44,6 +44,7 @@
       "socialMediaTitle": "Follow us",
       "socialFacebook": "Facebook",
       "socialInstagram": "Instagram",
+      "socialLinkedin": "LinkedIn",
       "socialX": "X (Twitter)",
       "socialYoutube": "YouTube",
       "socialTiktok": "TikTok",
@@ -1077,23 +1078,23 @@
   },
   "privacy": {
     "title": "Privacy policy",
-    "intro": "This policy explains what information we may receive when you use this website or send an inquiry, and how we handle it.",
+    "intro": "This policy explains how information shared through this website is handled.",
     "sections": [
       {
         "title": "Who we are",
         "body": "Crest for Agricultural Development is an Egyptian company working in agricultural product exports. This website introduces the company and its products and receives trade inquiries."
       },
       {
-        "title": "Information we collect",
-        "body": "When you submit an inquiry form, we may process your name, company, country, contact details, product, quantity and message, as well as the language and page path for context. The server temporarily receives your IP address to limit automated requests and misuse. The website does not have comments or user accounts."
+        "title": "Information shared through forms",
+        "body": "Information entered in an inquiry form is used in your browser to prepare a message. This website does not store form submissions in a database."
       },
       {
         "title": "How we use information",
-        "body": "We use form information to review and respond to your inquiry. If inquiry intake is enabled, the server sends form details to the Google Apps Script and Google Sheet configured by the company for this purpose; Google processes that information under its own terms and policies. Please do not submit sensitive information through the form."
+        "body": "Crest uses the details in a message you choose to send to respond to your inquiry and discuss your request."
       },
       {
         "title": "WhatsApp or email communications",
-        "body": "If you choose to continue through WhatsApp or email, the app or site you choose will open. Any information you send there is then subject to that provider’s policies."
+        "body": "Choosing WhatsApp or email opens that service with your message prepared. Crest receives it only if you send it from that service. The selected service handles the details under its own policies."
       },
       {
         "title": "Cookies",
@@ -1101,11 +1102,11 @@
       },
       {
         "title": "Retention and sharing",
-        "body": "We retain inquiry information for as long as needed to follow up, manage the business relationship and meet legal requirements. It may be processed by hosting providers or the inquiry intake system configured by the company, subject to its settings. We do not sell personal information."
+        "body": "This website does not retain inquiry form submissions. Messages you send to Crest are handled through the communication service you choose so our team can follow up."
       },
       {
         "title": "Your rights and contact",
-        "body": "You may contact us to ask about, correct or request deletion of information connected to your inquiry, subject to applicable legal obligations. Email info@crestagricultural.com."
+        "body": "For questions about a message you sent to Crest, contact us at info@crestagricultural.com."
       }
     ],
     "back": "Back to contact"

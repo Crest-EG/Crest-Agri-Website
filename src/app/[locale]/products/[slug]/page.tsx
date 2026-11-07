@@ -106,6 +106,7 @@ export default async function ProductDetailPage({ params }: DetailProps) {
           </ul>}
           <div className="detail-actions">
             <ButtonLink href={quoteHref} variant="primary">{t("request")} <DirectionalArrow kind="forward" /></ButtonLink>
+            {product.technicalSheetUrl && <ButtonLink href={product.technicalSheetUrl} target="_blank" rel="noopener noreferrer" variant="secondary">{t("technicalSheet")} <DirectionalArrow kind="external" /></ButtonLink>}
           </div>
         </div>
         <div className="detail-gallery">
