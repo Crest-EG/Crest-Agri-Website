@@ -19,5 +19,5 @@ KEYWORD MAP (use naturally in titles, descriptions, h1/h2 and body copy):
 - Other crops: same pattern ("Egyptian X exporter" / "تصدير X مصري")
 - Services: EN "private label fruits and vegetables Egypt", "export packing and shipping of fresh produce" / AR "تعبئة وتصدير الخضروات والفواكه", "برايفت ليبل"
 - Certifications: EN "GlobalG.A.P. certified Egyptian exporter" / AR "مصدر مصري حاصل على GlobalG.A.P"
-- Brand: EN "Crest for Agricultural Development", "Crest Agricultural" / AR "كريست للتنمية الزراعية"
+- Brand: EN "Crest for Agricultural Development", "Crest Agricultural" / AR "كرست للتنمية الزراعية"
 - Location: Alexandria, Egypt / الإسكندرية، مصر

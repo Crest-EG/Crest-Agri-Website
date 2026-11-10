@@ -86,7 +86,7 @@ Static params for locales and product slugs. `generateMetadata` per page (locali
 next-intl routing, locales `['ar','en']`, `defaultLocale: 'en'`, prefix always. First visit with no cookie: read `Accept-Language`; top supported match Arabic → `ar`, English → `en`; anything else, empty or parse error → `en` (wrap in try/catch). The switcher sets the `NEXT_LOCALE` cookie; the choice persists and wins over detection. `<html lang dir>` from locale (`dir="rtl"` for `ar`).
 
 ## 7. Content
-**`site.ts`:** Name EN `Crest for Agricultural Development`, AR `كريست للتنمية الزراعية`. Address `B Entrance, Grand Towers, Smouha 21523, Alexandria, Egypt` (Arabic version `TODO(confirm)`). Phones `+20 100 209 0007`, `+20 108 002 1191`; WhatsApp = first number (`201002090007`) `TODO(confirm)`. Email `info@crestagricultural.com`. Website `crestagricultural.com`.
+**`site.ts`:** Name EN `Crest for Agricultural Development`, AR `كرست للتنمية الزراعية`. Address `B Entrance, Grand Towers, Smouha 21523, Alexandria, Egypt` (Arabic version `TODO(confirm)`). Phones `+20 100 209 0007`, `+20 108 002 1191`; WhatsApp = first number (`201002090007`) `TODO(confirm)`. Email `info@crestagricultural.com`. Website `crestagricultural.com`.
 
 **`products.ts`**: use fresh and frozen products and specifications supplied in the 2026 company profile. Each entry includes bilingual name, summary, season, sourcing/harvest/packing/shipping notes, preparation variants and a WebP image. The catalogue has no dried category.
 

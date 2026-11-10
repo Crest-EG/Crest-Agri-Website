@@ -1,7 +1,7 @@
 export const site = {
   name: {
     en: "Crest for Agricultural Development",
-    ar: "كريست للتنمية الزراعية",
+    ar: "كرست للتنمية الزراعية",
   },
   description: {
     en: "Fresh and frozen agricultural products from Egypt.",
