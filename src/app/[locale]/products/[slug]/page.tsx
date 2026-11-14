@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: DetailProps): Promise<Metadat
     title,
     description,
     path: `/products/${slug}`,
-    image: product.images[0] ?? "/opengraph-image.png",
+    image: `/${language}/products/${slug}/opengraph-image`,
   });
 }
 

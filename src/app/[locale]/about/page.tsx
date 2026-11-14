@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const language: SiteLocale = locale === "ar" ? "ar" : "en";
   const t = await getTranslations({ locale: language, namespace: "seo.about" });
-  return createPageMetadata({ locale: language, title: t("title"), description: t("description"), path: "/about" });
+  return createPageMetadata({ locale: language, title: t("title"), description: t("description"), path: "/about", image: `/${language}/about/opengraph-image` });
 }
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {

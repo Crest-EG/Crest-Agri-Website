@@ -24,7 +24,9 @@ export function createPageMetadata({
     en: `/en${path}`,
     "x-default": `/en${path}`,
   };
-  const imageWithAlt = { url: new URL(image, site.website).toString(), alt: title };
+  const imageWithAlt = image
+    ? { url: new URL(image, site.website).toString(), alt: title }
+    : undefined;
 
   return {
     metadataBase: new URL(site.website),
@@ -42,13 +44,13 @@ export function createPageMetadata({
       siteName: site.name[locale],
       locale: locale === "ar" ? "ar_EG" : "en_US",
       alternateLocale: locale === "ar" ? ["en_US"] : ["ar_EG"],
-      images: [imageWithAlt],
+      ...(imageWithAlt ? { images: [imageWithAlt] } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [imageWithAlt],
+      ...(imageWithAlt ? { images: [imageWithAlt] } : {}),
     },
   };
 }

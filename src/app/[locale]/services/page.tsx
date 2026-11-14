@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const language: SiteLocale = locale === "ar" ? "ar" : "en";
   const t = await getTranslations({ locale: language, namespace: "seo.services" });
-  return createPageMetadata({ locale: language, title: t("title"), description: t("description"), path: "/services" });
+  return createPageMetadata({ locale: language, title: t("title"), description: t("description"), path: "/services", image: `/${language}/services/opengraph-image` });
 }
 
 export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {

@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Pick<ContactProps, "params">)
   const { locale } = await params;
   const language: SiteLocale = locale === "ar" ? "ar" : "en";
   const t = await getTranslations({ locale: language, namespace: "seo.contact" });
-  return createPageMetadata({ locale: language, title: t("title"), description: t("description"), path: "/contact" });
+  return createPageMetadata({ locale: language, title: t("title"), description: t("description"), path: "/contact", image: `/${language}/contact/opengraph-image` });
 }
 
 export default async function ContactPage({ params, searchParams }: ContactProps) {
