@@ -57,7 +57,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       <section className="home-about page-shell" aria-labelledby="about-title">
         <div className="home-about-image">
-          <Image src="/images/categories/frozen.webp" alt={t("aboutImageAlt")} fill sizes="(max-width: 800px) 100vw, 48vw" />
+          <Image src="/images/about/about.webp" alt={t("aboutImageAlt")} fill sizes="(max-width: 800px) 100vw, 48vw" />
           <span>{t("aboutImageCaption")}</span>
         </div>
         <div className="home-about-copy">

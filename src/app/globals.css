@@ -468,8 +468,8 @@ img { max-width: 100%; }
 .home-type-copy > span:last-child { display: flex; align-items: center; gap: 10px; font-size: var(--font-size-sm); }
 .home-type-copy .directional-arrow { color: var(--orange); }
 .home-about { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: clamp(32px, 7vw, 88px); padding-block: clamp(64px, 8vw, 104px); }
-.home-about-image, .home-private-image { position: relative; min-height: 360px; aspect-ratio: 1.1; overflow: hidden; border-radius: var(--radius-card); background: var(--surface); }
-.home-about-image > img, .home-private-image > img { object-fit: cover; }
+.home-about-image, .home-private-image { position: relative; min-height: 360px; aspect-ratio: 1.01; overflow: hidden; border-radius: var(--radius-card); background: var(--surface); }
+.home-about-image > img, .home-private-image > img { object-fit: cover; object-position: right center; }
 .home-about-image > span { position: absolute; inset-inline-start: 16px; inset-block-end: 16px; max-width: calc(100% - 32px); padding: 10px 14px; border: 1px solid var(--line); border-radius: var(--radius-pill); background: var(--surface); color: var(--text); font-size: var(--font-size-xs); font-weight: 700; }
 .home-about-copy h2 { max-width: 16ch; }
 .home-about-copy > p:not(.eyebrow) { margin-block: var(--space-4); }

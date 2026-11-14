@@ -27,7 +27,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         { name: t("title"), path: "/about" },
       ])} />
       <header className="page-intro about-intro"><p className="eyebrow">{t("title")}</p><h1>{t("intro")}</h1></header>
-      <div className="about-hero-visual"><Image src="/images/categories/frozen.webp" alt={t("imageAlt")} fill sizes="(max-width: 900px) 100vw, 80vw" priority /></div>
+      <div className="about-hero-visual"><Image src="/images/about/about.webp" alt={t("imageAlt")} fill sizes="(max-width: 900px) 100vw, 80vw" priority /></div>
       <section className="page-section about-story"><p className="eyebrow">{t("storyTitle")}</p><h2>{t("story")}</h2></section>
       <section className="about-values page-section">
         <article className="content-card"><p className="eyebrow">{t("visionTitle")}</p><h2>{t("vision")}</h2></article>
